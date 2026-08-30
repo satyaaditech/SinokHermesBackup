@@ -1,0 +1,9 @@
+{
+  "last_report_path": "/home/satyaaditech/.hermes/logs/curator/20260825-131840",
+  "last_run_at": "2026-08-25T13:18:40.403694+00:00",
+  "last_run_duration_seconds": 2.080709,
+  "last_run_summary": "auto: no changes; llm: skipped (consolidation off)",
+  "last_run_summary_shown_at": null,
+  "paused": false,
+  "run_count": 7
+}

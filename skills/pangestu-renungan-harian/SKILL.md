@@ -1,0 +1,522 @@
+---
+name: pangestu-renungan-harian
+description: Produce Pangestu renungan harian for TG thread 1096. Agentic 3-role workflow (Research→Write→Edit) + format, persona, & anti-halusinasi rules.
+---
+
+# Renungan Harian Pangestu (Daily Bread)
+
+## ⚠️ Konvensi Terminologi Utama (PENTING)
+*   **Sang Guru Sejati (SGS)** punika ingkang kagungan piwulang utawi ajaran.
+*   **Pangestu** (Paguyuban Ngesti Tunggal) punika namung wadhah utawi organisasi para siswa ingkang nyinaoni piwulang.
+*   **Panyebutan ingkang Leres**: Wajib ngginakaken tembung **"piwulang Sang Guru Sejati"** utawi **"ajaran Sang Guru Sejati"**. Boten pareng babar pisan nyebataken **"piwulang Pangestu"** utawi **"ajaran Pangestu"**.
+
+## ⚠️ Jajaran Kosakata Krama Alus (Vocabulary Safeguards)
+Tansah gunakaken tembung Krama Alus ingkang leres nalika guneman kaliyan Pak Satya. Kedah murni Krama Alus/Inggil lan boten pareng dipun-campur kaliyan tetembungan utawi tembung panyambung basa Indonesia. Sampun ngginakaken tembung Ngoko, tembung mixed Indo-Jawa, utawi panyebutan ingkang klentu:
+*   *sakdurungipun* / *sadurunge* -> Kedah dipun-serat **sakderengipun** (sebelum/sebelumnya).
+*   *menyang* / *menyang dhateng* -> Kedah dipun-serat **dhateng** (ke/kepada).
+*   *goleki* / *madosi* -> Kedah dipun-serat **padosi** utawi **dipun-padosi** (mencari/dicari).
+*   *mirsani* / *ningali* -> Kagem dhiri piyambak (AI/Sinox) ngginakaken **ningali** (melihat) utawi **midangetaken** (mendengarkan). Kagem dipun-aturaken dhateng Pak Satya ngginakaken **mirsani** (melihat) utawi **mirengaken** (mendengarkan).
+*   *pastikan* -> Kedah dipun-pesthikaken / dipun-temtokaken.
+*   *boso* -> Kedah dipun-serat **basa**.
+*   *kosakata* -> Kedah dipun-serat **tembung** utawi **tetembungan**.
+*   *kecampur* / *campur* -> Kedah dipun-serat **dipun-campur**.
+
+Tujuan: renungan harian ala Daily Bread versi Pangestu → TG thread 1096.
+Sumber: 7 buku Pangestu IND (Sasangka Jati, Sabda Khusus, Ulasan Kang Kelana, dll).
+Catatan studi: `/home/satyaaditech/share/pangestu_studi/buku1..7_*.md`.
+Quick-ref lokasi sumber per tema: `references/sumber-quickref.md` — pakai saat audit untuk cek baris spesifik.
+Catatan khusus tema Panembah vs Serat Panembah: references/sumber-panembah.md — berisi esensi, perbandingan naskah Jawa/Indo, dan rincian khotbah/doa.
+Panduan penyusunan Materi Khotbah/Ulasan & Google Drive integration: references/materi-khotbah.md
+Panduan unggah Google Drive & konversi Google Doc: references/google-drive-upload.md
+Panduan Audio TTS & Integrasi Telegram: references/audio-tts-telegram.md
+Panduan Format Renungan Basa Jawi Krama: references/krama-renungan-format.md
+Relevansi Tema Ekonomi Nyata: references/relevansi-tema-ekonomi.md — panduan agar tema kecemasan ekonomi membumi dan tidak abstrak.
+Panduan Buletin Bulanan "Olahrasa": references/buletin-olohrasa-format.md — panduan penyusunan ulasan & 20 halaman rubrikasi buletin.
+OmniRoute Quota Tracking: references/omniroute-quota-tracking.md — cara ngawasi kuota lan pangginaan model ing OmniRoute.
+Panduan Infografis & Cover Pilihan: references/infografis-cover-pilihan.md — panduan ndamel infografis programmatik (Pillow), generatif (AI), saha hibrida.
+Desain & Rendering Newsletter Kreatif (HTML/CSS + Puppeteer): references/newsletter-html-rendering.md
+Integrasi LLM Wiki kagem Buku Pangestu (Cathetan Konsep lan Renungan Harian): references/llm-wiki-integration.md
+Arsitektur LLM Wiki Buku Pangestu: references/llm-wiki-architecture.md — panduan struktur folder, alur ingest, dan relasi wiki.
+Setup & Struktur Basis Kawruh Wiki Buku Pangestu: references/buku-pangestu-wiki.md
+Panduan Rendering & Tata Letak Halaman (PDF Cetak A4 / HP Carousel): references/newsletter-rendering-pitfalls.md — panduan penanganan pembagian halaman, penataan border, dan perbaikan bug emoji Puppeteer. — petunjuk rendering otomatis e-card/newsletter digital visual "selevel Canva".
+GOLD STANDARD Renungan Pagi: references/gold-standard-renungan-pagi.md — DISETUJUI Pak Satya 17-08-2026 (renungan Kamardikan Sejati). Semua renungan pagi WAJIB mengikuti struktur & gaya file ini.
+Refleksi Tematik (Tuntunan, Metapor lawa/rembulan, & Nderek Paduka): references/contoh-rembulan-sejati.md — memadukan ajaran Pangestu dengan psikologi populer/mindfulness sacara laras
+Otomatisasi Publikasi Renungan (Google Drive + TTS + Telegram): scripts/publish_renungan.py — naskah & audio renungan harian langsung dipublikasikan.
+Studi & Pemetaan (NPD vs. Ajaran SGS): references/sains-npd-vs-sgs.md — menguraikan korelasi klinis narsisisme (NPD) dengan watak kumingsun batin. sarta panafsiran metapor kelelawar ingkang leres.
+Scripts pembantu pembuatan gambar cover: `scripts/render_cover.py` — script Python Pillow kagem dandan e-card cover (latar padhang/terang, mawi font warna kontras biru/ireng areng, sarta mbusak tembung "Pangestu").
+Provider & model: `references/provider-opencode-deepseek.md` — setup dan cara pakai DeepSeek V4 Pro via OpenCode Go.
+
+## 🔴 PITFALL #1: SABDA SPLICING (baca sebelum nulis!)
+
+JANGAN menyambung fragmen dari beberapa paragraf sumber dengan `...` jadi satu quote panjang. Ini cherry-picking yang mendistorsi
+
+## 🔴 PITFALL #2: RAW WIKILINKS & METADATA IN USER OUTPUTS
+
+*   **Google Doc (HTML)**: Pastikan YAML frontmatter dan tanda kurung siku ganda `[[ ]]` dihilangkan sepenuhnya saat konversi HTML. Google Doc harus tampil bersih untuk dibaca langsung pemilik.
+*   **Share/Telegram Output**: Pastikan output teks yang disalin ke chat maupun file di direktori `share/` bersih dari markdown `[[ ]]` wikilinks. Gunakan konversi/regex (misal: `[[Concept|alias]]` -> "alias", `[[Concept]]` -> "Concept").
+*   **Wiki Vault (Obsidian)**: Tahan format wikilinks hanya untuk berkas yang disimpan di dalam direktori `wiki/renungan/` untuk menjaga database relasi Obsidian tetap terhubung. struktur asli meskipun setiap kata nyata adanya. Setiap Sabda HARUS verbatim dari SATU paragraf utuh di sumber.
+
+## 🔴 PITFALL #2: METADATA LEAKAGE & RAW WIKILINKS (Wajib Bersih!)
+
+1. **Google Doc & Output WA/TG Tanpa Metadata**: Google Doc serta teks salinan di Telegram/WA tidak boleh memuat YAML frontmatter (metadata seperti `title:`, `date:`, `tags:`, `language:`). Teks di Doc dan salinan WA/TG harus langsung dimulai dari header tanggal (misalnya `*KAMIS, 27 AGUSTUS 2026*`).
+2. **Hilangkan Kurung Wikilink `[[ | ]]`**: Untuk teks salinan Telegram/WA dan tampilan Google Doc, hilangkan semua braket double `[[` dan `]]` (format `[[Concept|alias]] -> alias` and `[[Concept]] -> Concept`). Kurung siku pranala wiki hanya boleh ada di file Obsidian `.md` di dalam folder `wiki/renungan/` untuk kebutuhan basis pengetahuan.
+
+## 🔴 PITFALL #3: GAYA FLAT, ROBOTIK, DAN PENCAMPURAN BAHASA
+
+1. **Gaya Bahasa Humanis dan Kreatif**: Hindari penjelasan yang terlampau teoritis dan kaku. Gunakan metafora yang hidup, emosional, dan membumi langsung dari isi kitab (contohnya perumpamaan beban 100 kg tampak ringan dan minuman pahit yang tak terasa pahit di lidah dari BRSR VII).
+2. **Bahasa Indonesia yang Utuh**: Jika diminta menulis versi Bahasa Indonesia, pastikan bagian Uraian, Praktik, dan Pertanyaan menggunakan Bahasa Indonesia yang mengalir, alami, dan bebas dari sisipan istilah Jawa Krama di tengah kalimat secara acak (kecuali istilah ajaran resmi seperti *mituhu*, *eling*, *rila*, atau *Sang Guru Sejati*).
+
+❌ Contoh salah: `"Sabar — sebaik-baiknya watak... Bukan putus asa... Jangan picik: merdekakanlah pikiranmu... Sabar ibarat jamu pahit..."` (4 fragmen dari baris 53, 54, 55, 56 disambung jadi satu)
+
+✅ Contoh benar: `"Sabar ibarat jamu pahit — menyembuhkan kesusahan; sabar itu bukan niat yang hanya berhenti pada pengharapan... tetapi bertindak sesuai dengan kemampuan secara teratur dan teliti."` (SATU paragraf utuh dari baris 56)
+
+Jika satu paragraf tidak cukup untuk membangun Uraian, pakai quote pendukung dari buku lain di tengah Uraian — jangan menyambung di Sabda.
+
+---
+
+## 🔴 PITFALL #2: BAHASA — TERLALU PUITIS ATAU TERLALU GENERIK (Writer)
+
+Dua kesalahan yang sama-sama ditolak user:
+
+**❌ Kesalahan A: Bahasa puitis/tasawuf berat.** 
+User feedback: "bahasa yang digunakannya pun juga bukan yang mudah dipahami orang setiap hari. saya inginnya sekalipun memiliki makna yang dalam dan relate dengan kehidupan kita sehari-hari gunakan bahasa yang sederhana nyaman untuk dibaca."
+
+Contoh ditolak: "mati dari pengharapan", "menyeberangi lautan pamrih", "pedang melawan pamrih", "jiwa merdeka dari mengharap balasan", "di sanalah sabar menempa jiwa menjadi lautan"
+
+❌ JANGAN pakai diksi puitis, tasawuf, atau sastrawi.
+
+**❌ Kesalahan B: Bahasa generik/informatif tanpa rasa.**
+User feedback: "terlalu umum generik tidak begitu mengena di hati."
+
+**✅ YANG DITERIMA:** Bahasa Indonesia SEHARI-HARI — sederhana, hangat, mengalir seperti obrolan. Bisa dipahami tukang bakso, guru SD, ibu rumah tangga. Makna dalam DISAMPAIKAN dengan kata-kata ringan.
+
+Contoh diterima: "Anak sudah dua minggu tidak menelepon. Ditunggu-tunggu, hape dicek terus... lalu ingat: sabar bukan berarti diam, tapi menerima dan tetap membuka pintu." — relatable, nyata, tidak menggurui.
+
+**PRINSIP**: bahasa obrolan warung kopi, bukan bahasa mimbar atau bahasa puisi. Contoh nyata > metafora abstrak. "Nggak enak, tapi menyembuhkan" > "jamu pahit yang hanya bisa diteguk jiwa-jiwa teguh".
+
+**SOLUSI**: Writer harus menulis dengan bahasa Indonesia SEHARI-HARI — sederhana, hangat, mengalir seperti obrolan. Bisa dipahami tukang bakso, guru SD, ibu rumah tangga. Makna dalam DISAMPAIKAN dengan kata-kata ringan. Metafora dari kitab (lautan, jamu pahit, petani & padi) boleh dipakai tapi TETAP dijelaskan dengan bahasa sehari-hari, bukan puisi. Target: pembaca merasa "ini bicara tentang diri saya" dan langsung bisa dipraktikkan hari ini.
+
+**Diksi**: "berlapang dada", "menunggu dengan tenang", "tidak membalas dengan marah", "menerima kenyataan" — bukan "sabar itu penting" tapi juga bukan "menyeberangi lautan pamrih". Konkret, praktis, bisa langsung dilakukan.
+
+---
+
+## 🔴 PITFALL #3: ATRIBUSI KOLEKTIF (Writer + Editor)
+
+Ketika ajaran menyebut beberapa unsur bekerja BERSAMA, jangan atribusikan ke satu unsur saja.
+
+❌ Contoh salah: "sabarlah yang memutus tali pamrih" — padahal Jalan Rahayu baris 117 jelas: keempat watak (rela, narima, jujur, sabar) BERSAMA-SAMA yang memutuskan tali pamrih.
+
+✅ Contoh benar: "keempat watak inilah — rela, narima, jujur, sabar — yang bersama-sama memutus tali pamrih."
+
+---
+
+## 🔴 PITFALL #4: TARGET PEMBACA SALAH (Writer)
+
+User feedback: "contoh contohnya tidak relate dengan bapak ibu pembaca pada umumnya pembaca berusia di atas 50 tahun jadi ada yang pensiunan dan sebagainya."
+
+Pembaca Pangestu mayoritas 50+ tahun — pensiunan, lansia, kakek-nenek. Contoh HARUS dari kehidupan mereka:
+- ✅ Anak sudah besar, jarang pulang/menelepon
+- ✅ Pensiun: dulu sibuk, sekarang rumah sepi
+- ✅ Kesehatan menurun: lutut nyeri, badan tidak sekuat dulu
+- ✅ Cucu, tetangga, kesepian, merasa tidak berguna
+- ❌ Lamaran kerja, ngejar karir, grup WA, macet ke kantor — INI ANAK MUDA, REJECT
+
+---
+
+## 🔴 PITFALL #6: SALDO OPENCODE HABIS (sebelum dispatch)
+
+Sebelum dispatch Writer/Editor, SELALU cek saldo OpenCode. Kalau habis, delegasi akan gagal diam-diam (HTTP 401 di background) dan hasil tidak akan muncul.
+
+Cek cepat:
+```bash
+curl -s -o /dev/null -w "%{http_code}" https://opencode.ai/zen/go/v1/chat/completions \
+  -H "Authorization: Bearer ${OPENCODE_API_KEY}" \
+  -H "Content-Type: application/json" \
+  -d '{"model":"deepseek-v4-pro","messages":[{"role":"user","content":"test"}],"max_tokens":5}'
+```
+
+- **200** → lanjut dispatch
+- **401** → saldo habis, jangan dispatch — tulis langsung (fallback mode)
+- Top-up: https://opencode.ai/workspace/wrk_01KS8Q1HE9FDYBSZ8ZV66GGYT2/billing
+
+JANGAN dispatch lalu berharap — cek dulu. Tanpa cek, delegasi akan terlihat dispatch tapi hasilnya kosong/error.
+
+---
+
+User feedback: "enggak ada emotikon nya aturan di mana setiap konten dilengkapi dengan emotikon yang menarik itu enggak ada semua gitu"
+
+- ✅ SETIAP section HARUS ada emotikon — Uraian, Praktik, Renungan, Aplikasi
+- ✅ Target: minimal 8-10 emotikon di seluruh renungan
+- ✅ Emotikon harus relevan dengan konten (bukan random)
+- ❌ Section tanpa emoji = REJECT
+
+---
+
+## 🔴 PITFALL #6: REFLEKSI SAJA, TANPA MOTIVASI (Writer)
+
+Renungan tidak boleh hanya "melihat ke dalam" lalu selesai. Harus ada DORONGAN untuk bertindak — optimis, membangun, "ayo kita bisa."
+
+❌ Contoh refleksi saja (ditolak): "Begitulah kita, sering tidak sabar. Mari kita renungkan." — pasif, tidak menggerakkan.
+
+✅ Contoh reflektif + memotivasi (diterima): "Sabar bukan kelemahan — justru di situlah kekuatan kita sebagai orang yang sudah makan asam garam kehidupan. Hari ini, mari kita buktikan."
+
+**PRINSIP**: Setiap renungan = cermin + kompas. Cermin untuk melihat diri, kompas untuk melangkah lebih baik. Tutup selalu dengan nada harapan dan keyakinan bahwa perubahan itu mungkin — hari ini juga.
+
+---
+
+## 🔴 PITFALL #7: DUAL-MAKNA ISTILAH — JANGAN MENJUDGE NEGATIF (Writer)
+
+Beberapa istilah Jawa/Pangestu punya DUA makna — satu luhur, satu rendah. Jangan kaprah menulis makna negatif saja. Kasus nyata (feedback user 12 Ags 2026):
+
+- **Pasrah** ❌ Salah: "pasrah itu buruk, menyerah, diam" — user: *"pasrah itu ada 2 arti: positif (kesadaran bahwa semua dalam kekuasaan Tuhan, kondisi jiwa yang sadar betul) dan negatif (paralysis, tidak mau berbuat apa-apa). Arti positifnya baik dan malah sering digunakan dalam terminologi baik."*
+- ✅ Benar: pasrah sejati = kesadaran jiwa matang; **ikhtiar dulu, lalu menyerah dengan rela kepada Hukum Keadilan Tuhan** (Sabda Khusus baris 1419: *"setelah menjalankan ikhtiar dan syarat-syarat yang engkau anggap berguna, dalam rasa hatimu menyerahlah dengan rela kepada Hukum Keadilan Tuhan"*). Pasrah negatif = menyerah SEBELUM berusaha (paralysis). Kunci pembeda: **URUTAN** — ikhtiar mendahului pasrah.
+- Pasrah sejati & sabar = satu rumpun (sabar = keteguhan sambil berikhtiar), BUKAN lawan.
+
+Istilah rawan lain yang harus dicek makna positifnya di kitab dulu: narima, ikhlas, tawakal, nrimo ing pandum.
+
+## 🔴 PITFALL #8: JANGAN ULANG METAFORA LAMA + DEEP ≠ DAFTAR CONTOH (Writer)
+
+Feedback user 12 Ags 2026: *"flow bacanya kurang enak, materi sedikit redundant dengan sebelumnya, kurang deep — inginnya deep, aplikatif tapi bahasa tetap mudah dimengerti."*
+
+- ✅ Sebelum menulis, CEK renungan terdahulu di `~/share/renungan/renungan-*.md` (Sabar v5 = jamu pahit, Sabar v6 = lautan, Rela v1 = kosong dari pamrih/tangan kosong, Rela v2 = mengabdi tanpa lekat/bukan lari ke gunung). JANGAN pakai metafora atau sudut pandang yang sudah dipakai.
+- ✅ "Deep" ≠ mendaftar banyak contoh kehidupan (anak, tensi, cabe, arisan...). Deep = masuk ke PERGULATAN BATIN: bedakan dua konsep yang mirip (pasrah vs menyerah; sabar vs menunggu), apa kunci pemahamannya, apa rasanya di dada. Satu gagasan besar diurai, bukan tiga contoh diparalelkan.
+- ✅ Flow enak = tiap paragraf menyambung ke satu alur pemikiran, bukan paragraf-contoh yang berdiri sendiri.
+- ✅ **TOPIK SAMA DIMINTA ULANG** (mis. user minta "Sabar" lagi, atau "Rela" lagi): WAJIB sudut pandang, Sabda/kutipan, metafora, DAN contoh SEMUANYA berbeda dari versi sebelumnya. Satu topik bisa dilihat dari banyak perspektif — cari Sabda di baris/buku lain, angkat pergulatan batin yang belum tersentuh. Selalu hadirkan tulisan fresh. Langkah wajib: `grep` daftar `~/share/renungan/renungan-*.md` dulu, catat semua sudut + Sabda + metafora yang sudah dipakai, lalu cari yang BELUM dipakai.
+
+## 🔴 PITFALL #9: REPLACE GLOBAL & GLIF EMOJI DEGRADASI (Headless Render)
+
+- **Replace Global / replaceAll**: Nalika ngganti placeholder wonten ing template Node.js/Python (kados `{DATE_STR}`), ngginakaken regex global `/{DATE_STR}/g` utawi `replaceAll()`. Menawi ngginakaken `.replace()` biasa, namung kemunculan kapisan ingkang kegantos.
+- **Emoji Degradasi dhateng OS Headless**: Emoji unicode (kados `🧘`, `🎯`, `📝`) asring dipun-render dados kothak dokumen `🗎` utawi glif risak wonten ing headless browser amargi server Linux mboten nggadhahi font emoji. Gantos emoji kasebat mawi **Ikon Vektor SVG Inline** supados cetha lan premium.
+- **Tinggi Konten A4 PDF & Carousel Spacing**: Kertas A4 nggadhahi inggil kaku (`297mm`). Menawi teks naskah kebeken, bodi badhe kagiles (`overflow: hidden`). Pecah bodi HTML dados 3 halaman proporsional kanthi wates margin aman (15mm) lan padding bottom (80px).
+
+---
+
+## 🏆 STANDAR EMAS — ANTI-REGRESI
+
+**Writer WAJIB baca GOLDEN_SAMPLE_v7.md sebelum mulai menulis.** Editor WAJIB audit hasil Writer terhadap sample ini.
+
+### Checklist Anti-Regresi (Writer centang sebelum kirim ke Editor)
+
+- [ ] Sabda = SATU paragraf utuh verbatim? (bukan sambungan fragmen `...`)
+- [ ] Contoh spesifik dan universal? (proyek ditolak, rencana batal, barang kesayangan, kecemasan masa depan, keluarga)
+- [ ] Bahasa obrolan warung kopi? (buka: "Siapa yang belum pernah...?")
+- [ ] Minimal 8 emotikon tersebar di SEMUA section?
+- [ ] TIDAK ada kata "kamu" di mana pun?
+- [ ] TIDAK ada tanda seru (!) di seluruh naskah renungan?
+- [ ] Section urut: Uraian→Praktik→Renungan→Aplikasi?
+- [ ] Praktik = langkah konkret spesifik? (bukan "perbanyak sabar")
+- [ ] Renungan = SATU kalimat tajam membekas? (bukan paragraf quote)
+- [ ] Renungan memotivasi? (ada nada "ayo bisa", optimis, bukan hanya "inilah masalah kita")
+- [ ] Aplikasi = pertanyaan reflektif menusuk pengalaman? (bukan perintah)
+- [ ] Closing PERSIS template? ("Semoga kita semua... Satuhu")
+
+### Kalau hasil Writer GAGAL checklist → Editor TOLAK tanpa revisi. Dispatch ulang Writer.
+
+---
+
+## Preferensi & Aturan Pengiriman (WAJIB)
+
+- **Workflow default**: FORWARD (single-pass Researcher→Writer→Editor). JANGAN pakai iterasi (multi-ronde Writer→Editor→Writer) kecuali user eksplisit minta.
+- **MODEL WAJIB**: Writer + Editor HARUS pakai `deepseek-v4-pro` via OpenCode Go. Setup: `delegation.base_url` + `delegation.api_key` (literal string, bukan env var) + `delegation.model` — lihat `references/provider-opencode-deepseek.md`. Cek saldo dulu sebelum dispatch — kalau habis, tulis langsung tanpa delegasi.
+- **Panjang**: total ±350–450 kata (bisa dibaca ±3 menit). Jangan terlalu panjang. ⚠️ KALIBRASI: golden sample yang DISETUJUI user = 493 (v5), 620 (v6) & 490 (v7) kata — jangan pangkas habis-habisan cuma karena klaim Editor "batas keras 450". Rentang aman ±490–620.
+- **Kirim**: forward SEKALI SAJA ke thread 1096. Jangan kirim berkali-kali.
+- **Format final**: selalu code block dengan markup WA (`*bold*`, `_italic_`). Jangan kirim teks langsung — Telegram parse `*` tidak konsisten.
+- **Template baku**: lihat `templates/format-baku.md` — struktur SABDA→URAIAN→PRAKTIK→RENUNGAN→APLIKASI. Urutan dan nama section WAJIB persis.
+- **Salam**: "Salam Karahayon!" — JANGAN "Salam Bahagia Bp/Ibu/Sdr semuanya"
+- **Closing**: "🙏 Semoga kita semua senantiasa berlimpah dengan Tuntunan dan Perlindungan, Sih dari Sang Guru Sejati. Satuhu 🙏" — PERSIS, jangan diparafrase
+- **Ulasan / Khotbah / Kesiswaan**: Ketika mengulas bab atau menyusun kerangka khotbah (terutama terkait tema *Panembah*), tonjolkan relasi **Siswa (Roh Suci)** dengan **Guru Sejati (Suksma Sejati)**, luruhkan kehendak ego (*karep*) menjadi Kehendak Suci (*Karsa*), dan lakukan cross-reference lintas buku (Sasangka Jati, Sabda Khusus Peringatan 2 & 8, ASBS, dan Ulasan Kang Kelana Bab XIV).
+- **Bahasa**: Indonesia sehari-hari, sederhana, hangat — seperti obrolan warung kopi. JANGAN puitis/tasawuf. Makna dalam disampaikan dengan kata-kata ringan.
+- **Persona Chat**: Gunakan terus Basa Jawi Krama (bahasa Jawa alus) yang santun dalam menanggapi pesan obrolan sehari-hari dengan Pak Satya (sebagai bentuk unggah-ungguh), sementara naskah renungan hariannya sendiri tetap ditulis murni dalam Bahasa Indonesia.
+- **Audio/Voice Bubble**: Jika pengguna menghendaki/menyepakati versi audio renungan harian, generate berkas audio (`.mp3` atau `.ogg`) menggunakan `text_to_speech_ide`. Teks input pembacaan harus dibersihkan terlebih dahulu dari simbol format WhatsApp (`*` sarta `_`) agar pengucapannya alami. Simpan hasil audio ke folder share server `/home/satyaaditech/share/renungan/renungan-<tema>-<tanggal>.mp3` agar bisa diakses lewat browser (LAN/Tailscale), dan kirimkan mawi tag MEDIA agar terunggah sebagai pesan suara bergelembung di Telegram.
+- **Emotikon**: WAJIB di setiap section. Minimal 8-10 emotikon menarik di seluruh renungan. Tanpa emoji = reject.
+- **Target**: pembaca universal (semua usia, hindari dikotomi pensiun/50+). Contoh harus nyata dari kehidupan sehari-hari.
+- **Contoh**: NYATA dari kehidupan sehari-hari orang Indonesia (pekerjaan kantoran, barang kesayangan, kecemasan, gawai, masa depan). JANGAN metafora abstrak, kisah tokoh dunia, atau ilustrasi ekstrem (seperti meninggalkan keluarga/menjauh dari dunia wadak).
+- **LARANGAN**: JANGAN pakai kata "kamu" di mana pun — gunakan "kita", "Bapak, Ibu", atau bentuk pasif; serta JANGAN pernah menggunakan tanda seru (!) di bagian mana pun dalam naskah renungan (gunakan tanda titik atau tanda tanya sesuai intonasi).
+- **Gambar Cover (E-Card)**: Gunakan gambar sampul berformat persegi (1200x1200px). Latar belakang wajib **terang/padhang** (krem hangat/putih gading) dan font harus **kontras tinggi** menggunakan warna-warna tua (seperti biru tua, merah tua, atau hitam). Hapus/tiadakan kata "Pangestu" dari header sampul (menyisakan "RENUNGAN PENYISWAAN"). Script pembuat cover berada di `scripts/render_cover.py`.
+- **Ekspor Audio TTS**: Kategori pemaos renungan Indonesia wajib menggunakan model suara aksen Indonesia asli (`id-ID-GadisNeural` di Edge TTS). Setel secara permanen mawi CLI: `hermes config set tts.edge.voice id-ID-GadisNeural`.
+- **Integrasi WhatsApp**: Kirim audio mawi jenis (*message type*) `audio` (bukan `document`) supados saged dipun-puter sacara *real-time* (voice note format mawi waveform) wonten ing obrolan WhatsApp.
+- **LARANGAN**: JANGAN pakai kata "kamu" di mana pun — gunakan "kita" or bentuk pasif.
+- **Sabda**: SATU paragraf utuh dari sumber, verbatim. Format: "Nama Kitab : _\"quote\"_". JANGAN "— Sang Guru Sejati, Nama Kitab".
+- **Format final**: selalu code block dengan markup WA (`*bold*`, `_italic_`). Jangan kirim teks langsung — Telegram parse `*` tidak konsisten.
+- **Panyaringan Emoji & Setup Audio (TTS)**: Sadurunge teks renungan di-TTS, resiki sedaya emoji saking teks batin kersanipun narator mboten maos nama latin emoji. Gunakaken swanten Basa Indonesia `id-ID-GadisNeural` (estri alus) kagem edisi Indonesia, sarta `jv-ID-DimasNeural` (jaler medok wibawa) utawa `jv-ID-SitiNeural` (estri alus) kagem edisi Jawi. Konversi berkas `.mp3` dados `.ogg` format Opus mrihari gelombang *voice note* mawi `ffmpeg -c:a libopus`.
+- **Desain Cover Monokrom Jawi**: Latar terang (krem gading), bingkai sarta seratan warna **Hitam Pekat** (no gold/kuning), pigura pojok mawi ornamen **kelopak bunga Kawung Jawi** ingkang medhot manis kaliyan garis pinggir. Header murni `"RENUNGAN PENYISWAAN"` (tanpa tembung "Pangestu"), sarta font size judhul dipun-set **raksasa (size 62)** supados cetha katitik saking *tamel (thumbnail)*.
+- **Pangiriman Berkas Fisik (Telegram Bot API)**: Ngirim berkas audio (`.ogg` & `.mp3`) langsung minangka lampiran fisik (attach file) lumantar Telegram Bot API ngginakaken curl (token dipundhut saking `~/.hermes/.env`), boten namung paring teks `MEDIA:/path` utawi pranala. Chat ID: `-1003256146835`, thread: `1096`.
+- **Topik Ganda ing Dina Sami**: Manawi nggarap topic utawa tema ingkang sami ing dinten kasebut, wenehana tandha versi `(v1)`, `(v2)`, `(v3)` ing sawingkingipun judhul, lan sastra kontene (sudut, sabda, lan conto) wajib beda wetah (unik).
+- **Visual E-Card (Cover)**: Latar belakang wajib terang (krem/ivory gradasi lembut), teks kontras tinggi (biru tua, hitam arang), hindari warna emas/kuning. Bingkai tepi menggunakan ornamen motif Jawi minimalis (seperti kelopak Kawung ing 4 pojok), header murni "RENUNGAN PENYISWAAN" (tanpa kata "Pangestu"), sarta ukuran font judul raksasa (size 62) agar terbaca langsung saking njawi (tampilan thumbnail).
+- **Pengolahan Audio (TTS)**: Suara wajib aksen Basa Indonesia ingkang alus (`id-ID-GadisNeural`). Sebelum dikirim dhumateng mesin TTS, resiki sedaya emoji saking teks ing memori/script kagem saringan (supados narator mboten maos nama latin emoji), ananging sampun ngrusak emoji ing file teks aslinya (.md). Jalur pangirimanipun wajib ngintun berkas fisik secara langsung dhumateng obrolan chat ngginakaken Telegram Bot API (sendVoice/sendAudio), sampun namung maringi teks tag media utawi tautan kemawon.
+
+## Dua Workflow Input
+
+### 1. User Kasih TEMA → Kita Cari Quote
+User: "Bikin renungan tema Sabar."
+Proses: `search_files` di `/tmp/` cari quote dari buku Pangestu mana pun (Sasangka Jati, UKK, Olahrasa, Riwayat Hidup Pakde Narto, dll) → kembangkan renungan.
+
+### 2. User Kasih QUOTE → Kita Pelajari Intinya + Cari Sabda Selaras
+User memberikan kutipan dari buku Pangestu (bisa dari Sasangka Jati, Riwayat Hidup Pakde Narto, UKK, dll).
+Proses:
+- Pelajari inti cerita/kutipan — apa pesan utamanya?
+- Jika quote user adalah Sabda dari buku tertentu, gunakan langsung sebagai **📖 SABDA HARI INI**.
+- Jika quote user adalah kisah historis (bukan Sabda), cari Sabda dari buku Pangestu mana pun yang selaras dengan inti cerita.
+- Quote/kisah user menjadi **inspirasi uraian** (kisah nyata wajib).
+- Kembangkan dengan pola: Sabda (Sasangka Jati) + Uraian (kisah user + konteks kekinian) + Praktik + Renungan + Aplikasi.
+- Sabda dari buku Pangestu mana pun (Sasangka Jati, UKK, Olahrasa, Riwayat Hidup Pakde Narto, dll) — KECUALI user minta spesifik sumber tertentu, ikuti permintaan user.
+
+Keduanya output akhir: code block WhatsApp-compatible, ikuti template baku.
+Template lengkap: `references/template-renungan.md`.
+
+## Aturan Sabda (CRITICAL)
+
+1. **VERBATIM dari SATU paragraf utuh.** Jangan menyambung fragmen dari paragraf/baris berbeda dengan "...". Ini cherry-picking — mendistorsi struktur asli meskipun setiap kata nyata. Jika perlu quote dari dua baris berbeda, gunakan pemisah eksplisit "[...]" dan pastikan tidak melewati isi penting di antaranya. Lebih baik: kutip HANYA SATU baris utuh dan letakkan quote pendukung dari buku lain di uraian.
+2. **Sumber jelas.** Cantumkan buku sumber, nomor baris/halaman.
+3. **Spesifik ke tema.** Sabda harus tentang tema, bukan sekadar menyebut tema dalam daftar (contoh: untuk tema Narima, Sabda harus tentang Narima spesifik, bukan "Panca Sila: sabar, narima, jujur...").
+
+## RONDE Revisi
+
+Setelah user menerima draft, Editor/User bisa meminta revisi. Proses revisi mengikuti pola: kesalahan WAJIB (harus diperbaiki) + insight OPTIONAL (pertimbangan kualitas). Detail di `references/ronde-revision.md`.
+
+## Workflow Agentic (Tim Redaksi 3 Personel)
+
+Untuk hasil maksimal, jalankan alur agentic dengan 3 subagent + 1 orchestrator. Prompt spesialis tiap role disimpan di `references/prompt-*.md`. Cara membaca output delegasi yang terpotong (`subagent-summary-0-*.txt`, live transcript, manifest) ada di `references/delegation-output-retrieval.md`.
+
+### Alur Orchestrator
+
+```
+USER beri tema
+    │
+    ▼
+[RESEARCHER] delegate_task → cari 2 Sabda dari 7 kitab
+    │ output: Sabda utama + Sabda pendukung + alasan
+    ▼
+[WRITER] delegate_task → tulis draft renungan (diberi Sabda Researcher)
+    │ output: draft code block lengkap
+    ▼
+[EDITOR] delegate_task → audit draft Writer (diberi draft Writer)
+    │ output: laporan audit (✅ ❌ 💡)
+    ▼
+[ORCHESTRATOR] terapkan revisi Editor → FINAL → kirim ke user
+```
+
+**Waktu total: ±60-90 detik.** Orchestrator hanya menerapkan revisi — tidak menulis ulang dari nol.
+
+### Personel & Skill Set
+
+#### 1. Researcher — Pencari Sabda
+- **Prompt**: `references/prompt-researcher.md`
+- **Tool**: `search_files` (grep kitab Pangestu), `read_file` (konteks)
+- **Pengetahuan**: hafal isi 7 kitab, tahu istilah kunci per buku
+- **Output**: 1 Sabda utama + 1 Sabda pendukung + nomor baris + buku sumber + alasan cocok dengan tema
+- **Kriteria**: Sabda harus spesifik ke tema (bukan generik), lebih baik pendek-tajam daripada panjang-lebar
+
+#### 2. Writer — Penulis Renungan
+- **Prompt**: `references/prompt-writer.md`
+- **Persona**: praktisi kejiwaan berpengalaman, banyak insight, paham psikologi awam
+- **Kedalaman Bahasa**: WAJIB deep dan terasa di hati — bukan sekadar informatif. Hindari contoh generik/klise (macet, penjual gorengan, ibu bangun pagi). Gunakan analogi dari kehidupan batin: konflik melawan ego, momen hening di tengah badai, pergulatan antara keinginan dan kenyataan. Tulis seolah pembaca sedang bercermin pada dirinya sendiri. Nada rendah hati, mengajak, bukan menggurui.
+- **Struktur URAIAN**: buka dengan pertanyaan reflektif (bukan skenario klise) → dalami makna Sabda → tutup dengan ajakan kontemplatif sebelum masuk ke LAKU.
+- **Input**: tema + Sabda dari Researcher
+- **Output**: draft renungan lengkap (code block WhatsApp-ready)
+- **Skill inti**: hook relatable, kisah nyata TERVERIFIKASI, analogi konkret, tone akrab-tidak-menggurui
+
+#### 3. Editor — Auditor Daily Bread
+- **Prompt**: `references/prompt-editor.md`
+- **Persona**: editor senior 10+ tahun — dingin, tajam, tidak sungkan membongkar
+- **Input**: draft Writer
+- **Output**: laporan audit (✅ yang bagus / ❌ harus diperbaiki / 💡 insight)
+- **Cek wajib**: quote nyambung? kisah autentik? praktik bisa dikerjakan? tidak ada "kamu"? fakta terverifikasi?
+
+### Aturan Orchestrator
+
+Setelah ketiga subagent selesai:
+
+1. Baca laporan Editor — prioritas ❌ (harus diperbaiki), lalu 💡 (insight peningkatan)
+2. **VERIFIKASI semua klaim ❌ Editor** — JANGAN langsung percaya. Cek ulang ke file sumber di `/tmp/` menggunakan `read_file` atau `search_files`. Editor bisa halusinasi sumber atau klaim "tidak ditemukan" padahal quote ada. Juga bisa halusinasi ATURAN FORMAT: kasus 12 Ags 2026 — Editor klaim quote Sabda wajib `_\"*...*\"_` (bold dalam italic), padahal template baku & golden sample v5/v6 yang disetujui user memakai italic saja `_\"...\"_`. Format klaim Editor SELALU cross-check ke `templates/format-baku.md` + golden sample sebelum diterapkan.
+   - **Editor juga bisa halusinasi aturan FORMAT**, bukan cuma fakta. Pernah ia menolak format italic `_\"...\"_` dan memaksa `_\"*...*\"_` (bold dalam italic), padahal template baku & golden sample pakai italic saja. Saat Editor bilang "format harus X", SELALU cek ulang ke `templates/format-baku.md` + `references/GOLDEN_SAMPLE_v7.md` dulu — ikuti template, bukan klaim Editor.
+   - **Jangan buta ikut batas panjang Editor.** Skill nyebut ±350-450 kata, TAPI golden sample yang disetujui user justru 493 (v5), 620 (v6), & 490 (v7) kata. Rentang yang diterima kira-kira **490-620 kata**. Hitung ulang sendiri (strip markdown `*_` dulu) dan bandingkan ke golden sample, bukan ke angka 450 dari Editor.
+3. Terapkan revisi pada draft Writer — **jangan tulis ulang dari nol**
+4. Jika Editor menilai draft harus ditulis ulang total: jalankan ulang Writer dengan catatan Editor
+5. Final: code block WhatsApp-ready → kirim ke user
+6. Jika user minta revisi tambahan setelah final: editing manual, tidak perlu jalankan ulang seluruh alur
+
+### Pitfall & Pelajaran
+
+#### 🔴 Editor Bisa Halusinasi — VERIFIKASI SELALU
+
+**Kejadian nyata (demo Jujur):** Editor mengklaim 2 ❌:
+1. "Sabda dari Hasta Sila, bukan Sasangka Jati" → ❌ SALAH. Sabda ada di `/tmp/ssj_ind.txt` baris 155-158.
+2. "Quote pendukung 'Taatlah...' tidak ditemukan" → ❌ SALAH. Quote ada di `/tmp/asbs.txt` baris 780-782.
+
+Editor hanya mencari di `/home/satyaaditech/share/pangestu_studi/` (catatan studi) tapi TIDAK mencari di `/tmp/` (file mentah kitab). **Orchestrator WAJIB verifikasi semua ❌ dengan `read_file` ke `/tmp/` sebelum menerima vonis Editor.**
+
+#### 💡 Kisah Legendaris → Framing "Konon"
+
+Kisah seperti Lincoln "jalan bermil-mil kembalikan receh" bersifat apokrifal — tidak ada sumber primer. Jangan dibuang, tapi JANGAN diframing sebagai fakta keras. Gunakan: _"Konon...", "Dikisahkan...", "Ada cerita dari..."_ — lalu dukung dengan fakta yang benar-benar tercatat (Lincoln tolak klien bersalah → terverifikasi).
+
+### Fallback: Mode Cepat
+
+Jika user minta cepat atau tema sederhana: orchestrator bisa tangani sendiri (Researcher + Writer + Editor dalam satu agent) tanpa delegate_task. Hasil tetap ikuti template baku.ngan lengkap dengan persona praktisi kejiwaan
+3. **Editor** — audit draft dengan standar Daily Bread internasional
+
+Prompt template tiap role: `references/agentic-workflow.md`.
+Checklist audit Editor: `references/audit-checklist.md`.
+
+Alur: Researcher → Writer → Editor → Orchestrator terapkan revisi → FINAL.
+
+## 🔴 PITFALL #9: Panggilan Script Utilitas (scripts/)
+Script `scripts/publish_renungan.py` dan `scripts/render_cover.py` didefinisikan sebagai fungsi python (tanpa antarmuka CLI `if __name__ == "__main__"`). Untuk menjalankannya, buatlah python script pembungkus temporer (misal di `/tmp/run_publish.py`), import fungsinya, lalu panggil secara langsung dengan parameter yang sesuai.
+
+## 🔴 PITFALL #10: PUBLISH FOREGROUND → TIMEOUT → LINK GOOGLE DOC HILANG (WAJIB!!)
+
+Recipe aman lengkap (background invoke + verifikasi link) + tandha kegagalan: `references/publish-safe-runner.md`.
+
+**Kacathet 26-08-2026.** Nalika `publish()` dipunpanggil ing script ingkang dipun-dalani **foreground**, TTS+ffmpeg (audio jawa+ind wadose ±6 menit) nglangkungi wates wekdal tool (60 detik) → process dipunpejahi ing tengah → langkah panyisipan link Google Doc mboten kalampahan → file `.md` lumintu `[DOC_URL]` lan lapor marang Pak Satya tanpa link Drive.
+
+**Aturan wajib:**
+1. **`publish()` (utawi script publish ingkang kalebet TTS) WAJIB dipunpanggil ing `background=true` + `notify_on_complete=true`.** Tansah — mboten nate foreground. Cetak output publish menyang `/tmp/run_publish.log`.
+2. Sasampunipun rampung, **pereksa baris pungkasan file `.md`** (`~/share/renungan/renungan-<tema>-<tgl>.md`) — mesti wonten `Google Doc: https://...` — **saderengipun** maringi laporan. Boten nyarios "sampun rampung" dumugi link kabukti wonten ing file.
+3. Menawi file mboten wonten `Google Doc:` (taksih `[DOC_URL]`), penetes publish mboten rampung → jalankna malih ing background lan priksa `/tmp/run_publish.log` kanggé eror.
+4. Mboten nggabungaken cover+publish dadi siji script foreground ala improvisasi ingkang mboten kauji. Nderek prosedur, input `jawa_out_path`, `ind_out_path`, `ogg_jawa_path`, `ogg_ind_path`, `date_str`, `date_iso`.
+
+## 🔴 PITFALL #11: LANGKAHI WORKFLOW RESERACHER→WRITER→EDITOR + BASHA CAMPUR NGOKO
+
+**Kacathet 26-08-2026.** Kula nyerat renungan langsung (nyamethi prosedur 3-peran) lan mboten ngogram basa per `references/krama-renungan-format.md` → kualitas mudhun + Basa Jawi kecampuran ngoko/madya.
+
+**Aturan wajib:**
+1. Nderek prosedur SKILL menika (Researcher sabda verbatim → Writer → Editor audit). Boten nyamethi.
+2. Basa JAWI WAJIB **Krama Alus resik**: saganten/beteng (sanes segara), manah, siyang (sanes siang), sonten (sanes sore), dalu, wangsul (sanes kondur), matur (sanes ngendika) kagem dhiri, caosaken/aturaken (sanes paring) kagem maringi dhateng sesepuh, punapa→punapa, sedaya (sanes sadaya). Mriksa ulang dumugi resik saderengipun dikirim.
+3. Versi Indonesia: labels `SABDA HARI INI` / `URAIAN` / `PRAKTIK SEHARI-HARI` / `RENUNGAN` / `APLIKASI`.
+4. Emotikon ±10-14, boten wonten tandha `!`, salam `_Sugeng Enjang, Salam Karahayon_`, tutup `Satuhu 🙏`, header `RENUNGAN PENYISWAAN`.
+Fase Editor WAJIB — Writer tidak boleh mengaudit dirinya sendiri.
+
+### Mode Iterasi vs Forward
+
+Dua mode tersedia:
+
+**Forward (1 ronde):** Researcher → Writer → Editor → Orchestrator final.
+Cocok untuk renungan rutin. Cepat (±7 menit), murah. Risiko: kesalahan faktual kecil bisa lolos.
+
+**Iterasi (max 3 ronde):** 
+```
+Ron 1: Writer v1 → Editor → verdict
+Ron 2: Writer v2 (bekal kritik) → Editor → verdict
+Ron 3: Writer v3 → Editor → final
+```
+Cocok untuk edisi khusus atau presisi tinggi. Lebih mahal (±15 menit, 2-3x token). Kualitas lebih tinggi: splicing Sabda, fakta medis keliru, dan detail naratif tertangkap sebelum naik.
+
+**Kapan pakai:** Forward untuk harian biasa. Iterasi jika tema rumit, ada kisah nyata dengan detail faktual kompleks, atau user minta presisi tinggi.
+
+**Aturan iterasi:** Max 3 ronde. Orchestrator verifikasi SEMUA klaim Editor sebelum meneruskan ke Writer — Editor bisa salah (false alarm sumber, folder pencarian berbeda).
+
+Studi kasus perbandingan: `references/forward-vs-iterasi.md`.
+
+### Editor Pitfalls (dari audit nyata)
+
+- ❌ Sabda terlalu generik — menyebut tema dalam daftar, bukan mendefinisikan
+- ❌ Editor bisa salah klaim sumber (pernah: klaim Sabda dari "Hasta Sila" padahal ada di Sasangka Jati). **Orchestrator WAJIB verifikasi klaim Editor sebelum meneruskan ke Writer.**
+- ❌ Editor bisa salah klaim "quote tidak ditemukan" — pastikan mencari di folder yang benar (`/tmp/` untuk file mentah, `/home/satyaaditech/share/pangestu_studi/` untuk catatan studi). Verifikasi dengan read_file langsung.
+- ❌ Sabda splicing — Writer menyambung fragmen dengan "..." melompati baris di antaranya. Ini cherry-picking, BUKAN verbatim. Aturan: satu paragraf utuh, atau pemisah eksplisit `[...]`.
+- ❌ Detail faktual kisah nyata — organ tubuh, tanggal spesifik, lokasi persis rentan salah meski kisahnya terverifikasi. Jika ragu: gunakan istilah umum (contoh: "merusak kesehatannya" BUKAN "merusak paru-parunya").
+- ❌ Kisah nyata tidak mapping ke tema — inspiring tapi beda makna (Hawking = overcoming limitation, bukan narima)
+- ❌ Tidak ada Sabda pendukung di uraian (cross-reference)
+- ✅ Narima: kisah Jiro Ono (10 kursi, tidak perlu waralaba, tidak iri) — mapping tepat
+
+## Persona & Nada
+
+- Praktisi kejiwaan, paham cara pikir manusia, punya banyak insight pengalaman — **bukan teoritis**.
+- WAJIB sisipkan langkah praktis konkret (teknik napas, latihan hening, lakukan X) — minimal 1 per renungan.
+- Gunakan "Kita" atau "Anda" — JANGAN PERNAH pakai "kamu" (tidak sopan, tidak menggurui).
+- Jika memungkinkan, sisipkan kisah nyata inspirasional di uraian — agar pembaca yakin bahwa ajaran ini benar dan bisa dilakukan.
+- ZERO HALUSINASI: semua fakta, kisah, dan quote harus diverifikasi dari sumber asli. Jangan mengarang.
+- Bahasa sederhana, kata sehari-hari, relate kehidupan nyata.
+- Konten BERSIH — NO komentar/kata-kata Sinok.
+
+## Format Baku (Final — WhatsApp Compatible)
+
+```
+*SENIN, 10 AGUSTUS 2026*           ← bold, KAPITAL, blank line setelah
+
+*RENUNGAN PENYISWAAN*              ← bold, blank line setelah
+
+*EMOJI SUBJUDUL KAPITAL: Subtitle EMOJI*  ← bold, diapit emoji yang sesuai tema
+
+_Salam Bahagia Bp/Ibu/Sdr semuanya,_        ← italic, koma di akhir, TANPA tanda seru
+
+*📖 SABDA HARI INI :*              ← emoji + label dalam bold, blank line setelah
+
+Buku Sasangka Jati, Sabda Sang Guru Sejati : _"*quote verbatim*."_   ← "Buku", bukan "Kitab"; sebut "Sabda Sang Guru Sejati"
+                                         ← blank line setelah
+
+💭 *URAIAN* :                      ← emoji polos + label bold, KOLON DI LUAR bold
+                                    ← 2-3 paragraf pendek, kata sederhana, relate hidup
+                                    ← SISIPKAN emoji sesuai konteks di tengah paragraf
+                                    ← istilah kunci TANPA bold/italic (heneng-hening-eling, bukan *heneng*)
+                                    ← SETIAP kutipan (dari buku manapun) WAJIB miring: _"..."_
+                                    ← blank line setelah
+
+🧘 *PRAKTIK* :                      ← emoji polos + label bold, KOLON DI LUAR bold
+                                    ← WAJIB: langkah konkret yang bisa langsung dilakukan
+*Nama Latihan* — deskripsi:
+1. Langkah 1.
+2. Langkah 2.
+3. Langkah 3.
+✅ Kapan & di mana dilakukan.
+                                    ← blank line setelah
+
+🎯 *RENUNGAN* :                    ← SATU baris aforisme kontras
+                                    ← blank line setelah
+
+📝 *APLIKASI* :                    ← 3 pertanyaan refleksi: apa → mengapa → bagaimana
+1. ...
+2. ...
+3. ...
+                                    ← blank line setelah
+
+🙏 Semoga kita semua senantiasa berlimpah dengan Tuntunan dan Perlindungan, Sih dari Sang Guru Sejati. Satuhu 🙏
+```
+
+## Aturan Detail (7 koreksi final)
+
+| No | Aturan | Contoh |
+|----|--------|--------|
+| 1 | Blank line antar header | `*SENIN...*\n\n*RENUNGAN...*\n\n*SUBJUDUL*` |
+| 2 | Subjudul: bold + KAPITAL | `*PANEMBAHAN: Keheningan...*` |
+| 3 | Emoji SABDA masuk bold | `*📖 SABDA HARI INI :*` |
+| 4 | Quote sabda: italic-wrap + bold dalam | `_"*teks quote*."_` |
+| 5 | Label (URAIAN/RENUNGAN/APLIKASI): kolon di LUAR bold | `💭 *URAIAN* :` bukan `💭 *URAIAN :*` |
+| 6 | Istilah kunci di uraian: TANPA format | `heneng-hening-eling` bukan `*heneng-hening-eling*` |
+|| 7 | Kutip buku lain di uraian: WAJIB miring | `_"Hendaklah berusaha..."_` bukan `"Hendaklah..."` |
+
+## Bedakan: Buku vs Ajaran (WAJIB)
+
+Sasangka Jati adalah **BUKU kumpulan Sabda** — bukan sumber ajaran itu sendiri. Sumber ajarannya adalah **Sang Guru Sejati**.
+
+| ❌ SALAH | ✅ BENAR |
+|---|---|
+| "Buku Sasangka Jati mengajarkan..." | "Ajaran Sang Guru Sejati mengajarkan..." |
+| "Sasangka Jati menjanjikan..." | "Ajaran Sang Guru Sejati menunjukkan..." |
+| "Menurut Sasangka Jati..." | "Menurut Ajaran Sang Guru Sejati..." |
+
+Satu-satunya saat boleh menyebut "Buku Sasangka Jati":
+- Baris sumber Sabda: 📖 SABDA HARI INI
+- Saat mengutip verbatim dalam uraian: "Masih dalam buku yang sama..."
+
+## Sumber Sabda
+
+- Quote dari buku Pangestu mana pun (Sasangka Jati/Sabda Khusus/UKK/Olahrasa/Riwayat Hidup Pakde Narto/dll) — KECUALI user minta spesifik sumber, ikuti.
+- Buku penguat (uraian): Ulasan Kang Kelana, Olahrasa, Wahyu Sasangka Jati, Bimbingan Roh Suci, Tali Kang Kelana.
+- File mentah di `/tmp/ssj_ind.txt`, `/tmp/spra.txt`, `/tmp/ukk.txt`, dll.
+
+## Cara Kirim ke Pengguna
+
+Output akhir WAJIB dalam **code block** (triple backtick) — jangan kirim teks mentah. Telegram tidak konsisten mem-parse `*bold*` dan `_italic_` saat dikirim langsung. Code block menjaga semua markup tetap utuh, pengguna tinggal copy-paste ke WhatsApp.
+
+## Langkah Praktis (PRAKTIK)
+
+Wajib ada — bukan opsional. Formula: teknik sederhana 1-2 menit yang bisa langsung dicoba.
+Jenis: teknik napas (4-2-6), latihan hening fokus satu kata, cara berdialog dengan hati, latihan narima, latihan eling di sela aktivitas.
+Label: `🧘 *PRAKTIK* :` — sub-judul latihan pakai bold `*Nama Latihan*`, langkah bernomor polos, akhir: ✅ waktu/lokasi.
+
+## File Pendukung
+
+| File | Fungsi |
+|---|---|
+| `templates/renungan-kosong.txt` | Template kosong siap copy-paste |
+| `references/kisah-nyata.md` | Katalog kisah nyata terverifikasi untuk uraian |

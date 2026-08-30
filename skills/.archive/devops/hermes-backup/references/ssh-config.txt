@@ -1,0 +1,6 @@
+Host github-hermes
+    HostName github.com
+    User git
+    IdentityFile ~/.ssh/hermes_backup
+    IdentitiesOnly yes
+    StrictHostKeyChecking accept-new

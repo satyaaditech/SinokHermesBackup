@@ -1,0 +1,21 @@
+model:
+  default: "kimi-k2.5"
+  provider: "custom"
+  base_url: "https://opencode.ai/zen/go/v1"
+  api_mode: chat_completions
+
+toolsets:
+  - hermes-cli
+  - media
+
+agent:
+  max_turns: 20
+  hygiene_hard_message_limit: 45
+  show_token_analytics: true
+  reasoning_effort: medium
+  inherit_mcp_toolsets: true
+  default_toolsets:
+    - media
+
+skills_hub:
+  enabled: true

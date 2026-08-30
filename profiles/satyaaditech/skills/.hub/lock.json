@@ -1,0 +1,63 @@
+{
+  "version": 1,
+  "installed": {
+    "duckduckgo-search": {
+      "source": "official",
+      "identifier": "official/research/duckduckgo-search",
+      "trust_level": "builtin",
+      "scan_verdict": "caution",
+      "content_hash": "sha256:593bc4256aa4718d",
+      "install_path": "research/duckduckgo-search",
+      "files": [
+        "SKILL.md",
+        "scripts/duckduckgo.sh"
+      ],
+      "metadata": {},
+      "installed_at": "2026-04-21T15:23:14.850823+00:00",
+      "updated_at": "2026-04-21T15:23:14.850843+00:00"
+    },
+    "scrapling": {
+      "source": "official",
+      "identifier": "official/research/scrapling",
+      "trust_level": "builtin",
+      "scan_verdict": "caution",
+      "content_hash": "sha256:8ebf884f78a1d1c0",
+      "install_path": "research/scrapling",
+      "files": [
+        "SKILL.md"
+      ],
+      "metadata": {},
+      "installed_at": "2026-04-21T15:23:17.213759+00:00",
+      "updated_at": "2026-04-21T15:23:17.213778+00:00"
+    },
+    "sherlock": {
+      "source": "official",
+      "identifier": "official/security/sherlock",
+      "trust_level": "builtin",
+      "scan_verdict": "caution",
+      "content_hash": "sha256:558733410481cec2",
+      "install_path": "security/sherlock",
+      "files": [
+        "SKILL.md"
+      ],
+      "metadata": {},
+      "installed_at": "2026-04-21T15:23:19.696166+00:00",
+      "updated_at": "2026-04-21T15:23:19.696189+00:00"
+    },
+    "domain-intel": {
+      "source": "official",
+      "identifier": "official/research/domain-intel",
+      "trust_level": "builtin",
+      "scan_verdict": "safe",
+      "content_hash": "sha256:7565869dc5cf5a89",
+      "install_path": "research/domain-intel",
+      "files": [
+        "SKILL.md",
+        "scripts/domain_intel.py"
+      ],
+      "metadata": {},
+      "installed_at": "2026-04-21T15:23:22.014501+00:00",
+      "updated_at": "2026-04-21T15:23:22.014521+00:00"
+    }
+  }
+}

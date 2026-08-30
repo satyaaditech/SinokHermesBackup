@@ -1,0 +1,10 @@
+[
+  {
+    "id": "8f385630-01f9-4270-9ad8-cf54fc76a82a",
+    "name": "OpenCode",
+    "provider": "custom",
+    "model": "kimi-k2.5",
+    "baseUrl": "https://opencode.ai/zen/go/v1",
+    "createdAt": 1779552612024
+  }
+]

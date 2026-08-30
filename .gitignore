@@ -1,0 +1,55 @@
+# Ignore everything by default
+*
+
+# Allow .gitignore itself to be tracked
+!.gitignore
+
+# Allow directories to be searched
+!*/
+
+# Allow configuration and system files
+!config.yaml
+!SOUL.md
+!tui-theme-boot.json
+!models.json
+
+# Allow memories and profiles
+!memories/
+!memories/**
+!profiles/
+!profiles/**
+
+# Allow skills and custom scripts
+!skills/
+!skills/**
+!scripts/
+!scripts/**
+
+# Allow cron configs
+!cron/
+!cron/**
+
+# Exclude specific runtime, log, lock, and cache files inside allowed folders
+**/*.db
+**/*.db-wal
+**/*.db-shm
+**/*.log
+**/*.lock
+**/*.pid
+**/*.bak*
+**/.env*
+**/auth.json*
+**/cache/
+**/sandboxes/
+**/logs/
+**/image_cache/
+**/pastes/
+**/bin/
+**/gateway/
+**/lsp/
+**/desktop/
+**/platforms/
+**/sessions/
+hermes-agent/
+cron/output/
+cron/output/**
