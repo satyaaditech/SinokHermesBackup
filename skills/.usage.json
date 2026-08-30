@@ -420,13 +420,13 @@
     "created_at": "2026-07-28T11:06:35.128741+00:00",
     "created_by": null,
     "last_patched_at": null,
-    "last_used_at": "2026-08-30T00:22:04.715999+00:00",
-    "last_viewed_at": "2026-08-30T00:22:04.708057+00:00",
+    "last_used_at": "2026-08-30T00:30:40.399306+00:00",
+    "last_viewed_at": "2026-08-30T00:30:40.391523+00:00",
     "patch_count": 0,
     "pinned": false,
     "state": "active",
-    "use_count": 14,
-    "view_count": 14
+    "use_count": 15,
+    "view_count": 15
   },
   "hermes-agent": {
     "archived_at": null,

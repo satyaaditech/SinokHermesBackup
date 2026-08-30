@@ -8,6 +8,7 @@
 !*/
 
 # Allow configuration and system files
+!README.md
 !config.yaml
 !SOUL.md
 !tui-theme-boot.json
