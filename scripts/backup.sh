@@ -11,8 +11,6 @@ git add .
 if ! git diff-index --quiet HEAD --; then
     git commit -m "Auto backup: $(date '+%Y-%m-%d %H:%M:%S')"
     # Kirim dhateng GitHub
-    git push origin main
-    echo "Backup kasil dipun-unggah."
-else
-    echo "Mboten wonten owah-owahan ingkang kedah dipun-backup."
+    git push origin main >/dev/null 2>&1
+    echo "Backup Hermes kasil dipun-unggah dhateng GitHub."
 fi
