@@ -18,6 +18,7 @@ Non-trivial patterns for server administration on Ubuntu/Debian — USB auto-mou
 - Console screen / monitor control (backlight poweroff without sudo) (see [references/screen-backlight-control-docker.md](references/screen-backlight-control-docker.md))
 - Samba (SMB) directory sharing and bind mount workarounds (see [references/samba-bind-mount-workaround.md](references/samba-bind-mount-workaround.md))
 - Custom n8n Docker upgrades with hardened image workarounds (see [references/n8n-docker-hardened-workaround.md](references/n8n-docker-hardened-workaround.md))
+- Cloudflare Tunnel domain masking and routing (see [references/cloudflare-tunnel-masking.md](references/cloudflare-tunnel-masking.md))
 
 ## USB Auto-Mount Pattern (fstab + systemd)
 
@@ -41,7 +42,22 @@ Key options:
 - `x-systemd.automount` — mount on first access, not at boot
 - `x-systemd.idle-timeout=600` — auto-unmount after 10 min idle (safe to unplug)
 - `x-systemd.device-timeout=5` — give up fast if device missing
-- `umask=000` — world read/write (exFAT/vFAT don't support Unix perms)
+- `umask`
+
+### Pitfall / Troubleshooting: Stale Mount Points (Input/output error)
+
+If a USB drive is disconnected and reconnected, the kernel may assign it a new device block name (e.g., changing from `/dev/sdc` to `/dev/sdd`), causing old active paths to throw `Input/output error`.
+
+To resolve:
+1. Verify the current block mapping using `lsblk` and check the active mount point (e.g., `/mnt/usb-nvme` on `/dev/sdd2`).
+2. Clean up stale/broken mounts using lazy unmount:
+   ```bash
+   sudo umount -l /path/to/broken/mount
+   ```
+3. Re-link the folder symlink or bind mount to the fresh active path:
+   ```bash
+   ln -s /mnt/usb-nvme/obsidian /path/to/shorts_factory/obsidian
+   ```
 - `nosuid,nodev` — security hardening for removable media
 - `noatime` — reduce writes on flash drives
 

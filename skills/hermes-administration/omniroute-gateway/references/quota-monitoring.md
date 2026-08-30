@@ -66,3 +66,6 @@ g-2.5-flash          ██████████  96% (4h 50m)
    - Example: `c-opus-4-6-thinking  ██████████` (exactly 2 spaces after the name).
 3. **Percentage Formatting**: Round the remaining percentage to the nearest integer. Right-align it to a width of 3 characters: `{pct_int:3d}%`.
 4. **Time Remaining Calculation**: Calculate the difference between `next_reset_at` and current UTC time. Format as ` ({hours}h {minutes}m)`. Omit the parenthetical suffix if `next_reset_at` is empty or not in the future.
+
+## Agent Guidelines & Pitfalls
+- **"Status Antigravity" Warning**: When the Javanese/Indonesian user asks check status of "antigravity" (e.g. "status antigravity"), they are referring to the **Antigravity provider quota** (API/Model usage limits on OmniRoute gateway). Do *not* interpret this as a query about the agent's system-level prompt identity or backend status. Immediately run `python3 ~/track_quota.py` or inspect the database to report their remaining quota.

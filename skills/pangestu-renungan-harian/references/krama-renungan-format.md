@@ -51,3 +51,7 @@ Tansah waspada kaliyan kata serapan utawi tembung basa Indonesia ingkang asring 
 - Sampun ngginakaken **"mengerti"** ➔ kedah dipun-gantos mawi **"mangertos"** (kagem piyambak: *"kula mangertos"*).
 - Sampun ngginakaken **"bicara/berkata"** ➔ kedah dipun-gantos mawi **"ngendika"** (kagem Pak Satya).
 - Sampun ngginakaken **"memperhatikan"** ➔ kedah dipun-gantos mawi **"nggatosaken"**.
+
+## 3. Aturan Pengiriman Telegram (Telegram Plain Text Sharing)
+
+* **Block Code untuk Salinan Mudah**: Saat membagikan teks renungan harian langsung di chat Telegram (sebagai pesan teks ke Pak Satya), wajib meletakkan seluruh isi teks renungan (mulai dari judul hingga pranala Google Doc) di dalam blok kode (markdown triple backticks ```markdown ... ```). Hal ini sangat penting agar Pak Satya dapat menyalin (copy) seluruh teks renungan dengan sekali ketuk (tap-to-copy) di aplikasi seluler/HP.

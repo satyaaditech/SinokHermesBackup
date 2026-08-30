@@ -6,9 +6,9 @@ Routing OmniRoute (localhost:20128/v1, DB ~/.omniroute/storage.sqlite): chat=com
 §
 Renungan Harian (th1096): Prioritas teks Indonesia + Google Doc link. Sementara hapus audio (Jawa/Indo) & cover e-card dari workflow. 8-14 emotikon, universal, no '!', folder ~/share/renungan/. Skill: pangestu-renungan-harian.
 §
-Server: n8nserver (192.168.0.112/100.92.237.45). Screen: ~/screen_off.sh/on.sh. Vault: /mnt/usb-nvme/obsidian -> ~/shorts_factory/obsidian.
+Server: n8nserver (192.168.0.113/100.92.237.45). Screen: ~/screen_off.sh/on.sh. Vault: /mnt/usb-nvme/obsidian -> ~/shorts_factory/obsidian.
 §
-TG IDs: Hermes -1003256146835 (th10,12,1014,1096,3443-fitness), Sinox -1003980421737 (th1,3), Satya -1003981550688 (th1,2,182).
+TG IDs: Hermes -1003256146835 (th10,12,1014,1096,3443-fitness, 4038-n8n), Sinox -1003980421737 (th1,3), Satya -1003981550688 (th1,2,182).
 §
 Rekap Tensi: Sheet 1n3BowI-SLk1OP3FcYIVbEpv92olZ7v_VkpTcorkdXGM; TG :433; NO komentar medis.
 §

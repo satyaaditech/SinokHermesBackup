@@ -39,15 +39,19 @@ findmnt --verify --fstab  # validate
 
 ### Starting Automount Units
 
-After editing fstab, systemd-fstab-generator creates units at `/run/systemd/generator/`. Start with **escaped names** (hyphens become `\x2d`):
+After editing fstab, systemd-fstab-generator creates units at `/run/systemd/generator/`. Start with **escaped names** (hyphens become `\\x2d`):
 
 ```bash
-sudo systemctl start 'mnt-usb\x2dnvme.automount'
+sudo systemctl start 'mnt-usb\\x2dnvme.automount'
 ```
 
 PITFALL: `systemctl start 'mnt-usb-*.automount'` does NOT work with glob — the escape character prevents matching. Use exact escaped name in single quotes, or path-based: `sudo systemctl start /mnt/usb-nvme`.
 
 Verify: `systemctl list-units --all 'mnt-usb*' --no-pager` → automount units should show `active (waiting)`.
+
+## Cloudflare Tunnel & Web Publishing
+
+Detailed instructions for resolving false-positive "Dangerous Site" warnings when publishing private consoles (like n8n) via Cloudflare Tunnels can be found in [references/cloudflare-tunnel-safebrowsing.md](references/cloudflare-tunnel-safebrowsing.md).
 
 ### Sudo Rule (Hermes Needs Passwordless Mount)
 

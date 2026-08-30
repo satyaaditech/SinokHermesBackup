@@ -74,7 +74,52 @@
       "paused_at": null,
       "paused_reason": null,
       "created_at": "2026-08-30T07:28:46.115435+07:00",
-      "next_run_at": "2026-08-30T23:00:00+07:00",
+      "next_run_at": "2026-08-31T23:00:00+07:00",
+      "last_run_at": null,
+      "last_status": null,
+      "last_error": null,
+      "last_delivery_error": null,
+      "deliver": "origin",
+      "origin": {
+        "platform": "telegram",
+        "chat_id": "-1003256146835",
+        "chat_name": "HERMES GROUP CHAT",
+        "thread_id": "1",
+        "user_id": "777961507"
+      },
+      "enabled_toolsets": null,
+      "workdir": null
+    },
+    {
+      "id": "8a00d67c9fbd",
+      "name": "obsidian-vault-backup",
+      "prompt": "",
+      "skills": [],
+      "skill": null,
+      "model": null,
+      "provider": null,
+      "provider_snapshot": null,
+      "model_snapshot": null,
+      "base_url": null,
+      "script": "backup_obsidian.sh",
+      "no_agent": true,
+      "context_from": null,
+      "schedule": {
+        "kind": "cron",
+        "expr": "15 23 * * *",
+        "display": "15 23 * * *"
+      },
+      "schedule_display": "15 23 * * *",
+      "repeat": {
+        "times": null,
+        "completed": 0
+      },
+      "enabled": true,
+      "state": "scheduled",
+      "paused_at": null,
+      "paused_reason": null,
+      "created_at": "2026-08-30T07:41:44.349637+07:00",
+      "next_run_at": "2026-08-30T23:15:00+07:00",
       "last_run_at": null,
       "last_status": null,
       "last_error": null,
@@ -91,5 +136,5 @@
       "workdir": null
     }
   ],
-  "updated_at": "2026-08-30T07:28:46.118422+07:00"
+  "updated_at": "2026-08-30T23:00:45.934002+07:00"
 }

@@ -53,6 +53,8 @@ JANGAN menyambung fragmen dari beberapa paragraf sumber dengan `...` jadi satu q
 ## 🔴 PITFALL #2: RAW WIKILINKS & METADATA IN USER OUTPUTS
 
 *   **Google Doc (HTML)**: Pastikan YAML frontmatter dan tanda kurung siku ganda `[[ ]]` dihilangkan sepenuhnya saat konversi HTML. Google Doc harus tampil bersih untuk dibaca langsung pemilik.
+*   **Alur Cepat Tanpa Audio & E-Card**: Jika workflow hanya membutuhkan penerbitan teks Indonesia di Google Doc dan lokal, gunakan skrip `publish_renungan_simple.py`. Hindari pembuatan berkas audio (TTS) dan gambar penutup (cover e-card) kecuali diminta secara khusus oleh pemilik.
+*   **Batasan Emotikon & Penggunaan Tanda Seru**: Batasi jumlah emotikon dalam teks renungan harian antara 8 hingga 14 emotikon universal secara total. Hindari penggunaan tanda seru (!) dalam teks renungan guna menjaga stabilitas batin.
 *   **Share/Telegram Output**: Pastikan output teks yang disalin ke chat maupun file di direktori `share/` bersih dari markdown `[[ ]]` wikilinks. Gunakan konversi/regex (misal: `[[Concept|alias]]` -> "alias", `[[Concept]]` -> "Concept").
 *   **Wiki Vault (Obsidian)**: Tahan format wikilinks hanya untuk berkas yang disimpan di dalam direktori `wiki/renungan/` untuk menjaga database relasi Obsidian tetap terhubung. struktur asli meskipun setiap kata nyata adanya. Setiap Sabda HARUS verbatim dari SATU paragraf utuh di sumber.
 
