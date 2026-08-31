@@ -4,7 +4,7 @@ ZERO TOLERANCE: NEVER hitung tgl manual. Sapa WIB. Basa Jawi self (Sinox)=ningal
 §
 Routing OmniRoute (localhost:20128/v1, DB ~/.omniroute/storage.sqlite): chat=combo daily-chat (gemini-3.5-flash-high→deepseek-v4-flash→qwen3.7-plus). Vision=gemini-3.5-flash-low. Delegation=best-reasoning-v2 (deepseek-v4-pro→qwen3.8-max). Free blocked. ⚠️ model_override FIXED.
 §
-Renungan Harian (th1096): Prioritas teks Indonesia + Google Doc link. Sementara hapus audio (Jawa/Indo) & cover e-card dari workflow. 8-14 emotikon, universal, no '!', folder ~/share/renungan/. Skill: pangestu-renungan-harian.
+Renungan Harian (th1096): Teks Ind, GDoc link, no audio/e-card, 8-14 emote, no '!'. Naskah topiknya sama wajib beda angle/kutipan/insight. Skill: pangestu-renungan-harian.
 §
 Server: n8nserver (192.168.0.113/100.92.237.45). Screen: ~/screen_off.sh/on.sh. Vault: /mnt/usb-nvme/obsidian -> ~/shorts_factory/obsidian.
 §

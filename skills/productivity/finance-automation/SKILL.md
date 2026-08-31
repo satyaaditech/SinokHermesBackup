@@ -13,6 +13,9 @@ metadata:
 
 # Finance Automation
 
+## References
+- [Reconciling and Calculating Should-Be Balances](references/reconcile-balance-from-mutasi.md) - Workflow for calculating current balance based on sheets and bank statements.
+
 End-to-end automation for personal/professional bookkeeping: classify transactions using keyword-to-COA mapping, append to Google Sheets, and upload receipt images to matching Google Drive folders. Originally built for Indonesian accounting terminology.
 
 ## Triggers
@@ -28,7 +31,8 @@ Load this skill when the user mentions any of:
 
 This user has explicitly demanded minimal, token-efficient responses for finance tasks:
 
-1. **After adding a transaction**: ONLY show the transaction details (No, Tanggal, Penjual/Item, Total, Status). NO auto-recap of totals, NO auto-summary of saldo, NO "Total Pengeluaran", NO "Saldo" unless the user explicitly asks.
+1. **After adding a transaction**: ONLY show the transaction details (No, Tanggal, Penjual/Item, Total, Status). NO auto-recap of totals, NO auto-summary of saldo, NO "Total Pengeluaran", NO "Saldo" 
+2. **Calculating Balance from Mutasi**: When asked to calculate from mutasi pictures, default to calculating the net of the visible image entries. Do not mix it with the spreadsheet balance unless explicitly instructed or clarify scope first. unless the user explicitly asks.
 2. **Use emoji tags** per transaction type for quick scanning:
    - 📥 / 🏦 = Modal
    - 📥 / 💼 = Gaji

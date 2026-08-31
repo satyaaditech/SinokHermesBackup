@@ -41,6 +41,9 @@ Semua merujuk ke `/home/satyaaditech/share/pangestu_studi/`.
 | Sabar: petani menunggu padi, mangga muda tak dipetik | `buku4_sabda_khusus.md` | 102 |
 | Rela: penderitaan = buah perbuatan pribadi | `buku4_sabda_khusus.md` | 103 |
 | Banyak bicara hindari; teliti diri sendiri | `buku4_sabda_khusus.md` | 106 |
+| Bicara melantur / tidak bermanfaat (lisan) | `buku_skh.txt` (Sabda Khusus) | Peringatan 8 (1032) |
+| Larangan tumbak cucukan / ngrasani alaning liyan | `buku_ssj_jawa.txt` (Jalan Rahayu) | 432 |
+| Muna-muni menjadi panembah | `buku_ssj_jawa.txt` (Tunggal Sabda) | 689 |
 
 ---
 
