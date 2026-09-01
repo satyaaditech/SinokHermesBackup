@@ -10,7 +10,7 @@ description: Use when converting markdown to formatted Google Docs.
 - Native paragraph formatting, images, and page breaks: [references/native-batch-formatting.md](references/native-batch-formatting.md)
 - Google Slides API disabled workaround (pptx upload conversion): [references/slides-api-disabled-workaround.md](references/slides-api-disabled-workaround.md)
 
-User (Pak Satya) requires Google Doc output as **native docs formatting** — real headings, bold, italic — with **ZERO markdown symbols** (`*`, `**`, `###`) visible. Docs go into a specific Drive folder (e.g. 'Materi Olahrasa' `1Bh9ZIizra0I-3hmlqcHjhLJi3-eTAI4U`) and are shared "anyone with link (writer)" so he can edit from mobile.
+User (Pak Satya) requires Google Doc output as **native docs formatting** — real headings, bold, italic — with **ZERO markdown symbols** (`*`, `**`, `###`) visible. Docs go into a specific Drive folder (e.g. 'Materi Olahrasa' `1Bh9ZIizra0I-3hmlqcHjhLJi3-eTAI4U`, 'Pendapatan Sampingan' `1SQaBdLVan5SuLfyHgV9Nr1CGbFFIPd3P`) and are shared "anyone with link (writer)" so he can edit from mobile.
 
 ## When to use
 - "Buat yang di Google Doc juga ya, supaya mudah aku edit" — any content (renungan, khotbah, ulasan, manuskrip) that must land in Google Docs.

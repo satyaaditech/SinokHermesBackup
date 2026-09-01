@@ -5,14 +5,21 @@ description: Curl research when search tools fail (Brave, detik).
 
 # Web Research Fallback (curl-only)
 
-## References
+## References & Tools
 - Referensi Pola Scraping Yahoo Search: [references/yahoo-search-scraping.md](references/yahoo-search-scraping.md)
+- Script Ekstraksi URL Standalone (zero-dependency / tanpa bs4): `scripts/extract_url_text.py <URL>`
 
 Pola riset web saat `web_search`/`web_extract` gagal (error API key, 401, dll) atau semua mesin pencari kena captcha. Teruji di sesi riset lokasi Solo (vlog & berita lokal).
 
 ## Rantai fallback (urutkan, jangan retry yang gagal berulang)
 
 1. `web_search`/`web_extract` (Firecrawl) — coba dulu, tapi siap gagal
+1b. **Direct URL Text Extraction (saat `web_extract` unconfigured/gagal)**:
+   - Gunakan script helper zero-dependency:
+     ```bash
+     python3 ~/.hermes/skills/research/web-research-fallback/scripts/extract_url_text.py "https://example.com/article"
+     ```
+   - Pola ini menggunakan Python stdlib (`urllib` + `html.parser.HTMLParser`) untuk membuang tag `<script>`, `<style>`, `<nav>`, `<footer>`, `<header>` secara deterministik tanpa ketergantungan paket pihak ketiga (`bs4` / `trafilatura` yang sering belum terinstal).
 2. **Wikipedia API via curl** — paling andal, data terstruktur:
    ```bash
    # Extract teks artikel (param &redirects wajib utk halaman redirect)

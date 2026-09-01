@@ -36,5 +36,5 @@ Nalika nindakaken *ingest* renungan anyar saking folder `~/share/renungan/` utaw
     ```
 3.  Lakukan pemindaian kata kunci (Regex) dhumateng isi renungan kagem dipun-pasangi `[[wikilinks]]` dhumateng konsep utama.
 4.  Tulis berkas enggal dhateng `wiki/renungan/`.
-5.  Mutakhiraken `wiki/Daftar Renungan.md` kagem ngurutaken renungan kanthi kronologis.
+5.  Mutakhiraken `wiki/Daftar Renungan.md` kagem ngurutaken renungan kanthi kronologis. (Menawi mlebet wulan enggal, damel seksi kepala `## 📅 <Nama Bulan> <Tahun>` ing nginggil wulan saderengipun).
 6.  Serat log panyetelan wonten ing `wiki/log.md`.

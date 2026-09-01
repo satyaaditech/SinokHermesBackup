@@ -17,6 +17,7 @@ routing (and Honcho, renungan, etc.). Answers: "what model am I actually on",
 - **Mixture of Agents Guide**: `references/mixture-of-agents.md` — details MoA presets, Reference Models, and Aggregator settings in the dashboard.
 - **Quota Monitoring**: `references/quota-monitoring.md` (and `scripts/track_quota_telegram.py`) — details how to query, format, and check remaining quotas for proxy providers like Antigravity.
 - **Gemini Context Caching & Quota**: `references/gemini-caching.md` — details Gemini context caching setup via Google AI Studio and Vertex API requirements.
+- **Troubleshooting Broken Combos**: `references/troubleshooting-combos.md` — exact workflow to fix chat errors when upstream models are deleted, and headless enumeration of SQLite combos/API models.
 
 ## Where it runs
 

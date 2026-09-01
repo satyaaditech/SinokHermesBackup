@@ -25,12 +25,12 @@ general mechanics of `auxiliary.*` model config and custom-endpoint probing.
   `auto/best-reasoning`, a reasoning alias with no multimodal models). Text-only
   models don't error; they just report they can't see pixels. Confirm with
   `hermes config get auxiliary.vision`, fix with
-  `hermes config set auxiliary.vision.model antigravity/gemini-3.5-flash-low`.
+  `hermes config set auxiliary.vision.model antigravity/antigravity/antigravity/gemini-3.7-flash-low`.
   Never point vision at an `auto/*` reasoning alias — those also leak
   free/noauth fallback models. (`auto/best-reasoning` ≠ `best-reasoning-v2`,
   which is a paid-only custom combo.)
-- **Error code: 400 - Ambiguous Model**: If the custom provider/gateway complains that the model is ambiguous (e.g., `Ambiguous model 'gemini-3.5-flash-low'. Use provider/model prefix`), make sure you prepend the correct provider prefix (e.g., `antigravity/gemini-3.5-flash-low` or `agy/gemini-3.5-flash-low`) in the configuration:
-  `hermes config set auxiliary.vision.model antigravity/gemini-3.5-flash-low`
+- **Error code: 400 - Ambiguous Model**: If the custom provider/gateway complains that the model is ambiguous (e.g., `Ambiguous model 'gemini-3.7-flash-low'. Use provider/model prefix`), make sure you prepend the correct provider prefix (e.g., `antigravity/antigravity/antigravity/gemini-3.7-flash-low` or `agy/gemini-3.7-flash-low`) in the configuration:
+  `hermes config set auxiliary.vision.model antigravity/antigravity/antigravity/gemini-3.7-flash-low`
 
 ## 1. How Image Routing Works
 
@@ -95,7 +95,7 @@ auxiliary:
   provided" / "Cannot see image" / "Cannot describe" on a *valid* JPEG means
   `auxiliary.vision.model` drifted to a text-only combo (seen:
   `auto/best-reasoning` after model-override experiments). Fix:
-  `hermes config set auxiliary.vision.model antigravity/gemini-3.5-flash-low`,
+  `hermes config set auxiliary.vision.model antigravity/antigravity/antigravity/gemini-3.7-flash-low`,
   then re-run `vision_analyze` to confirm live pickup (no restart needed).
 
 ## Support Files

@@ -24,6 +24,18 @@ Class-level skill for diagnosing "model provider failed after retries" / "Provid
 - `⚠️ The model provider failed after retries`
 - `Provider auth failed`
 - `model.*fail` / `non-200` in gateway logs
+- Responses consisting entirely of hardcoded deprecation notices (e.g., "Gemini 3 Pro is no longer available")
+
+## 🔴 PITFALL: Model Deprecation Notices as 200 OK Responses
+Sometimes, downstream providers (or proxy endpoints) sunset a model and, instead of returning a 4xx HTTP error (which auto-triggers failovers), they return a `200 OK` with a hardcoded deprecation message injected as the chat response text. This breaks the experience but bypasses standard error handlers.
+
+**Fix for OmniRoute Combos:**
+1. Connect to the OmniRoute database via Python SQLite: `~/.omniroute/storage.sqlite`.
+2. Query the `combos` table.
+3. Parse the `data` column (JSON) for each row.
+4. Replace the deprecated model strings in the `models` array (e.g., `gemini-3.5-flash` -> `gemini-3.7-flash`).
+5. Re-serialize back to string using `json.dumps(data)`.
+6. Run `UPDATE combos SET data = ? WHERE id = ?` for modified rows and `commit()` the transaction.
 
 ## Probing: which model is actually serving (resolve auto/* aliases)
 
