@@ -28,6 +28,11 @@ Kacathet 26-08-2026 sawise kasalahan: `publish()` dipunpanggil foreground → ti
 ## Cathetan
 - `edge-tts` mbutuhake suara `jv-ID-DimasNeural` (Jawa) lan `id-ID-GadisNeural` (Indonesia).
 
+## Peringatan Sync / Copy ke Obsidian Wiki (exFAT Filesystem)
+- Obsidian vault berada di drive NVMe eksternal bertipe exFAT (`/mnt/usb-nvme/obsidian`).
+- **JANGAN** gunakan `shutil.copy2()` dalam skrip Python saat menyalin berkas ke wiki, karena `copy2` memanggil `copystat()` / `chmod` yang menyebabkan `PermissionError: [Errno 1] Operation not permitted` pada partisi exFAT.
+- Gunakan `shutil.copyfile(src, dst)` atau penulisan berkas biasa (`open(dst, 'w').write(...)`).
+
 ## Varian: Basa Indonesia Saja (Tanpa Audio, Tanpa Cover)
 Menawi dipun-suwun nggawe renungan versi basa Indonesia kemawon, tanpa audio (TTS) lan tanpa cover:
 1. Kita saged ngginakaken script `publish_renungan_simple.py` lan nimbali fungsi `publish_simple(ind_template, date_str, date_iso, ind_out_path)`.

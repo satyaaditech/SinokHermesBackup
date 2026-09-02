@@ -15,6 +15,7 @@ metadata:
 
 ## References
 - [Reconciling and Calculating Should-Be Balances](references/reconcile-balance-from-mutasi.md) - Workflow for calculating current balance based on sheets and bank statements.
+- [Bank Statement PDF Recap Workflow](references/bank-statement-pdf-recap.md) - Workflow for parsing bank mutasi PDFs, archiving to Drive, and generating formatted Google Sheets.
 
 End-to-end automation for personal/professional bookkeeping: classify transactions using keyword-to-COA mapping, append to Google Sheets, and upload receipt images to matching Google Drive folders. Originally built for Indonesian accounting terminology.
 
@@ -26,6 +27,7 @@ Load this skill when the user mentions any of:
 - pengeluaran, pemasukan, catat transaksi, rekap keuangan
 - upload nota, simpan kuitansi, arsip keuangan
 - spreadsheet keuangan, laporan laba rugi, neraca, arus kas
+- rekap mutasi bank, laporan bank pdf, rekap laporan bank
 
 ## User Preferences (CRITICAL — embed in every response)
 
