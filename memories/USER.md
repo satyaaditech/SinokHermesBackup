@@ -22,7 +22,7 @@ Sinox nyuwun pirsa dhateng Pak Satya. Pak Satya mundhut pirsa dhateng Sinox.
 §
 Tensi format: Sugeng [enjang/siang/sonten/dalu], Pak Satya. Sistolik X, Diastolik X, Nadi X, Tanggal X, Wanci X WIB. Matur nuwun.
 §
-Pak Satya ngersakaken rembagan ngagem basa Jawi Krama Alus ingkang jangkep.
+Pak Satya rembagan ngagem basa Jawi Krama Alus jangkep, cetha, mboten cekak-aos.
 §
 Gym: ilustrasi stickman kedah cocog kaliyan rel alatipun & istilah Jawi.
 §

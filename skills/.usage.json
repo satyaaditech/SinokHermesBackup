@@ -701,6 +701,19 @@
     "use_count": 4,
     "view_count": 4
   },
+  "mac-hardware-troubleshooting": {
+    "archived_at": null,
+    "created_at": "2026-09-03T12:30:48.576304+00:00",
+    "created_by": "agent",
+    "last_patched_at": null,
+    "last_used_at": null,
+    "last_viewed_at": null,
+    "patch_count": 0,
+    "pinned": false,
+    "state": "active",
+    "use_count": 0,
+    "view_count": 0
+  },
   "manim-video": {
     "archived_at": null,
     "created_at": "2026-08-04T12:30:58.516676+00:00",
@@ -1174,13 +1187,13 @@
     "created_at": "2026-08-10T13:05:41.748490+00:00",
     "created_by": "agent",
     "last_patched_at": "2026-08-30T05:40:36.301936+00:00",
-    "last_used_at": "2026-08-30T05:40:27.506468+00:00",
-    "last_viewed_at": "2026-08-30T05:40:27.496516+00:00",
+    "last_used_at": "2026-09-03T12:30:27.979143+00:00",
+    "last_viewed_at": "2026-09-03T12:30:27.970860+00:00",
     "patch_count": 2,
     "pinned": false,
     "state": "active",
-    "use_count": 4,
-    "view_count": 4
+    "use_count": 5,
+    "view_count": 5
   },
   "serving-llms-vllm": {
     "archived_at": null,
@@ -1317,13 +1330,13 @@
     "created_at": "2026-08-04T12:30:58.754565+00:00",
     "created_by": null,
     "last_patched_at": null,
-    "last_used_at": null,
-    "last_viewed_at": null,
+    "last_used_at": "2026-09-03T12:30:10.262877+00:00",
+    "last_viewed_at": "2026-09-03T12:30:10.254261+00:00",
     "patch_count": 0,
     "pinned": false,
     "state": "active",
-    "use_count": 0,
-    "view_count": 0
+    "use_count": 1,
+    "view_count": 1
   },
   "teams-meeting-pipeline": {
     "archived_at": null,
