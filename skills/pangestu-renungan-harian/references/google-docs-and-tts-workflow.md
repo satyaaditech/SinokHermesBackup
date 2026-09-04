@@ -30,6 +30,21 @@ Para kadang kesiswaan menyukai renungan harian berformat audio/voice note. Gunak
   ```bash
   hermes config set tts.edge.voice id-ID-GadisNeural
   ```
+
+---
+
+## 3. Sinkronisasi ke Vault Obsidian (exFAT Pitfall)
+
+Saat menyalin berkas renungan `.md` dari `~/share/renungan/` ke basis kawruh Obsidian (`~/shorts_factory/obsidian/BukuPangestu/wiki/renungan/` yang mengarah ke `/mnt/usb-nvme` format exFAT):
+* **JANGAN gunakan `shutil.copy2()`**: `copy2` mencoba menyalin atribut dan permission POSIX (`copystat`/`chmod`), yang akan memicu `PermissionError: [Errno 1] Operation not permitted` pada filesystem exFAT.
+* **Gunakan `shutil.copyfile()` atau baca-tulis langsung**:
+  ```python
+  with open(src_path, "r", encoding="utf-8") as f_in:
+      content = f_in.read()
+  with open(dest_path, "w", encoding="utf-8") as f_out:
+      f_out.write(content)
+  ```
+* **Perbarui Index**: Pastikan `Daftar Renungan.md` dan `log.md` di wiki ikut diperbarui setelah berkas disalin.
   *Catatan kagem Basa Jawi*: Menawi badhe ndamel swanten basa Jawi, gantos dadi `jv-ID-DimasNeural` (swara tiyang jaler) / `jv-ID-SitiNeural` (swara tiyang estri) rumiyin, lajeng wangsulaken dhateng `id-ID-GadisNeural` sakbibaripun:
   ```bash
   hermes config set tts.edge.voice jv-ID-DimasNeural

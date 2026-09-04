@@ -68,15 +68,15 @@
       "schedule_display": "0 23 * * *",
       "repeat": {
         "times": null,
-        "completed": 4
+        "completed": 5
       },
       "enabled": true,
       "state": "scheduled",
       "paused_at": null,
       "paused_reason": null,
       "created_at": "2026-08-30T07:28:46.115435+07:00",
-      "next_run_at": "2026-09-04T23:00:00+07:00",
-      "last_run_at": "2026-09-02T23:00:12.687480+07:00",
+      "next_run_at": "2026-09-05T23:00:00+07:00",
+      "last_run_at": "2026-09-03T23:00:47.974743+07:00",
       "last_status": "ok",
       "last_error": null,
       "last_delivery_error": null,
@@ -114,15 +114,15 @@
       "schedule_display": "15 23 * * *",
       "repeat": {
         "times": null,
-        "completed": 4
+        "completed": 5
       },
       "enabled": true,
       "state": "scheduled",
       "paused_at": null,
       "paused_reason": null,
       "created_at": "2026-08-30T07:41:44.349637+07:00",
-      "next_run_at": "2026-09-03T23:15:00+07:00",
-      "last_run_at": "2026-09-02T23:15:12.645193+07:00",
+      "next_run_at": "2026-09-04T23:15:00+07:00",
+      "last_run_at": "2026-09-03T23:15:45.440069+07:00",
       "last_status": "ok",
       "last_error": null,
       "last_delivery_error": null,
@@ -137,7 +137,52 @@
       "enabled_toolsets": null,
       "workdir": null,
       "fire_claim": null
+    },
+    {
+      "id": "0ac6e55bbd33",
+      "name": "gym-reminder-checklist",
+      "prompt": "Kirim ceklist program latihan gym harian selaras kaliyan Google Sheets. Tidak boleh [SILENT]/kosong, harus dikirim.",
+      "skills": [],
+      "skill": null,
+      "model": null,
+      "provider": null,
+      "provider_snapshot": null,
+      "model_snapshot": null,
+      "base_url": null,
+      "script": "gym_reminder.py",
+      "no_agent": true,
+      "context_from": null,
+      "schedule": {
+        "kind": "cron",
+        "expr": "0 5 * * 2,4,6",
+        "display": "0 5 * * 2,4,6"
+      },
+      "schedule_display": "0 5 * * 2,4,6",
+      "repeat": {
+        "times": null,
+        "completed": 0
+      },
+      "enabled": true,
+      "state": "scheduled",
+      "paused_at": null,
+      "paused_reason": null,
+      "created_at": "2026-09-04T13:18:33.431304+07:00",
+      "next_run_at": "2026-09-05T05:00:00+07:00",
+      "last_run_at": null,
+      "last_status": null,
+      "last_error": null,
+      "last_delivery_error": null,
+      "deliver": "origin",
+      "origin": {
+        "platform": "telegram",
+        "chat_id": "-1003256146835",
+        "chat_name": "HERMES GROUP CHAT",
+        "thread_id": "3443",
+        "user_id": "777961507"
+      },
+      "enabled_toolsets": null,
+      "workdir": null
     }
   ],
-  "updated_at": "2026-09-03T23:00:42.869638+07:00"
+  "updated_at": "2026-09-04T23:00:05.790913+07:00"
 }

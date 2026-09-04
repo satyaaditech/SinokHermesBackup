@@ -9,6 +9,7 @@ description: Produce Pangestu renungan harian for TG thread 1096. Agentic 3-role
 *   **Sang Guru Sejati (SGS)** punika ingkang kagungan piwulang utawi ajaran.
 *   **Pangestu** (Paguyuban Ngesti Tunggal) punika namung wadhah utawi organisasi para siswa ingkang nyinaoni piwulang.
 *   **Panyebutan ingkang Leres**: Wajib ngginakaken tembung **"piwulang Sang Guru Sejati"** utawi **"ajaran Sang Guru Sejati"**. Boten pareng babar pisan nyebataken **"piwulang Pangestu"** utawi **"ajaran Pangestu"**.
+*   **Penyalinan ke Vault Obsidian (exFAT)**: Hindari `shutil.copy2()` karena memicu EPERM pada exFAT; gunakan `shutil.copyfile()` atau I/O langsung. Lihat `references/google-docs-and-tts-workflow.md`.
 
 ## ⚠️ Jajaran Kosakata Krama Alus (Vocabulary Safeguards)
 Tansah gunakaken tembung Krama Alus ingkang leres nalika guneman kaliyan Pak Satya. Kedah murni Krama Alus/Inggil lan boten pareng dipun-campur kaliyan tetembungan utawi tembung panyambung basa Indonesia. Sampun ngginakaken tembung Ngoko, tembung mixed Indo-Jawa, utawi panyebutan ingkang klentu:

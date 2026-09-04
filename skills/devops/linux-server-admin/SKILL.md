@@ -16,6 +16,7 @@ Non-trivial patterns for server administration on Ubuntu/Debian — USB auto-mou
 - Tailscale remote access
 - Server diagnostics (temperature, load, RAM)
 - Console screen / monitor control (backlight poweroff without sudo) (see [references/screen-backlight-control-docker.md](references/screen-backlight-control-docker.md))
+- Laptop as server power-loss recovery without UPS (see [references/laptop-server-power-loss-recovery.md](references/laptop-server-power-loss-recovery.md))
 - Samba (SMB) directory sharing and bind mount workarounds (see [references/samba-bind-mount-workaround.md](references/samba-bind-mount-workaround.md))
 - Custom n8n Docker upgrades with hardened image workarounds (see [references/n8n-docker-hardened-workaround.md](references/n8n-docker-hardened-workaround.md))
 - Cloudflare Tunnel domain masking and routing (see [references/cloudflare-tunnel-masking.md](references/cloudflare-tunnel-masking.md))

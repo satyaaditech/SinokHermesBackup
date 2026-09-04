@@ -18,12 +18,12 @@ Foto lokasi (FGD/Herbal/vlog): append md per foto, fakta menarik/arsip, template
 §
 sudo NOPASSWD satyaaditech: mount/umount/mkdir only (exfat 6960-FA27→/mnt/usb-nvme, vfat FCF7-CC69→/mnt/usb-ubuntu).
 §
-Buku Pangestu (~/shorts_factory/obsidian/BukuPangestu/): ssj, skh, brsr, tkl, wsj, uujm, asbs, ukk, olahrasa. Piwulang kagunganipun SGS; Pangestu organisasi siswanipun. No 'piwulang Pangestu'.
+Buku Pangestu (~/shorts_factory/obsidian/BukuPangestu/): ssj, skh, brsr (Bawa Raos Ing Salebeting Raos), tkl, wsj, uujm, asbs, ukk. Piwulang SGS; Pangestu organisasi. No 'piwulang Pangestu'.
 §
 Ulasan/Khotbah: ~/share/materi_khotbah/ & Drive 1Bh9ZIizra0I-3hmlqcHjhLJi3-eTAI4U. Sastrawi, cross-ref BRSR & quote inline. WA markup (*bold*, _italic_) code block. Runtut fisik manembah.
 §
 Buletin bulanan Olahrasa: 20 hlm, jiwa di depan, fisik belakang, no parenting, judul bernyawa (Wedhar Sasmita, Luyuting Panembah, Timbang Rasa, Kaca Benggala, Tamba Usada).
 §
-Google AI: 3 akun Gemini Pro 18 bln, 3k kredit/bln Veo/Flow. Monetisasi: Blue Ocean digital assets. Sinox tangani teknis/prompt/packaging end-to-end.
+Google AI: 3 Gemini Pro (3k kredit/bln Veo/Flow). Monetisasi Blue Ocean. Sinox tangani teknis/prompt.
 §
-Mutasi BNI 2022: Sheet 1qYLKwSpFH9iDTEEBpfxhDuGW6JrMHCHn2cNbf7v0iD4, Drive 1maRGm6UcCWxQYygk8WWxH3QcJO-jHMQK. 5-col (0 not blank), jeda 1-3m batch. Skill: rekap-mutasi-bank.
+Bank 2022 (Drive 1maRGm6UcCWxQYygk8WWxH3QcJO-jHMQK): BNI Simp 1qYLKwSpFH9iDTEEBpfxhDuGW6JrMHCHn2cNbf7v0iD4, BNI Pinj 14MVx20cVByRCHuORGlWoj9LXj7fz37K-7Qz938RpYE4, BRI Pinj 1msaU3up5zNXOd1w4_EJeUhFshySd8uCZPQA1NPGWCq4.

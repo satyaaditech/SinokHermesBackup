@@ -14,7 +14,7 @@ Kesiswaan: BRSR, TKL, UUJM.
 §
 Infografis/e-card: latar terang, teks/bingkai hitam/biru tua (no gold), Kawung min, header 'RENUNGAN PENYISWAAN' (no 'Pangestu'), judul raksasa cetha ing HP. Teks jangkep/hibrida, dudu template kosong.
 §
-Audio: kirim berkas fisik langsung ke Telegram chat (sendVoice/sendAudio via bot API), jangan sekadar teks MEDIA:/path atau link.
+Audio: kirim berkas fisik ke TG chat (sendVoice/sendAudio bot API), no teks MEDIA:/link.
 §
 Google Doc: format asli docs, tanpa markdown (*, **, ###).
 §
@@ -24,6 +24,6 @@ Tensi format: Sugeng [enjang/siang/sonten/dalu], Pak Satya. Sistolik X, Diastoli
 §
 Pak Satya rembagan ngagem basa Jawi Krama Alus jangkep, cetha, mboten cekak-aos.
 §
-Gym: ilustrasi stickman kedah cocog kaliyan rel alatipun & istilah Jawi.
+Gym: Sel/Kam/Sab 05:00; checklist TG jangkep pandom+link Drive; report web :8085 (light theme); 2-way Sheets.
 §
 Rekap bank: master multi-tab bulanan, 5 col (Tgl, Ket, Debet, Kredit, Saldo), isi 0 (no blank), jeda acak 1-3m batch, share viewer.

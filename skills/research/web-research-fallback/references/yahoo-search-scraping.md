@@ -6,6 +6,14 @@
 * **Struktur HTML Sederhana**: Hasil pencarian memiliki pola penanda kelas kontainer (`compText` untuk snippet deskripsi, dan tag `<h3>` untuk judul hasil pencarian) yang mudah dikenali secara konsisten.
 * **Tanpa Dependensi Tambahan**: Dapat berjalan menggunakan pustaka bawaan Python (`urllib` dan `re`), tanpa memerlukan `bs4` (BeautifulSoup) atau `requests`.
 
+## Pitfall & Catatan Kegagalan Jaringan Lokal (Indonesia)
+* **Yahoo 500 INKApi Error**: Endpoint scraping HTML Yahoo sewaktu-waktu dapat mengembalikan status `HTTP Error 500: INKApi Error` jika terdeteksi trafik otomasi atau format header tidak cocok.
+* **DuckDuckGo ISP DNS Hijacking (Internet Baik)**: Di jaringan ISP Indonesia (Telkomsel / IndiHome / dsb), request ke `duckduckgo.com` dan `html.duckduckgo.com` sering dibelokkan oleh DNS filtering lokal menghasilkan sertifikat TLS `CN=internetbaik.telkomsel.com`. Hal ini memicu kegagalan fatal `SSL: certificate verify failed: Hostname mismatch`.
+* **Solusi Fallback Teruji**: Jika Yahoo (500) dan DuckDuckGo (SSL Hijack) gagal:
+  1. Gunakan **Wikipedia REST/Query API** (`https://id.wikipedia.org/w/api.php` / `en.wikipedia.org`) yang kebal blokir dan memberikan data terstruktur bersih.
+  2. Gunakan **Bing HTML Search** (`https://www.bing.com/search?q=...`) dengan header `Accept-Language: en-US,en;q=0.9,id;q=0.8` dan browser User-Agent standar.
+
+
 ## Implementasi Kode Python
 Gunakan cuplikan modul berikut di dalam `execute_code` untuk melakukan scraping pencarian secara instan:
 
