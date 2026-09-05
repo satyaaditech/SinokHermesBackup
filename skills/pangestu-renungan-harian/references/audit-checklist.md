@@ -25,7 +25,7 @@ Urutan: cek struktur dulu → cek konten → cek nada → cek aturan.
 - [ ] Quote spesifik ke tema, bukan generik menyebut tema sekilas
 - [ ] Jika tema narima, Sabda harus tentang narima — bukan "Panca Sila secara umum"
 - [ ] Ada quote pendukung di tengah uraian (cross-reference)
-- [ ] Sumber buku disebut jelas
+- [ ] Sumber buku disebut jelas dan tepat sesuai katalog resmi (TKL = **Taman Kamulyan Langgeng**, bukan nama fiktif/singkatan yang salah seperti Tutur Kelem; SSJ = Sasangka Jati; SKH = Sabda Khusus; BRSR = Bawa Raos Ing Salebeting Raos; ASBS = Arsip Sarjana Budi Santosa; UKK = Ulasan Kang Kelana; WSJ = Wahyu Sasangka Jati; UUJM = Ular-Ular Juru Mengeti).
 - [ ] **🔴 Sabda VERBATIM dari SATU paragraf utuh** — jangan menyambung fragmen dari paragraf berbeda dengan "...", karena itu cherry-picking yang mendistorsi struktur asli meskipun setiap kata nyata. Cek lokasi sumber di `references/sumber-quickref.md`.
 - [ ] **Setiap `...` dalam Sabda harus ada di sumber asli** — ellipsis hanya boleh jika memang ada di paragraf sumber yang sama (menandakan teks asli memang bersambung), BUKAN untuk menyambung paragraf berbeda.
 

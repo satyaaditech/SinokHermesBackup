@@ -22,6 +22,35 @@ error: chmod on /path/to/repo/.git/config.lock failed: Operation not permitted
 fatal: could not set 'core.repositoryformatversion' to '0'
 ```
 
+## Pitfall: USB Disconnect & Stale Worktree (`fatal: Invalid path ... No such device`)
+When using a decoupled git directory where `core.worktree` points to an external USB mount (e.g. `/mnt/usb-nvme/obsidian`), if the USB cable is unplugged, loose, or momentarily disconnected:
+- Kernel logs `USB disconnect, device number X`.
+- The mount point becomes a dead/stale autofs handle (`ls: cannot open directory: No such device`).
+- Git fails immediately with:
+  ```text
+  fatal: Invalid path '/mnt/usb-nvme/...': No such device
+  ```
+  exiting with code 128 during scheduled cron backups.
+
+### Diagnosis & Recovery:
+1. Check USB bus disconnects:
+   ```bash
+   journalctl -k -g usb -n 20 --no-pager
+   lsblk
+   ```
+2. Clear dead mount point with lazy unmount:
+   ```bash
+   sudo umount -l /mnt/usb-nvme
+   ```
+3. Re-seat/plug the USB storage device. Autofs will remount on next folder access.
+4. **Resilient backup script guard**: In your cron backup script, always verify directory accessibility before calling git:
+   ```bash
+   if [ ! -d "/mnt/usb-nvme/obsidian" ]; then
+       echo "ERROR: USB storage not accessible" >&2
+       exit 1
+   fi
+   ```
+
 ## Setup Workflow: Hybrid Git Directory
 
 To bypass filesystem limitations, decouple the Git configuration repository (metadata) from the actual directory containing the files (working tree).

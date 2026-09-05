@@ -15,6 +15,18 @@ Semua merujuk ke `/home/satyaaditech/share/pangestu_studi/`.
 | **Sabar** | `buku2_kitab1_hasta_sila.md` | 53–56 |
 | **Budi Luhur** | `buku2_kitab1_hasta_sila.md` | 58–62 |
 
+---
+
+## Keteladanan & Kepemimpinan (Laku Nyata / Bukan Sekadar Kata)
+
+| Konsep | Buku Sumber | Lokasi / Kutipan Kunci |
+|--------|-------------|-------------------------|
+| **Pelita Penerang & Tepa Tuladha**: Menjaga pelita batin agar tidak padam, memperluas daya jangkau terang dengan sungguh-sungguh menjalankan petunjuk agar menjadi teladan (*tepa tuladha*) menuntun sesama yang masih muda/dalam kegelapan. | **Sasangka Jati** | *Panutuping Sabda* — _"Dene tumrap kang wus rumangsa darbe pepadhang, padha dianggoa pepadhange iku, aja mung dianggo pangerti wae... supaya bisa dadi tepa tuladha lan kena dianggo nuntuni..."_ |
+| **Pakarti vs Pangerti**: Mendidik calon siswa/anak seperti ibu menuntun anak belajar berjalan; harus sabar, ikhlas, berkorban. Ajaran tidak boleh berhenti pada pengertian (*kandheg ing pangerti*), melainkan harus dibabar menjadi perbuatan (*kababaraken kanthi pakarti*) dan budi pekerti luhur. | **Taman Kamulyan Langgeng (TKL)** | *Bab V (Baris 1666–1668)* — _"para siswa purnama supados nggadhahi daya penarik kedah suka tuladha kanthi lampah ingkang nyata: upaminipun Panca Sila boten kandheg ing pangerti, nanging kedah kababaraken kanthi pakarti..."_ |
+| **Ngelmu Kanthi Laku**: Ilmu baru menjadi pengetahuan nyata bila disertai tindakan; ilmu tanpa perbuatan nyata tidak dapat membuktikan kebenarannya. | **Sasangka Jati** | *Serat Pambuka* — _"Ngelmu punika sagedipun dados kawruh kanyataan, kedah kanthi laku, ngelmu ingkang tanpa laku, badhe boten saged nekseni kanyataanipun (kandheg wonten ing gagasan)..."_ |
+| **Bahaya Guru Tanpa Laku**: Celaan bagi orang yang mengaku guru/penasihat kebajikan tetapi belum menjalankan sendiri ilmunya. | **Sabda Khusus (SKH)** | *SKH Butir 4* — _"Banyak orang yang mengaku menjadi guru ilmu kesempurnaan, mengajar dan menasehati murid-muridnya, padahal sejatinya orang tersebut belum menjalankan sendiri ilmu yang diajarkannya itu..."_ |
+| **Meneruskan Pepadang Tanpa Pamrih**: Mengajak sesama dan keluarga menempuh keutamaan dengan keteladanan dan tanpa paksaan. | **Sabda Khusus (SKH)** | *SKH Butir 87–89 & Butir 264* |
+
 ### Sabar — rincian per baris:
 - **53**: definisi + "sebaik-baiknya watak... berhati lapang, kuat menerima cobaan"
 - **54**: lautan pengetahuan, tidak bedakan emas & lempung, kawan & lawan
@@ -83,6 +95,14 @@ Semua merujuk ke `/home/satyaaditech/share/pangestu_studi/`.
 | Tafsir "Ilir-ilir": Dodot (hati), Blimbing (pembersih/watak utama), Jlumatana/Domana (iman kokoh) | `buku_tkl.txt` | 1049–1096 (Bab IV) |
 | Sila minangka kunci / Rahsa jati gapura Kamulyan | `buku_tkl.txt` | 927 / 1019 |
 | Kriteria Siswa Purnama (Dasa Patanya / 10 Tanya Jawab) | `buku_tkl.txt` | 1234–1255 (Bab V) |
+
+---
+
+## Referensi Tambahan & Pemaparan Tematik (Bukan Buku Utama)
+
+| Topik / Insight | Sumber / Narasumber | File Rujukan |
+|-----------------|---------------------|--------------|
+| **Novelty Budi Darma** (9 poin kebaruan: syarat sah panembah, darma tanpa batas harta, tanpa pamrih, skala prioritas, mendidik sejak dini) | Ibu Dewi Tristantini (Bawa Raos Purnama Sidi Ke-60, 28-08-2026) | `references/novelty-budi-darma.md` / Vault: `wiki/referensi_tambahan/novelty-budi-darma-dewi-tristantini.md` |
 
 ---
 
