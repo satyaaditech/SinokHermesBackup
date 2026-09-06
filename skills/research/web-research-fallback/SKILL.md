@@ -7,6 +7,7 @@ description: Curl research when search tools fail (Brave, detik).
 
 ## References & Tools
 - Referensi Pola Scraping Yahoo Search: [references/yahoo-search-scraping.md](references/yahoo-search-scraping.md)
+- Ekstraksi Blog / CMS Feed (Blogger & WordPress JSON API): [references/cms-feed-scraping.md](references/cms-feed-scraping.md)
 - Script Ekstraksi URL Standalone (zero-dependency / tanpa bs4): `scripts/extract_url_text.py <URL>`
 
 Pola riset web saat `web_search`/`web_extract` gagal (error API key, 401, dll) atau semua mesin pencari kena captcha. Teruji di sesi riset lokasi Solo (vlog & berita lokal).

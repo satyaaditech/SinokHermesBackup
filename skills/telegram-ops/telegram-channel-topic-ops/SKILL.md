@@ -24,14 +24,20 @@ Class-level skill for inspecting Telegram group/forum-topics and mapping them fo
 5. **General topic ≠ thread 1.** `sendMessage` dengan `message_thread_id=1` bisa gagal dengan "message thread not found" padahal itu #General. Kirim ke General dengan **tanpa** `message_thread_id` sama sekali. (Verified 2026-08-10: thread 1 ditolak, tanpa thread id sukses.)
 6. **Pin message workflow:** `sendMessage` → ambil `result.message_id` → `pinChatMessage` (chat_id + message_id). Ganti pin lama: `unpinChatMessage` dulu. Verifikasi via `getChat` → `result.pinned_message.message_id`.
 
-## Confirmed Topic Map (user-confirmed 2026-08-06)
+## Confirmed Topic Map (updated 2026-09-06)
 
 - **HERMES GROUP CHAT** (`-1003256146835`):
-  - thread `10` = **Urban Farming** (aktif, confirmed)
-  - thread `12` = **Mastering AI** (fokus diskusi AI, confirmed)
-  - thread `1014` = **💰 Rekap Pengeluaran** (input foto nota/teks → Google Sheets finance, dibuat 2026-08-10)
-  - thread `1096` = **🕊️ Pangestu** (proyek spiritual: ebook sumber renungan, renungan harian Daily Bread style, riset paguyuban; dibuat 2026-08-10)
-  - thread `1`, `44`, `433`, `14` = pernah aktif (nama belum dikonfirmasi)
+  - thread `1` = **General / Obrolan Utama**
+  - thread `10` = **🌱 Urban Farming & Tanaman Herbal**
+  - thread `12` = **🤖 Mastering AI & Tools**
+  - thread `14` = **💡 Brainstorming**
+  - thread `44` = **🚶♂️ Walking Vlog & Content Creator Storytelling**
+  - thread `433` = **🩺 Rekap Tensi Darah & Kesehatan** (Omron HEM-7120 → Sheets)
+  - thread `1014` = **💰 Rekap Pengeluaran & Finansial** (Nota/struk → Sheets)
+  - thread `1096` = **🕊️ Pangestu & Renungan Harian** (Piwulang SGS, Daily Bread)
+  - thread `3443` = **🏋️♂️ Gym & Workout Tracking** (Sel/Kam/Sab 05:00)
+  - thread `4038` = **🖥️ Server, Domain & Infrastruktur** (n8n, satyaaditech.web.id)
+  - thread `4305` = **💵 Bisnis & Monetisasi Digital** (Google AI / Blue Ocean dollar market)
 - **My Sinox Agents** (`-1003980421737`): thread `1`, `3`
 - **Satya AI Labs** (`-1003981550688`): thread `1`, `2`, `182`
 

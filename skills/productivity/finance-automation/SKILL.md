@@ -16,6 +16,7 @@ metadata:
 ## References
 - [Reconciling and Calculating Should-Be Balances](references/reconcile-balance-from-mutasi.md) - Workflow for calculating current balance based on sheets and bank statements.
 - [Bank Statement PDF Recap Workflow](references/bank-statement-pdf-recap.md) - Workflow for parsing bank mutasi PDFs, archiving to Drive, and generating formatted Google Sheets.
+- [Handwritten Daily Sales Ledger Recap](references/rekap-penjualan-toko-dari-catatan-tangan.md) - Workflow for extracting handwritten daily sales records from photos into structured Google Sheets.
 
 End-to-end automation for personal/professional bookkeeping: classify transactions using keyword-to-COA mapping, append to Google Sheets, and upload receipt images to matching Google Drive folders. Originally built for Indonesian accounting terminology.
 

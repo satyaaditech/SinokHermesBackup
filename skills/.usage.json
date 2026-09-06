@@ -289,14 +289,14 @@
     "archived_at": null,
     "created_at": "2026-05-24T02:53:01.310382+00:00",
     "created_by": "agent",
-    "last_patched_at": "2026-09-02T08:55:20.177600+00:00",
-    "last_used_at": "2026-09-02T08:55:26.728271+00:00",
-    "last_viewed_at": "2026-09-02T08:55:26.721125+00:00",
-    "patch_count": 37,
+    "last_patched_at": "2026-09-05T23:33:16.675644+00:00",
+    "last_used_at": "2026-09-05T23:33:09.994133+00:00",
+    "last_viewed_at": "2026-09-05T23:33:09.986634+00:00",
+    "patch_count": 40,
     "pinned": false,
     "state": "active",
-    "use_count": 58,
-    "view_count": 58
+    "use_count": 62,
+    "view_count": 62
   },
   "findmy": {
     "archived_at": null,
@@ -693,13 +693,13 @@
     "created_at": "2026-08-04T12:30:58.507376+00:00",
     "created_by": null,
     "last_patched_at": null,
-    "last_used_at": "2026-08-30T00:45:18.618062+00:00",
-    "last_viewed_at": "2026-08-30T00:45:18.610377+00:00",
+    "last_used_at": "2026-09-06T13:35:29.642934+00:00",
+    "last_viewed_at": "2026-09-06T13:35:29.633070+00:00",
     "patch_count": 0,
     "pinned": false,
     "state": "active",
-    "use_count": 4,
-    "view_count": 4
+    "use_count": 9,
+    "view_count": 9
   },
   "mac-hardware-troubleshooting": {
     "archived_at": null,
@@ -862,13 +862,13 @@
     "created_at": "2026-08-10T08:09:09.397020+00:00",
     "created_by": null,
     "last_patched_at": "2026-08-10T09:26:27.363543+00:00",
-    "last_used_at": "2026-09-05T09:58:06.526483+00:00",
-    "last_viewed_at": "2026-09-05T09:58:06.514442+00:00",
+    "last_used_at": "2026-09-06T13:15:33.029612+00:00",
+    "last_viewed_at": "2026-09-06T13:15:33.021113+00:00",
     "patch_count": 2,
     "pinned": false,
     "state": "active",
-    "use_count": 29,
-    "view_count": 29
+    "use_count": 31,
+    "view_count": 31
   },
   "pangestu-materi-khotbah": {
     "archived_at": null,
@@ -888,26 +888,26 @@
     "created_at": "2026-08-17T07:24:16.399816+00:00",
     "created_by": "agent",
     "last_patched_at": "2026-08-21T21:27:56.799497+00:00",
-    "last_used_at": "2026-09-05T09:58:09.316429+00:00",
-    "last_viewed_at": "2026-09-05T09:58:09.307791+00:00",
+    "last_used_at": "2026-09-06T13:15:50.786842+00:00",
+    "last_viewed_at": "2026-09-06T13:15:50.778609+00:00",
     "patch_count": 3,
     "pinned": false,
     "state": "active",
-    "use_count": 12,
-    "view_count": 12
+    "use_count": 13,
+    "view_count": 13
   },
   "pangestu-renungan-harian": {
     "archived_at": null,
     "created_at": "2026-08-10T13:25:27.614034+00:00",
     "created_by": "agent",
-    "last_patched_at": "2026-09-05T09:58:02.412425+00:00",
-    "last_used_at": "2026-09-05T09:57:57.868892+00:00",
-    "last_viewed_at": "2026-09-05T09:57:57.859396+00:00",
-    "patch_count": 202,
+    "last_patched_at": "2026-09-06T13:15:48.846672+00:00",
+    "last_used_at": "2026-09-06T13:15:45.773785+00:00",
+    "last_viewed_at": "2026-09-06T13:15:45.765995+00:00",
+    "patch_count": 203,
     "pinned": false,
     "state": "active",
-    "use_count": 361,
-    "view_count": 361
+    "use_count": 363,
+    "view_count": 363
   },
   "pdf": {
     "archived_at": null,
@@ -1096,13 +1096,13 @@
     "created_at": "2026-09-02T08:57:48.798430+00:00",
     "created_by": null,
     "last_patched_at": "2026-09-02T09:06:42.664918+00:00",
-    "last_used_at": "2026-09-05T01:27:10.020555+00:00",
-    "last_viewed_at": "2026-09-05T01:27:10.011933+00:00",
+    "last_used_at": "2026-09-05T23:33:05.570713+00:00",
+    "last_viewed_at": "2026-09-05T23:33:05.561310+00:00",
     "patch_count": 2,
     "pinned": false,
     "state": "active",
-    "use_count": 14,
-    "view_count": 14
+    "use_count": 15,
+    "view_count": 15
   },
   "requesting-code-review": {
     "archived_at": null,
@@ -1129,6 +1129,19 @@
     "state": "active",
     "use_count": 0,
     "view_count": 0
+  },
+  "research:web-research-fallback": {
+    "archived_at": null,
+    "created_at": "2026-09-06T13:29:19.412355+00:00",
+    "created_by": null,
+    "last_patched_at": null,
+    "last_used_at": "2026-09-06T13:29:19.421553+00:00",
+    "last_viewed_at": "2026-09-06T13:29:19.412391+00:00",
+    "patch_count": 0,
+    "pinned": false,
+    "state": "active",
+    "use_count": 1,
+    "view_count": 1
   },
   "riset-lokal-indonesia": {
     "archived_at": null,
@@ -1161,13 +1174,13 @@
     "created_at": "2026-05-26T00:44:54.717166+00:00",
     "created_by": null,
     "last_patched_at": null,
-    "last_used_at": "2026-08-06T07:10:16.735390+00:00",
-    "last_viewed_at": "2026-08-06T07:10:16.728088+00:00",
+    "last_used_at": "2026-09-06T13:35:31.702023+00:00",
+    "last_viewed_at": "2026-09-06T13:35:31.693964+00:00",
     "patch_count": 0,
     "pinned": false,
     "state": "active",
-    "use_count": 7,
-    "view_count": 7
+    "use_count": 8,
+    "view_count": 8
   },
   "self-hosted-memory-backends": {
     "archived_at": null,
@@ -1226,13 +1239,13 @@
     "created_at": "2026-05-29T11:57:57.663776+00:00",
     "created_by": null,
     "last_patched_at": "2026-05-29T11:58:37.992044+00:00",
-    "last_used_at": "2026-05-29T11:57:57.673426+00:00",
-    "last_viewed_at": "2026-05-29T11:57:57.663818+00:00",
+    "last_used_at": "2026-09-06T13:04:46.701877+00:00",
+    "last_viewed_at": "2026-09-06T13:04:46.689496+00:00",
     "patch_count": 3,
     "pinned": false,
     "state": "active",
-    "use_count": 1,
-    "view_count": 1
+    "use_count": 2,
+    "view_count": 2
   },
   "sketch": {
     "archived_at": null,
@@ -1356,26 +1369,26 @@
     "created_at": "2026-08-06T11:31:05.319676+00:00",
     "created_by": "agent",
     "last_patched_at": "2026-08-12T20:59:37.921868+00:00",
-    "last_used_at": "2026-09-01T07:07:17.174213+00:00",
-    "last_viewed_at": "2026-09-01T07:07:17.165170+00:00",
+    "last_used_at": "2026-09-06T13:20:16.900424+00:00",
+    "last_viewed_at": "2026-09-06T13:20:16.892721+00:00",
     "patch_count": 3,
     "pinned": false,
     "state": "active",
-    "use_count": 13,
-    "view_count": 13
+    "use_count": 14,
+    "view_count": 14
   },
   "telegram-channel-topic-ops": {
     "archived_at": null,
     "created_at": "2026-08-06T08:15:38.977189+00:00",
     "created_by": "agent",
-    "last_patched_at": "2026-08-10T07:17:27.527330+00:00",
-    "last_used_at": "2026-08-21T06:15:20.504579+00:00",
-    "last_viewed_at": "2026-08-21T06:15:20.497371+00:00",
-    "patch_count": 6,
+    "last_patched_at": "2026-09-06T13:21:02.103109+00:00",
+    "last_used_at": "2026-09-06T13:20:57.940332+00:00",
+    "last_viewed_at": "2026-09-06T13:20:57.930519+00:00",
+    "patch_count": 7,
     "pinned": false,
     "state": "active",
-    "use_count": 6,
-    "view_count": 6
+    "use_count": 8,
+    "view_count": 8
   },
   "telegram-formatting": {
     "archived_at": null,
@@ -1511,14 +1524,14 @@
     "archived_at": null,
     "created_at": "2026-08-06T07:11:59.673661+00:00",
     "created_by": "agent",
-    "last_patched_at": "2026-09-04T04:15:16.245420+00:00",
-    "last_used_at": "2026-09-04T04:15:10.531269+00:00",
-    "last_viewed_at": "2026-09-04T04:15:10.523705+00:00",
-    "patch_count": 13,
+    "last_patched_at": "2026-09-06T13:29:29.116626+00:00",
+    "last_used_at": "2026-09-06T13:35:36.196380+00:00",
+    "last_viewed_at": "2026-09-06T13:35:36.188243+00:00",
+    "patch_count": 15,
     "pinned": false,
     "state": "active",
-    "use_count": 29,
-    "view_count": 29
+    "use_count": 33,
+    "view_count": 33
   },
   "weights-and-biases": {
     "archived_at": null,
