@@ -22,6 +22,7 @@ long-form: structure, cross-refs, wow insights, applications.
   malam batin, remote reset, akuntansi batin).
 - **Purity of Pangestu canon**: NO external syncretic references (Dalai Lama, Taoism,
   Sufism, Zen rejected in past sessions). Internal cross-refs only.
+- **Kemurnian Kutipan Sabda / Serat (VERBATIM MUTLAK)**: Kutipan sabda/buku wajib 100% murni apa adanya dari teks sumber, dilarang keras menyisipkan pikiran, kata-kata buatan sendiri, atau kesimpulan pribadi ke dalam blok kutipan. Uraian dan pemahaman hanya boleh di bagian pembahasan.
 - **Teologi Hasta Sila & Undhuh-undhuhan**: Bila muncul pertanyaan atau topik seputar apakah laku Hasta Sila mempercepat undhuh-undhuhan baik, rujuk `references/hastasila_lan_undhuh_undhuhan.md` (BRSR XII: suwe lan gelising woh gumantung temening panggarap; Sasangka Jati: ganjaran gumantung; wajib tegaskan koridor anti-pamrih batin).
 - **Visual / Poster Inspiration Mapping**: Bila materi diinspirasi dari gambar/poster spiritual (misal bertajuk "Bawa Raos N" atau istilah Jawa):
   - Telusuri langsung ke bab terkait di BRSR (contoh: "Bawa Raos VII" = BRSR Bab VII: *Leburing Dosa Sarana Martobat ing Pangeran Kanthi Tinebus Pangorbanan Suci*).

@@ -22,6 +22,7 @@ Urutan: cek struktur dulu → cek konten → cek nada → cek aturan.
 ## 🟡 Konten (substansi — ini yang membedakan bagus/biasa)
 
 ### Sabda
+- [ ] **🔴 DILARANG KERAS MENYISIPKAN PIKIRAN SENDIRI DALAM KUTIPAN**: Kutipan Sabda/buku referensi wajib 100% murni verbatim apa adanya. Tidak boleh ada satu kata, frasa, sintesis kesimpulan, atau kalimat buatan sendiri yang disisipkan ke dalam blok kutipan/Sabda. Pemahaman, uraian, dan interpretasi HANYA boleh ditulis pada bagian URAIAN/PEMBAHASAN terpisah.
 - [ ] Quote spesifik ke tema, bukan generik menyebut tema sekilas
 - [ ] Jika tema narima, Sabda harus tentang narima — bukan "Panca Sila secara umum"
 - [ ] Ada quote pendukung di tengah uraian (cross-reference)

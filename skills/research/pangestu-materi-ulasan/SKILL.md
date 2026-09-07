@@ -7,6 +7,7 @@ description: Use when membuat materi ulasan/khotbah Pangestu (SSJ/SKH).
 
 ## Referensi & Sumber Kunci
 - **Korelasi NPD (Narcissistic Personality Disorder) dengan Ajaran SGS**: Lihat `references/npd_vs_sgs.md` berisi detail pemetaan kriteria klinis DSM-5 terhadap konsep *kumingsun* (*lager-zelf* / Pribadi Asor), *watak angen-angen*, spiritual narsisme (SKH Lin 977), serta formulasi terapinya (Panalangsa dan Andhap Asor).
+- **Sasangka Jati — Serat Panembah Bab 5 Key Insights**: Lihat `references/panembah_bab5_insights.md` berisi 5 insight mendalam (Eling tanpa ngeling-eling, Pasemon Sang Patih & 7 Kamar Batin, Kuwajiban Lair/Budi Darma minangka Panembah, Wewangian/Aromaterapi vs Sesaji, Sucining Ati vs Sucining Angen-angen).
 
 User (Pak Satya) mendapat tugas mengulas materi Pangestu (mis. Sasangka Jati Serat Panembah Bab 2/3) untuk presentasi 60–90 menit. Standar kualitas (permintaan user, 2026-08-17): deep insight, cross-reference menyambung, mengalir & bernyawa, kata-kata membumi, mudah dipahami, contoh sehari-hari, punya "wow effect" — insight baru yang tak terpikir orang biasa. Simpan di `~/share/materi_khotbah/`; folder Drive 'Materi Olahrasa' (ID 1Bh9ZIizra0I-3hmlqcHjhLJi3-eTAI4U) sebagai Google Doc bila diminta.
 

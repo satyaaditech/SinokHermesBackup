@@ -19,7 +19,8 @@ Class-level skill for inspecting Telegram group/forum-topics and mapping them fo
 
 1. **Bot API has NO forum-topic listing endpoint.** `getForumTopics?chat_id=X` returns HTTP 404. Topic NAMES are never exposed by the API.
 2. Topic membership is not per-topic — a bot that is a group member can receive from any topic where it's mentioned. Only *which topics have been used* is observable, via Hermes state.
-3. Hermes registers channels in `~/.hermes/channel_directory.json`, entries keyed `chat_id:thread_id` (e.g. `-1003256146835:44`). The directory can lag — the currently-active topic may not appear until a message round-trips.
+3. Hermes registers channels in `~/.hermes/channel_directory.json` under `platforms.telegram` (a list of dicts with `id`, `name`, `type`, `thread_id`, e.g. `{"id": "-1003256146835:44", "name": "...", "type": "group", "thread_id": "44"}`). The directory can lag — the currently-active topic may not appear until a message round-trips or is manually registered.
+4. **Create Forum Topic workflow:** Use Bot API `createForumTopic` endpoint (`chat_id`, `name`). On success (`result.message_thread_id`), append new entry to `channel_directory.json` under `platforms.telegram`, update topic map in memory, and send an initial message to the thread.
 4. Session titles are auto-generated summaries, NOT topic names. Always ask the user to confirm the real topic name, then save to memory.
 5. **General topic ≠ thread 1.** `sendMessage` dengan `message_thread_id=1` bisa gagal dengan "message thread not found" padahal itu #General. Kirim ke General dengan **tanpa** `message_thread_id` sama sekali. (Verified 2026-08-10: thread 1 ditolak, tanpa thread id sukses.)
 6. **Pin message workflow:** `sendMessage` → ambil `result.message_id` → `pinChatMessage` (chat_id + message_id). Ganti pin lama: `unpinChatMessage` dulu. Verifikasi via `getChat` → `result.pinned_message.message_id`.

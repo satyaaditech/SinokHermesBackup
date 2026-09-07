@@ -9,7 +9,40 @@ description: Produce Pangestu renungan harian for TG thread 1096. Agentic 3-role
 *   **Sang Guru Sejati (SGS)** punika ingkang kagungan piwulang utawi ajaran.
 *   **Pangestu** (Paguyuban Ngesti Tunggal) punika namung wadhah utawi organisasi para siswa ingkang nyinaoni piwulang.
 *   **Panyebutan ingkang Leres**: Wajib ngginakaken tembung **"piwulang Sang Guru Sejati"** utawi **"ajaran Sang Guru Sejati"**. Boten pareng babar pisan nyebataken **"piwulang Pangestu"** utawi **"ajaran Pangestu"**.
+*   **Kemurnian Kutipan Sabda / Referensi (VERBATIM MUTLAK)**: DILARANG KERAS menyisipkan pikiran, kata-kata buatan sendiri, kesimpulan cipta, atau parafrase ke dalam blok kutipan Sabda/buku. Kutipan wajib 100% murni apa adanya persis dari teks sumber. Uraian, pemahaman, dan kontekstualisasi HANYA boleh ditempatkan di bagian pembahasan/uraian terpisah.
 *   **Penyalinan ke Vault Obsidian (exFAT)**: Hindari `shutil.copy2()` karena memicu EPERM pada exFAT; gunakan `shutil.copyfile()` atau I/O langsung. Lihat `references/google-docs-and-tts-workflow.md`.
+*   **Web Library & GitHub Pages (`kontemplasi.satyaaditech.web.id`)**: Setiap selesai menerbitkan/memperbarui renungan baru di `~/share/renungan/`, WAJIB menyalin berkas ke `/home/satyaaditech/kontemplasi/renungan/` dan menjalankan script sinkronisasi ke GitHub: `/home/satyaaditech/kontemplasi/sync_to_github.sh` agar otomatis terindeks dan live di `https://kontemplasi.satyaaditech.web.id/`.
+*   **Wajib Footer Link Web Container**: Pada bagian paling akhir dari setiap naskah renungan harian (setelah doa penutup dan sebelum/sekitar GDoc link), WAJIB menyertakan baris teks berikut:
+    `Untuk kumpulan kontemplasi lainnya bisa diakses di https://kontemplasi.satyaaditech.web.id`
+    *   **Standar UI/UX Web Pustaka & Admin Portal**:
+        1. **Default Theme**: Light mode (latar terang, teks kontras tinggi).
+        2. **4 Kategori Konten**: 🌅 Renungan Harian, ✍️ Esai Kontemplasi, 👥 Reader’s Voice, 📜 Ulasan Serat.
+        3. **Admin Portal (Tailscale Port 8088)**: Akses via `http://100.92.237.45:8088` (tanpa PIN/login popup, aman via Tailscale, jangan ekspos sandi/PIN di repositori publik/README).
+        4. **Fitur Pengurutan (Sorting)**: Default tanggal terbaru ke lama (`date` desc), sortable di semua kolom.
+        5. **Detail Arsitektur**: Lihat `references/web-portal-and-admin-architecture.md`.cerah/bersih untuk kenyamanan membaca).
+        2. **Deduplikasi Cerdas**: Satu kartu per materi (menggabungkan versi Indonesia, Jawa, dan English dalam tab bahasa pada reader modal).
+        3. **4 Seksi Konten**:
+           - 🌅 `renungan-harian` (Renungan Harian: Sabda murni, Uraian, Praktik, Aplikasi).
+           - ✍️ `esai-kontemplasi` (Esai Kontemplasi: panyuraos panjang & kajian batin).
+           - 👥 `readers-voice` (Reader’s Voice: refleksi & paseksen kintunan pamaos).
+           - 📜 `ulasan-serat` (Ulasan Serat: kajian teks serat piwulang).
+        4. **Alur Kurasi Mandiri & Status Konten**:
+           - Status: `published` (tampil ing web publik), `draft` (draf kurasi), `unpublished` (arsip).
+           - Sedaya seratan/kintunan pamaos kasimpen minangka `draft` rumiyin kagem dipun-kurasi piyambak dening Pak Satya wonten ing Dashboard Admin.
+        5. **Admin Portal (Port 8088)**:
+           - **Akses**: `http://100.92.237.45:8088` (Tailscale saja pada dokumentasi/README publik; jangan pernah menuliskan PIN/password secara terbuka).
+           - **Fitur Sorting**: Baku urut tanggal terbaru ke lama, dapat di-sort untuk semua kolom (Status, Kategori, Tanggal, Judul/Penulis, Bahasa, Media, GDoc).
+           - **Fitur Live Editor**: Category/Author metadata management, Media Upload, dan 1-Click Sync ke GitHub.
+        6. **Strict Poster Matching**: Poster/infografis hanya dipasang jika file poster asli tersedia (misal: `poster-*.jpg`, `infografis-*.png`) dan cocok dengan materi/tanggal. Jangan pernah mencocokkan cover audio generik (`cover-*.png`). Pastikan masuk mapping `explicit_posters` di `build_pustaka.py`.
+           - **Status Konten**: `status: published` (tampil di web publik), `status: draft` (hanya di admin), `status: unpublished` (arsip/disembunyikan). Generator `build_pustaka.py` otomatis memfilter hanya materi yang berstatus `published`.
+           - **Keamanan**: JANGAN PERNAH mencantumkan PIN/password di file publik seperti `README.md` atau repository publik. URL Tailscale saja yang boleh ditulis di README.
+           - **Fitur Admin**: Live Editor, Upload Media, Status Changer, Sorting Kolom interaktif (default: tanggal terbaru ke lama), dan 1-Click Sync ke GitHub (`sync_to_github.sh`).
+        4. **Pembersihan Markdown Card**: Bebas 100% dari karakter `*`, `#`, `_`, `~`, backtick di judul, tanggal, kutipan, dan tags.
+        5. **Integrasi Poster Ketat**: Hanya sematkan poster infografis asli beresolusi tinggi (dengan lightbox zoom); jangan gunakan thumbnail cover audio (`cover-*.png`).
+        6. **Admin Portal (`kontemplasi-admin.service` di port 8088 / Tailscale 8088, PIN: 1949)**:
+            * Status Publikasi: `published` (live di web umum), `draft` (hanya di admin), `unpublished` (arsip). Status disimpan di frontmatter `status: ...`.
+            * Fitur Admin: Live Markdown & HTML Preview, Drag & Drop Upload Media, dan 1-Click Live Deploy (`🚀 Terbitkan ke Website`). Lihat panduan detail di `references/web-library-kontemplasi.md`.
+*   **Poster Infografis**: Bila ada berkas gambar poster/infografis (`poster-*.jpg`, `infografis-*.png`, `cover-*.png`), simpan di `~/share/renungan/` dengan nama bertanggal/bertopik; web library akan otomatis menampilkannya secara seamless dengan fitur Lightbox Zoom.
 *   **Kanonisitas & Singkatan Serat Utama**: Serat-serat baku utami inggih punika: SSJ (*Sasangka Jati*), SKH (*Sabda Khusus*), BRSR (*Bawa Raos ing Salebeting Raos*), TKL (**Taman Kamulyan Langgeng** — *AJA NGANTI klentu dipun-sebat 'Tutur Kelem'*), WSJ (*Wahyu Sasangka Jati*), UUJM (*Ular-Ular Juru Mengeti*), ASBS (*Arsip Sarjana Budi Santosa*), UKK (*Ulasan Kang Kelana*).
 *   **Pemisahan Sumber Utama vs Referensi Tambahan**: Materi saking seminar, YouTube (umpaminipun kanal *Bowo Raos* / pemaparan narasumber kados ta Ibu Dewi Tristantini ngenani *Novelty Budi Darma*), utawi cathetan diskusi kedah dipun-kategoriaken minangka **referensi tambahan / kontekstualisasi tematik** wonten ing `wiki/referensi_tambahan/` utawi `references/`, boten kenging dipun-campuraken utawi dipun-anggep minangka serat utama (*buku kanonik*).
 

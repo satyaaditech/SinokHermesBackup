@@ -50,6 +50,8 @@ Kamardikan lair punika uwal saking cengkeraman penjajah, nanging kamardikan bati
 
 🙏 Mugi kita sedaya tansah pinaringan Tuntunan lan Pengayoman, Sih saking Sang Guru Sejati. Satuhu. 🙏
 
+Untuk kumpulan kontemplasi lainnya bisa diakses di https://kontemplasi.satyaaditech.web.id
+
 Google Doc: https://docs.google.com/document/d/16pVGPrngvZYS-PL-cdMYeULtJvC49fi75hxltmmUA4k/edit
 ```
 
@@ -66,7 +68,9 @@ Google Doc: https://docs.google.com/document/d/16pVGPrngvZYS-PL-cdMYeULtJvC49fi7
 9. **RENUNGAN**: `🎯 *RENUNGAN* :` — ringkesan siji ukara ingkang mbekta.
 10. **PITAKENAN PANYURAOS**: `📝 *PITAKENAN PANYURAOS* :` — 3 pitakenan angka (bisa mawi emotikon).
 11. **Panutup**: `🙏 Mugi kita sedaya tansah pinaringan Tuntunan lan Pengayoman, Sih saking Sang Guru Sejati. Satuhu. 🙏`
-12. **Link**: `Google Doc: <url>` ing pungkasan.
+12. **Web Container Link (Wajib)**: `Untuk kumpulan kontemplasi lainnya bisa diakses di https://kontemplasi.satyaaditech.web.id`
+13. **Google Doc Link**: Link dokumen asli.
+14. **Auto-upload / Sync ke GitHub**: Saben mari damel renungan harian, simpen berkas ing `/home/satyaaditech/kontemplasi/renungan/` sarta tindakaken `/home/satyaaditech/kontemplasi/sync_to_github.sh` supados otomatis kaunggah ing GitHub Pages container.
 
 ## Cathetan Kualitas
 
