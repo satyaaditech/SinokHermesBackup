@@ -14,11 +14,9 @@ Kesiswaan: BRSR, TKL, UUJM.
 §
 Infografis/e-card: latar terang, teks/bingkai hitam/biru tua (no gold), Kawung min, header 'RENUNGAN PENYISWAAN' (no 'Pangestu'), judul raksasa cetha ing HP. Teks jangkep/hibrida, dudu template kosong.
 §
-Audio: kirim berkas fisik ke TG chat (sendVoice/sendAudio bot API), no teks MEDIA:/link.
+Audio: fisik TG. Renungan: Gemini TTS (Sabda Jawa=Charon, Uraian Indo/Eng=Aoede). Video: hard-sub -> YT @siswatalkstv.
 §
 Google Doc: format asli docs, tanpa markdown (*, **, ###).
-§
-Sinox nyuwun pirsa dhateng Pak Satya. Pak Satya mundhut pirsa dhateng Sinox.
 §
 Tensi format: Sugeng [enjang/siang/sonten/dalu], Pak Satya. Sistolik X, Diastolik X, Nadi X, Tanggal X, Wanci X WIB. Matur nuwun.
 §

@@ -7,6 +7,11 @@ category: creative
 
 Use this skill when you need to draw custom multi-step diagrams, posture sketches (e.g., stick figures for physical movements), or structural annotations, and standard text art or general generative models are not suitable or available.
 
+## Scope & Boundaries (When NOT to use Pillow)
+* **DO NOT use Pillow for Fine-Art or Pictorial Illustrations**: Never use Pillow polygons/lines to draw artistic posters, surrealist conceptual art, realistic human drapery, or painterly scenes. The resulting 2D vector primitives look rudimentary and clunky compared to modern diffusion models.
+* **When to use Pillow**: Strictly for structured schematic infographics, posture/biomechanical stick diagrams (e.g., gym movement guides), annotated flowcharts, and geometric card layouts.
+* **Alternative for Art / Poster Requests**: When asked for artistic illustrations or posters and no native image generation tool is hooked into the pipeline, provide comprehensive, tailored **AI Image Prompts** (optimized for Google Gemini Imagen 3, Midjourney, or Flux) with exact aspect ratios, lighting, composition, and typography zones.
+
 ## Workflow
 
 1. **Grid & Palette Planning**:
@@ -30,6 +35,11 @@ Use this skill when you need to draw custom multi-step diagrams, posture sketche
    - Never hardcode text Y-positions close to maximum limb extension points.
    - Align footer step labels (e.g., "1. Mapan", "2. Nyurung" in Javanese) to a single fixed bottom Y-line (e.g., `panel_y_start + panel_h - 45`).
    - Draw horizontal rule dividers at the top of panels to clearly separate structural headers from drawing spaces.
+
+3. **Typography & Dual/Split Background Contrast**:
+   - **Contrast Preservation**: Never span continuous single-color text across a split-tone or multi-colored background (e.g., dark side + light side), as text contrast will fail on one half.
+   - **Framed Art Window Pattern**: Place split-tone or complex textured illustrations inside a dedicated framed inner canvas (`art.paste(...)`), leaving the header and footer margins on a clean, solid, high-contrast canvas ground (`#F8F4EE` or `#FFFFFF`).
+   - **Text Overlay Alternative**: If text must sit directly on variable artwork, render it over a subtle backdrop container / pill, or use dual-color synchronized text.
 
 4. **Closed-Loop Verification**:
    - Write the script, execute it to output the image (e.g., versioned file suffix `_v1.png`).

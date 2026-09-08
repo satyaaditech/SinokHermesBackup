@@ -12,7 +12,36 @@ description: Produce Pangestu renungan harian for TG thread 1096. Agentic 3-role
 *   **Kemurnian Kutipan Sabda / Referensi (VERBATIM MUTLAK)**: DILARANG KERAS menyisipkan pikiran, kata-kata buatan sendiri, kesimpulan cipta, atau parafrase ke dalam blok kutipan Sabda/buku. Kutipan wajib 100% murni apa adanya persis dari teks sumber. Uraian, pemahaman, dan kontekstualisasi HANYA boleh ditempatkan di bagian pembahasan/uraian terpisah.
 *   **Penyalinan ke Vault Obsidian (exFAT)**: Hindari `shutil.copy2()` karena memicu EPERM pada exFAT; gunakan `shutil.copyfile()` atau I/O langsung. Lihat `references/google-docs-and-tts-workflow.md`.
 *   **Web Library & GitHub Pages (`kontemplasi.satyaaditech.web.id`)**: Setiap selesai menerbitkan/memperbarui renungan baru di `~/share/renungan/`, WAJIB menyalin berkas ke `/home/satyaaditech/kontemplasi/renungan/` dan menjalankan script sinkronisasi ke GitHub: `/home/satyaaditech/kontemplasi/sync_to_github.sh` agar otomatis terindeks dan live di `https://kontemplasi.satyaaditech.web.id/`.
-*   **Wajib Footer Link Web Container**: Pada bagian paling akhir dari setiap naskah renungan harian (setelah doa penutup dan sebelum/sekitar GDoc link), WAJIB menyertakan baris teks berikut:
+*   **Master Google Sheet Rekap Renungan**: `1QuTSjBV-iOckaIoSu07wQa0LcnbgdR97mxAqOloIEb0` (https://docs.google.com/spreadsheets/d/1QuTSjBV-iOckaIoSu07wQa0LcnbgdR97mxAqOloIEb0/edit). Setiap selesai produksi, otomatis append baris rekap aset lengkap. Lihat panduan lengkap di `references/master-sheet-and-video-standards.md`.
+*   **Poster & Visual Prompting (Google Gemini Imagen 3)**: Untuk merancang prompt gambar poster renungan portrait 9:16 bagi Google Gemini / Antigravity, ikuti panduan dan 3 arketipe visual di `references/gemini-imagen-prompts-guide.md`.
+*   **Workflow Produksi 2 Tahap (SOP Wajib)**:
+    1. **Tahap 1 (Naskah Teks)**: Buat naskah teks lengkap siap salin ke WhatsApp dalam format code block ```text terpisah untuk masing-masing bahasa (Jawa, Indonesia, English), dengan tautan Google Doc, web Pustaka Kontemplasi, dan tautan YouTube. TUNGGU kurasi & persetujuan (ACC) dari Pak Satya terlebih dahulu. Jangan langsung membuat audio/video sebelum naskah di-ACC.
+    2. **Struktur Wajib Code Block Tiap Bahasa**:
+       - **Header**: Tanggal tebal, `*RENUNGAN PENYISWAAN*`, Judul tematik dengan 8-14 emojis.
+       - **Baris Persis di Bawah Judul**: `📺 Video YouTube : https://youtu.be/...` (wajib tautan video YouTube yang SESUAI dengan bahasa naskah: video Bahasa Indonesia untuk naskah Indonesia, video Bahasa Inggris untuk naskah English).
+       - **Body**: Salam, `*📖 SABDA HARI INI :*` (atau PETHIKAN DINTEN PUNIKA / DAILY SCRIPTURE), `💭 *URAIAN :*` (atau EXPOSITION), `🧘 *PRAKTIK :*` (atau DAILY PRACTICE), `🎯 *RENUNGAN :*` (atau REFLECTION), `📝 *APLIKASI :*` (atau APPLICATION), dan Penutup `Satuhu. 🙏`.
+       - **Footer**: Tautan Pustaka Digital & Dokumen (`• 📺 Video YouTube: ...`, `• 📄 Google Doc: ...`, `• 🌐 Pustaka Web Kontemplasi: ...`), serta baris penutup `📖 Waos naskah jangkep wonten ing Pustaka Kontemplasi: https://kontemplasi.satyaaditech.web.id/#<slug>`.
+    3. **Tahap 2 (Audiovisual YouTube Sesuai Bahasa - HANYA setelah ACC)**:
+       - Video Bahasa Indonesia: Charon (Sabda Jawa) + Aoede (Narasi Indonesia) + Subtitle Indonesia -> Upload YouTube -> Link video Indonesia.
+       - Video English: Charon (Sabda Jawa) + Aoede (Narasi English) + Subtitle English -> Upload YouTube -> Link video English.
+       - Tautan YouTube di masing-masing naskah WAJIB terpisah dan merujuk ke video bahasa yang sesuai (DILARANG mencampur link video Indonesia ke naskah English).
+    4. **Pantangan E-Card (TIDAK PERLU DIBUAT)**: DILARANG membuat atau melampirkan berkas e-card PNG. Pak Satya akan menggantinya secara mandiri dengan poster infografis khusus.
+    5. **Standar Subtitle & Video Hard-Sub Estetik**:
+       - Posisi subtitle wajib di bagian bawah layar (`Alignment: 2` / bottom-center) dengan margin vertikal (`MarginV: 80 - 120`).
+       - DILARANG meletakkan subtitle di tengah layar (`Alignment: 5`) yang bertabrakan dengan judul/badge header.
+       - DILARANG menggunakan karakter emoji Unicode mentah di dalam naskah file `.ass` karena font sistem FFmpeg tidak mendukungnya dan merender kotak karakter rusak (`⧠`). Gunakan label teks bersih seperti `[SABDA JAWI]`, `[URAIAN & REFLEKSI]`, `[PRAKTIK HARIAN]`.
+       - Detail spesifikasi style `.ass` dan format WhatsApp dapat dilihat di `references/video-subtitle-and-formatting-spec.md`.
+    6. **Pantangan Suara Robot / Synthetic TTS**: DILARANG KERAS menggunakan / beralih (fallback) ke suara TTS sintetis/robotik (seperti Edge-TTS, eSpeak, Windows TTS). Pak Satya mewajibkan suara ekspresif & alami Gemini 2.5 Audio Engine (Charon & Aoede). Jika kuota Gemini API terkena limit/429 (Free Tier maks 10 req/hari), sampaikan secara jujur kendala kuota kepada Pak Satya, JANGAN diam-diam mengganti dengan TTS robotik.
+    7. **Efisiensi Kuota Gemini TTS (Maks 2 Request API)**: Untuk menghemat kuota, bagi pembacaan naskah hanya ke dalam 2 panggilan API: (a) Panggilan 1 kagem Charon (Sabda Suci Basa Jawa), (b) Panggilan 2 kagem Aoede (Pambuka, Uraian, Praktik, Renungan, Panutup).
+*   **Wajib Footer Link Web Container & Deep-Linking**: Pada bagian paling akhir dari renungan (setelah link Google Doc), WAJIB menyertakan footer link menuju wadah baca web:
+    `🌐 *Waos wonten ing Web Pustaka*: https://kontemplasi.satyaaditech.web.id/#<group_id>` (contoh: `#2026-09-07_mengampuni`). Link deep-link hash ini langsung membuka jendela baca (modal reader) artikel yang bersangkutan secara otomatis.
+*   **Arsitektur Audiovisual & Audio 2-Karakter (YouTube & Lansia)**:
+    - Target: Memudahkan sesepuh/lansia yang kesulitan membaca teks agar bisa mendengarkan renungan via YouTube dengan teks terpasang (*hardcoded subtitles* ukuran besar kontras).
+    - Audio Voice Engine: Menggunakan Gemini AI Native Audio (ekspresif & bernyawa, BUKAN TTS robotik/flat).
+    - Model 2 Karakter:
+      1. Karakter 1 (Basa Jawi medhok, wibawa, tenang) untuk membaca Pethikan Sabda Suci.
+      2. Karakter 2 (Basa Indonesia hangat, reflektif, komunikatif) untuk membaca Andharan & Praktik.
+      3. Jeda hening (*gentle pause*) 1.5 - 2 detik antara Sabda dan Andharan.ri setiap naskah renungan harian (setelah doa penutup dan sebelum/sekitar GDoc link), WAJIB menyertakan baris teks berikut:
     `Untuk kumpulan kontemplasi lainnya bisa diakses di https://kontemplasi.satyaaditech.web.id`
     *   **Standar UI/UX Web Pustaka & Admin Portal**:
         1. **Default Theme**: Light mode (latar terang, teks kontras tinggi).
