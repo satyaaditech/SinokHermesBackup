@@ -14,7 +14,7 @@ Kesiswaan: BRSR, TKL, UUJM.
 §
 Infografis/e-card: latar terang, teks/bingkai hitam/biru tua (no gold), Kawung min, header 'RENUNGAN PENYISWAAN' (no 'Pangestu'), judul raksasa cetha ing HP. Teks jangkep/hibrida, dudu template kosong.
 §
-Audio: fisik TG. Renungan: Gemini TTS (Sabda Jawa=Charon, Uraian Indo/Eng=Aoede). Video: hard-sub -> YT @siswatalkstv.
+Audio: fisik TG. Renungan: Gemini TTS (Sabda Jawa=Charon, Uraian Indo/Eng=Aoede). Video: hard-sub -> YT @siswatalkstv (public).
 §
 Google Doc: format asli docs, tanpa markdown (*, **, ###).
 §

@@ -4,22 +4,29 @@ Referensi ini mendokumentasikan tata cara otomatisasi penyimpanan renungan haria
 
 ---
 
-## 1. Alur Google Drive & Google Doc (Penyimpanan Rapi)
+## 1. Alur Google Drive & Google Doc (Penyimpanan Rapi & Tipografi Profesional)
 
 Setiap kali renungan dibentuk, selain disimpan di server lokal, berkas harus diunggah juga ke Google Drive di folder **"Renungan Harian"** (Folder ID: `1Ei8R28btJH6rjCC1lKrfkaCC-KxmKeNW`).
 
-### Format Konversi Terformat Cantik
-Agar format Markdown (seperti bold dan italic) terbaca rapi di Google Doc saat diunggah, gunakan alur konversi melalui HTML:
-1. Ganti karakter format WhatsApp bold (`*teks*`) menjadi standard markdown bold (`**teks**`).
-2. Konversi teks markdown tersebut menjadi HTML dengan parser.
-3. Bungkus HTML dalam tag dasar HTML lengkap dengan CSS global (font Arial, 11pt, line-height 1.6, marjin paragraf rapi).
-4. Unggah dengan Drive API `files().create()`:
-   - File lokal dibaca sebagai `mimeType: "text/html"`.
-   - Target berkas di Drive diset ke `mimeType: "application/vnd.google-apps.document"` agar terkonversi otomatis menjadi Google Doc.
-
-### Pengaturan Izin Akses (Akses Publik Terbatas)
-- `role`: `'reader'`
-- `type`: `'anyone'`
+### Standar Tipografi Profesional & Integrasi Poster
+Google Doc renungan WAJIB diformat dengan tata letak profesional (bukan plain text mentah):
+1. **Tipografi & Font**: Menggunakan font **Georgia** (serif yang anggun dan mudah dibaca).
+2. **Hierarki Judul**:
+   - Tanggal: Center, 10pt, Bold, Gray (`#718096`).
+   - Kategori ("RENUNGAN PENYISWAAN"): Center, 12pt, Bold, Navy (`#0D3B66`).
+   - Judul Utama: Center, 18pt, Bold, Navy (`#0D3B66`).
+   - Tautan YouTube Video: Center, 10.5pt, Bold Blue (`#2B6CB0`).
+3. **Pemasangan Poster Infografis (Inline Image)**:
+   - Jika tersedia berkas poster infografis yang sesuai, pasang gambar poster **langsung di dalam Google Doc** tepat setelah Judul / Link Video sebelum naskah Uraian dimulai.
+   - Gunakan `insertInlineImage` via Google Docs API dengan URI web publik (`https://kontemplasi.satyaaditech.web.id/renungan/poster-*.png`) dan lebar `460pt`.
+4. **Pethikan Sabda & Kutipan**:
+   - Format *Italic*, 10.5pt, warna `#2D3748`, dengan indentasi kiri-kanan 24pt (`indentStart: 24`, `indentEnd: 24`) dan spasi baris 1.25x.
+5. **Uraian & Paragraf**:
+   - Regular, 11pt, warna `#2D3748`, line spacing 1.35x, spasi bawah 8pt.
+6. **Praktik & Aplikasi**:
+   - Poin bernomor dengan indentasi rapi (`indentStart: 20`).
+7. **Pengaturan Izin Akses**:
+   - `role`: `'reader'`, `type`: `'anyone'`.
 
 ---
 
@@ -122,6 +129,48 @@ async def generate_edge_tts(text, voice, out_mp3, rate="-4%", pitch="+0Hz"):
    ffprobe -v error -show_entries format=duration -of default=noprint_wrappers=1:nokey=1 output_video.mp4
    ```
 
+---
+
+## 4. Master Google Sheet Backup & Asset Catalog
+
+Setiap selesai siklus produksi naskah, audio, dan video, tambahkan baris data ke **Master Google Spreadsheet Rekap Renungan**:
+- **Spreadsheet ID**: `1QuTSjBV-iOckaIoSu07wQa0LcnbgdR97mxAqOloIEb0`
+- **URL**: `https://docs.google.com/spreadsheets/d/1QuTSjBV-iOckaIoSu07wQa0LcnbgdR97mxAqOloIEb0/edit`
+- **Tab**: `Rekap Renungan`
+
+### Skema Baris Rekap (12 Kolom):
+1. `No` (Integer berurutan)
+2. `Tanggal` (`YYYY-MM-DD`)
+3. `Hari & Pasaran` (misal `Selasa Pon`)
+4. `Bahasa` (`Indonesia` / `English` / `Jawa`)
+5. `Judul Tematik` (Judul renungan lengkap)
+6. `Sumber Kitab & Bab` (misal `BRSR Bab XXVII`)
+7. `Pethikan Sabda Suci` (Kutipan verbatim Sabda)
+8. `Link Google Doc` (URL Google Doc)
+9. `Link YouTube Video` (URL `https://youtu.be/...` sesuai bahasa)
+10. `Link Web Kontemplasi` (Deep-link web)
+11. `Link Audio / Media` (URL share server / Drive)
+12. `Status` (`Published` / `ACC` / `Draft`)
+
+### Script Python Append Data:
+```python
+import subprocess, json
+
+sheet_id = "1QuTSjBV-iOckaIoSu07wQa0LcnbgdR97mxAqOloIEb0"
+row_data = [
+    new_no, "2026-09-08", "Selasa Pon", "Indonesia",
+    "JUDUL RENUNGAN", "SUMBER KITAB", "PETHIKAN SABDA",
+    doc_url, yt_url, web_url, audio_url, "Published"
+]
+
+cmd = [
+    "python3", "/home/satyaaditech/.hermes/skills/productivity/google-workspace/scripts/google_api.py",
+    "sheets", "append", sheet_id, "'Rekap Renungan'!A:L",
+    "--values", json.dumps([row_data])
+]
+subprocess.run(cmd, check=True)
+```
+
 ### 4. Routing Video YouTube Multibahasa:
 - **Naskah Indonesia**: Wajib ditautkan ke video YouTube Bahasa Indonesia (Charon + Aoede ID + Subtitle ID).
 - **Naskah English**: Wajib ditautkan ke video YouTube English terpisah (Charon + Aoede/Jenny EN + Subtitle EN).
@@ -140,6 +189,6 @@ async def generate_edge_tts(text, voice, out_mp3, rate="-4%", pitch="+0Hz"):
     --file /path/to/renungan_video.mp4 \
     --title "🌊 JUDUL RENUNGAN 🕊️" \
     --desc "Pethikan Sabda Suci saking Serat Sasangka Jati...\n\nWaos naskah jangkep: https://kontemplasi.satyaaditech.web.id/#..." \
-    --privacy unlisted
+    --privacy public
   ```
 - **Shareable Link**: Script mengembalikan link pendek `https://youtu.be/<VIDEO_ID>` yang langsung disisipkan ke pesan WhatsApp / Telegram dan web portal.

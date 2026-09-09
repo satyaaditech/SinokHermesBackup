@@ -7,7 +7,8 @@ Dokumen ini berisi panduan dan arketipe prompt visual untuk menghasilkan poster 
 ## 1. Prinsip Utama Prompting Imagen 3 untuk Renungan
 
 1. **Rasio Aspek**: Wajib mencantumkan orientasi portrait vertikal `(9:16 portrait orientation)` atau `--ar 9:16` agar pas untuk tampilan HP / status / e-poster.
-2. **Komposisi & Ruang Teks (Safe Zones)**:
+2. **Infografis Utuh (Bukan Sekadar Background)**: Jika diminta poster infografis nilai/esensi renungan, prompt HARUS menyertakan teks judul ("RENUNGAN PENYISWAAN"), 3–4 kartu persegi panjang terstruktur berisi nilai-nilai esensi, serta footer laku batin langsung di dalam prompt, memanfaatkan kemampuan text rendering Imagen 3.
+3. **Komposisi & Ruang Teks (Safe Zones)**:
    - Tentukan `ultra-clean negative space at top and bottom` agar bagian atas dan bawah gambar dapat disisipkan teks judul Sabda dan refleksi tanpa menabrak detail visual utama.
 3. **Pencahayaan & Suasana (Atmosphere)**:
    - Gunakan pencahayaan hangat dan menenangkan: `natural warm directional sunlight`, `golden dawn light`, `soft ambient mist`.

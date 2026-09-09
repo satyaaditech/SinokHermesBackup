@@ -15,7 +15,7 @@ routing (and Honcho, renungan, etc.). Answers: "what model am I actually on",
 - **Multi-Account Failover & Load Balancing**: `references/multi-account-failover.md` — details how sibling provider connections backup/failover via LRU/LKGP.
 - **Image Generation Guide**: `references/image-generation.md` — details `/v1/images/generations` and model/provider mapping.
 - **Mixture of Agents Guide**: `references/mixture-of-agents.md` — details MoA presets, Reference Models, and Aggregator settings in the dashboard.
-- **Quota Monitoring**: `references/quota-monitoring.md` (and `scripts/track_quota_telegram.py`) — details how to query, format, and check remaining quotas for proxy providers like Antigravity.
+- **Quota Monitoring**: `references/quota-monitoring.md` (and `scripts/track_quota_telegram.py`) — details how to query, format, and check remaining quotas for proxy providers like Antigravity. **CRITICAL RULE**: When asked for quota (e.g. 'status quota antigravity'), ALWAYS run `python3 /home/satyaaditech/.hermes/skills/hermes-administration/omniroute-gateway/scripts/track_quota_telegram.py` and present the exact visual progress bar format inside monospace code blocks (`██████████ 96%`), never raw unformatted markdown tables.
 - **Gemini Context Caching & Quota**: `references/gemini-caching.md` — details Gemini context caching setup via Google AI Studio and Vertex API requirements.
 - **Troubleshooting Broken Combos**: `references/troubleshooting-combos.md` — exact workflow to fix chat errors when upstream models are deleted, and headless enumeration of SQLite combos/API models.
 

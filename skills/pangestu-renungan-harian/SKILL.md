@@ -13,19 +13,46 @@ description: Produce Pangestu renungan harian for TG thread 1096. Agentic 3-role
 *   **Penyalinan ke Vault Obsidian (exFAT)**: Hindari `shutil.copy2()` karena memicu EPERM pada exFAT; gunakan `shutil.copyfile()` atau I/O langsung. Lihat `references/google-docs-and-tts-workflow.md`.
 *   **Web Library & GitHub Pages (`kontemplasi.satyaaditech.web.id`)**: Setiap selesai menerbitkan/memperbarui renungan baru di `~/share/renungan/`, WAJIB menyalin berkas ke `/home/satyaaditech/kontemplasi/renungan/` dan menjalankan script sinkronisasi ke GitHub: `/home/satyaaditech/kontemplasi/sync_to_github.sh` agar otomatis terindeks dan live di `https://kontemplasi.satyaaditech.web.id/`.
 *   **Master Google Sheet Rekap Renungan**: `1QuTSjBV-iOckaIoSu07wQa0LcnbgdR97mxAqOloIEb0` (https://docs.google.com/spreadsheets/d/1QuTSjBV-iOckaIoSu07wQa0LcnbgdR97mxAqOloIEb0/edit). Setiap selesai produksi, otomatis append baris rekap aset lengkap. Lihat panduan lengkap di `references/master-sheet-and-video-standards.md`.
+*   **SOP Alur Produksi 6 Langkah & Human Creative Guide**: Panduan lengkap alur kerja 6 langkah dan standar penulisan *Human Creative* (analogi nyata, storytelling, anti-AI slop) tersedia di `references/sop-alur-produksi-6-langkah.md`.
 *   **Poster & Visual Prompting (Google Gemini Imagen 3)**: Untuk merancang prompt gambar poster renungan portrait 9:16 bagi Google Gemini / Antigravity, ikuti panduan dan 3 arketipe visual di `references/gemini-imagen-prompts-guide.md`.
-*   **Workflow Produksi 2 Tahap (SOP Wajib)**:
-    1. **Tahap 1 (Naskah Teks)**: Buat naskah teks lengkap siap salin ke WhatsApp dalam format code block ```text terpisah untuk masing-masing bahasa (Jawa, Indonesia, English), dengan tautan Google Doc, web Pustaka Kontemplasi, dan tautan YouTube. TUNGGU kurasi & persetujuan (ACC) dari Pak Satya terlebih dahulu. Jangan langsung membuat audio/video sebelum naskah di-ACC.
-    2. **Struktur Wajib Code Block Tiap Bahasa**:
-       - **Header**: Tanggal tebal, `*RENUNGAN PENYISWAAN*`, Judul tematik dengan 8-14 emojis.
-       - **Baris Persis di Bawah Judul**: `📺 Video YouTube : https://youtu.be/...` (wajib tautan video YouTube yang SESUAI dengan bahasa naskah: video Bahasa Indonesia untuk naskah Indonesia, video Bahasa Inggris untuk naskah English).
-       - **Body**: Salam, `*📖 SABDA HARI INI :*` (atau PETHIKAN DINTEN PUNIKA / DAILY SCRIPTURE), `💭 *URAIAN :*` (atau EXPOSITION), `🧘 *PRAKTIK :*` (atau DAILY PRACTICE), `🎯 *RENUNGAN :*` (atau REFLECTION), `📝 *APLIKASI :*` (atau APPLICATION), dan Penutup `Satuhu. 🙏`.
-       - **Footer**: Tautan Pustaka Digital & Dokumen (`• 📺 Video YouTube: ...`, `• 📄 Google Doc: ...`, `• 🌐 Pustaka Web Kontemplasi: ...`), serta baris penutup `📖 Waos naskah jangkep wonten ing Pustaka Kontemplasi: https://kontemplasi.satyaaditech.web.id/#<slug>`.
-    3. **Tahap 2 (Audiovisual YouTube Sesuai Bahasa - HANYA setelah ACC)**:
-       - Video Bahasa Indonesia: Charon (Sabda Jawa) + Aoede (Narasi Indonesia) + Subtitle Indonesia -> Upload YouTube -> Link video Indonesia.
-       - Video English: Charon (Sabda Jawa) + Aoede (Narasi English) + Subtitle English -> Upload YouTube -> Link video English.
-       - Tautan YouTube di masing-masing naskah WAJIB terpisah dan merujuk ke video bahasa yang sesuai (DILARANG mencampur link video Indonesia ke naskah English).
-    4. **Pantangan E-Card (TIDAK PERLU DIBUAT)**: DILARANG membuat atau melampirkan berkas e-card PNG. Pak Satya akan menggantinya secara mandiri dengan poster infografis khusus.
+*   **SOP Alur Produksi Renungan Harian (Refined Workflow - 6 Langkah Baku)**: Lihat panduan lengkap di `references/6-step-production-and-storytelling-guide.md`.
+    1. **Langkah 1 (Draft Awal Bahasa Indonesia Saja Wajib Code Block)**:
+       - Sinox menyusun draf naskah awal **HANYA dalam Bahasa Indonesia**.
+       - Draf naskah **WAJIB SELALU disajikan di dalam format code block (` ```text `)** tersendiri agar mudah di-copy paste oleh Pak Satya.
+       - TIDAK membuat versi bahasa lain sebelum naskah Indonesia di-ACC.
+       - Draf dikirimkan ke chat untuk dikurasi Pak Satya.
+       - Setelah Pak Satya memberikan **ACC**, Sinox wajib bertanya/menawarkan versi bahasa apa saja yang ingin diproduksi (Indonesia saja / English / Jawa / Dua-duanya / Ketiganya).
+    2. **Langkah 2 (Naskah Polos Tanpa Link - DILARANG Buat Doc/Web Dulu)**:
+       - **SEBELUM ACC**: DILARANG membuat Google Doc dan DILARANG memasukkan ke Web Library/GitHub (mencegah kerja berkali-kali jika ada revisi).
+       - Setelah ACC & pemilihan bahasa: Sinox menyajikan naskah lengkap dalam format ```text code block untuk masing-masing bahasa yang diminta.
+       - **PENTING**: Pada tahap ini, di dalam code block **BELUM ada link apa pun** (tidak ada link Google Doc, Web Library, atau YouTube). Konten sudah komplit murni teks.
+    3. **Langkah 3 (Produksi Audio & Poster oleh Pak Satya)**:
+       - **Audio**: Dihasilkan oleh Pak Satya via **Gemini Canvas App** (Dual-Voice Charon/Aoede).
+       - **Poster Infografis**: Dihasilkan oleh Pak Satya via **ChatGPT / DALL-E**.
+    4. **Langkah 4 (Pemrosesan Asèt oleh Sinox)**:
+       - Pak Satya mengirimkan file Audio (`.wav`/`.mp3`) dan file Poster (`.png`/`.jpg`) ke Telegram.
+       - **Sinox memproses**:
+         * Render video MP4 HD 1080p dengan audio + template latar poster (jika audio tersedia). Jika timing hardsub tidak cocok atau diminta polos, render *clean still-image video* tanpa hardsub. Jika audio tidak ada, lewati produksi video.
+         * Upload video ke YouTube `@siswatalkstv` dengan status **Public** (`--privacy public`) dan ambil link `https://youtu.be/...`.
+         * Simpan poster ke pustaka web dan kaitkan agar muncul saat kartu artikel diklik di website.
+         * Bersihkan metadata frontmatter YAML agar modal web reader menampilkan teks murni.
+         * Buat Google Doc resmi dengan **tata letak halaman baku & tipografi profesional**:
+           - **Perhitungan Index Offset**: Wajib menghitung index karakter berdasarkan **UTF-16 code units** (`len(text.encode('utf-16-le')) // 2`) agar karakter emoji (surrogate pairs) tidak menggeser index teks di Google Docs API yang menyebabkan gaya font/heading/link terputus.
+           - **Halaman 1 (Cover/Judul + Poster)**: Tanggal, Kategori, Judul Utama, dan **Poster Infografis rata tengah (Center Aligned, ukuran proporsional 70-75% / width ~320pt)** agar muat rapi di halaman 1 bersama judul tanpa tumpah, diakhiri dengan *Page Break*.
+           - **Halaman 2 (Konten Artikel)**: Salam, Sabda & Terjemahan (indent 24pt), Uraian, Praktik (heading utuh), Renungan, Aplikasi (heading utuh), Penutup Satuhu.
+           - **Footer (Bagian Akhir)**: Label `📖 Tautan Pustaka Digital & Dokumen:` sebagai teks biasa (tanpa link), dan tautan aktif hanya pada baris URL YouTube & Web Library.
+         * Build pustaka web & sync ke GitHub Pages.
+    5. **Langkah 5 (Produk Akhir / Final Delivery)**:
+       - Sinox mengembalikan naskah final dalam ```text code block lengkap dengan semua link terpasang: **Header (Tanggal + Judul + YouTube Link), Isi Sabda & Uraian, Footer (Link YouTube + Google Doc + Web Library)**.
+    6. **Langkah 6 (Aturan Redaksi Bersih)**:
+       - **HAPUS / JANGAN TAMPILKAN**:
+         * `"📖 Waos naskah jangkep wonten ing Pustaka Kontemplasi: ..."` (Dihapus total).
+         * `"✅ Dapat dipraktikkan di mana saja dan kapan saja..."` (Dihapus total).
+    *   **Standar Gaya Bahasa & Human Creative**:
+        - **Human Creative (Anti-AI Slop)**: Hindari kalimat klise buatan AI (seperti *"Dalam panggung kehidupan yang serba cepat..."*, *"Merupakan pilar fundamental..."*).
+        - **Storytelling & Analogi Nyata**: Selalu sertakan analogi sederhana yang membumi atau kisah nyata inspiratif (tokoh publik, sejarah, perajin, metafora alam) untuk menguraikan konsep batin agar terasa hidup.
+        - **Nge-flow & Tidak Menggurui**: Bahasa mengalir luwes, hangat, penuh kebajikan dan kebijaksanaan (*wisdom*), bersahabat, namun tetap memiliki *deep insight* yang menyentuh kesadaran batin pembaca.
+        - **Paresikan Redaksi Wajib**: DILARANG menyertakan kalimat *"Dapat dipraktikkan di mana saja dan kapan saja..."* serta kalimat penutup *"📖 Waos naskah jangkep wonten ing Pustaka Kontemplasi: ..."*.
     5. **Standar Subtitle & Video Hard-Sub Estetik**:
        - Posisi subtitle wajib di bagian bawah layar (`Alignment: 2` / bottom-center) dengan margin vertikal (`MarginV: 80 - 120`).
        - DILARANG meletakkan subtitle di tengah layar (`Alignment: 5`) yang bertabrakan dengan judul/badge header.

@@ -22,39 +22,63 @@ Common model namespaces:
 
 ---
 
-## 2. Tracking Quotas in SQLite
+## 2. Multi-Account Antigravity Cluster & Quota Tracking
 
-OmniRoute stores quota snapshots in `~/.omniroute/storage.sqlite`. Since command-line `sqlite3` may not be installed, query the database using Python.
+OmniRoute manages a cluster of **3 Google AI Pro (Antigravity)** accounts:
+1. `thefullstackprogrammer@gmail.com` (Main / Active)
+2. `siswatalks.tv@gmail.com` (Backup 1 / Active)
+3. `satyaaditech@gmail.com` (Backup 2 / Active)
 
-### Querying Latest Quota Snapshots (Remaining Quota & Reset Timers)
+OmniRoute stores connection states and quota snapshots in `~/.omniroute/storage.sqlite`. When reporting Antigravity status to the user, **ALWAYS query and report all 3 accounts in a detailed table** (never summarize as only 1 account).
 
-The `quota_snapshots` table tracks remaining percentages of rate-limits or daily limits for keys. To fetch the latest status per active model:
+### Python Script to Query All 3 Accounts & Quotas
 
 ```python
 import sqlite3
-from datetime import datetime, timezone
+import os
+import json
 
-conn = sqlite3.connect('/home/satyaaditech/.omniroute/storage.sqlite')
-cursor = conn.cursor()
+conn = sqlite3.connect(os.path.expanduser("~/.omniroute/storage.sqlite"))
+c = conn.cursor()
 
-# Get the latest snapshot per window_key for active providers (e.g., antigravity)
-cursor.execute('''
-    SELECT s.window_key, s.remaining_percentage, s.is_exhausted, s.next_reset_at, s.created_at
-    FROM quota_snapshots s
-    INNER JOIN (
-        SELECT window_key, MAX(created_at) as max_created
-        FROM quota_snapshots
-        WHERE provider = 'antigravity' AND created_at > datetime('now', '-1 day')
-        GROUP BY window_key
-    ) m ON s.window_key = m.window_key AND s.created_at = m.max_created
-    WHERE s.provider = 'antigravity'
-''')
+# 1. Fetch all Antigravity accounts from provider_connections
+accounts = c.execute("""
+    SELECT id, name, email, is_active, test_status, last_error, updated_at
+    FROM provider_connections
+    WHERE provider = 'antigravity'
+""").fetchall()
 
-now = datetime.now(timezone.utc)
-for row in cursor.fetchall():
-    model, remaining, exhausted, reset_at_str, checked = row
+# 2. Fetch call logs breakdown per account
+calls_by_acc = dict(c.execute("""
+    SELECT account, count(*), sum(tokens_in), sum(tokens_out)
+    FROM call_logs
+    WHERE account IS NOT NULL
+    GROUP BY account
+""").fetchall())
+
+# 3. Fetch latest quota snapshot per account connection_id
+for acc in accounts:
+    conn_id, name, email, active, status, last_err, updated = acc
+    print(f"\nAccount: {email} (Status: {status}, Active: {active})")
     
-    # Parse reset_at_str (e.g. 2026-08-20T01:49:49.000Z)
+    total_calls, tokens_in, tokens_out = calls_by_acc.get(email, (0, 0, 0))
+    print(f"Total historical requests: {total_calls} ({tokens_in or 0:,} in / {tokens_out or 0:,} out)")
+    
+    snaps = c.execute("""
+        SELECT s.window_key, s.remaining_percentage, s.is_exhausted, s.next_reset_at
+        FROM quota_snapshots s
+        INNER JOIN (
+            SELECT connection_id, window_key, MAX(created_at) as max_created
+            FROM quota_snapshots
+            WHERE connection_id = ?
+            GROUP BY connection_id, window_key
+        ) m ON s.connection_id = m.connection_id AND s.window_key = m.window_key AND s.created_at = m.max_created
+        ORDER BY s.window_key
+    """, (conn_id,)).fetchall()
+    
+    for snap in snaps:
+        print(f"  - {snap[0]}: {snap[1]:.2f}% remaining (reset: {snap[3]})")
+```
     reset_at = datetime.fromisoformat(reset_at_str.replace('Z', '+00:00'))
     time_left = reset_at - now
     
