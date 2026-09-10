@@ -3,15 +3,78 @@
 Gym Reminder & Checklist Script for Satya Adi Dharma.
 Complete Version: Includes Biomechanics / Cara Pakai, Muscle Targets, Rest Time, Photo Links,
 and at the end provides the Direct Online Report URL (no WhatsApp template).
+With auto-retry and offline cache fallback for Google Sheets.
 """
 
+import os
 import sys
+import json
+import time
+import socket
 import datetime
 from google.oauth2.credentials import Credentials
 from googleapiclient.discovery import build
 
 SPREADSHEET_ID = "1NAkd3IOOx_gNDeKPXOHI3gSQSHleW6q8pyDmBubdHVo"
 TOKEN_PATH = "/home/satyaaditech/.hermes/google_token.json"
+CACHE_PATH = "/home/satyaaditech/.hermes/scripts/.gym_sheets_cache.json"
+
+def fetch_sheets_data():
+    socket.setdefaulttimeout(25)
+    month_rows = None
+    master_rows = None
+    last_error = None
+
+    for attempt in range(1, 4):
+        try:
+            creds = Credentials.from_authorized_user_file(TOKEN_PATH)
+            sheets = build('sheets', 'v4', credentials=creds)
+
+            # 1. Fetch Month 1 Program (for date & session meta)
+            res_m = sheets.spreadsheets().values().get(
+                spreadsheetId=SPREADSHEET_ID,
+                range="'Program Bulan 1 (12 Sesi)'!A2:N100"
+            ).execute()
+            m_data = res_m.get('values', [])
+
+            # 2. Fetch Master Program (for rich biomechanics & cues)
+            res_master = sheets.spreadsheets().values().get(
+                spreadsheetId=SPREADSHEET_ID,
+                range="'Program Latihan Master'!A2:J25"
+            ).execute()
+            master_data = res_master.get('values', [])
+
+            month_rows = m_data
+            master_rows = master_data
+
+            # Save to cache
+            try:
+                with open(CACHE_PATH, 'w', encoding='utf-8') as f:
+                    json.dump({
+                        'month_rows': month_rows,
+                        'master_rows': master_rows,
+                        'updated_at': datetime.datetime.now().isoformat()
+                    }, f, ensure_ascii=False, indent=2)
+            except Exception:
+                pass
+
+            return month_rows, master_rows
+
+        except Exception as e:
+            last_error = e
+            time.sleep(2 * attempt)
+
+    # Fallback to cache if Google Sheets unreachable
+    if os.path.exists(CACHE_PATH):
+        try:
+            with open(CACHE_PATH, 'r', encoding='utf-8') as f:
+                cached = json.load(f)
+                return cached.get('month_rows', []), cached.get('master_rows', [])
+        except Exception:
+            pass
+
+    print(f"Error mengakses Google Sheets: {last_error}")
+    return None, None
 
 def main():
     now = datetime.datetime.now()
@@ -29,26 +92,8 @@ def main():
         elif "kamis" in arg.lower() or arg == "10":
             target_date_str = "10/09/2026"
 
-    try:
-        creds = Credentials.from_authorized_user_file(TOKEN_PATH)
-        sheets = build('sheets', 'v4', credentials=creds)
-
-        # 1. Fetch Month 1 Program (for date & session meta)
-        res_m = sheets.spreadsheets().values().get(
-            spreadsheetId=SPREADSHEET_ID,
-            range="'Program Bulan 1 (12 Sesi)'!A2:N100"
-        ).execute()
-        month_rows = res_m.get('values', [])
-
-        # 2. Fetch Master Program (for rich biomechanics & cues)
-        res_master = sheets.spreadsheets().values().get(
-            spreadsheetId=SPREADSHEET_ID,
-            range="'Program Latihan Master'!A2:J25"
-        ).execute()
-        master_rows = res_master.get('values', [])
-
-    except Exception as e:
-        print(f"Error mengakses Google Sheets: {e}")
+    month_rows, master_rows = fetch_sheets_data()
+    if month_rows is None or master_rows is None:
         return
 
     # Filter session by date

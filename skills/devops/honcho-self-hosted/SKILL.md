@@ -50,8 +50,10 @@ Key points:
 ## Step 3: Start
 
 ```bash
-docker compose up -d --build
-docker compose logs -f  # verify startup
+docker compose up -d
+```
+
+**Pitfall on `.env` updates:** `docker restart` does NOT reload `.env` file changes into existing containers. Always run `docker compose up -d --force-recreate api deriver` after editing `.env`.
 ```
 
 Wait for `api` and `deriver` services to show healthy.

@@ -33,11 +33,22 @@ sed -i 's/127.0.0.1:8000:8000/0.0.0.0:8100:8000/' docker-compose.yml
 `0.0.0.0` binding is required so Hermes (other host) can reach it via Tailscale.
 
 ### 3. Write `.env` routing LLM to local OmniRoute
-OmniRoute runs on n8nserver at `http://100.92.237.45:20128/v1` (OpenRouter-compatible, `/v1/models`). Cheap model = `auto/cheap`. Each text module needs its own `MODEL_CONFIG__MODEL` + `MODEL_CONFIG__OVERRIDES__BASE_URL` (no global default override). Full example in `references/honcho-omniroute-env.md`.
+OmniRoute runs on n8nserver at `http://100.92.237.45:20128/v1` (OpenRouter-compatible, `/v1/models`). Recommended default: `daily-chat`.
+- **Paid-only environment warning**: `auto/cheap` is an OmniRoute built-in virtual combo that targets free/cheap tiers. If free providers (`noauth`, etc.) are blocked and only paid accounts (Antigravity, OpenCode Go) are active, `auto/cheap` fails with `503 Combo "auto/cheap" failed — all targets exhausted`. Always use an explicit custom combo (e.g. `daily-chat`).
+- **CRITICAL Docker pitfall**: Plain `docker restart honcho-api-1 honcho-deriver-1` does NOT reload `.env` updates into running containers. Always use `docker compose up -d --force-recreate api deriver` to apply new environment variables.
+- Each text module needs its own `MODEL_CONFIG__MODEL` + `MODEL_CONFIG__OVERRIDES__BASE_URL` (no global default override). Full example in `references/honcho-omniroute-env.md`.
 
-### 4. Start
+### 4. Start & Reload Rule
 ```bash
 docker compose up -d --build   # first run builds; background + notify
+```
+**CRITICAL Pitfall on `.env` updates:** `docker restart` does **NOT** reload updated `.env` values into running containers. Always force recreate:
+```bash
+docker compose -f ~/honcho/docker-compose.yml up -d --force-recreate api deriver
+```
+Verify updated environment inside container:
+```bash
+docker exec honcho-deriver-1 env | grep -i MODEL
 ```
 
 ### 5. Point Hermes at it

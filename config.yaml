@@ -158,7 +158,7 @@ bedrock:
 auxiliary:
   vision:
     provider: custom
-    model: antigravity/antigravity/antigravity/gemini-3.7-flash-low
+    model: antigravity/gemini-3.7-flash-low
     base_url: http://localhost:20128/v1
     api_key: ${OMNIROUTER_API_KEY}
     timeout: 120
@@ -171,53 +171,53 @@ auxiliary:
     timeout: 360
   compression:
     provider: custom
-    model: auto/best-reasoning
+    model: daily-chat
     base_url: ''
     api_key: ''
     timeout: 120
   skills_hub:
     provider: custom
-    model: auto/best-reasoning
+    model: daily-chat
     base_url: ''
     api_key: ''
     timeout: 30
   approval:
     provider: custom
-    model: auto/best-reasoning
+    model: daily-chat
     timeout: 30
   mcp:
     provider: custom
-    model: auto/best-reasoning
+    model: daily-chat
     base_url: ''
     api_key: ''
     timeout: 30
   title_generation:
     provider: custom
-    model: auto/best-reasoning
+    model: daily-chat
     base_url: ''
     api_key: ''
     timeout: 30
   triage_specifier:
     provider: custom
-    model: auto/best-reasoning
+    model: daily-chat
     base_url: ''
     api_key: ''
     timeout: 120
   kanban_decomposer:
     provider: custom
-    model: auto/best-reasoning
+    model: best-reasoning-v2
     base_url: ''
     api_key: ''
     timeout: 180
   profile_describer:
     provider: custom
-    model: auto/best-reasoning
+    model: daily-chat
     base_url: ''
     api_key: ''
     timeout: 60
   curator:
     provider: custom
-    model: auto/best-reasoning
+    model: best-reasoning-v2
     base_url: ''
     api_key: ''
     timeout: 600
@@ -358,10 +358,10 @@ moa:
     default:
       reference_models:
         - provider: custom
-          model: opencode-go/deepseek-v4-flash
+          model: antigravity/gemini-3.7-flash-high
           enabled: true
         - provider: custom
-          model: opencode-go/deepseek-v4-pro
+          model: antigravity/claude-sonnet-4-6
           enabled: true
       aggregator:
         provider: custom
@@ -375,7 +375,7 @@ moa:
           model: daily-chat
           enabled: true
         - provider: custom
-          model: auto/best-reasoning
+          model: best-reasoning-v2
           enabled: true
         - provider: custom
           model: antigravity/gemini-3.1-pro-high
@@ -386,14 +386,14 @@ moa:
       degraded_reference_policy: loud
       max_tokens: 4096
       fanout: user_turn
-    OpencodeV1:
+    ReasoningStack:
       enabled: true
       reference_models:
         - provider: custom
-          model: opencode-go/deepseek-v4-flash
+          model: antigravity/gemini-3.7-flash-high
           enabled: true
         - provider: custom
-          model: opencode-go/deepseek-v4-pro
+          model: antigravity/claude-sonnet-4-6
           enabled: true
       aggregator:
         provider: custom
@@ -406,7 +406,7 @@ moa:
       model: daily-chat
       enabled: true
     - provider: custom
-      model: auto/best-reasoning
+      model: best-reasoning-v2
       enabled: true
     - provider: custom
       model: antigravity/gemini-3.1-pro-high

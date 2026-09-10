@@ -6,7 +6,7 @@ Receipt: per item ke 'Detail Item' spdsht 13W8pmkqdXwv_Nv4x-reIrw7m0JXOGVWENmXEt
 §
 Profil: Solo/Boyolali. Anak: Raditya. QRIS: Seabank/Mandiri. FGD Jamu D3.
 §
-OmniRoute: bayar (no free/fallback).
+OmniRoute: bayar (Antigravity multi-akun, no OpenCode Go, no free/fallback).
 §
 Renungan: universal (tanpa dikotomi usia/pensiun), hindari ilustrasi ekstrem.
 §
