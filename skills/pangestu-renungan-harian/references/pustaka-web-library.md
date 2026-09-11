@@ -12,14 +12,11 @@
   * Jika renungan memiliki poster/infografis: Tampil lencana `🖼️ Poster` di kartu depan, dan saat dibuka (Reader View), poster tampil di bagian atas dengan bingkai elegan serta fitur **Lightbox Zoom** (klik untuk memperbesar resolusi penuh).
   * Jika renungan TIDAK memiliki poster: Layout otomatis runtut dan rapi tanpa ada kotak kosong atau broken image.
 
-## 3. Alur Pembaruan Otomatis (Build Script)
+## 3. Alur Pembaruan Otomatis (Build Script & GitHub Sync)
 Setiap selesai menyusun atau memperbarui renungan harian baru di `~/share/renungan/`:
-1. Jalankan generator:
+1. Jalankan skrip sinkronisasi lengkap:
    ```bash
-   python3 /home/satyaaditech/share/pustaka/build_pustaka.py
+   /home/satyaaditech/kontemplasi/sync_to_github.sh
    ```
-2. Waktu eksekusi hanya ~0.15 detik.
-3. Sinkronisasi ke repository GitHub Pages jika diaktifkan:
-   ```bash
-   git add . && git commit -m "Update renungan $(date +%F)" && git push
-   ```
+2. Skrip ini otomatis me-rsync aset `.md` dan poster ke `~/kontemplasi/`, menjalankan `build_pustaka.py` untuk membangun `index.html`, melakukan git commit, serta men-deploy (push) ke GitHub Pages `kontemplasi.satyaaditech.web.id`.
+3. Verifikasi tautan langsung artikel: `https://kontemplasi.satyaaditech.web.id/#YYYY-MM-DD_<slug>`

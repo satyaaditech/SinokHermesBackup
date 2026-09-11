@@ -19,34 +19,39 @@ Panduan ini mengatur standar alur kerja (workflow) dan standar penulisan *Human 
 * **PENTING**: Di dalam code block pada tahap ini **BELUM ada link apa pun** (tidak ada link Google Doc, Web Library, atau YouTube). Konten sudah komplit murni teks.
 
 ### Langkah 3: Produksi Audio & Poster oleh Pak Satya
-* **Audio**: Dihasilkan oleh Pak Satya via **Gemini Canvas App** (Dual-Voice Charon/Aoede).
+* **Audio Canvas Web App**: Dihasilkan via aplikasi Gemini Audio Canvas: [https://share.gemini.google/Etzg5qoQXqxr](https://share.gemini.google/Etzg5qoQXqxr) (Dual-Voice: Charon kagem Sabda Jawi, Aoede kagem Uraian/Indo/Eng).
 * **Poster Infografis**: Dihasilkan oleh Pak Satya via **ChatGPT / DALL-E**.
 
 ### Langkah 4: Pemrosesan Asèt oleh Sinox
 * Pak Satya mengirimkan berkas Audio (`.wav`/`.mp3`) dan Poster (`.png`/`.jpg`) ke chat Telegram.
 * **Jika Audio ada**:
-  1. Render video MP4 HD 1080p (background dari poster, audio dari Canvas, subtitle `.ass` bottom-center).
-  2. Upload ke YouTube channel `@siswatalkstv` via `upload_youtube.py` (`--privacy public`) dan ambil share link `https://youtu.be/...`.
+  1. Render video MP4 HD 1080p (background poster infografis beresolusi tinggi + audio Gemini Canvas; tanpa hardsub karena poster sudah memuat teks infografis lengkap).
+  2. Upload ke YouTube channel `@siswatalkstv` (status *Public*).
 * **Jika Audio tidak ada**:
   - Langkah render video dan upload YouTube dilewati (*skipped*).
 * **Pengolahan Poster & Web**:
-  - Simpan poster ke `kontemplasi/renungan/poster-<topic>-<date>.png`.
-  - Update `build_pustaka.py` agar poster muncul di bagian atas artikel saat kartu diklik (dengan fitur lightbox zoom).
-* **Pengolahan Google Doc**:
-  - Buat Google Doc resmi dengan teks bersih tanpa simbol markdown mentah (`*`, `**`, `###`).
+  - Simpan poster ke `/home/satyaaditech/share/renungan/poster-<topic>-<date>.png`.
+  - Update pustaka web via `python3 /home/satyaaditech/share/pustaka/build_pustaka.py`.
+* **Pengolahan Google Doc Baku**:
+  - Buat Google Doc resmi di folder *Materi Olahrasa* (`1Bh9ZIizra0I-3hmlqcHjhLJi3-eTAI4U`).
+  - **Halaman 1**: Header tanggal, `RENUNGAN PENYISWAAN`, Judul Utama, dan **Poster Infografis proporsional (lebar 320pt / 70-75%)** dipusatkan (center), diakhiri **Page Break**.
+  - **Halaman 2**: Salam, Pethikan Sabda/Wejangan (indent 24pt italic), Uraian, Praktik, Renungan, Aplikasi, Penutup Satuhu, dan Footer link aktif.
 * **Sinkronisasi**:
-  - Build web `build_pustaka.py` dan jalankan `sync_to_github.sh`.
-  - Update Master Google Sheet `1QuTSjBV-iOckaIoSu07wQa0LcnbgdR97mxAqOloIEb0`.
+  - Update Master Google Sheet `1QuTSjBV-iOckaIoSu07wQa0LcnbgdR97mxAqOloIEb0` (tab *Rekap Renungan*).
 
 ### Langkah 5: Produk Akhir (Final Delivery WhatsApp-Ready)
-* Sinox menyajikan naskah final di dalam format ` ```text ` code block terpisah per versi bahasa, lengkap dengan seluruh tautan aktif:
-  - Header: Tanggal, Judul, dan Tautan YouTube (jika ada video).
-  - Body: Salam, Sabda Hari Ini, Terjemahan, Uraian, Praktik, Renungan, Aplikasi, dan Penutup Satuhu.
-  - Footer: Tautan YouTube (jika ada), Google Doc, dan Web Library.
+* Sinox menyajikan naskah final di dalam format ` ```text ` code block terpisah per versi bahasa, lengkap dengan 3 tautan digital wajib:
+  - Header: Tanggal, `RENUNGAN PENYISWAAN`, Judul Tematik, dan Tautan YouTube.
+  - Body: Salam Karahayon, Pethikan Sabda/Wejangan BRSR, Terjemahan, Uraian, Praktik, Renungan, Aplikasi, dan Penutup Satuhu.
+  - Footer (3 Tautan Digital Wajib):
+    `• 📺 Video YouTube : https://youtu.be/...`
+    `• 📄 Versi Google Doc : https://docs.google.com/document/d/...`
+    `• 🌐 Pustaka Web Kontemplasi : https://kontemplasi.satyaaditech.web.id/#<slug>`
 
 ### Langkah 6: Paresikan Redaksi Wajib (DILARANG Ditampilkan)
 * ❌ `"📖 Waos naskah jangkep wonten ing Pustaka Kontemplasi: ..."` (Dihapus total).
 * ❌ `"✅ Dapat dipraktikkan di mana saja dan kapan saja..."` (Dihapus total).
+* ❌ Label footer berantakan / tidak ada link web kontemplasi. Tiga link (YouTube, Doc, Web) wajib selalu lengkap.
 
 ---
 

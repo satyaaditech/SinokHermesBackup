@@ -485,13 +485,13 @@
     "created_at": "2026-07-28T11:06:35.128741+00:00",
     "created_by": null,
     "last_patched_at": null,
-    "last_used_at": "2026-08-30T00:41:57.208478+00:00",
-    "last_viewed_at": "2026-08-30T00:41:57.198810+00:00",
+    "last_used_at": "2026-09-11T15:18:15.333595+00:00",
+    "last_viewed_at": "2026-09-11T15:18:15.324664+00:00",
     "patch_count": 0,
     "pinned": false,
     "state": "active",
-    "use_count": 17,
-    "view_count": 17
+    "use_count": 18,
+    "view_count": 18
   },
   "hermes-administration:omniroute-gateway": {
     "archived_at": null,
@@ -679,14 +679,14 @@
     "archived_at": null,
     "created_at": "2026-08-10T13:15:03.669920+00:00",
     "created_by": "agent",
-    "last_patched_at": "2026-09-04T04:15:00.351491+00:00",
-    "last_used_at": "2026-09-04T04:14:50.422634+00:00",
-    "last_viewed_at": "2026-09-04T04:14:50.413240+00:00",
-    "patch_count": 21,
+    "last_patched_at": "2026-09-11T03:59:45.642357+00:00",
+    "last_used_at": "2026-09-11T03:59:37.203807+00:00",
+    "last_viewed_at": "2026-09-11T03:59:37.195236+00:00",
+    "patch_count": 23,
     "pinned": false,
     "state": "active",
-    "use_count": 23,
-    "view_count": 23
+    "use_count": 25,
+    "view_count": 25
   },
   "linux-usb-automount": {
     "archived_at": null,
@@ -766,6 +766,19 @@
     "use_count": 0,
     "view_count": 0
   },
+  "n8n-automation": {
+    "archived_at": null,
+    "created_at": "2026-09-11T04:28:00.782058+00:00",
+    "created_by": null,
+    "last_patched_at": "2026-09-11T10:02:39.031475+00:00",
+    "last_used_at": "2026-09-11T15:48:35.823138+00:00",
+    "last_viewed_at": "2026-09-11T15:48:35.691921+00:00",
+    "patch_count": 1,
+    "pinned": false,
+    "state": "active",
+    "use_count": 19,
+    "view_count": 19
+  },
   "nano-pdf": {
     "archived_at": null,
     "created_at": "2026-08-04T12:30:58.534076+00:00",
@@ -835,14 +848,14 @@
     "archived_at": null,
     "created_at": "2026-08-12T18:41:40.237495+00:00",
     "created_by": "agent",
-    "last_patched_at": "2026-09-08T17:09:40.346126+00:00",
-    "last_used_at": "2026-09-08T17:09:34.134420+00:00",
-    "last_viewed_at": "2026-09-08T17:09:34.125312+00:00",
-    "patch_count": 36,
+    "last_patched_at": "2026-09-11T15:45:51.572191+00:00",
+    "last_used_at": "2026-09-11T15:48:48.833694+00:00",
+    "last_viewed_at": "2026-09-11T15:48:48.824731+00:00",
+    "patch_count": 39,
     "pinned": false,
     "state": "active",
-    "use_count": 59,
-    "view_count": 59
+    "use_count": 65,
+    "view_count": 65
   },
   "opencode": {
     "archived_at": null,
@@ -888,13 +901,13 @@
     "created_at": "2026-08-10T08:09:09.397020+00:00",
     "created_by": null,
     "last_patched_at": "2026-08-10T09:26:27.363543+00:00",
-    "last_used_at": "2026-09-06T13:15:33.029612+00:00",
-    "last_viewed_at": "2026-09-06T13:15:33.021113+00:00",
+    "last_used_at": "2026-09-10T22:54:29.111842+00:00",
+    "last_viewed_at": "2026-09-10T22:54:29.104388+00:00",
     "patch_count": 2,
     "pinned": false,
     "state": "active",
-    "use_count": 31,
-    "view_count": 31
+    "use_count": 32,
+    "view_count": 32
   },
   "pangestu-materi-khotbah": {
     "archived_at": null,
@@ -926,14 +939,14 @@
     "archived_at": null,
     "created_at": "2026-08-10T13:25:27.614034+00:00",
     "created_by": "agent",
-    "last_patched_at": "2026-09-09T00:24:51.311909+00:00",
-    "last_used_at": "2026-09-09T00:24:44.782865+00:00",
-    "last_viewed_at": "2026-09-09T00:24:44.772126+00:00",
-    "patch_count": 265,
+    "last_patched_at": "2026-09-11T09:48:15.556188+00:00",
+    "last_used_at": "2026-09-11T15:17:05.687408+00:00",
+    "last_viewed_at": "2026-09-11T15:17:05.677915+00:00",
+    "patch_count": 276,
     "pinned": false,
     "state": "active",
-    "use_count": 487,
-    "view_count": 487
+    "use_count": 516,
+    "view_count": 516
   },
   "pdf": {
     "archived_at": null,
@@ -1239,13 +1252,13 @@
     "created_at": "2026-05-26T00:44:54.717166+00:00",
     "created_by": null,
     "last_patched_at": null,
-    "last_used_at": "2026-09-06T13:35:31.702023+00:00",
-    "last_viewed_at": "2026-09-06T13:35:31.693964+00:00",
+    "last_used_at": "2026-09-10T22:53:23.399774+00:00",
+    "last_viewed_at": "2026-09-10T22:53:23.391831+00:00",
     "patch_count": 0,
     "pinned": false,
     "state": "active",
-    "use_count": 8,
-    "view_count": 8
+    "use_count": 9,
+    "view_count": 9
   },
   "self-hosted-memory-backends": {
     "archived_at": null,
@@ -1590,13 +1603,13 @@
     "created_at": "2026-08-06T07:11:59.673661+00:00",
     "created_by": "agent",
     "last_patched_at": "2026-09-06T13:29:29.116626+00:00",
-    "last_used_at": "2026-09-06T13:35:36.196380+00:00",
-    "last_viewed_at": "2026-09-06T13:35:36.188243+00:00",
+    "last_used_at": "2026-09-11T00:27:08.728072+00:00",
+    "last_viewed_at": "2026-09-11T00:27:08.719444+00:00",
     "patch_count": 15,
     "pinned": false,
     "state": "active",
-    "use_count": 33,
-    "view_count": 33
+    "use_count": 34,
+    "view_count": 34
   },
   "weights-and-biases": {
     "archived_at": null,

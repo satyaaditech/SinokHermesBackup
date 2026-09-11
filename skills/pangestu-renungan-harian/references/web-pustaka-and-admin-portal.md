@@ -16,9 +16,14 @@ Dokumentasi arsitektur portal publik, dashboard admin, dan integrasi remote stor
   - **Tombol `📋 Salin WA`**: Menyalin format WhatsApp bersih tanpa markup rusak.
   - **Multi-bahasa per Materi**: Tab ID / JV / EN di dalam modal reader.
   - **Lightbox Infografis**: Klik poster untuk zoom resolusi penuh.
-* **Wajib Footer Link**:
-  Setiap renungan harian yang diterbitkan wajib menyertakan baris teks berikut:
-  `Untuk kumpulan kontemplasi lainnya bisa diakses di https://kontemplasi.satyaaditech.web.id`
+* **Wajib 3 Footer Links**:
+  Setiap renungan harian yang diterbitkan wajib menyertakan 3 tautan digital lengkap di bagian footer:
+  • 📺 Video YouTube : https://youtu.be/...
+  • 📄 Versi Google Doc : https://docs.google.com/document/d/...
+  • 🌐 Pustaka Web Kontemplasi : https://kontemplasi.satyaaditech.web.id/#<slug>
+
+* **Sinkronisasi & Deployment GitHub Pages**:
+  Jalankan `/home/satyaaditech/kontemplasi/sync_to_github.sh` untuk otomatis rsync asèt dari `~/share/renungan/`, generate `index.html`, serta commit dan push ke GitHub Pages (`satyaaditech/kontemplasi`).
 
 ---
 

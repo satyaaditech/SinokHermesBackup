@@ -12,13 +12,13 @@ Renungan: universal (tanpa dikotomi usia/pensiun), hindari ilustrasi ekstrem.
 §
 Kesiswaan: BRSR, TKL, UUJM.
 §
-Infografis/e-card: latar terang, teks/bingkai hitam/biru tua (no gold), Kawung min, header 'RENUNGAN PENYISWAAN' (no 'Pangestu'), judul raksasa cetha ing HP. Teks jangkep/hibrida, dudu template kosong.
+Infografis/e-card: latar terang, teks/bingkai hitam/biru tua (no gold), Kawung min, header 'RENUNGAN PENYISWAAN' (no 'Pangestu'), judul raksasa cetha ing HP. Teks jangkep.
 §
-Audio: fisik TG. Renungan: Gemini TTS (Sabda Jawa=Charon, Uraian Indo/Eng=Aoede). Video: hard-sub -> YT @siswatalkstv (public).
+Audio: fisik TG (TTS Canvas: https://share.gemini.google/Etzg5qoQXqxr). Sabda Jawa=Charon, Uraian=Aoede. Video: potrait/vertikal HD no hardsub -> YT @siswatalkstv (public).
 §
 Google Doc: format asli docs, tanpa markdown (*, **, ###).
 §
-Tensi format: Sugeng [enjang/siang/sonten/dalu], Pak Satya. Sistolik X, Diastolik X, Nadi X, Tanggal X, Wanci X WIB. Matur nuwun.
+Tensi format: Sugeng [enjang/siang/sonten/dalu], Pak Satya. Sistolik X, Diastolik X, Nadi X, Tanggal X, Wanci X WIB.
 §
 Pak Satya rembagan ngagem basa Jawi Krama Alus jangkep, cetha, mboten cekak-aos.
 §

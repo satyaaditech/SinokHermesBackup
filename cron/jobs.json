@@ -68,18 +68,18 @@
       "schedule_display": "0 23 * * *",
       "repeat": {
         "times": null,
-        "completed": 11
+        "completed": 12
       },
       "enabled": true,
       "state": "scheduled",
       "paused_at": null,
       "paused_reason": null,
       "created_at": "2026-08-30T07:28:46.115435+07:00",
-      "next_run_at": "2026-09-11T23:00:00+07:00",
-      "last_run_at": "2026-09-09T23:00:07.300753+07:00",
+      "next_run_at": "2026-09-12T23:00:00+07:00",
+      "last_run_at": "2026-09-10T23:01:45.016486+07:00",
       "last_status": "ok",
       "last_error": null,
-      "last_delivery_error": null,
+      "last_delivery_error": "live adapter send to telegram:-1003256146835 timed out before the coroutine was dispatched; delivery error: Telegram send failed: Timed out",
       "deliver": "origin",
       "origin": {
         "platform": "telegram",
@@ -114,15 +114,15 @@
       "schedule_display": "15 23 * * *",
       "repeat": {
         "times": null,
-        "completed": 11
+        "completed": 12
       },
       "enabled": true,
       "state": "scheduled",
       "paused_at": null,
       "paused_reason": null,
       "created_at": "2026-08-30T07:41:44.349637+07:00",
-      "next_run_at": "2026-09-10T23:15:00+07:00",
-      "last_run_at": "2026-09-09T23:15:02.255083+07:00",
+      "next_run_at": "2026-09-11T23:15:00+07:00",
+      "last_run_at": "2026-09-10T23:15:34.929507+07:00",
       "last_status": "error",
       "last_error": "Script exited with code 128\nstderr:\nfatal: this operation must be run in a work tree",
       "last_delivery_error": null,
@@ -185,5 +185,5 @@
       "fire_claim": null
     }
   ],
-  "updated_at": "2026-09-10T23:00:33.235058+07:00"
+  "updated_at": "2026-09-11T23:00:57.302517+07:00"
 }

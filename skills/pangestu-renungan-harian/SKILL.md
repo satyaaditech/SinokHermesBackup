@@ -5,11 +5,47 @@ description: Produce Pangestu renungan harian for TG thread 1096. Agentic 3-role
 
 # Renungan Harian Pangestu (Daily Bread)
 
+## ⚠️ Golden Rules & Pitfalls Format Baku (WAJIB DIPATUHI)
+1. **Dilarang Mengubah Nama Section**:
+   * Section introspeksi 3 poin WAJIB bernama `📝 *APLIKASI* :`. DILARANG KERAS menggantinya menjadi `PERTANYAAN REFLEKSI`, `REFLEKSI DIRI`, dll.
+   * Baris penutup di dalam `🧘 *PRAKTIK* :` wajib diakhiri kalimat standard: `✅ Latihan ini menumbuhkan ketenteraman batin dan menjaga kita tetap eling lan waspada di setiap langkah.`
+2. **Signature Footer Mutlak**:
+   * Signature penutup doa WAJIB verbatim dalam Bahasa Indonesia baku:
+     `🙏 Semoga kita semua senantiasa berlimpah Tuntunan dan Perlindungan, Sih dari Sang Guru Sejati. Satuhu 🙏`
+   * DILARANG KERAS menerjemahkan signature ini ke Bahasa Jawa atau menambahkan improvisasi kalimat penutup lainnya.
+3. **Pemisahan Peran Audio TTS (Charon & Aoede)**:
+   * **Charon (Pria Medhok Jawa)**: Khusus membaca kutipan Sabda/Serat Jawa murni secara khidmat dan perlahan.
+   * **Aoede (Wanita Lembut Indonesia)**: Membaca bagian Header, Terjemahan Sabda, Uraian, Praktik, Renungan, Aplikasi, dan Footer Doa.
+   * Berikan jeda transisi default 1.5 detik antar segmen dan lakukan *clean-up* (strip markdown, emoji, link) sebelum sintesis suara.
+4. **FFmpeg Video Rendering & Durasi Utuh (WAJIB Portrait / Vertikal)**:
+   * **Format Video Baku**: Mulai September 2026, format video renungan WAJIB menggunakan **rasio portrait/vertikal murni** (sesuai dimensi poster, e.g. 1024x1536 atau 9:16) agar tampilan optimal, cetha, dan penuh saat disimak di layar HP. DILARANG memaksakan rasio landscape 16:9 dengan letterbox/blur kecuali diminta khusus.
+   * **3-Layer Quality Guard agar Video TIDAK PERNAH Terpotong**:
+     1. **Pre-Probe Durasi Audio Eksak**: Gunakan `ffprobe` untuk membaca durasi audio mentah secara presisi (contoh: `400.04` detik).
+     2. **Render Ultrafast Portrait Still-Image**: Gunakan `-preset ultrafast -r 2 -t <durasi_audio_eksak>`. Dengan `-r 2`, render video 7 menit selesai dalam 2-3 detik (jauh di bawah batas timeout terminal/n8n):
+        `ffmpeg -y -loop 1 -i poster.png -i audio.mp3 -c:v libx264 -tune stillimage -preset ultrafast -r 2 -c:a aac -b:a 192k -pix_fmt yuv420p -t <duration> output.mp4`
+     3. **Post-Render Verification Gate**: Sebelum mengunggah ke YouTube, sistem wajib memeriksa durasi output video dengan `ffprobe`. Jika selisih durasi video dengan audio `> 1.0 detik`, proses otomatis DIBATALKAN (abort upload) agar video cacat/terpotong tidak pernah terunggah ke YouTube.
+   * Hindari default preset tanpa limit framerate/preset yang lambat karena akan terkena *command timeout* dan menghasilkan video terpotong (misal 60 detik padahal audio 400 detik).
+   * **WAJIB verifikasi**: Selalu cek `ffprobe -v error -show_entries format=duration ...` pada file video dan audio untuk memastikan durasi sama persis sebelum diunggah ke YouTube.
+5. **Orkestrasi Pipeline n8n**:
+   * Saat workflow n8n (`u8DSPYtI7LNdDZbk`) aktif, jalankan seluruh rantai eksekusi melalui webhook trigger `POST https://n8n.satyaaditech.web.id/webhook/renungan-pipeline` (atau `http://localhost:5678/webhook/renungan-pipeline`) agar seluruh log 11 node tercatat rapi di dashboard n8n, jangan di-bypass lewat CLI manual.
+
 ## ⚠️ Konvensi Terminologi Utama (PENTING)
 *   **Sang Guru Sejati (SGS)** punika ingkang kagungan piwulang utawi ajaran.
 *   **Pangestu** (Paguyuban Ngesti Tunggal) punika namung wadhah utawi organisasi para siswa ingkang nyinaoni piwulang.
 *   **Panyebutan ingkang Leres**: Wajib ngginakaken tembung **"piwulang Sang Guru Sejati"** utawi **"ajaran Sang Guru Sejati"**. Boten pareng babar pisan nyebataken **"piwulang Pangestu"** utawi **"ajaran Pangestu"**.
+*   **Hakikat Sang Guru Sejati**: Sang Guru Sejati punika Suksma Sejati (Roh Suci), peranganing Tunggal Allah ingkang asipat imateriil lan langgeng. Sampun ngantos ngginakaken tembung sulih manungsa kados *"beliau"*, kedah dipun-sebat jangkep **"Sang Guru Sejati"**.
+*   **Pembedaan Sabda vs Wejangan Tokoh (BRSR / TKL)**: Wonten ing Kitab *Bawa Raos Ing Salebeting Raos (BRSR)* utawi *Taman Kamulyan Langgeng (TKL)*, kathah wedharan ingkang awujud dialog/wejangan tokoh (tuladhanipun Bapak Pangrasa marang Prabawa ing BRSR Bab XIV utawi Bapak Pangrasa marang Sadherek Jatmika ing TKL). Pethikan punika sanes Sabda langsung, pramila dipun-serat minangka *Pethikan Dinten Punika* kanthi nyebutaken tokoh penuturipun (tuladha: `Taman Kamulyan Langgeng (TKL) (Wejangan Bapak Pangrasa marang Sadherek Jatmika) :`).
+*   **Gaya Bahasa & Rasa Basa (Luwes, Lemes, Sastrawi)**: Draf uraian wajib menggunakan bahasa yang sangat halus, luwes, santun, sastrawi, dan meresap ke sanubari pembaca (menghindari gaya bahasa kaku, dangkal, mekanis, atau terjemahan harfiah AI). Selalu rujuk arsip draf renungan sebelumnya di `wiki/renungan/` sebagai standar emas (gold standard).
+*   **Wajib Buka Vault & Wiki Terlebih Dahulu**: Sebelum menyusun draf, agen WAJIB memeriksa `references/buku-pangestu-wiki.md` dan arsip kanon di `/home/satyaaditech/shorts_factory/obsidian/BukuPangestu/books/` untuk mengambil kutipan verbatim 100% asli, bukan mengarang atau merangkum bebas dari ingatan model.
+*   **Struktur Baku 6 Bagian**:
+    1. Header (Hari, Weton/Tanggal, Edisi, Judul Puitis + Emojis 🌿🕊️, Salam Karahayon).
+    2. PETHIKAN DINTEN PUNIKA (Sumber Bab detail & nama tokoh penutur jika BRSR/TKL) + Terjemahan.
+    3. URAIAN (Mendalam, mengaitkan laku batin & kehidupan nyata).
+    4. PRAKTIK SEHARI-HARI (3 poin konkret dengan ikon 🌾🌿🌅).
+    5. RENUNGAN (Inti perenungan singkat).
+    6. PERTANYAAN REFLEKSI (3 pertanyaan batin penuntun mawas diri 💭) + Doa Penutup (`🙏 Mugi kita sedaya tansah pinaringan Berkah, Pitedah, Sih Tuntunan tuwin Pangayomaning Sang Guru Sejati. Satuhu. 🙏`).
 *   **Kemurnian Kutipan Sabda / Referensi (VERBATIM MUTLAK)**: DILARANG KERAS menyisipkan pikiran, kata-kata buatan sendiri, kesimpulan cipta, atau parafrase ke dalam blok kutipan Sabda/buku. Kutipan wajib 100% murni apa adanya persis dari teks sumber. Uraian, pemahaman, dan kontekstualisasi HANYA boleh ditempatkan di bagian pembahasan/uraian terpisah.
+*   **Panjang & Relevansi Kutipan**: Pilih kutipan Sabda yang padat, ringkas, dan langsung menyentuh esensi tema (tidak bertele-tele / jangan terlalu panjang), sehingga sangat *relate* dengan dinamika batin pembaca atau fenomena sosial/viral yang sedang dibedah. Pustaka digital dapat diakses via `https://satyaaditech.github.io/perpustakaan/book/pangestu/<slug>.html`.
 *   **Penyalinan ke Vault Obsidian (exFAT)**: Hindari `shutil.copy2()` karena memicu EPERM pada exFAT; gunakan `shutil.copyfile()` atau I/O langsung. Lihat `references/google-docs-and-tts-workflow.md`.
 *   **Web Library & GitHub Pages (`kontemplasi.satyaaditech.web.id`)**: Setiap selesai menerbitkan/memperbarui renungan baru di `~/share/renungan/`, WAJIB menyalin berkas ke `/home/satyaaditech/kontemplasi/renungan/` dan menjalankan script sinkronisasi ke GitHub: `/home/satyaaditech/kontemplasi/sync_to_github.sh` agar otomatis terindeks dan live di `https://kontemplasi.satyaaditech.web.id/`.
 *   **Master Google Sheet Rekap Renungan**: `1QuTSjBV-iOckaIoSu07wQa0LcnbgdR97mxAqOloIEb0` (https://docs.google.com/spreadsheets/d/1QuTSjBV-iOckaIoSu07wQa0LcnbgdR97mxAqOloIEb0/edit). Setiap selesai produksi, otomatis append baris rekap aset lengkap. Lihat panduan lengkap di `references/master-sheet-and-video-standards.md`.
@@ -27,7 +63,7 @@ description: Produce Pangestu renungan harian for TG thread 1096. Agentic 3-role
        - Setelah ACC & pemilihan bahasa: Sinox menyajikan naskah lengkap dalam format ```text code block untuk masing-masing bahasa yang diminta.
        - **PENTING**: Pada tahap ini, di dalam code block **BELUM ada link apa pun** (tidak ada link Google Doc, Web Library, atau YouTube). Konten sudah komplit murni teks.
     3. **Langkah 3 (Produksi Audio & Poster oleh Pak Satya)**:
-       - **Audio**: Dihasilkan oleh Pak Satya via **Gemini Canvas App** (Dual-Voice Charon/Aoede).
+       - **Audio**: Dihasilkan oleh Pak Satya via aplikasi **Gemini Audio Canvas**: `https://share.gemini.google/Etzg5qoQXqxr` (Dual-Voice: Charon kagem Sabda Jawi, Aoede kagem Uraian/Indo/Eng).
        - **Poster Infografis**: Dihasilkan oleh Pak Satya via **ChatGPT / DALL-E**.
     4. **Langkah 4 (Pemrosesan Asèt oleh Sinox)**:
        - Pak Satya mengirimkan file Audio (`.wav`/`.mp3`) dan file Poster (`.png`/`.jpg`) ke Telegram.
@@ -41,8 +77,10 @@ description: Produce Pangestu renungan harian for TG thread 1096. Agentic 3-role
            - **Halaman 1 (Cover/Judul + Poster)**: Tanggal, Kategori, Judul Utama, dan **Poster Infografis rata tengah (Center Aligned, ukuran proporsional 70-75% / width ~320pt)** agar muat rapi di halaman 1 bersama judul tanpa tumpah, diakhiri dengan *Page Break*.
            - **Halaman 2 (Konten Artikel)**: Salam, Sabda & Terjemahan (indent 24pt), Uraian, Praktik (heading utuh), Renungan, Aplikasi (heading utuh), Penutup Satuhu.
            - **Footer (Bagian Akhir)**: Label `📖 Tautan Pustaka Digital & Dokumen:` sebagai teks biasa (tanpa link), dan tautan aktif hanya pada baris URL YouTube & Web Library.
-         * Build pustaka web & sync ke GitHub Pages.
-    5. **Langkah 5 (Produk Akhir / Final Delivery)**:
+         * Build pustaka web & sync ke GitHub Pages via `/home/satyaaditech/kontemplasi/sync_to_github.sh`.
+         * Verifikasi live check URL web sebelum menyerahkan naskah final.
+         * Skrip otomasi terpadu tersedia di `scripts/publish_renungan_pipeline.py` (menangani Langkah 4 sampai Langkah 6 secara otomatis).
+         5. **Langkah 5 (Produk Akhir / Final Delivery)**:
        - Sinox mengembalikan naskah final dalam ```text code block lengkap dengan semua link terpasang: **Header (Tanggal + Judul + YouTube Link), Isi Sabda & Uraian, Footer (Link YouTube + Google Doc + Web Library)**.
     6. **Langkah 6 (Aturan Redaksi Bersih)**:
        - **HAPUS / JANGAN TAMPILKAN**:
@@ -204,36 +242,34 @@ Ketika ajaran menyebut beberapa unsur bekerja BERSAMA, jangan atribusikan ke sat
 
 ---
 
-## 🔴 PITFALL #4: TARGET PEMBACA SALAH (Writer)
+## 🔴 PITFALL #4: TARGET PEMBACA & GAYA ILUSTRASI (Universal & Relatable)
 
-User feedback: "contoh contohnya tidak relate dengan bapak ibu pembaca pada umumnya pembaca berusia di atas 50 tahun jadi ada yang pensiunan dan sebagainya."
-
-Pembaca Pangestu mayoritas 50+ tahun — pensiunan, lansia, kakek-nenek. Contoh HARUS dari kehidupan mereka:
-- ✅ Anak sudah besar, jarang pulang/menelepon
-- ✅ Pensiun: dulu sibuk, sekarang rumah sepi
-- ✅ Kesehatan menurun: lutut nyeri, badan tidak sekuat dulu
-- ✅ Cucu, tetangga, kesepian, merasa tidak berguna
-- ❌ Lamaran kerja, ngejar karir, grup WA, macet ke kantor — INI ANAK MUDA, REJECT
+* **Sasaran Universal**: Renungan ditujukan untuk seluruh siswa dan masyarakat luas secara universal — **HINDARI dikotomi usia, stereotip pensiunan, atau pengotakan usia**.
+* **Ilustrasi Nyata & Wajar**: Gunakan contoh dinamika batin sehari-hari (interaksi keluarga, lingkungan kerja, relasi sosial, ruang digital/media sosial) yang wajar dan membumi.
+* **Hindari Ilustrasi Ekstrem**: Jangan menggunakan contoh kasus ekstrem/tragis (kriminalitas berat, penyakit terminal, kekerasan) guna menjaga kestabilan batin pembaca.
+* **Bahasa Human Creative**: Bahasa sederhana, hangat, mengalir seperti obrolan sehari-hari, bukan bahasa mimbar yang menggurui.
 
 ---
 
-## 🔴 PITFALL #6: SALDO OPENCODE HABIS (sebelum dispatch)
+## 🔴 PITFALL #5: FOOTER & 3 TAUTAN DIGITAL WAJIB (Format WA Code Block)
 
-Sebelum dispatch Writer/Editor, SELALU cek saldo OpenCode. Kalau habis, delegasi akan gagal diam-diam (HTTP 401 di background) dan hasil tidak akan muncul.
+Setiap naskah final WhatsApp (Langkah 5 & 6) WAJIB memuat 3 tautan digital lengkap di bagian footer:
+1. `• 📺 Video YouTube : https://youtu.be/...`
+2. `• 📄 Versi Google Doc : https://docs.google.com/document/d/...`
+3. `• 🌐 Pustaka Web Kontemplasi : https://kontemplasi.satyaaditech.web.id/#<slug>`
 
-Cek cepat:
-```bash
-curl -s -o /dev/null -w "%{http_code}" https://opencode.ai/zen/go/v1/chat/completions \
-  -H "Authorization: Bearer ${OPENCODE_API_KEY}" \
-  -H "Content-Type: application/json" \
-  -d '{"model":"deepseek-v4-pro","messages":[{"role":"user","content":"test"}],"max_tokens":5}'
-```
+❌ **DILARANG MUNCUL**:
+- `\"📖 Waos naskah jangkep wonten ing Pustaka Kontemplasi: ...\"` (Dihapus total).
+- `\"✅ Dapat dipraktikkan di mana saja dan kapan saja...\"` (Dihapus total).
+- Footer tanpa link web kontemplasi atau link yang hilang salah satu.
 
-- **200** → lanjut dispatch
-- **401** → saldo habis, jangan dispatch — tulis langsung (fallback mode)
-- Top-up: https://opencode.ai/workspace/wrk_01KS8Q1HE9FDYBSZ8ZV66GGYT2/billing
+---
 
-JANGAN dispatch lalu berharap — cek dulu. Tanpa cek, delegasi akan terlihat dispatch tapi hasilnya kosong/error.
+## 🔴 PITFALL #6: STANDAR GOOGLE DOC (Paginasi 2 Halaman Rapi)
+
+1. **Halaman 1 (Cover)**: Header tanggal, `RENUNGAN PENYISWAAN`, Judul Utama, dan **Poster Infografis proporsional (lebar 320pt / 70-75%)** dipusatkan (center), diakhiri **Page Break**.
+2. **Halaman 2 (Isi)**: Salam Karahayon, Pethikan Sabda/Wejangan (indent 24pt italic), Uraian, Praktik (3 poin), Renungan, Aplikasi (3 pertanyaan), Penutup Satuhu, dan Footer 3 tautan aktif.
+3. Teks di Google Doc bersih tanpa karakter markdown mentah (`*`, `**`, `###`).
 
 ---
 
