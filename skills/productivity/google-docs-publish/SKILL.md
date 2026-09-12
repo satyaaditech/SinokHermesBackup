@@ -8,6 +8,8 @@ description: Use when converting markdown to formatted Google Docs.
 ## References
 - Direct Python API publishing and link sharing pattern: [references/direct-api-publishing.md](references/direct-api-publishing.md)
 - Native paragraph formatting, images, and page breaks: [references/native-batch-formatting.md](references/native-batch-formatting.md)
+- Native table formatting & zebra striping: [references/native-table-formatting.md](references/native-table-formatting.md)
+- Targeted in-place document editing & API rate limiting: [references/targeted-in-place-editing.md](references/targeted-in-place-editing.md)
 - Google Slides API disabled workaround (pptx upload conversion): [references/slides-api-disabled-workaround.md](references/slides-api-disabled-workaround.md)
 
 User (Pak Satya) requires Google Doc output as **native docs formatting** — real headings, bold, italic — with **ZERO markdown symbols** (`*`, `**`, `###`) visible. Docs go into a specific Drive folder (e.g. 'Materi Olahrasa' `1Bh9ZIizra0I-3hmlqcHjhLJi3-eTAI4U`, 'Pendapatan Sampingan' `1SQaBdLVan5SuLfyHgV9Nr1CGbFFIPd3P`) and are shared "anyone with link (writer)" so he can edit from mobile.

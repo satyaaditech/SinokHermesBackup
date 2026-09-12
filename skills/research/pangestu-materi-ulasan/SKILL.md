@@ -6,6 +6,7 @@ description: Use when membuat materi ulasan/khotbah Pangestu (SSJ/SKH).
 # Materi Ulasan/Khotbah Pangestu
 
 ## Referensi & Sumber Kunci
+- **Standar Format Tabel Komparasi, Novelties, & Laku Nyata**: Lihat `references/format_komparasi_tabel_dan_novelties.md` berisi aturan baku 4 pilar per novelty (Tabel 2 Kolom, Deep Insight, Laku Padintenan, Sabda Verbatim), serta aturan tegas native table pada HTML dan Google Docs.
 - **Korelasi NPD (Narcissistic Personality Disorder) dengan Ajaran SGS**: Lihat `references/npd_vs_sgs.md` berisi detail pemetaan kriteria klinis DSM-5 terhadap konsep *kumingsun* (*lager-zelf* / Pribadi Asor), *watak angen-angen*, spiritual narsisme (SKH Lin 977), serta formulasi terapinya (Panalangsa dan Andhap Asor).
 - **Sasangka Jati — Serat Panembah Bab 5 Key Insights**: Lihat `references/panembah_bab5_insights.md` berisi 5 insight mendalam (Eling tanpa ngeling-eling, Pasemon Sang Patih & 7 Kamar Batin, Kuwajiban Lair/Budi Darma minangka Panembah, Wewangian/Aromaterapi vs Sesaji, Sucining Ati vs Sucining Angen-angen).
 
@@ -13,7 +14,9 @@ User (Pak Satya) mendapat tugas mengulas materi Pangestu (mis. Sasangka Jati Ser
 
 ## Alur kerja
 
-1. **Cek anti-redundansi dulu**: search_files di `~/share/materi_khotbah/` (mis. pattern `*panembah*`). Kalau topik sudah ada file ulasan, materi baru WAJIB sudut berbeda (deepen), bukan salin. File lama = acuan gaya & daftar sandingan yang sudah dipakai (hindari mengulang verbatim).
+1. **Cadangkan Dokumen Sebelum Overhaul**: Sebelum melakukan perubahan/revisi menyeluruh pada Google Doc atau draf materi yang sudah ada, selalu buat salinan cadangan (*duplicate/backup*) di Drive folder `Materi Olahrasa` (`[BACKUP] ...`) dan salinan `.md` lokal.
+2. **Konsistensi Basa Krama Alus, Kutipan Verbatim, & Anti-Cocoklogi**: Seluruh narasi pengantar, penjelasan materi, dan tinjauan filosofis wajib menggunakan Basa Jawi Krama Alus murni (tidak campur ngoko). Kutipan Sabda (SSJ, BRSR, SKH, TKL, UUJM) wajib 100% VERBATIM tanpa diubah. DILARANG membuat asumsi yang menjelekkan agama/ajaran lain (Piwulang Sang Guru Sejati adalah SESULUH dan TEKEN) dan DILARANG memaksakan sabda ke konsep yang tidak cocok (cocoklogi). TKL, UUJM) wajib 100% **VERBATIM** apa adanya tanpa diparafrase.
+3. **Cek anti-redundansi dulu**: search_files di `~/share/materi_khotbah/` (mis. pattern `*panembah*`). Kalau topik sudah ada file ulasan, materi baru WAJIB sudut berbeda (deepen), bukan salin. File lama = acuan gaya & daftar sandingan yang sudah dipakai (hindari mengulang verbatim).
 2. **Sumber teks**: ekstraksi HTML & katalog slug buku ada di skill `pangestu-buku-studi` (user-owned — baca untuk cara fetch: curl + strip `<article>`). Sumber: `https://satyaaditech.github.io/perpustakaan/book/pangestu/<slug>.html`.
 3. **Ekstrak bab persis**: setelah teks penuh ke file, cari judul bab dengan `re.finditer` (mis. `Teges-teges kang Gegandhengan`), potong `txt[start : start + re.search(r'\nBab N\b', txt[start:]).start()]`, simpan `/tmp/<buku>_bab<N>.txt` untuk dibaca bertahap.
 4. **⚠️ Terjemahan Indonesia SSJ tidak lengkap**: `ssj_ind.html` berhenti SEBELUM Serat Panembah. Kutipan wajib dari teks Jawa (`ssj.html`) + terjemahan sendiri yang baku dan cermat.

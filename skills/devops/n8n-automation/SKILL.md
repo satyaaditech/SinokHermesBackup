@@ -7,6 +7,11 @@ description: Manage, create, and test n8n workflows via API and CLI.
 
 Manage n8n workflows directly from Hermes/Sinox on `n8nserver`.
 
+## 🚨 MANDATORY GOLDEN RULE: 100% NATIVE NO-CODE BUILT-IN NODES
+- **PRIORITASKAN NATIVE BUILT-IN NODES**: Setiap perancangan dan pembuatan workflow n8n WAJIB mengutamakan node bawaan resmi (`n8n-nodes-base.*` dan `@n8n/n8n-nodes-langchain.*`) untuk menyajikan kanvas visual berwarna penuh yang mudah dipahami, dirawat, dan diaudit.
+- **CODE NODE HANYA JIKA SANGAT TERPAKSA**: Penggunaan custom JavaScript/Python Code node `{}` HANYA diizinkan jika fungsi yang dibutuhkan benar-benar mustahil dicapai dengan kombinasi native nodes (misal: regex biner kompleks khusus atau manipulasi buffer tingkat rendah).
+
+
 ## Key Environment & Endpoints
 - **Base URL (Local)**: `http://localhost:5678`
 - **Public Domain**: `https://n8n.satyaaditech.web.id`
@@ -80,8 +85,50 @@ Manage n8n workflows directly from Hermes/Sinox on `n8nserver`.
 2. **Diagnose & Patch**: Perbaiki kode node / parameter via skrip Python atau API (`n8n-manager update <WF_ID>`).
 3. **Partial Re-Run**: Jalankan `n8n-manager retry <EXECUTION_ID>`. n8n akan melanjutkan eksekusi dari node yang gagal tanpa mengulang proses berat (seperti video rendering) yang sudah selesai.
 
-## Workflow JSON Structure Reference
+## Workflow JSON Structure & Native Built-in Nodes Reference
 When crafting n8n workflows:
-- Nodes array contains objects with `id`, `name`, `type` (e.g. `n8n-nodes-base.webhook`, `n8n-nodes-base.code`, `n8n-nodes-base.httpRequest`, `n8n-nodes-base.respondToWebhook`), `typeVersion`, `position`, and `parameters`.
+- Nodes array contains objects with `id`, `name`, `type`, `typeVersion`, `position`, and `parameters`.
 - Connections map node names to outputs/inputs.
-- In JavaScript Code nodes (`n8n-nodes-base.code`), use `$input.first().json` or `$input.all()` to access incoming items.
+- Always prefer Native Built-in Nodes over generic Code nodes `{}` for visual clarity and maintainability.
+
+### Primary Built-in Node Types (n8n v2.36+):
+1. **Flow & Logic**:
+   - `n8n-nodes-base.webhook` (Triggers: GET/POST/PUT)
+   - `n8n-nodes-base.respondToWebhook` (Fast synchronous HTTP responses)
+   - `n8n-nodes-base.scheduleTrigger` (Cron / Interval schedules)
+   - `n8n-nodes-base.if` (Multi-rule branching: String, Number, DateTime, Regex)
+   - `n8n-nodes-base.switch` (Multi-route dispatch)
+   - `n8n-nodes-base.loopOverItems` / `splitInBatches` (Batching / Rate limit avoidance)
+   - `n8n-nodes-base.merge` (Append, Merge by Key, Combine, Multiplex)
+   - `n8n-nodes-base.errorTrigger` (Global failure catcher & Telegram alert)
+   - `n8n-nodes-base.stickyNote` (Visual documentation boxes on canvas)
+
+2. **Data Transformation (No-Code)**:
+   - `n8n-nodes-base.set` (Edit Fields: assign, rename, transform JSON)
+   - `n8n-nodes-base.filter` / `n8n-nodes-base.removeDuplicates` (Data hygiene)
+   - `n8n-nodes-base.summarize` / `n8n-nodes-base.aggregate` (Math & group-by calculations)
+   - `n8n-nodes-base.html` / `n8n-nodes-base.markdown` (Extract web content & formatting)
+
+3. **Apps & System Execution**:
+   - `n8n-nodes-base.googleSheets` (Append, Update, Read, Delete rows with OAuth2)
+   - `n8n-nodes-base.telegram` (Send Text Markdown/HTML, Photo, Video, Audio, Doc, Pin)
+   - `n8n-nodes-base.httpRequest` (REST API client with OAuth2, Bearer, Multipart)
+   - `n8n-nodes-base.executeCommand` (Linux CLI execution: FFmpeg, Python scripts)
+   - `n8n-nodes-base.readWriteFile` (Direct disk storage operations)
+
+4. **AI & LangChain Native Nodes**:
+   - `@n8n/n8n-nodes-langchain.agent` (Autonomous Tools calling AI Agent)
+   - `@n8n/n8n-nodes-langchain.lmChatOpenAi` (OmniRoute endpoint :20129 connector)
+   - `@n8n/n8n-nodes-langchain.toolWorkflow` (Sub-workflows exposed as AI Tools)
+
+## Design Patterns from n8n.io/workflows
+1. **Sticky Note Canvas Architecture**: Document major sections with colored sticky notes (Yellow for Overview, Blue for Setup, Green for Quality Gates, Purple for AI/Outputs).
+2. **Fast-Response Webhook Pattern**: Return `200 OK` or HTML instantly with `respondToWebhook`, then process heavy background tasks (FFmpeg / Docs / AI).
+3. **Sub-Workflow Modularity (`executeWorkflow`)**: Separate heavy reusable tasks (e.g. Video Rendering, Sheet Logging) into isolated sub-workflows.
+4. **Centralized Error Notifier**: Dedicate an Error Trigger workflow to post failures directly to Telegram Thread 4038 with retry instructions.
+
+## AI Assistant & Sandbox Infrastructure
+- **OmniRoute Adapter**: Port `20129` (`http://172.17.0.1:20129/v1`) translates streaming SSE to standard JSON for n8n AI verification.
+- **Code Sandbox**: `http://sandbox-api:8080` (API Key: `satya-sandbox-key-2026`) backed by DinD runner `sandbox-runner-1`.
+- **Search Engine**: `http://searxng:8080` (SearXNG self-hosted container).
+

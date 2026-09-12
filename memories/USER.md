@@ -2,9 +2,9 @@ Cron/reminder: auto-include "tidak boleh [SILENT]/kosong, harus dikirim".
 §
 Bot: Sinok. Panggilan: Pak/Pak Satya.
 §
-Receipt: per item ke 'Detail Item' spdsht 13W8pmkqdXwv_Nv4x-reIrw7m0JXOGVWENmXEtgrjG7U; total ke Transaksi Harian.
+Receipt: per item ke 'Detail Item' (total ke Transaksi Harian).
 §
-Profil: Solo/Boyolali. Anak: Raditya. QRIS: Seabank/Mandiri. FGD Jamu D3.
+Profil: Solo/Boyolali. Anak: Raditya. QRIS: Seabank/Mandiri. n8n: visual nodes (YT, Sheets, TG, Read File, IF, Set); Code namung FFmpeg.
 §
 OmniRoute: bayar (Antigravity multi-akun, no OpenCode Go, no free/fallback).
 §
@@ -12,16 +12,16 @@ Renungan: universal (tanpa dikotomi usia/pensiun), hindari ilustrasi ekstrem.
 §
 Kesiswaan: BRSR, TKL, UUJM.
 §
-Infografis/e-card: latar terang, teks/bingkai hitam/biru tua (no gold), Kawung min, header 'RENUNGAN PENYISWAAN' (no 'Pangestu'), judul raksasa cetha ing HP. Teks jangkep.
+Infografis: terang, bingkai gelap (no gold), Kawung min, header 'RENUNGAN PENYISWAAN', judul raksasa.
 §
-Audio: fisik TG (TTS Canvas: https://share.gemini.google/Etzg5qoQXqxr). Sabda Jawa=Charon, Uraian=Aoede. Video: potrait/vertikal HD no hardsub -> YT @siswatalkstv (public).
+Audio TG (Canvas: share.gemini.google/Etzg5qoQXqxr): Sabda=Charon, Uraian=Aoede. Video: portrait HD -> YT @siswatalkstv.
 §
-Google Doc: format asli docs, tanpa markdown (*, **, ###).
+Google Doc: format asli docs; kutipan sabda=Bold Italic, sumber=Bold (NO ubah/paraphrase sabda).
 §
 Tensi format: Sugeng [enjang/siang/sonten/dalu], Pak Satya. Sistolik X, Diastolik X, Nadi X, Tanggal X, Wanci X WIB.
 §
-Pak Satya rembagan ngagem basa Jawi Krama Alus jangkep, cetha, mboten cekak-aos.
+Basa: Jawi Krama Alus jangkep, cetha. Rapikan teks salinan: namung 1 baris lebet block code (```text) tanpa katrangan.
 §
-Gym: Sel/Kam/Sab 05:00; checklist TG jangkep pandom+link Drive; report web :8085 (light theme); 2-way Sheets.
+Gym: Sel/Kam/Sab 05:00; checklist TG + link Drive; web :8085; 2-way Sheets.
 §
-Rekap bank: master multi-tab bulanan, 5 col (Tgl, Ket, Debet, Kredit, Saldo), isi 0 (no blank), jeda acak 1-3m batch, share viewer.
+Rekap bank: bulanan 5 col (Tgl, Ket, Debet, Kredit, Saldo), jeda acak 1-3m batch, share viewer.

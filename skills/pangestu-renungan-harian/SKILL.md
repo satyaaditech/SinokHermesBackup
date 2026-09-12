@@ -6,19 +6,31 @@ description: Produce Pangestu renungan harian for TG thread 1096. Agentic 3-role
 # Renungan Harian Pangestu (Daily Bread)
 
 ## ⚠️ Golden Rules & Pitfalls Format Baku (WAJIB DIPATUHI)
-1. **Dilarang Mengubah Nama Section**:
+1. **Aturan Teologis & Larangan Istilah (STRICT THEOLOGICAL GUARDRAILS)**:
+   * ❌ **DILARANG KERAS** menggunakan istilah: `ajaran Pangestu`, `agama Pangestu`.
+   * ✅ **WAJIB**: Pangestu adalah **PAGUYUBAN / WADAH SISWA**. Ajarannya adalah **Ajaran Sang Guru Sejati** / **Piwulang Sang Guru Sejati** / **Piwulang Kasampurnan**.
+   * ❌ **DILARANG KERAS** menggunakan istilah mistik/kejawen non-kanonikal seperti `lawang hawa sanga`.
+   * ✅ **WAJIB**: Gunakan istilah kanonikal Serat Sasangka Jati: `pancadriya` / `indriya` / `hawa napsu patang prakara` (aluamah, amarah, supiyah, mutmainah) / `angen-angen`.
+   * ❌ **DILARANG KERAS** menggunakan kata ganti `beliau` untuk Sang Guru Sejati (karena Sang Guru Sejati adalah Suksma Sejati / Roh Suci / Imateriil / Tunggal Allah).
+   * ❌ **DILARANG KERAS COCOKLOGI**: Jangan memaksakan istilah luar (misal Socrates / filsafat barat) disangkutpautkan secara paksa merusak definisi baku Tri Sila (Eling, Pracaya, Mituhu) atau Hasta Sila. Saringan luar cukup dipaparkan sebagai analogi olah rasa tanpa mengubah atau menempelkan label palsu pada ajaran baku.
+   * ❌ **DILARANG KERAS MEMODIFIKASI / MEMBUMBUI KUTIPAN SABDA (STRICT VERBATIM CANONICAL)**: Kutipan Sabda/wejangan WAJIB 100% VERBATIM sama persis dengan naskah kanonikal asli (`buku_ssj_jawa.txt`, `buku_brsr.txt`, `buku_skh.txt`, `buku_tkl.txt`). Dilarang memparafrasekan, mengarang istilah, atau menyisipkan kata sendiri (misal: dilarang mengganti *kamar-kamaran* menjadi *senthong*). Format wajib kutipan: **Bold Italic** (`#1B365D`) untuk isi Sabda dan **Bold Only** (`#0E4A6F`) untuk rujukan sumber.
+2. **Dilarang Mengubah Nama Section**:
    * Section introspeksi 3 poin WAJIB bernama `📝 *APLIKASI* :`. DILARANG KERAS menggantinya menjadi `PERTANYAAN REFLEKSI`, `REFLEKSI DIRI`, dll.
    * Baris penutup di dalam `🧘 *PRAKTIK* :` wajib diakhiri kalimat standard: `✅ Latihan ini menumbuhkan ketenteraman batin dan menjaga kita tetap eling lan waspada di setiap langkah.`
 2. **Signature Footer Mutlak**:
    * Signature penutup doa WAJIB verbatim dalam Bahasa Indonesia baku:
      `🙏 Semoga kita semua senantiasa berlimpah Tuntunan dan Perlindungan, Sih dari Sang Guru Sejati. Satuhu 🙏`
    * DILARANG KERAS menerjemahkan signature ini ke Bahasa Jawa atau menambahkan improvisasi kalimat penutup lainnya.
-3. **Pemisahan Peran Audio TTS (Charon & Aoede)**:
+3. **Pemisahan Peran Audio & Poster (Pembagian Tugas Pak Satya vs Sinox/n8n)**:
+   * **Pak Satya**: Menghasilkan file fisik Poster Infografis (via ChatGPT / Canva) dan file Audio Rekaman (via Gemini Canvas Dual-Voice: Charon untuk Sabda Jawi, Aoede untuk Uraian/Refleksi), lalu mengirimkannya ke Telegram.
+   * **Sinox & n8n**: Sinox menyusun draft naskah verbatim teks polos. Setelah Pak Satya ACC dan mengirimkan file Audio + Poster, Sinox/n8n memproses video portrait HD FFmpeg, upload YouTube (`UBMaa9yeTpO28E9z`), pembuatan GDoc, sync Web Kontemplasi, pencatatan Sheets, dan output WhatsApp final dengan 3 link aktif.
    * **Charon (Pria Medhok Jawa)**: Khusus membaca kutipan Sabda/Serat Jawa murni secara khidmat dan perlahan.
    * **Aoede (Wanita Lembut Indonesia)**: Membaca bagian Header, Terjemahan Sabda, Uraian, Praktik, Renungan, Aplikasi, dan Footer Doa.
    * Berikan jeda transisi default 1.5 detik antar segmen dan lakukan *clean-up* (strip markdown, emoji, link) sebelum sintesis suara.
 4. **FFmpeg Video Rendering & Durasi Utuh (WAJIB Portrait / Vertikal)**:
-   * **Format Video Baku**: Mulai September 2026, format video renungan WAJIB menggunakan **rasio portrait/vertikal murni** (sesuai dimensi poster, e.g. 1024x1536 atau 9:16) agar tampilan optimal, cetha, dan penuh saat disimak di layar HP. DILARANG memaksakan rasio landscape 16:9 dengan letterbox/blur kecuali diminta khusus.
+   * **Format Video Baku**: Mulai September 2026, format video renungan WAJIB menggunakan **rasio portrait/vertikal murni** (sesuai dimensi poster, e.g. 1024x1536 atau 9:16) agar tampilan optimal, cetha, dan penuh
+   * **n8n Automation Runner**: Eksekusi rendering dan YouTube upload dipicu melalui automation runner service port 8089 (`http://172.17.0.1:8089/api/render-video`).
+   * **Code Node HTTP Helper**: Di dalam n8n Code Node, gunakan `await this.helpers.httpRequest(...)`, bukan `fetch()`. saat disimak di layar HP. DILARANG memaksakan rasio landscape 16:9 dengan letterbox/blur kecuali diminta khusus.
    * **3-Layer Quality Guard agar Video TIDAK PERNAH Terpotong**:
      1. **Pre-Probe Durasi Audio Eksak**: Gunakan `ffprobe` untuk membaca durasi audio mentah secara presisi (contoh: `400.04` detik).
      2. **Render Ultrafast Portrait Still-Image**: Gunakan `-preset ultrafast -r 2 -t <durasi_audio_eksak>`. Dengan `-r 2`, render video 7 menit selesai dalam 2-3 detik (jauh di bawah batas timeout terminal/n8n):
