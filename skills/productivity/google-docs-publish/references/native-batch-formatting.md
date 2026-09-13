@@ -9,7 +9,15 @@ When formatting Google Docs, prioritize high readability by using:
 3. **Spacing**: Set paragraph spacing (`spaceAbove`, `spaceBelow` in `paragraphStyle` request body) and a line spacing of 1.15 to prevent wall-of-text layouts.
 4. **Bold Prefixes**: Bold the number or bullet prefixes (e.g., `1.`, `2.`, etc.) to enhance directory readability.
 
-## 1. The Reverse Insertion Algorithm (End-to-Front)
+## Common Pitfalls & Google Docs API Traps
+- **Zero Markdown Syntax Artifacts**: Pak Satya strictly expects ZERO raw markdown markers (`#`, `##`, `###`, `---`, `>`, `**`, `*`, `|---|`) visible in the final Google Doc. Stripping markers and applying native formatting is mandatory:
+  1. Parse `# / ## / ###` into clean heading strings and apply `namedStyleType: 'HEADING_1' / 'HEADING_2' / 'HEADING_3'` with Navy `#0D3B66` bold typography.
+  2. Parse `>` into clean quote strings and apply paragraph style `indentStart: {magnitude: 36, unit: 'PT'}`, `indentEnd: {magnitude: 18, unit: 'PT'}`, italic body text, and bold source attribution.
+  3. Parse inline tokens `re.split(r'(\*\*\*[^*]+\*\*\*|\*\*[^*]+\*\*|\*[^*]+\*)')` to strip asterisks while recording `(startIndex, endIndex)` for `bold: True` / `italic: True` text runs.
+- **Heading Styles**: In `updateParagraphStyle`, use `namedStyleType: 'HEADING_1'` (or `HEADING_2`, `TITLE`, `SUBTITLE`, `NORMAL_TEXT`), with `fields: 'namedStyleType,spaceAbove,spaceBelow'`. NEVER use `headingId` — it throws `HttpError 400: Unallowed field: headingId`.
+- **Large Document Chunking**: When inserting documents > 20,000 characters, break raw text into chunks of ~20,000 chars, inserting sequentially at the current document end (`cur_end = content[-1]['endIndex'] - 1`), then do a single pass across `doc.get('body').get('content')` to extract ranges for formatting.
+- **Batching Style Updates**: Execute style updates in batches of 50 requests with a small sleep (`time.sleep(0.3)`) to prevent transient `429 Rate Limit Exceeded` errors.
+
 
 A major hurdle with the Google Docs API is that inserting text or structural elements shifts the absolute indices of all elements located after the insertion point. Keeping track of these shifts when updating styles is error-prone.
 

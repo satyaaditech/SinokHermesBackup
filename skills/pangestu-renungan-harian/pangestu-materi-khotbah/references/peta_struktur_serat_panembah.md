@@ -1,7 +1,16 @@
 # Peta Struktur Kanonikal Serat Panembah (Buku Kandhutan VII Sasangka Jati)
 
 Pustaka: *Serat Sasangka Jati*, Buku Kandhutan VII (*Serat Panembah*).  
+Arsip Asli: `/home/satyaaditech/share/pangestu_studi/Sasangka_Jati_Jawa.pdf` (Kaca 199–244).  
 Total: ~77.500 karakter kanonikal, terbagi dalam Purwaka, Pudyastuti, Tuntunan, dan **5 BAB Utama**.
+
+### Peta Halaman PDF (*Sasangka Jati Jawa*):
+- **Purwaka, Pudyastuti & Tuntunan**: Kaca 201–207
+- **BAB 1 (Katranganing Panembah Telung Tataran & 4 Sembah)**: Kaca 209–216
+- **BAB 2 (Panembahing Raga / Jiwa Mudha - 6 Sikap & 4 Anasir)**: Kaca 217–223
+- **BAB 3 (Panembahing Rasa / Jiwa Diwasa - Sila Tumpuk & Hening)**: Kaca 224–228
+- **BAB 4 (Panembahing Sukma / Jiwa Sepuh - Sila Tumpang & Teluning Ngatunggal)**: Kaca 229–235
+- **BAB 5 (Saweneh Katranganing Panembah - 7 Kamar, 3 Warana, Budi Darma)**: Kaca 236–244
 
 ---
 

@@ -14,6 +14,23 @@ User (Pak Satya) mendapat tugas mengulas materi Pangestu (mis. Sasangka Jati Ser
 
 ## Alur kerja
 
+0. **Kamus Buku Babon & Pustaka Kanonikal (Dilarang Mengarang Nama Baru)**:
+   - **SSJ**: *Sasangka Jati* (atau *Serat Sasangka Jati*)
+   - **SPRA**: *Sabda Pratama*
+   - **SKH**: *Sabda Khusus* (atau *Sasangka Kinelar*)
+   - **BRSR**: *Bawa Raos ing Salebeting Raos* (DILARANG: *Sabda-sabda Rasul*)
+   - **TKL**: *Taman Kamulyan Langgeng* (DILARANG: *Titihan Kang Linuwih*)
+   - **UUJM**: *Ular-ular Juru Mengeti* (DILARANG: *Usul-usuling Jiwa Manungsa*)
+   - **WSJ**: *Wahyu Sasangka Jati* (atau *Wadining Suksma Jati*)
+   - **ASBS**: *Arsip Sarjana Budi Santosa*
+   - **Olah Rasa** & **Ulasan Kang Kelana**au *Sasangka Kinelar*)
+   - **BRSR**: *Bawa Raos ing Salebeting Raos* (DILARANG menyebut *Sabda-sabda Rasul*)
+   - **TKL**: *Taman Kamulyan Langgeng* (DILARANG mengarang nama *Titihan Kang Linuwih*)
+   - **UUJM**: *Ular-ular Juru Mengeti* (DILARANG mengarang nama *Usul-usuling Jiwa Manungsa*)
+   - **WSJ**: *Wahyu Sasangka Jati* (atau *Wadining Suksma Jati*)
+   - **ASBS**: *Arsip Sarjana Budi Santosa*
+   - **Kutipan Verbatim Wajib Utuh/Lengkap**: Dilarang memotong sabda suci menjadi terlalu pendek sehingga merusak konteks pemahaman teologis.
+
 1. **Cadangkan Dokumen Sebelum Overhaul**: Sebelum melakukan perubahan/revisi menyeluruh pada Google Doc atau draf materi yang sudah ada, selalu buat salinan cadangan (*duplicate/backup*) di Drive folder `Materi Olahrasa` (`[BACKUP] ...`) dan salinan `.md` lokal.
 2. **Konsistensi Basa Krama Alus, Kutipan Verbatim, & Anti-Cocoklogi**: Seluruh narasi pengantar, penjelasan materi, dan tinjauan filosofis wajib menggunakan Basa Jawi Krama Alus murni (tidak campur ngoko). Kutipan Sabda (SSJ, BRSR, SKH, TKL, UUJM) wajib 100% VERBATIM tanpa diubah. DILARANG membuat asumsi yang menjelekkan agama/ajaran lain (Piwulang Sang Guru Sejati adalah SESULUH dan TEKEN) dan DILARANG memaksakan sabda ke konsep yang tidak cocok (cocoklogi). TKL, UUJM) wajib 100% **VERBATIM** apa adanya tanpa diparafrase.
 3. **Cek anti-redundansi dulu**: search_files di `~/share/materi_khotbah/` (mis. pattern `*panembah*`). Kalau topik sudah ada file ulasan, materi baru WAJIB sudut berbeda (deepen), bukan salin. File lama = acuan gaya & daftar sandingan yang sudah dipakai (hindari mengulang verbatim).

@@ -10,10 +10,71 @@ User (Pak Satya) gets assignments to present ulasan (e.g. Sasangka Jati chapters
 `pangestu-renungan-harian` (short daily renungan for TG thread 1096) — this class is
 long-form: structure, cross-refs, wow insights, applications.
 
+## ATURAN BAKU: PENULISAN BERJIWA (BAWA RAOS) & ANTI-RINGKASAN STERIL
+1. **DILARANG KERAS MEMBUAT RINGKASAN AKADEMIS STERIL/PELIT KATA**:
+   - Jangan pernah meringkas beberapa bab besar menjadi 5–10 halaman outline peluru (bullet-points) dingin yang miskin rasa.
+   - Tolok ukur keunggulan (Gold Standard): Khotbah 2 jam wajib memenuhi standar naskah komprehensif 25+ halaman (~55.000–65.000+ karakter) yang mengalir utuh.
+2. **BASA JAWI KRAMA ALUS UNTUK NARASI & 100% VERBATIM UNTUK SABDA (TIDAK BOLEH TERPOTONG)**:
+   - Seluruh narasi pengantar, penjelasan teologis, komparasi tabel, dan aplikasi praktis WAJIB ditulis dalam **Basa Jawi Krama Alus** (jangkep, runtut, cetha, santun, lan mboten cekak-aos). Dilarang mencampur aduk narasi dengan Ngoko/Ngoko Alus (gunakan *wekdal, sampeyan, nyawijikaken, dipun-tata*, bukan *wektu, sikil, nyawijiake, ditata*).
+   - Seluruh KUTIPAN SABDA KANONIKAL (SSJ, BRSR, SKH, TKL, UUJM, ASBS) wajib **100% VERBATIM** aksara demi aksara sesuai kitab babon aslinya (dilarang diparafrasekan atau diubah bahasanya).
+   - **KUTIPAN JANGAN TERLALU PENDEK/TERPOTONG**: Kutipan sabda suci tidak boleh hanya 1-2 klausa pendek yang memenggal konteks pemahaman teologis. Tampilkan kutipan secara utuh, tuntas, dan memadai agar pesan rohaninya tersampaikan tanpa distorsi.
+   - **AKRONIM & ASMA KITAB BABON KANONIKAL WAJIB 100% TEPAT (DILARANG MENGARANG ASMA BARU)**:
+     * **SSJ**: *Sasangka Jati* (utawi *Serat Sasangka Jati*)
+     * **SPRA**: *Sabda Pratama*
+     * **SKH**: *Sabda Khusus* (utawi *Sasangka Kinelar*)
+     * **BRSR**: *Bawa Raos ing Salebeting Raos* (DILARANG: *Sabda-sabda Rasul*)
+     * **TKL**: *Taman Kamulyan Langgeng* (DILARANG: *Titihan Kang Linuwih*)
+     * **UUJM**: *Ular-ular Juru Mengeti* (DILARANG: *Usul-usuling Jiwa Manungsa*)
+     * **WSJ**: *Wahyu Sasangka Jati* (utawi *Wadining Suksma Jati*)
+     * **ASBS**: *Arsip Sarjana Budi Santosa*
+     * **Olah Rasa** & **Ulasan Kang Kelana**
+3. **TABEL NATIVE GOOGLE DOCS & BEBAS ARTIFAK TEKS MENTAH**:
+   - Dilarang memasukkan tag HTML mentah `<br>` / `<br><br>` ke dalam sel tabel Google Docs; gunakan pemisah baris native (`\n\n`).
+   - Dilarang menggunakan escaping LaTeX `\rightarrow` dalam kode Python karena `\r` dievaluasi sebagai carriage return yang merusak teks menjadi `ightarrow$`. Gunakan simbol Unicode murni `→`. (DILARANG MENGARANG NAMA BARU)**:
+     * **SSJ**: *Sasangka Jati* (atau *Serat Sasangka Jati*)
+     * **SPRA**: *Sabda Pratama*
+     * **SKH**: *Sabda Khusus* (atau *Sasangka Kinelar*)
+     * **BRSR**: *Bawa Raos ing Salebeting Raos* (DILARANG menyebut *Sabda-sabda Rasul*)
+     * **TKL**: *Taman Kamulyan Langgeng* (DILARANG mengarang nama *Titihan Kang Linuwih*)
+     * **UUJM**: *Ular-ular Juru Mengeti* (DILARANG mengarang nama *Usul-usuling Jiwa Manungsa*)
+     * **WSJ**: *Wahyu Sasangka Jati* (atau *Wadining Suksma Jati*)
+     * **ASBS**: *Arsip Sarjana Budi Santosa*
+     * **Olahrasa** & **Ulasan Kang Kelana**BRSR** adalah **Bawa Raos Salebeting Raos** (BUKAN *Sabda-sabda Rasul*). Wajib memperkaya cross-reference berimbang ke seluruh korpus (BRSR, SKH, TKL, UUJM, ASBS), jangan dominan SSJ saja.
+3. **TABEL NATIVE GOOGLE DOCS (ANTI-HTML MENTAH)**:
+   - Dilarang keras mengekspor tabel atau baris ke Google Docs dengan tag HTML mentah (`<br>`, `<br><br>`, `:---`, `|`).
+   - Tabel perbandingan wajib dirender sebagai **Native Google Docs Tables** (`insertTableRequest` 2x2/NxM) dengan header Navy Blue (`#0D3B66`), teks putih tebal, sel data abu-abu halus/putih, dan padding proporsional.
+4. **DILARANG MENGGABUNG / MENGKOMPRESI NOVELTY ATAU SUB-TOPIK**:
+   - Setiap Novelty / Pembaruan Paradigma (misal Novelty 1 s.d. 15) WAJIB berdiri sendiri memiliki sub-bab khusus, narasi wedharan mendalam, pethikan sabda kanonikal verbatim, serta tabel komparasi native tersendiri.
+   - Dilarang keras menggabungkan beberapa novelty menjadi satu judul/tabel komposit (seperti "Novelty 6, 7, 8" atau "Novelty 9-13") karena akan memangkas kedalaman naskah dan merusak target ketebalan minimal 20 halaman (>45.000 karakter).
+5. **KANON KASAMPURNAN: BUDI DARMA (TETULUNG) MENDAHULUI FORMALITAS RITUAL**:
+   - Sesuai *Serat Sasangka Jati, Buku Kandhutan VII (Serat Panembah), Bab 5 Adeg-adeg 4*, apabila waktu panembah bersamaan dengan adanya sesama makhluk yang membutuhkan pertolongan mendesak (bencana kebakaran, bahaya, penderitaan), melakukan **Budi Darma (tetulung) WAJIB DIDAHULUKAN** daripada menjalankan ritual panembah.
+   - Menolong penderitaan sesama dengan rela, tanpa pamrih, dan batin tetap eling selaras nafas adalah bagian sejati dari panembah itu sendiri (*living worship*). Formalitas panembah dapat dilanjutkan setelah pertolongan selesai.
+4. **STRICT PAKEM TERMINOLOGI — DILARANG ISTILAH NON-KANONIK/ARAB**:
+   - DILARANG KERAS memakai istilah liturgi Arab/Islam luar pakem (seperti *kiyam, ruku, tahiyat, takbir, salam, syariat, tarekat, hakikat, makrifat*).
+   - Wajib memakai istilah resmi Basa Jawi SSJ:
+     * *Ngadeg Jejeg* (menundukkan Luamah/tanah)
+     * *Ngluhurake Asma kanthi Anjunjung Tangan Loro Pisan* (sumarah)
+     * *Sedhakep* (mengunci pancadriya)
+     * *Nelungake Badan / Tumelung / Tumungkul* (menundukkan Amarah/api)
+     * *Sujud ing Bantala/Lemah* (menundukkan Supiah/air)
+     * *Lungguh Timpuh* (menata Mutmainah/angin)
+     * *Noleh Mangiwa lan Manengen* (menebar Budi Darma)
+     * *Sila Tumpuk* (Tataran 2 - Panembahing Rasa)
+     * *Sila Tumpang / Suku Tunggal* (Tataran 3 - Panembahing Sukma / Samadi)
+3. **5-STEP SOULFUL ANATOMY PER TOPIK**:
+   - Sabda Sumber (Verbatim 100%) -> Tegesipun (Unpacking kata demi kata) -> Andharan Kajiwan & Sentuhan Batin (fisiologis/psikologis nyata) -> Pepadhang Énggal (Insight pembebasan batin) -> Lampah Sadinten (Praktik mbumi 24 jam).
+4. **LIVING WORSHIP 24 JAM (PRAKSIOLOGI PADINTENAN)**:
+   - Panembah bukan sekadar ritual wanci tartamtu, melainkan laku nyata 24 jam (SKH No. 76 & SSJ Sangkan Paran Bab IV Tetanen Pasabinan Batin) di 4 gelanggang: Pribadi, Kulawarga, Pakaryan/Bisnis, dan Bebrayan Agung.
+5. **NADA & BAHASA**:
+   - Wajib Basa Jawi Krama Alus yang luwes, trapsila, oratoris, penuh welas asih, dan berbicara langsung ke relung sanubari pendengar (*Bapak-Ibu ingkang satuhu kinurmatan...*).
+
 ## Referensi Pendukung
+- `references/soulful_writing_and_pedagogy_benchmark.md` — Standar Wajib Penulisan Berjiwa (Bawa Raos), Tolok Ukur Bab 2 (30.000 karakter), 5 Langkah Anatomi Per Topik (Sabda -> Tegesipun -> Andharan Kajiwan -> Pepadhang Énggal -> Lampah Sadinten), lan Pambedan Tegas kalawan Ringkesan Steril.
+- `references/world_class_treatise_standards.md` — Standar Kualitas World-Class & Traktat Meta-Ontologis: Menghindari outline/ringkasan dangkal saat diminta esai/traktat, integrasi wajib multi-sumber kanonik (SSJ, BRSR, SKH, TKL, UUJM, ASBS), dialektika kedaulatan Aku, 6 babak traktat komprehensif, dan verbatim sabda 100%.
 - `references/15_novelties_panembah_master_blueprint.md` — Master Blueprint 15 Pembaruan Hakiki (Novelties) Serat Panembah, 6 Babak khotbah, analogi impen marcapada, genealogi Roh Suci, arsitektur 7 kamar & 3 warana, 3 tataran panembah, living worship, olah pasabinan batin, panalangsa satriyatama, sarta 3 pilar kelonggaran kasampurnan.
 - `references/format_komparasi_tabel_dan_novelties.md` — Standar wajib format 4 pilar per pembaruan (Tabel Komparasi 2 Kolom, Deep Insight, Laku Padintenan, Sabda Verbatim), aturan tegas tabel HTML/GDoc natif, sarta peta 10 Pembaruan Hakiki Sang Guru Sejati.
 - `references/peta_struktur_serat_panembah.md` — Peta arsitektur kanonikal 5 BAB Serat Panembah (SSJ Buku Kandhutan VII) mencakup Purwaka, hermeneutika istilah Arab, sasmita 6 gerak fisik, wanci per tataran jiwa (Jiwa Mudha 2 waktu, Diwasa 3 waktu, Sepuh sila tumpang), peta 7 kamar, dan navigasi 5 alangan panembah.
+- `references/aturan_ringkasan_dan_ekstraksi_sabda.md` — Aturan baku peringkasan sabda: larangan menghilangkan prasyarat spiritual pokok (sabar, temen, pasrah cipta/nalar), larangan metafora buatan sendiri, serta format perapian 1 baris (single line code block).
 - `references/panembah_cross_reference_guide.md` — Panduan pemetaan cross-reference Serat Panembah (SSJ) ke BRSR, SKH, TKL untuk materi khotbah/ulasan 60-90 menit dengan penerapan hidup sehari-hari (living consciousness beyond liturgy).
 - `references/genealogi_roh_suci_anasir_napsu.md` — Panduan genealogi Roh Suci, kahanan purba, tumuruning Roh Suci, binusanan 4 anasir + 4 hawa napsu + 3 angen-angen, pasemon Adam/Khawa, Uwit Urip, lan Kreta (SSJ Gumelaring Dumadi & BRSR).
 - `references/paugeran_dalan_rahayu_sadar_bali.md` — Panduan teologis Paugeraning Pangeran marang Kawula (sesanggeman purba), sabab kelalen amargi busana anasir, sarta hakikat wigatosipun sadar/eling wangsul lumantar Dalan Rahayu & Panembah minangka tetalining eling (SSJ 1 & Dalan Rahayu Bab 1-2).
@@ -167,6 +228,12 @@ long-form: structure, cross-refs, wow insights, applications.
 
 ## Pitfalls
 - Do not fabricate quotes: every sandingan must be grep-verified in the actual book text.
+- DILARANG Menghilangkan Prasyarat Spiritual Pokok: Saat meringkas atau mempermudah pemahaman sabda, syarat batin pokok (misal: "anglungguhi watak sabar lan temen", "masrahake gegamane cipta lan nalar", "ngukut angen-angen") TIDAK BOLEH dihilangkan atau diubah menjadi parafrase bebas.
+- **Anti-Regresi Volume Dokumen saat Penambahan Konten**: Saat pengguna meminta penambahan insight, subtopik, atau novelty baru (misal: menambahkan Novelty 14 babagan SSJ Bab 5 Adeg 4), JANGAN PERNAH menyederhanakan/meringkas babak-babak lain menjadi draf pendek yang memangkas jumlah karakter (misal dari 50.000+ karakter turun ke 25.000 karakter / 10 halaman). Pastikan skrip generator selalu mempertahankan eksposisi teologis mendalam, wawasan meta-ontologis, pandom 4 gelanggang, dan seluruh tabel perbandingan agar target 20+ halaman tetap terjaga.
+- **Validasi Request Google Docs Table API (Anti-Empty String Crash)**: Saat menyuntikkan teks ke dalam sel tabel native Google Docs (`insertText`), pastikan teks sel tidak kosong (`""` atau hanya spasi). Google Docs API akan melempar error `Invalid requests[0].insertText: Insert text requests must specify text to insert` jika string kosong dikirim. Berikan fallback minimal `" "` jika sel tidak memiliki teks.
+- **Verifikasi Sinkronisasi Ganda (Master & Backup Doc)**: Selalu lakukan verifikasi pembacaan balik via Google Docs API (`documents().get()`) pada kedua ID dokumen (Master & Backup) untuk memastikan jumlah paragraf, tabel native (15 tabel), dan total karakter (`endIndex`) identik 100%.
+- DILARANG Menambah Metafora Karangan Sendiri: Jangan membuat istilah seperti "kreteg/jembatan samadi" yang tidak ada dalam teks sabda asli.
+- Format Perapian Teks Salinan: Jika diminta merapikan teks salinan ("jadikan satu baris", "rapikan teks"), sajikan HANYA 1 baris utuh di dalam ` ```text ` tanpa pengantar atau penjelas.
 - Serat Panembah Bab numbering: Bab 2 = teges-teges (meanings) of Panembahing Raga; Bab 3 =
   Panembahing Roh Suci marang Suksma Sejati. Bab 1 = praktik gerak.
 - read_file output truncates on long extracted texts — slice via execute_code instead.

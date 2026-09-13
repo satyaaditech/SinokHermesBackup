@@ -38,50 +38,73 @@ for r_idx, row in enumerate(target_table["tableRows"]):
 # Sort descending to protect earlier indices
 cell_insertions.sort(key=lambda x: x[0], reverse=True)
 
-cell_reqs = [{"insertText": {"location": {"index": pos}, "text": text}} for pos, _, _, text in cell_insertions]
-docs.documents().batchUpdate(documentId=DOC_ID, body={"requests": cell_reqs}).execute()
+insert_requests = []
+for cell_start, r_idx, c_idx, cell_text in cell_insertions:
+    insert_requests.append({
+        "insertText": {
+            "location": {"index": cell_start},
+            "text": cell_text
+        }
+    })
+docs.documents().batchUpdate(documentId=DOC_ID, body={"requests": insert_requests}).execute()
 ```
 
-### Step 3: Apply Executive Cell & Typography Styling
-Apply professional typography and colors (`updateTableCellStyle` & `updateTextStyle`):
-
-### A. Header Row (Row 0)
-* **Background**: Deep Navy (`#0D3B66`) or Light Soft Tint (`#E8F0FE`).
-* **Typography**: Georgia 10pt/10.5pt, Bold, Deep Navy (`#0D3B66`), Center/Left aligned.
-* **Padding**: 8pt top/bottom, 8pt left/right.
-
-### B. Data Rows (Rows 1..N)
-* **Background**: Clean White (`#FFFFFF`) or Subtle Zebra (`#F8FAFC`).
-* **Typography**: Georgia 9.5pt/10pt Regular, Charcoal Body (`#2D3748`).
-* **Kutipan Verbatim**: Georgia 9.5pt Bold Italic, Deep Indigo (`#1B365D`).
-* **Sumber Referensi**: Georgia 9.5pt Bold Only, Deep Teal (`#0E4A6F`).
-
 ---
 
-## 2. Text Sanitization & Visual Hygiene in Table Cells
-* **Avoid Math-Mode LaTeX**: Never use LaTeX math symbols like `$\\rightarrow$` inside table cell text. In Docs API or regex markdown converters, the backslash or dollar sign can be misparsed or broken (e.g. into `ightarrow$`), causing row breaks or unrendered artifacts. Always replace with native Unicode arrows (`→`).
-* **Replace HTML `<br>` with Native Newlines**: Clean any `<br>` or `<br/>` into actual `\n` or `\n\n` before injecting into table cells.
-* **Sanitize Markdown Symbols & Trailing Pipes**: Strip raw markdown decorators (`*`, `**`, `_`) before inserting text runs and apply styling directly via `updateTextStyle`, and ensure no trailing table pipes `|` remain inside cell string buffers.
+## 2. Critical Pitfalls & Solutions
 
----
-
-## 3. Google Docs API Error Resilience (Transient 500 / 429 / 503)
-When batching hundreds of style operations or multiple table insertions, Google Docs API can occasionally return transient `500 Internal error encountered` or `429 Resource exhausted`.
-Always wrap batch updates in an exponential backoff retry loop:
-
+### Pitfall 1: Raw HTML `<br>` and Markdown Syntax in Table Cells
+**Symptom:** Markdown tables frequently use `<br>` or `<br><br>` for line breaks inside cells. Direct insertion leaves raw `<br><br>` and `:---` strings rendered as ugly plain text in Google Docs.
+**Rule:** Always sanitize and tokenize cell text before insertion:
 ```python
-def execute_with_retry(requests_list, max_retries=6):
-    if not requests_list:
-        return
-    for attempt in range(max_retries):
-        try:
-            return service.documents().batchUpdate(documentId=DOC_ID, body={"requests": requests_list}).execute()
-        except Exception as e:
-            err = str(e)
-            if any(code in err for code in ["429", "500", "503", "Internal error", "Quota exceeded"]):
-                wait_time = (attempt + 1) * 5
-                time.sleep(wait_time)
-            else:
-                raise e
-    raise RuntimeError("Max retries exceeded for Docs API batchUpdate.")
+# Convert HTML breaks to real newlines
+clean_cell = re.sub(r'<br\s*/?>\s*<br\s*/?>', '\n\n', raw_cell, flags=re.IGNORECASE)
+clean_cell = re.sub(r'<br\s*/?>', '\n', clean_cell, flags=re.IGNORECASE)
+
+# Parse inline bold and italic tokens
+tokens = re.split(r'(\*\*\*[^*]+\*\*\*|\*\*[^*]+\*\*|\*[^*]+\*)', clean_cell)
+clean_parts, spans = [], []
+cursor = 0
+for tok in tokens:
+    if tok.startswith('***') and tok.endswith('***'):
+        txt = tok[3:-3]
+        clean_parts.append(txt)
+        spans.append((cursor, cursor + len(txt), True, True)) # bold, italic
+        cursor += len(txt)
+    elif tok.startswith('**') and tok.endswith('**'):
+        txt = tok[2:-2]
+        clean_parts.append(txt)
+        spans.append((cursor, cursor + len(txt), True, False)) # bold
+        cursor += len(txt)
+    elif tok.startswith('*') and tok.endswith('*'):
+        txt = tok[1:-1]
+        clean_parts.append(txt)
+        spans.append((cursor, cursor + len(txt), False, True)) # italic
+        cursor += len(txt)
+    else:
+        clean_parts.append(tok)
+        spans.append((cursor, cursor + len(tok), False, False))
+        cursor += len(tok)
 ```
+
+---
+
+## 3. High-Performance Cluster-Batch Architecture
+
+When publishing comprehensive 20+ page documents with 15–25 mixed tables and paragraphs, running single API calls per paragraph will hit HTTP 429 quota limits or timeouts.
+
+**Pattern:**
+1. Group consecutive paragraphs, headings, and quotes between tables into `text_cluster` blocks.
+2. Insert each `text_cluster` in a single `insertText` call, and batch paragraph/character styling in sub-batches of 50 requests.
+3. On table boundaries, perform the dedicated `insertTable` + cell styling pipeline.
+4. This reduces API round-trips from >200 down to ~35, accelerating rendering by 10x and eliminating timeouts.
+
+---
+
+## 4. Executive Table Styling Specs
+
+| Element | Background Color | Text Color | Font & Size | Padding |
+| :--- | :--- | :--- | :--- | :--- |
+| **Header Row** | Royal Navy `#0D3B66` | Pure White `#FFFFFF` | Georgia 10pt Bold | Top/Bottom 6pt, L/R 8pt |
+| **Left Column (Context / Lama)** | Soft Gray `#F8FAFC` | Dark Slate `#2D3748` | Georgia 9.5pt Regular | Top/Bottom 6pt, L/R 8pt |
+| **Right Column (Pembaruan / SGS)** | Pure White `#FFFFFF` | Dark Slate `#2D3748` | Georgia 9.5pt (Navy Bold subheadings) | Top/Bottom 6pt, L/R 8pt |
