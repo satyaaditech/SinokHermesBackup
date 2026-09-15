@@ -1,0 +1,189 @@
+{
+  "jobs": [
+    {
+      "id": "637b664029e5",
+      "name": "Weton Bulanan",
+      "prompt": "Kirim weton bulan berjalan. Tidak boleh SILENT, tidak boleh kosong, harus dikirim.",
+      "skills": [],
+      "skill": null,
+      "model": null,
+      "provider": null,
+      "provider_snapshot": null,
+      "model_snapshot": null,
+      "base_url": null,
+      "script": "weton-bulanan.py",
+      "no_agent": true,
+      "context_from": null,
+      "schedule": {
+        "kind": "cron",
+        "expr": "0 6 1 * *",
+        "display": "0 6 1 * *"
+      },
+      "schedule_display": "0 6 1 * *",
+      "repeat": {
+        "times": null,
+        "completed": 1
+      },
+      "enabled": true,
+      "state": "scheduled",
+      "paused_at": null,
+      "paused_reason": null,
+      "created_at": "2026-08-10T07:24:35.899410+07:00",
+      "next_run_at": "2026-10-01T06:00:00+07:00",
+      "last_run_at": "2026-09-01T06:00:17.482797+07:00",
+      "last_status": "ok",
+      "last_error": null,
+      "last_delivery_error": null,
+      "deliver": "origin",
+      "origin": {
+        "platform": "telegram",
+        "chat_id": "-1003256146835",
+        "chat_name": "HERMES GROUP CHAT",
+        "thread_id": "1",
+        "user_id": "777961507"
+      },
+      "enabled_toolsets": null,
+      "workdir": null,
+      "fire_claim": null
+    },
+    {
+      "id": "45d7f710fe7e",
+      "name": "hermes-config-backup",
+      "prompt": "",
+      "skills": [],
+      "skill": null,
+      "model": null,
+      "provider": null,
+      "provider_snapshot": null,
+      "model_snapshot": null,
+      "base_url": null,
+      "script": "backup.sh",
+      "no_agent": true,
+      "context_from": null,
+      "schedule": {
+        "kind": "cron",
+        "expr": "0 23 * * *",
+        "display": "0 23 * * *"
+      },
+      "schedule_display": "0 23 * * *",
+      "repeat": {
+        "times": null,
+        "completed": 16
+      },
+      "enabled": true,
+      "state": "scheduled",
+      "paused_at": null,
+      "paused_reason": null,
+      "created_at": "2026-08-30T07:28:46.115435+07:00",
+      "next_run_at": "2026-09-15T23:00:00+07:00",
+      "last_run_at": "2026-09-14T23:00:30.153847+07:00",
+      "last_status": "ok",
+      "last_error": null,
+      "last_delivery_error": null,
+      "deliver": "origin",
+      "origin": {
+        "platform": "telegram",
+        "chat_id": "-1003256146835",
+        "chat_name": "HERMES GROUP CHAT",
+        "thread_id": "1",
+        "user_id": "777961507"
+      },
+      "enabled_toolsets": null,
+      "workdir": null,
+      "fire_claim": null
+    },
+    {
+      "id": "8a00d67c9fbd",
+      "name": "obsidian-vault-backup",
+      "prompt": "",
+      "skills": [],
+      "skill": null,
+      "model": null,
+      "provider": null,
+      "provider_snapshot": null,
+      "model_snapshot": null,
+      "base_url": null,
+      "script": "backup_obsidian.sh",
+      "no_agent": true,
+      "context_from": null,
+      "schedule": {
+        "kind": "cron",
+        "expr": "15 23 * * *",
+        "display": "15 23 * * *"
+      },
+      "schedule_display": "15 23 * * *",
+      "repeat": {
+        "times": null,
+        "completed": 16
+      },
+      "enabled": true,
+      "state": "scheduled",
+      "paused_at": null,
+      "paused_reason": null,
+      "created_at": "2026-08-30T07:41:44.349637+07:00",
+      "next_run_at": "2026-09-15T23:15:00+07:00",
+      "last_run_at": "2026-09-14T23:15:25.399507+07:00",
+      "last_status": "ok",
+      "last_error": null,
+      "last_delivery_error": null,
+      "deliver": "origin",
+      "origin": {
+        "platform": "telegram",
+        "chat_id": "-1003256146835",
+        "chat_name": "HERMES GROUP CHAT",
+        "thread_id": "1",
+        "user_id": "777961507"
+      },
+      "enabled_toolsets": null,
+      "workdir": null,
+      "fire_claim": null
+    },
+    {
+      "id": "0ac6e55bbd33",
+      "name": "gym-reminder-checklist",
+      "prompt": "Kirim ceklist program latihan gym harian selaras kaliyan Google Sheets. Tidak boleh [SILENT]/kosong, harus dikirim.",
+      "skills": [],
+      "skill": null,
+      "model": null,
+      "provider": null,
+      "provider_snapshot": null,
+      "model_snapshot": null,
+      "base_url": null,
+      "script": "gym_reminder.py",
+      "no_agent": true,
+      "context_from": null,
+      "schedule": {
+        "kind": "cron",
+        "expr": "0 5 * * 2,4,6",
+        "display": "0 5 * * 2,4,6"
+      },
+      "schedule_display": "0 5 * * 2,4,6",
+      "repeat": {
+        "times": null,
+        "completed": 5
+      },
+      "enabled": true,
+      "state": "scheduled",
+      "paused_at": null,
+      "paused_reason": null,
+      "created_at": "2026-09-04T13:18:33.431304+07:00",
+      "next_run_at": "2026-09-17T05:00:00+07:00",
+      "last_run_at": "2026-09-15T05:00:35.732932+07:00",
+      "last_status": "ok",
+      "last_error": null,
+      "last_delivery_error": null,
+      "deliver": "origin",
+      "origin": {
+        "platform": "telegram",
+        "chat_id": "-1003256146835",
+        "chat_name": "HERMES GROUP CHAT",
+        "thread_id": "3443",
+        "user_id": "777961507"
+      },
+      "enabled_toolsets": null,
+      "workdir": null,
+      "fire_claim": null
+    }
+  ],
+  "updated_at": "2026-09-15T05:00:35.734927+07:00"
+}

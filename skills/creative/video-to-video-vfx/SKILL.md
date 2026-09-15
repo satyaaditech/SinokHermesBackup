@@ -46,5 +46,8 @@ LOOK & FEEL: Photoreal cinema, practical lighting, real shadows and grain, anti-
 ## Pitfalls & Best Practices
 
 - **Never leave camera motion unconstrained:** Always explicitly state `camera never cuts, matches <<<video_1>>>'s move exactly`.
+
+## References & Supporting Guides
+- `references/hollywood_cinematography_and_i2v.md` — Hollywood camera motion directives (Dolly Zoom, Dutch Angle, 360 Orbit, Crane) and 2-stage Keyframe-to-Motion (Imagen 3 ➔ Veo/Flow) prompt formulas.
 - **Avoid vague edits:** Specify timing down to the second (e.g. `at 3.2s-4.0s`).
 - **Anti-slop constraint:** Include keywords like `real photographed film frame, real depth and grain, grounded and believable`.
