@@ -17,7 +17,18 @@ description: Produce Pangestu renungan harian for TG thread 1096. Agentic 3-role
 2. **Dilarang Mengubah Nama Section**:
    * Section introspeksi 3 poin WAJIB bernama `📝 *APLIKASI* :`. DILARANG KERAS menggantinya menjadi `PERTANYAAN REFLEKSI`, `REFLEKSI DIRI`, dll.
    * Baris penutup di dalam `🧘 *PRAKTIK* :` wajib diakhiri kalimat standard: `✅ Latihan ini menumbuhkan ketenteraman batin dan menjaga kita tetap eling lan waspada di setiap langkah.`
-2. **Signature Footer Mutlak**:
+2. **Kutipan Relevan & Padat (Condensation Guardrail)**:
+   * Ambil pethikan sabda/buku kanonikal yang paling padat dan langsung relevan dengan tema inti (2–4 kalimat kunci). Hindari kutipan yang terlalu panjang atau melebar jika poin esensialnya sudah terwakili.
+3. **Uraian Humanis, Membumi, & Relatable (Anti-Monoton)**:
+   * ❌ **DILARANG**: Penjelasan yang kaku, dingin, abstrak, atau teoretis monoton.
+   * ✅ **WAJIB**: Sentuh dinamika pergulatan batin manusia di kehidupan nyata sehari-hari (contoh: rasa lelah setelah bekerja, waktu/tenaga yang terasa dirampas saat rekan/keluarga minta bantuan mendadak, rasa kesal spontan ego/Sang Aku, godaan hitung-hitungan untung-rugi).
+   * Sertakan analogi bersahaja dan contoh konkret laku sederhana (contoh: mendengarkan keluh kesah teman 15 menit tanpa menghakimi, membantu pekerjaan rumah tangga tanpa mengeluh, senyum tulus tanpa pamrih).
+4. **Kelengkapan Tautan Teks WhatsApp Siap Sebar (Langkah 6)**:
+   * Saat menyajikan naskah WhatsApp untuk disebarkan, pastikan selalu menyertakan blok tautan digital aktif di bagian bawah:
+     - 📄 Google Doc
+     - 🌐 Pustaka Web Kontemplasi (dengan anchor slug tanggal & tema, e.g. `https://kontemplasi.satyaaditech.web.id/#<slug>`)
+     - 📺 Video YouTube (bila video sudah diunggah/tersedia).
+5. **Signature Footer Mutlak**:
    * Signature penutup doa WAJIB verbatim dalam Bahasa Indonesia baku:
      `🙏 Semoga kita semua senantiasa berlimpah Tuntunan dan Perlindungan, Sih dari Sang Guru Sejati. Satuhu 🙏`
    * DILARANG KERAS menerjemahkan signature ini ke Bahasa Jawa atau menambahkan improvisasi kalimat penutup lainnya.
@@ -80,7 +91,7 @@ description: Produce Pangestu renungan harian for TG thread 1096. Agentic 3-role
     4. **Langkah 4 (Pemrosesan Asèt oleh Sinox)**:
        - Pak Satya mengirimkan file Audio (`.wav`/`.mp3`) dan file Poster (`.png`/`.jpg`) ke Telegram.
        - **Sinox memproses**:
-         * Render video MP4 HD 1080p dengan audio + template latar poster (jika audio tersedia). Jika timing hardsub tidak cocok atau diminta polos, render *clean still-image video* tanpa hardsub. Jika audio tidak ada, lewati produksi video.
+         * Render video MP4 HD 1080p dengan audio + template latar poster (jika audio tersedia). Jika dimensi gambar memiliki lebar/tinggi ganjil (misal 853x1280), WAJIB tambahkan `-vf "pad=ceil(iw/2)*2:ceil(ih/2)*2"` pada FFmpeg agar tidak error `width not divisible by 2`. Jika timing hardsub tidak cocok atau diminta polos, render *clean still-image video* tanpa hardsub. Jika audio belum ada, jangan membagikan naskah final WhatsApp tanpa link YouTube.
          * Upload video ke YouTube `@siswatalkstv` dengan status **Public** (`--privacy public`) dan ambil link `https://youtu.be/...`.
          * Simpan poster ke pustaka web dan kaitkan agar muncul saat kartu artikel diklik di website.
          * Bersihkan metadata frontmatter YAML agar modal web reader menampilkan teks murni.
@@ -88,21 +99,33 @@ description: Produce Pangestu renungan harian for TG thread 1096. Agentic 3-role
            - **Perhitungan Index Offset**: Wajib menghitung index karakter berdasarkan **UTF-16 code units** (`len(text.encode('utf-16-le')) // 2`) agar karakter emoji (surrogate pairs) tidak menggeser index teks di Google Docs API yang menyebabkan gaya font/heading/link terputus.
            - **Halaman 1 (Cover/Judul + Poster)**: Tanggal, Kategori, Judul Utama, dan **Poster Infografis rata tengah (Center Aligned, ukuran proporsional 70-75% / width ~320pt)** agar muat rapi di halaman 1 bersama judul tanpa tumpah, diakhiri dengan *Page Break*.
            - **Halaman 2 (Konten Artikel)**: Salam, Sabda & Terjemahan (indent 24pt), Uraian, Praktik (heading utuh), Renungan, Aplikasi (heading utuh), Penutup Satuhu.
-           - **Footer (Bagian Akhir)**: Label `📖 Tautan Pustaka Digital & Dokumen:` sebagai teks biasa (tanpa link), dan tautan aktif hanya pada baris URL YouTube & Web Library.
+           - **Footer (Bagian Akhir)**: Label `📖 Tautan Pustaka Digital & Dokumen:` sebagai teks biasa (tanpa link), dan tautan aktif pada baris URL YouTube (`• 📺 Video YouTube: ...`), Google Doc, & Web Library.
          * Build pustaka web & sync ke GitHub Pages via `/home/satyaaditech/kontemplasi/sync_to_github.sh`.
+         * Catat ke Google Sheet Master `1QuTSjBV-iOckaIoSu07wQa0LcnbgdR97mxAqOloIEb0` tab **`Rekap Renungan`** (12 kolom: No, Tanggal, Hari & Pasaran [misal: Rabu Legi], Bahasa, Judul Tematik, Sumber Kitab & Bab, Pethikan Sabda Suci, Link Google Doc, Link YouTube Video, Link Web Kontemplasi, Link Audio / Media, Status).
          * Verifikasi live check URL web sebelum menyerahkan naskah final.
-         * Skrip otomasi terpadu tersedia di `scripts/publish_renungan_pipeline.py` (menangani Langkah 4 sampai Langkah 6 secara otomatis).
-         5. **Langkah 5 (Produk Akhir / Final Delivery)**:
-       - Sinox mengembalikan naskah final dalam ```text code block lengkap dengan semua link terpasang: **Header (Tanggal + Judul + YouTube Link), Isi Sabda & Uraian, Footer (Link YouTube + Google Doc + Web Library)**.
-    6. **Langkah 6 (Aturan Redaksi Bersih)**:
-       - **HAPUS / JANGAN TAMPILKAN**:
-         * `"📖 Waos naskah jangkep wonten ing Pustaka Kontemplasi: ..."` (Dihapus total).
-         * `"✅ Dapat dipraktikkan di mana saja dan kapan saja..."` (Dihapus total).
+
+    5. **Langkah 5 (Cek Integrasi)**:
+       - Pastikan dokumen Google Doc terformat bersih, tanpa sisa tag `<br>` atau formatting glitch.
+       - Pastikan website Pustaka memuat artikel edisi hari ini secara mulus.
+
+    6. **Langkah 6 (Naskah Final WhatsApp Siap Sebar - WAJIB 3 LINK AKTIF)**:
+       - ⚠️ **DILARANG KERAS** membagikan naskah WhatsApp tanpa 3 tautan aktif lengkap.
+       - Setelah SEMUA link tersedia (YouTube, Google Doc, Web Library): Sinox menyajikan naskah final per bahasa di dalam format ````text```` code block yang LENGKAP dengan 3 link aktif di bagian bawah:
+         ```text
+         ---
+         📖 Tautan Pustaka Digital & Dokumen:
+         • 📺 Video YouTube: https://youtu.be/...
+         • 📄 Google Doc: https://docs.google.com/document/d/.../edit
+         • 🌐 Pustaka Web Kontemplasi: https://kontemplasi.satyaaditech.web.id/#...
+         ```
     *   **Standar Gaya Bahasa & Human Creative**:
-        - **Human Creative (Anti-AI Slop)**: Hindari kalimat klise buatan AI (seperti *"Dalam panggung kehidupan yang serba cepat..."*, *"Merupakan pilar fundamental..."*).
-        - **Storytelling & Analogi Nyata**: Selalu sertakan analogi sederhana yang membumi atau kisah nyata inspiratif (tokoh publik, sejarah, perajin, metafora alam) untuk menguraikan konsep batin agar terasa hidup.
-        - **Nge-flow & Tidak Menggurui**: Bahasa mengalir luwes, hangat, penuh kebajikan dan kebijaksanaan (*wisdom*), bersahabat, namun tetap memiliki *deep insight* yang menyentuh kesadaran batin pembaca.
-        - **Paresikan Redaksi Wajib**: DILARANG menyertakan kalimat *"Dapat dipraktikkan di mana saja dan kapan saja..."* serta kalimat penutup *"📖 Waos naskah jangkep wonten ing Pustaka Kontemplasi: ..."*.
+        - **Human Creative (Anti-AI Slop & Anti-Monoton)**: Hindari kalimat klise buatan AI (seperti *"Dalam panggung kehidupan yang serba cepat..."*, *"Merupakan pilar fundamental..."*) atau uraian teoretis yang kering dan monoton.
+        *   **Standar Gaya Bahasa & Human Creative**:
+            - **Human Creative (Anti-AI Slop & Anti-Monoton)**: Hindari kalimat klise buatan AI (seperti *"Dalam panggung kehidupan yang serba cepat..."*, *"Merupakan pilar fundamental..."*) dan hindari narasi teoritis/akademis yang kering dan monoton.
+            - **Storytelling, Pergulatan Batin Nyata & Analogi Membumi**: Uraian wajib menyentuh pergulatan batin manusiawi sehari-hari (misal: rasa lelah sepulang kerja, rasa terganggu saat dimintai bantuan mendadak, perangkap kalkulasi pamrih/keakuan, distraksi gawai). Sertakan analogi nyata yang hidup (seperti pohon rindang di tepi jalan berdebu yang ikhlas menaungi tanpa menagih pamrih) serta contoh-contoh tindakan sederhana yang konkret.
+            - **Kutipan Sabda Fokus & Efisien**: Kutipan sabda/rujukan buku wajib 100% verbatim namun dipilih secara padat dan fokus pada inti ajaran yang relevan dengan tema, jangan mendump seluruh halaman/paragraf panjang yang melebar.
+            - **Nge-flow & Tidak Menggurui**: Bahasa mengalir luwes, hangat, penuh kebajikan dan kebijaksanaan (*wisdom*), bersahabat, namun tetap memiliki *deep insight* yang menyentuh kesadaran batin pembaca.
+            - **Paresikan Redaksi Wajib**: DILARANG menyertakan kalimat *"Dapat dipraktikkan di mana saja dan kapan saja..."* serta kalimat penutup *"📖 Waos naskah jangkep wonten ing Pustaka Kontemplasi: ..."*.
     5. **Standar Subtitle & Video Hard-Sub Estetik**:
        - Posisi subtitle wajib di bagian bawah layar (`Alignment: 2` / bottom-center) dengan margin vertikal (`MarginV: 80 - 120`).
        - DILARANG meletakkan subtitle di tengah layar (`Alignment: 5`) yang bertabrakan dengan judul/badge header.

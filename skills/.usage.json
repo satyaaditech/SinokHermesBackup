@@ -952,14 +952,14 @@
     "archived_at": null,
     "created_at": "2026-08-10T13:25:27.614034+00:00",
     "created_by": "agent",
-    "last_patched_at": "2026-09-12T09:16:01.214449+00:00",
-    "last_used_at": "2026-09-15T00:37:26.161829+00:00",
-    "last_viewed_at": "2026-09-15T00:37:26.151221+00:00",
-    "patch_count": 281,
+    "last_patched_at": "2026-09-16T06:29:11.346325+00:00",
+    "last_used_at": "2026-09-16T06:29:07.381279+00:00",
+    "last_viewed_at": "2026-09-16T06:29:07.372692+00:00",
+    "patch_count": 286,
     "pinned": false,
     "state": "active",
-    "use_count": 535,
-    "view_count": 535
+    "use_count": 549,
+    "view_count": 549
   },
   "pdf": {
     "archived_at": null,
@@ -1091,6 +1091,19 @@
     "use_count": 0,
     "view_count": 0
   },
+  "productivity/finance-automation": {
+    "archived_at": null,
+    "created_at": "2026-09-16T06:02:15.398721+00:00",
+    "created_by": null,
+    "last_patched_at": null,
+    "last_used_at": "2026-09-16T06:02:15.407129+00:00",
+    "last_viewed_at": "2026-09-16T06:02:15.398752+00:00",
+    "patch_count": 0,
+    "pinned": false,
+    "state": "active",
+    "use_count": 1,
+    "view_count": 1
+  },
   "productivity:finance-automation": {
     "archived_at": null,
     "created_at": "2026-09-02T08:55:05.137300+00:00",
@@ -1200,13 +1213,13 @@
     "created_at": "2026-09-07T04:25:17.758912+00:00",
     "created_by": null,
     "last_patched_at": null,
-    "last_used_at": "2026-09-15T04:33:00.688894+00:00",
-    "last_viewed_at": "2026-09-15T04:33:00.680655+00:00",
+    "last_used_at": "2026-09-16T06:02:18.367550+00:00",
+    "last_viewed_at": "2026-09-16T06:02:18.359524+00:00",
     "patch_count": 0,
     "pinned": false,
     "state": "active",
-    "use_count": 18,
-    "view_count": 18
+    "use_count": 20,
+    "view_count": 20
   },
   "requesting-code-review": {
     "archived_at": null,

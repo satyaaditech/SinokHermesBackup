@@ -40,9 +40,24 @@ Style: SpeakerBadge,DejaVu Sans,26,&H0099DDFF,&H000000FF,&H00000000,&H90002040,-
 
 ---
 
-## 2. Struktur Code Block WhatsApp per Bahasa
+## 2. Struktur Code Block WhatsApp per Bahasa & Aturan 3 Link Wajib
 
-Setiap naskah (Basa Jawa, Bahasa Indonesia, English) wajib disajikan dalam ` ```text ` terpisah:
+Setiap naskah (Basa Jawa, Bahasa Indonesia, English) wajib disajikan di dalam ````text```` code block mandiri agar pengguna tinggal sekali klik untuk menyalin (*copy-paste*).
+
+### ⚠️ Aturan Wajib 3 Tautan (Mandatory 3 Active Links):
+Naskah WhatsApp **TIDAK BOLEH** dibagikan tanpa 3 tautan aktif di bagian bawah:
+```text
+---
+📖 Tautan Pustaka Digital & Dokumen:
+• 📺 Video YouTube: https://youtu.be/...
+• 📄 Google Doc: https://docs.google.com/document/d/.../edit
+• 🌐 Pustaka Web Kontemplasi: https://kontemplasi.satyaaditech.web.id/#...
+```
+
+## 3. Penanganan Dimensi Poster FFmpeg (Odd Dimension Fix)
+Saat merender video still-image vertikal (1080p / MP4 yuv420p) dari poster gambar:
+* Jika gambar memiliki dimensi lebar/tinggi bernilai ganjil (misal: 853x1280), FFmpeg akan melempar error `width not divisible by 2`.
+* **Solusi**: Wajib sertakan filter pad genap: `-vf "pad=ceil(iw/2)*2:ceil(ih/2)*2"` di baris perintah FFmpeg.ikan dalam ` ```text ` terpisah:
 
 ```text
 *HARI, TANGGAL BULAN TAHUN*
