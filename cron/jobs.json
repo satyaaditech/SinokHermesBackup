@@ -68,15 +68,15 @@
       "schedule_display": "0 23 * * *",
       "repeat": {
         "times": null,
-        "completed": 17
+        "completed": 18
       },
       "enabled": true,
       "state": "scheduled",
       "paused_at": null,
       "paused_reason": null,
       "created_at": "2026-08-30T07:28:46.115435+07:00",
-      "next_run_at": "2026-09-17T23:00:00+07:00",
-      "last_run_at": "2026-09-15T23:00:55.432555+07:00",
+      "next_run_at": "2026-09-18T23:00:00+07:00",
+      "last_run_at": "2026-09-17T07:10:29.586877+07:00",
       "last_status": "ok",
       "last_error": null,
       "last_delivery_error": null,
@@ -114,7 +114,7 @@
       "schedule_display": "15 23 * * *",
       "repeat": {
         "times": null,
-        "completed": 17
+        "completed": 18
       },
       "enabled": true,
       "state": "scheduled",
@@ -122,9 +122,9 @@
       "paused_reason": null,
       "created_at": "2026-08-30T07:41:44.349637+07:00",
       "next_run_at": "2026-09-17T23:15:00+07:00",
-      "last_run_at": "2026-09-15T23:16:12.093727+07:00",
-      "last_status": "ok",
-      "last_error": null,
+      "last_run_at": "2026-09-17T07:10:30.658630+07:00",
+      "last_status": "error",
+      "last_error": "Script exited with code 128\nstderr:\nfatal: Invalid path '/mnt/usb-nvme/obsidian': No such device",
       "last_delivery_error": null,
       "deliver": "origin",
       "origin": {
@@ -160,7 +160,7 @@
       "schedule_display": "0 5 * * 2,4,6",
       "repeat": {
         "times": null,
-        "completed": 5
+        "completed": 6
       },
       "enabled": true,
       "state": "scheduled",
@@ -168,7 +168,7 @@
       "paused_reason": null,
       "created_at": "2026-09-04T13:18:33.431304+07:00",
       "next_run_at": "2026-09-19T05:00:00+07:00",
-      "last_run_at": "2026-09-15T05:00:35.732932+07:00",
+      "last_run_at": "2026-09-17T07:10:29.872114+07:00",
       "last_status": "ok",
       "last_error": null,
       "last_delivery_error": null,
@@ -185,5 +185,5 @@
       "fire_claim": null
     }
   ],
-  "updated_at": "2026-09-17T07:10:24.612652+07:00"
+  "updated_at": "2026-09-17T23:00:40.374033+07:00"
 }

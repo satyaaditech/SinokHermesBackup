@@ -42,6 +42,8 @@ description: Produce Pangestu renungan harian for TG thread 1096. Agentic 3-role
    * **Format Video Baku**: Mulai September 2026, format video renungan WAJIB menggunakan **rasio portrait/vertikal murni** (sesuai dimensi poster, e.g. 1024x1536 atau 9:16) agar tampilan optimal, cetha, dan penuh
    * **n8n Automation Runner**: Eksekusi rendering dan YouTube upload dipicu melalui automation runner service port 8089 (`http://172.17.0.1:8089/api/render-video`).
    * **Code Node HTTP Helper**: Di dalam n8n Code Node, gunakan `await this.helpers.httpRequest(...)`, bukan `fetch()`. saat disimak di layar HP. DILARANG memaksakan rasio landscape 16:9 dengan letterbox/blur kecuali diminta khusus.
+   * **YouTube Python API Helper Return**: Script `upload_youtube.py` return object berupa dictionary `{"video_id": video_id, "url": share_url}`. Gunakan `res["video_id"]` atau `res["url"]` (bukan `res.get("id")`).
+   * **Google Docs Inline Image Insertion**: Gambar poster yang disisipkan via `insertInlineImage` wajib diunggah ke Google Drive dengan permission `reader` for `anyone` terlebih dahulu dan menggunakan URI direct link `https://lh3.googleusercontent.com/d/<drive_id>`.
    * **3-Layer Quality Guard agar Video TIDAK PERNAH Terpotong**:
      1. **Pre-Probe Durasi Audio Eksak**: Gunakan `ffprobe` untuk membaca durasi audio mentah secara presisi (contoh: `400.04` detik).
      2. **Render Ultrafast Portrait Still-Image**: Gunakan `-preset ultrafast -r 2 -t <durasi_audio_eksak>`. Dengan `-r 2`, render video 7 menit selesai dalam 2-3 detik (jauh di bawah batas timeout terminal/n8n):

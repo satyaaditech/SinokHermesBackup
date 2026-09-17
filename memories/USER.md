@@ -4,7 +4,7 @@ Bot: Sinok. Panggilan: Pak/Pak Satya.
 §
 Receipt: per item ke 'Detail Item' (total ke Transaksi Harian).
 §
-Profil: Solo/Boyolali. Anak: Raditya. QRIS: Seabank/Mandiri. n8n: visual nodes; Code FFmpeg.
+Profil: Solo/Boyolali. Anak: Raditya. QRIS: Seabank/Mandiri.
 §
 OmniRoute: bayar (Antigravity multi-akun, no OpenCode Go, no free/fallback).
 §
@@ -12,16 +12,16 @@ Renungan: universal (tanpa dikotomi usia/pensiun), hindari ilustrasi ekstrem.
 §
 Kesiswaan: BRSR, TKL, UUJM.
 §
-Infografis: terang, bingkai gelap (no gold), Kawung min, header 'RENUNGAN PENYISWAAN', judul raksasa. Audio: Sabda=Charon, Uraian=Aoede. Video: portrait HD -> YT @siswatalkstv.
-§
-Google Doc: format docs; kutipan sabda=Bold Italic, sumber=Bold (NO ubah sabda).
+Infografis: terang, bingkai gelap (no gold), Kawung min, header 'RENUNGAN PENYISWAAN', judul raksasa. Audio: Charon/Aoede. Video: HD -> YT @siswatalkstv.
 §
 Tensi: Sugeng [enjang/siang/sonten/dalu], Pak Satya. Sistolik X, Diastolik X, Nadi X, Tgl X, Wanci X WIB.
 §
-Basa: Jawi Krama Alus. Rapikan: 1 baris lebet ```text tanpa katrangan.
+Basa: Jawi Krama Alus internal (syukur: Puji Syukur/Sihing Gusti, NO Alhamdulillah). Publik (YT/toko) = BHS INDONESIA baku / English. Rapikan: ```text.
 §
-Gym: Sel/Kam/Sab 05:00; checklist TG+Drive; web :8085; 2-way Sheets. AI: Gemini Pro (Imagen 3, Flow, Veo). Tahap saiki: Build Knowledge LLM Wiki (Karpathy [[links]]) ing Obsidian sedurung produksi.
+Gym: Sel/Kam/Sab 05:00; checklist TG+Drive; web :8085; 2-way Sheets.
 §
-Rekap bank: bulanan 5 col (Tgl, Ket, Debet, Kredit, Saldo), jeda 1-3m batch, share viewer.
+Rekap bank: 5 col (Tgl, Ket, Debet, Kredit, Saldo), jeda 1-3m.
 §
-Rekap buku/kerja: WAJIB jujur & taat (teliti > cepat); ragu WAJIB tanya; saldo fisik kanan 100% verbatim; beda rumus wajib SELISIH & nominal kolom I; English directive OK.
+Rekap: WAJIB jujur (teliti > cepat); saldo fisik verbatim 100%; beda rumus = SELISIH; English OK.
+§
+Toko: itch.io (satyaaditech), Gumroad (stacksmith5). Apify: actor ($29/m). Shorts: 9:16 portrait (NO bars/blur); cerita tuntas (1-3m); hardsub ID kuning/stroke hitam bawah. Fine-tuning = LOKAL ONLY (NO ubah yg lolos). Deskripsi YT = Bahasa Indonesia baku (NO istilah Jawa spt dudutan emas).
