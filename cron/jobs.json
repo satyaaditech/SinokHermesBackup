@@ -68,15 +68,15 @@
       "schedule_display": "0 23 * * *",
       "repeat": {
         "times": null,
-        "completed": 18
+        "completed": 19
       },
       "enabled": true,
       "state": "scheduled",
       "paused_at": null,
       "paused_reason": null,
       "created_at": "2026-08-30T07:28:46.115435+07:00",
-      "next_run_at": "2026-09-18T23:00:00+07:00",
-      "last_run_at": "2026-09-17T07:10:29.586877+07:00",
+      "next_run_at": "2026-09-19T23:00:00+07:00",
+      "last_run_at": "2026-09-17T23:00:46.264029+07:00",
       "last_status": "ok",
       "last_error": null,
       "last_delivery_error": null,
@@ -114,17 +114,17 @@
       "schedule_display": "15 23 * * *",
       "repeat": {
         "times": null,
-        "completed": 18
+        "completed": 19
       },
       "enabled": true,
       "state": "scheduled",
       "paused_at": null,
       "paused_reason": null,
       "created_at": "2026-08-30T07:41:44.349637+07:00",
-      "next_run_at": "2026-09-17T23:15:00+07:00",
-      "last_run_at": "2026-09-17T07:10:30.658630+07:00",
-      "last_status": "error",
-      "last_error": "Script exited with code 128\nstderr:\nfatal: Invalid path '/mnt/usb-nvme/obsidian': No such device",
+      "next_run_at": "2026-09-18T23:15:00+07:00",
+      "last_run_at": "2026-09-17T23:15:48.647976+07:00",
+      "last_status": "ok",
+      "last_error": null,
       "last_delivery_error": null,
       "deliver": "origin",
       "origin": {
@@ -183,7 +183,52 @@
       "enabled_toolsets": null,
       "workdir": null,
       "fire_claim": null
+    },
+    {
+      "id": "562b38535ae4",
+      "name": "midnight-youtube-clipper-watchdog",
+      "prompt": "Jalankan pemantau kanal YouTube tengah malam (00:00 WIB). Tidak boleh SILENT, tidak boleh kosong, harus dikirim.",
+      "skills": [],
+      "skill": null,
+      "model": null,
+      "provider": null,
+      "provider_snapshot": null,
+      "model_snapshot": null,
+      "base_url": null,
+      "script": "midnight_youtube_clipper.py",
+      "no_agent": true,
+      "context_from": null,
+      "schedule": {
+        "kind": "cron",
+        "expr": "0 0 * * *",
+        "display": "0 0 * * *"
+      },
+      "schedule_display": "0 0 * * *",
+      "repeat": {
+        "times": null,
+        "completed": 0
+      },
+      "enabled": true,
+      "state": "scheduled",
+      "paused_at": null,
+      "paused_reason": null,
+      "created_at": "2026-09-18T03:26:32.512705+07:00",
+      "next_run_at": "2026-09-19T00:00:00+07:00",
+      "last_run_at": null,
+      "last_status": null,
+      "last_error": null,
+      "last_delivery_error": null,
+      "deliver": "origin",
+      "origin": {
+        "platform": "telegram",
+        "chat_id": "-1003256146835",
+        "chat_name": "HERMES GROUP CHAT",
+        "thread_id": "4305",
+        "user_id": "777961507"
+      },
+      "enabled_toolsets": null,
+      "workdir": null
     }
   ],
-  "updated_at": "2026-09-17T23:00:40.374033+07:00"
+  "updated_at": "2026-09-18T23:00:03.437145+07:00"
 }

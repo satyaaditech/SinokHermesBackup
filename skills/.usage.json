@@ -472,13 +472,13 @@
     "created_at": "2026-07-28T10:33:30.787331+00:00",
     "created_by": null,
     "last_patched_at": null,
-    "last_used_at": "2026-09-15T06:34:09.971038+00:00",
-    "last_viewed_at": "2026-09-15T06:34:09.962875+00:00",
+    "last_used_at": "2026-09-17T19:40:07.982106+00:00",
+    "last_viewed_at": "2026-09-17T19:40:07.974244+00:00",
     "patch_count": 0,
     "pinned": false,
     "state": "active",
-    "use_count": 38,
-    "view_count": 38
+    "use_count": 39,
+    "view_count": 39
   },
   "gym-equipment-inventory": {
     "archived_at": null,
@@ -705,14 +705,14 @@
     "archived_at": null,
     "created_at": "2026-08-10T13:15:03.669920+00:00",
     "created_by": "agent",
-    "last_patched_at": "2026-09-11T03:59:45.642357+00:00",
-    "last_used_at": "2026-09-11T03:59:37.203807+00:00",
-    "last_viewed_at": "2026-09-11T03:59:37.195236+00:00",
-    "patch_count": 23,
+    "last_patched_at": "2026-09-17T20:16:47.795265+00:00",
+    "last_used_at": "2026-09-17T20:16:50.561503+00:00",
+    "last_viewed_at": "2026-09-17T20:16:50.552077+00:00",
+    "patch_count": 24,
     "pinned": false,
     "state": "active",
-    "use_count": 25,
-    "view_count": 25
+    "use_count": 28,
+    "view_count": 28
   },
   "linux-usb-automount": {
     "archived_at": null,
@@ -1746,25 +1746,25 @@
     "created_at": "2026-06-01T04:19:23.753220+00:00",
     "created_by": null,
     "last_patched_at": "2026-06-01T04:19:23.753259+00:00",
-    "last_used_at": "2026-09-17T10:50:51.816882+00:00",
-    "last_viewed_at": "2026-09-17T10:50:51.808508+00:00",
+    "last_used_at": "2026-09-17T19:53:52.053292+00:00",
+    "last_viewed_at": "2026-09-17T19:53:52.043549+00:00",
     "patch_count": 1,
     "pinned": false,
     "state": "active",
-    "use_count": 21,
-    "view_count": 21
+    "use_count": 22,
+    "view_count": 22
   },
   "youtube-shorts-clipper": {
     "archived_at": null,
     "created_at": "2026-09-17T10:04:35.792325+00:00",
     "created_by": null,
-    "last_patched_at": "2026-09-17T11:01:04.390642+00:00",
-    "last_used_at": "2026-09-17T11:06:09.014625+00:00",
-    "last_viewed_at": "2026-09-17T11:06:09.006376+00:00",
-    "patch_count": 4,
+    "last_patched_at": "2026-09-17T20:24:16.537045+00:00",
+    "last_used_at": "2026-09-17T23:13:37.392720+00:00",
+    "last_viewed_at": "2026-09-17T23:13:37.383863+00:00",
+    "patch_count": 7,
     "pinned": false,
     "state": "active",
-    "use_count": 7,
-    "view_count": 7
+    "use_count": 12,
+    "view_count": 12
   }
 }
