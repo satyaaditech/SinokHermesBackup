@@ -105,8 +105,9 @@ description: Produce Pangestu renungan harian for TG thread 1096. Agentic 3-role
          * Build pustaka web & sync ke GitHub Pages via `/home/satyaaditech/kontemplasi/sync_to_github.sh`.
          * Catat ke Google Sheet Master `1QuTSjBV-iOckaIoSu07wQa0LcnbgdR97mxAqOloIEb0` tab **`Rekap Renungan`** (12 kolom: No, Tanggal, Hari & Pasaran [misal: Rabu Legi], Bahasa, Judul Tematik, Sumber Kitab & Bab, Pethikan Sabda Suci, Link Google Doc, Link YouTube Video, Link Web Kontemplasi, Link Audio / Media, Status).
          * Verifikasi live check URL web sebelum menyerahkan naskah final.
+         * Rujuk petunjuk lengkap pemrosesan aset: `references/pipeline_asset_production.md`.
 
-    5. **Langkah 5 (Cek Integrasi)**:
+     5. **Langkah 5 (Cek Integrasi)**:
        - Pastikan dokumen Google Doc terformat bersih, tanpa sisa tag `<br>` atau formatting glitch.
        - Pastikan website Pustaka memuat artikel edisi hari ini secara mulus.
 
@@ -126,7 +127,7 @@ description: Produce Pangestu renungan harian for TG thread 1096. Agentic 3-role
             - **Human Creative (Anti-AI Slop & Anti-Monoton)**: Hindari kalimat klise buatan AI (seperti *"Dalam panggung kehidupan yang serba cepat..."*, *"Merupakan pilar fundamental..."*) dan hindari narasi teoritis/akademis yang kering dan monoton.
             - **Storytelling, Pergulatan Batin Nyata & Analogi Membumi**: Uraian wajib menyentuh pergulatan batin manusiawi sehari-hari (misal: rasa lelah sepulang kerja, rasa terganggu saat dimintai bantuan mendadak, perangkap kalkulasi pamrih/keakuan, distraksi gawai). Sertakan analogi nyata yang hidup (seperti pohon rindang di tepi jalan berdebu yang ikhlas menaungi tanpa menagih pamrih) serta contoh-contoh tindakan sederhana yang konkret.
             - **Kutipan Sabda Fokus & Efisien**: Kutipan sabda/rujukan buku wajib 100% verbatim namun dipilih secara padat dan fokus pada inti ajaran yang relevan dengan tema, jangan mendump seluruh halaman/paragraf panjang yang melebar.
-            - **Nge-flow & Tidak Menggurui**: Bahasa mengalir luwes, hangat, penuh kebajikan dan kebijaksanaan (*wisdom*), bersahabat, namun tetap memiliki *deep insight* yang menyentuh kesadaran batin pembaca.
+            - **Nge-flow, Humanis & Relatable**: Bahasa mengalir luwes, hangat, penuh kebajikan dan kebijaksanaan (*wisdom*), bersahabat, namun tetap memiliki *deep insight* yang menyentuh kesadaran batin pembaca. Uraian dan analogi **WAJIB sangat relate & humanis dengan kehidupan sehari-hari** (misal: dinamika tempat kerja, keluarga, persahabatan, kebiasaan menuntut vs introspeksi diri) agar tidak mengawang-awang atau terjebak dalam teori kaku.
             - **Paresikan Redaksi Wajib**: DILARANG menyertakan kalimat *"Dapat dipraktikkan di mana saja dan kapan saja..."* serta kalimat penutup *"📖 Waos naskah jangkep wonten ing Pustaka Kontemplasi: ..."*.
     5. **Standar Subtitle & Video Hard-Sub Estetik**:
        - Posisi subtitle wajib di bagian bawah layar (`Alignment: 2` / bottom-center) dengan margin vertikal (`MarginV: 80 - 120`).
