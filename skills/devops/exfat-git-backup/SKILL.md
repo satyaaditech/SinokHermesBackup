@@ -83,19 +83,29 @@ To bypass filesystem limitations, decouple the Git configuration repository (met
 
 ## Backups & Cron Automation
 
-Create a dedicated shell backup script using the `-C` argument to target the ext4 Git directory:
+Create a dedicated shell backup script using the `-C` argument to target the ext4 Git directory, with a defensive pre-check to guard against disconnected/unmounted USB drives:
 
 ```bash
 #!/bin/bash
 set -e
 
+WORKTREE="/mnt/usb-nvme/obsidian"
+GIT_DIR="/home/satyaaditech/.obsidian_git"
+
+# Guard against disconnected / unmounted media to prevent fatal exit code 128
+if [ ! -d "$WORKTREE" ] || ! ls "$WORKTREE" >/dev/null 2>&1; then
+    echo "Notice: Worktree $WORKTREE is not mounted or not accessible. Skipping backup."
+    exit 0
+fi
+
 # Stage edits from the work tree
-git -C /home/user/.my_vault_git add .
+git -C "$GIT_DIR" add .
 
 # Check if there are changes to commit
-if ! git -C /home/user/.my_vault_git diff-index --quiet HEAD --; then
-    git -C /home/user/.my_vault_git commit -m "Auto backup: \$(date '+%Y-%m-%d %H:%M:%S')"
+if ! git -C "$GIT_DIR" diff-index --quiet HEAD --; then
+    git -C "$GIT_DIR" commit -m "Auto backup: $(date '+%Y-%m-%d %H:%M:%S')"
     # Push back changes to GitHub
-    git -C /home/user/.my_vault_git push origin main
+    git -C "$GIT_DIR" push origin main >/dev/null 2>&1
+    echo "Backup completed successfully."
 fi
 ```
