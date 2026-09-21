@@ -24,4 +24,4 @@ Rekap bank: 5 col (Tgl, Ket, Debet, Kredit, Saldo), jeda 1-3m.
 §
 Rekap: WAJIB jujur (teliti > cepat); saldo fisik verbatim 100%; beda rumus = SELISIH.
 §
-Toko: itch.io (satyaaditech), Gumroad (stacksmith5). Apify: actor ($29/m). Shorts: 9:16 (NO bars/blur); alur tuntas (1-3m); hardsub ID kuning bawah; hapus klip mp4 stlh live; hapus raw video stlh smua klip beres. Desc YT: BHS INDO baku (NO istilah Jawa), wajib Credit. Sheet: 1d6Iyj0rZ22_m9CmwJn9XXDoAFqbWoWKKo96Uppsn4Ok.
+Toko: itch.io (satyaaditech), Gumroad (stacksmith5). Apify: actor ($29/m). Shorts: Mandor 24/7; 2x/d (12&18 WIB)+notif TG; anti-beruntun/rotasi ch; buffer>=4; sub 100% sync (2-3s/frasa, no gap, hardsub kuning); 9:16; desc baku+Credit; Sheet: 1d6Iyj0rZ22_m9CmwJn9XXDoAFqbWoWKKo96Uppsn4Ok.

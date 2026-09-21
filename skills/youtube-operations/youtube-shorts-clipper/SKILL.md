@@ -20,7 +20,21 @@ Automated engine to discover golden moments from long-form YouTube videos, crop 
 - **Public Assets (YouTube Title/Description):** 100% Bahasa Indonesia baku. Never use Javanese terms like "dudutan emas" in public text. Use `💡 Kesimpulan Penting:`.
 - **Mandatory Attribution:** Must include `Credit: <Channel Source>` at the footer of descriptions.
 
-## 3. Upload Cadence & Scheduling Protocol (Anti-Spam / Max Reach)
+## 2. Hardsub & Synchronization Quality Control Protocol
+- **Whisper Exact Alignment (Mandatory):** Subtitles MUST be extracted/aligned using `faster-whisper` on the local raw cut video to obtain exact speech timestamps.
+- **Full Coverage Guarantee:** The last subtitle segment end timestamp MUST cover within 2 seconds of the total video duration (never leave trailing silence/video without subtitles).
+- **Style:** Arial Bold, Yellow primary (`&H0000FFFF`), Black outline (`&H00000000`), Outline width 3, MarginV 140 (bottom third safe area).
+- **Tone:** 100% formal standard Indonesian (Bahasa Indonesia baku). Concluding key takeaway must use standard `💡 Kesimpulan Penting:` instead of regional phrases.
+
+## 3. Upload Cadence & Anti-Consecutive Automation (2x Daily)
+- **Slot 1 (Siang):** `0 12 * * *` (12:00 WIB) via `publish_shorts_siang.py`
+- **Slot 2 (Sore):** `0 18 * * *` (18:00 WIB) via `publish_shorts_sore.py`
+- **Midnight Scanner & Buffer Watchdog:** `0 0 * * *` (00:00 WIB) via `midnight_youtube_clipper.py`
+- **Anti-Consecutive Selection Algorithm:**
+  1. Inspects last uploaded channel from YouTube / Google Sheets history.
+  2. Filters available candidates (`SUDAH DIRENDER` / `ACC`) with rule: `Channel != Last_Uploaded_Channel`.
+  3. Applies randomized fair sampling across eligible channels.
+  4. Alerts if buffer stock falls below 4 videos. Scheduling Protocol (Anti-Spam / Max Reach)
 - **Optimal Daily Volume:** 2 to 3 Shorts per day per channel (Strict max: 4 per day).
 - **Time Spacing (Jeda Antar Upload):** 3 to 4 hours apart to prevent algorithm cannibalization.
 - **Golden Time Slots (WIB):**

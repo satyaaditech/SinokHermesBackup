@@ -17,6 +17,7 @@ Standard operating procedures for authoring high-fidelity, production-grade prom
 ## When to Use
 - Constructing prompts for cinematic stills, b-roll, YouTube visual assets, or portrait photography.
 - Creating 2-stage image-to-video animations (First Frame Keyframe + Motion Prompt via Google Flow / Veo).
+- Structuring single-prompt multi-scene workflows for Google Flow Agent mode (auto batch 10s scenes).
 - Generating character consistency turnarounds & 8-module production continuity sheets (identity-locked).
 - Directing Google Flow / Veo video motion with viral hooks, UGC styles, and impossible VFX transitions.
 - Ingesting visual prompting frameworks into Obsidian LLM Wikis (`MasteringAI`).
@@ -25,6 +26,7 @@ Standard operating procedures for authoring high-fidelity, production-grade prom
 - `references/character-continuity-8module.md` : 8-Module Video Production Continuity & Character Sheet (Identity-Locked) prompt deck.
 - `references/google-flow-motion-directives.md` : 99 Google Flow & Veo motion directives (hooks, UGC, VFX transitions, commercials).
 - `references/chatgpt-image-quick-commands.md` : 99 Viral AI image quick commands & modifiers for ChatGPT, Gemini, and Midjourney.
+- `references/google-flow-multi-scene-agent.md` : Single-prompt multi-scene generation template using Google Flow Agent mode.
 
 ## The 2-Stage Image-to-Video Workflow
 
