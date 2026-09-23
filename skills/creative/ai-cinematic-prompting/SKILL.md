@@ -15,6 +15,7 @@ metadata:
 Standard operating procedures for authoring high-fidelity, production-grade prompts across text-to-image (Gemini Imagen 3, Midjourney v6, Flux.1) and image-to-video pipelines (Google Flow, Veo, Kling, Runway Gen-3).
 
 ## When to Use
+- Orchestrating the 11-Stage AI Commercial Creative Director pipeline for Google Flow Agent Mode commercials.
 - Constructing prompts for cinematic stills, b-roll, YouTube visual assets, or portrait photography.
 - Creating 2-stage image-to-video animations (First Frame Keyframe + Motion Prompt via Google Flow / Veo).
 - Structuring single-prompt multi-scene workflows for Google Flow Agent mode (auto batch 10s scenes).
@@ -23,6 +24,8 @@ Standard operating procedures for authoring high-fidelity, production-grade prom
 - Ingesting visual prompting frameworks into Obsidian LLM Wikis (`MasteringAI`).
 
 ## References & Detailed Frameworks
+- `references/google-flow-agent-execution.md` : Practical execution pipeline (ChatGPT ➔ Google Flow Agent Mode ➔ CapCut), troubleshooting matrix, and credit optimization.
+- `references/commercial-creative-director-11stage.md` : 11-Stage AI Commercial Creative Director master workflow & asset locking pipeline for Google Flow Agent Mode.
 - `references/character-continuity-8module.md` : 8-Module Video Production Continuity & Character Sheet (Identity-Locked) prompt deck.
 - `references/google-flow-motion-directives.md` : 99 Google Flow & Veo motion directives (hooks, UGC, VFX transitions, commercials).
 - `references/chatgpt-image-quick-commands.md` : 99 Viral AI image quick commands & modifiers for ChatGPT, Gemini, and Midjourney.

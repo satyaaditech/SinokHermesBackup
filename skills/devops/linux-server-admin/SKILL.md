@@ -21,6 +21,7 @@ Non-trivial patterns for server administration on Ubuntu/Debian — USB auto-mou
 - Custom n8n Docker upgrades with hardened image workarounds (see [references/n8n-docker-hardened-workaround.md](references/n8n-docker-hardened-workaround.md))
 - n8n workflow automation via Docker CLI and REST API (see [references/n8n-automation-cli-api.md](references/n8n-automation-cli-api.md))
 - Cloudflare Tunnel domain masking and routing (see [references/cloudflare-tunnel-masking.md](references/cloudflare-tunnel-masking.md))
+- Systemd user service for unprivileged Python web apps (see [references/systemd-user-daemon-web-app.md](references/systemd-user-daemon-web-app.md))
 
 ## USB Auto-Mount Pattern (fstab + systemd)
 
