@@ -16,6 +16,7 @@ Standard operating procedures for authoring high-fidelity, production-grade prom
 
 ## When to Use
 - Orchestrating the 11-Stage AI Commercial Creative Director pipeline for Google Flow Agent Mode commercials.
+- Producing full-stack domestic sitcom videos in Google Flow (10s pacing rule, strict 4-asset pre-production locking, user photo digital twin intake, native audio/VO/SFX generation).
 - Constructing prompts for cinematic stills, b-roll, YouTube visual assets, or portrait photography.
 - Creating 2-stage image-to-video animations (First Frame Keyframe + Motion Prompt via Google Flow / Veo).
 - Structuring single-prompt multi-scene workflows for Google Flow Agent mode (auto batch 10s scenes).
@@ -24,7 +25,8 @@ Standard operating procedures for authoring high-fidelity, production-grade prom
 - Ingesting visual prompting frameworks into Obsidian LLM Wikis (`MasteringAI`).
 
 ## References & Detailed Frameworks
-- `references/google-flow-agent-execution.md` : Practical execution pipeline (ChatGPT ➔ Google Flow Agent Mode ➔ CapCut), troubleshooting matrix, and credit optimization.
+- `references/google-flow-domestic-comedy.md` : Full-stack domestic sitcom workflow (strict sequential 4-asset locking, digital twin intake from user photos, native Google Flow audio/VO/SFX, 10s pacing rule).
+- `references/google-flow-agent-execution.md` : Lyra AI 4-phase commercial execution workflow for Google Flow Agent Mode.
 - `references/commercial-creative-director-11stage.md` : 11-Stage AI Commercial Creative Director master workflow & asset locking pipeline for Google Flow Agent Mode.
 - `references/character-continuity-8module.md` : 8-Module Video Production Continuity & Character Sheet (Identity-Locked) prompt deck.
 - `references/google-flow-motion-directives.md` : 99 Google Flow & Veo motion directives (hooks, UGC, VFX transitions, commercials).
