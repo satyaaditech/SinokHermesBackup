@@ -7,6 +7,8 @@ description: Configure Linux servers. USB auto-mount, firewall.
 
 Linux server administration patterns used in Hermes-managed infrastructure.
 
+- **Systemd User Web Services & Tailscale**: See `references/systemd-user-web-services.md` for deploying persistent user-level FastAPI/web servers without sudo.
+
 ## USB Flash Drive Auto-Mount (fstab + systemd)
 
 Goal: USB drive auto-mounts when plugged in, safe to unplug anytime, no boot errors when absent.
