@@ -13,7 +13,22 @@ description: Produce Pangestu renungan harian for TG thread 1096. Agentic 3-role
    * ✅ **WAJIB**: Gunakan istilah kanonikal Serat Sasangka Jati: `pancadriya` / `indriya` / `hawa napsu patang prakara` (aluamah, amarah, supiyah, mutmainah) / `angen-angen`.
    * ❌ **DILARANG KERAS** menggunakan kata ganti `beliau` untuk Sang Guru Sejati (karena Sang Guru Sejati adalah Suksma Sejati / Roh Suci / Imateriil / Tunggal Allah).
    * ❌ **DILARANG KERAS COCOKLOGI**: Jangan memaksakan istilah luar (misal Socrates / filsafat barat) disangkutpautkan secara paksa merusak definisi baku Tri Sila (Eling, Pracaya, Mituhu) atau Hasta Sila. Saringan luar cukup dipaparkan sebagai analogi olah rasa tanpa mengubah atau menempelkan label palsu pada ajaran baku.
-   * ❌ **DILARANG KERAS MEMODIFIKASI / MEMBUMBUI KUTIPAN SABDA (STRICT VERBATIM CANONICAL)**: Kutipan Sabda/wejangan WAJIB 100% VERBATIM sama persis dengan naskah kanonikal asli (`buku_ssj_jawa.txt`, `buku_brsr.txt`, `buku_skh.txt`, `buku_tkl.txt`). Dilarang memparafrasekan, mengarang istilah, atau menyisipkan kata sendiri (misal: dilarang mengganti *kamar-kamaran* menjadi *senthong*). Format wajib kutipan: **Bold Italic** (`#1B365D`) untuk isi Sabda dan **Bold Only** (`#0E4A6F`) untuk rujukan sumber.
+   * ❌ **DILARANG KERAS MEMODIFIKASI / MEMBUMBUI KUTIPAN SABDA (STRICT VERBATIM CANONICAL)**: Kutipan Sabda/wejangan WAJIB 100% VERBATIM sama persis dengan naskah kanonikal asli (`buku_ssj_jawa.txt`, `buku_brsr.txt`, `buku_skh.txt`, `buku_tkl.txt`). Dilarang memparafrasekan, mengarang istilah, atau menyisipkan kata sendiri.
+   * 🛑 **KEKEBALAN NASKAH ACC (STRICT IMMUTABILITY OF APPROVED DRAFTS)**: Begitu naskah/draft renungan disetujui Pak Satya (misal: "aku sudah okey nox", "oke kita buat versi ini"), isi teks tersebut **DIKUNCI / FROZEN 100%**. DILARANG KERAS merombak, memparafrasekan ulang, mengganti susunan poin praktik/aplikasi, atau mengedit narasi Uraian di putaran berikutnya saat merakit GDoc/YouTube/Web/Broadcast. Naskah yang disetujui WAJIB disalin persis 100% ke seluruh aset output.
+   * 🔗 **DAFTAR TAUTAN WAJIB LENGKAP (FOOTER LINKS)**: Format broadcast akhir WAJIB selalu menyertakan blok tautan lengkap di bagian bawah:
+     ```text
+     ---
+     📖 Tautan Pustaka Digital & Dokumen:
+     • 📺 Video YouTube : https://youtu.be/...
+     • 📄 Google Doc : https://docs.google.com/document/d/.../edit
+     • 🌐 Pustaka Web Kontemplasi : https://kontemplasi.satyaaditech.web.id/#<anchor>
+     ```
+   * 🎬 **FFMPEG STILLIMAGE VIDEO PARAMETER GUARD**: Saat merender video dari poster + audio:
+     - WAJIB cantumkan `-framerate 2` SEBELUM `-i poster.png` agar FFmpeg tidak mengasumsikan input 25fps yang menyebabkan video terpotong (misal 6 menit terpotong jadi 2 menit).
+     - Perintah baku: `ffmpeg -y -loop 1 -framerate 2 -i poster.png -i audio.mp3 -c:v libx264 -tune stillimage -preset ultrafast -c:a aac -b:a 192k -pix_fmt yuv420p -shortest output.mp4`
+     - WAJIB validasi durasi video dengan `ffprobe` sebelum diunggah ke YouTube.
+   * ✅ **TULISAN HUMANIS, BERNYAWA & MEMBUMI (RELATABLE)**: Bagian Uraian dan Renungan WAJIB menyentuh pergulatan batin konkret dalam kehidupan sehari-hari (misal: beban pikiran saat bangun pagi, reaktivitas emosi saat pesan di gawai menyinggung perasaan, dinamika di kantor/keluarga). Hindari gaya khotbah teoretis yang kaku atau menggurui; buat uraian terasa hangat, bernyawa, dan aplikatif.
+   * ✅ **PENYELESAIAN PRODUKSI TUNTAS (END-TO-END PIPELINE)**: Setelah naskah di-ACC, selesaikan seluruh rantai produksi secara tuntas (Render Video MP4 -> Upload YouTube @siswatalkstv -> Format Google Doc rapi -> Sync Web GitHub Pages -> Log Master Sheet) dan sajikan output akhir lengkap beserta seluruh tautan aktif (YouTube, Docs, Web).al: dilarang mengganti *kamar-kamaran* menjadi *senthong*). Format wajib kutipan: **Bold Italic** (`#1B365D`) untuk isi Sabda dan **Bold Only** (`#0E4A6F`) untuk rujukan sumber.
 2. **Dilarang Mengubah Nama Section**:
    * Section introspeksi 3 poin WAJIB bernama `📝 *APLIKASI* :`. DILARANG KERAS menggantinya menjadi `PERTANYAAN REFLEKSI`, `REFLEKSI DIRI`, dll.
    * Baris penutup di dalam `🧘 *PRAKTIK* :` wajib diakhiri kalimat standard: `✅ Latihan ini menumbuhkan ketenteraman batin dan menjaga kita tetap eling lan waspada di setiap langkah.`
