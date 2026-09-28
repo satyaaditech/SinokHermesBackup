@@ -5,6 +5,9 @@ description: Produce Pangestu renungan harian for TG thread 1096. Agentic 3-role
 
 # Renungan Harian Pangestu (Daily Bread)
 
+> **Supporting References**:
+> - Gemini Canvas TTS App Prompt Spec: `references/gemini_canvas_tts_app_spec.md`
+
 ## ⚠️ Golden Rules & Pitfalls Format Baku (WAJIB DIPATUHI)
 1. **Aturan Teologis & Larangan Istilah (STRICT THEOLOGICAL GUARDRAILS)**:
    * ❌ **DILARANG KERAS** menggunakan istilah: `ajaran Pangestu`, `agama Pangestu`.
