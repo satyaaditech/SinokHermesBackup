@@ -1,9 +1,9 @@
 {
-  "last_report_path": "/home/satyaaditech/.hermes/logs/curator/20260922-151020",
-  "last_run_at": "2026-09-22T15:10:20.562248+00:00",
-  "last_run_duration_seconds": 2.179215,
-  "last_run_summary": "auto: no changes; llm: skipped (consolidation off)",
-  "last_run_summary_shown_at": null,
+  "last_report_path": "/home/satyaaditech/.hermes/logs/curator/20260929-152601",
+  "last_run_at": "2026-09-29T15:26:01.808760+00:00",
+  "last_run_duration_seconds": 2.015054,
+  "last_run_summary": "auto: 5 marked stale, 2 reactivated; llm: skipped (consolidation off)",
+  "last_run_summary_shown_at": "2026-09-29T15:26:01.808760+00:00",
   "paused": false,
-  "run_count": 11
+  "run_count": 12
 }
