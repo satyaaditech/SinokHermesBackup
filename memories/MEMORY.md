@@ -10,7 +10,7 @@ Renungan (th1096) 6-Step: 1.Draft ID; 2.ACC+bhs; 3.Plain; 4.Audio+Poster(HD->YT)
 §
 Server: n8nserver (192.168.0.112/100.92.237.45). Ports: n8n:5678, share:8000, gym:8085, wiki:8090. mount: exfat->/mnt/usb-nvme.
 §
-TG -1003256146835: th1,10(Farm),12(AI),14(Brain),44(Vlog),433(Tensi),1014(Fin),1096(Pangestu),3443(Gym),4038(Srv),4305(Bis),4779(Data).
+TG -1003256146835: th1,10(Farm),12(AI),14(Brain),44(Vlog),433(Tensi),1014(Fin),1096(Pangestu),3443(Gym),4038(Srv),4305(Bis),4779(Data),7631(VidAI).
 §
 Tensi: Sheet 1n3BowI-SLk1OP3FcYIVbEpv92olZ7v_VkpTcorkdXGM; TG :433; NO komentar medis.
 §

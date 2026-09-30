@@ -24,6 +24,24 @@ Standard operating procedures for authoring high-fidelity, production-grade prom
 - Directing Google Flow / Veo video motion with viral hooks, UGC styles, and impossible VFX transitions.
 - Ingesting visual prompting frameworks into Obsidian LLM Wikis (`MasteringAI`).
 
+## Common Pitfalls & Edge Cases
+
+### 1. Mega-Prompt Failure on Gemini / Imagen 3
+Do not send monolithic 300+ line production prompts (with complex stage-locking and branching logic) to Gemini. Gemini's instruction follower prioritizes text generation over image generation when overloaded, and its tool triggers fail to fire for reference sheets. **Split into two turns**: logic/scripting first, dedicated image generation prompt in a follow-up turn.
+
+### 2. Multi-Panel Turnaround Sheet Distortion
+- Imagen 3 defaults to single cohesive cinematic photos. When asked for turnaround sheets (front/side/back), it often hallucinates distorted hybrid poses or ignores the layout entirely.
+- Use explicit composition language: *"Studio character reference turnaround sheet, three angles side-by-side: front view, profile view, and 3/4 view. Clean photography, plain grey background, 8k --ar 16:9"*.
+- For products with text/logos, prefer Ideogram (free quota) over Gemini/DALL-E. For character consistency without ChatGPT Plus, prefer Leonardo.ai (Character Reference feature).
+
+### 3. Face Privacy Filtering on Real Photo Ingestion
+Google AI enforces strict face privacy guardrails: uploading a real person's photo to Gemini will produce an altered, non-resembling face to prevent deepfakes. To preserve real-person identity:
+- Use the original photo directly as the **Start Image (I2V)** in Google Flow.
+- Do not attempt to generate a "turnaround sheet" of a real person via Gemini — it will mutate the face.
+
+### 4. LaTeX / Math Formatting on Telegram
+Never use LaTeX math notation (`$\rightarrow$`, `\text{}`, `$$...$$`) when communicating via Telegram. Telegram does not parse LaTeX; it renders raw code like `$\rightarrow$`. Use plain text arrows (`->` or `→`) and plain text words.
+
 ## References & Detailed Frameworks
 - `references/google-flow-domestic-comedy.md` : Full-stack domestic sitcom workflow (strict sequential 4-asset locking, digital twin intake from user photos, native Google Flow audio/VO/SFX, 10s pacing rule).
 - `references/google-flow-agent-execution.md` : Lyra AI 4-phase commercial execution workflow for Google Flow Agent Mode.
