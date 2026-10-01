@@ -10,14 +10,16 @@ Renungan (th1096) 6-Step: 1.Draft ID; 2.ACC+bhs; 3.Plain; 4.Audio+Poster(HD->YT)
 §
 Server: n8nserver (192.168.0.112/100.92.237.45). Ports: n8n:5678, share:8000, gym:8085, wiki:8090. mount: exfat->/mnt/usb-nvme.
 §
-TG -1003256146835: th1,10(Farm),12(AI),14(Brain),44(Vlog),433(Tensi),1014(Fin),1096(Pangestu),3443(Gym),4038(Srv),4305(Bis),4779(Data),7631(VidAI).
+TG ...46835 th: 10(Farm) 12(AI) 44(Vlog) 433(Tens) 1014(Fin) 1096(SGS) 3443(Gym) 4038(Srv) 4305(Bis).
 §
 Tensi: Sheet 1n3BowI-SLk1OP3FcYIVbEpv92olZ7v_VkpTcorkdXGM; TG :433; NO komentar medis.
 §
-Vlog: .md ke TG. Foto: append md (:8000). Farm: ~/shorts_factory/obsidian/UrbanFarming/. AI: /mnt/usb-nvme/obsidian/MasteringAI/. Vault: /mnt/usb-nvme/obsidian (umask=000,uid=1000,gid=1000).
+Vlog: .md ke TG. Foto: append md (:8000). Farm: ~/shorts_factory/obsidian/UrbanFarming/. AI: /mnt/usb-nvme/obsidian/MasteringAI/. Vault: /mnt/usb-nvme/obsidian (umask=0,uid=1000).
 §
 Buku SGS: SSJ,SKH,BRSR,TKL,WSJ,UUJM. SGS=imateriil/Tunggal Allah, NO 'beliau'. Pangestu=PAGUYUBAN; WAJIB 'Ajaran Sang Guru Sejati'. 100% verbatim. Teks=Bold Italic, sumber=Bold. Panembah=5 BAB. Cross-ref: SSJ,BRSR,SKH,TKL,UUJM.
 §
 Ulasan: ~/share/materi_khotbah/ & Drive 1Bh9ZIizra0I-3hmlqcHjhLJi3-eTAI4U. Deep ontologis, 5 BAB, cross-ref SGS. GDoc: targeted in-place.
 §
-Cuan USD: ~/proyek_cuan_digital/scifi_hud_vfx_pack/ (itch.io, Gumroad, Wirestock). Zero-client, Veo/Imagen loop 1080p, auto-zip. Blueprint: ~/shorts_factory/obsidian/Strategi_Monetisasi_Google_AI_Blue_Ocean.md & Drive 1SQaBdLVan5SuLfyHgV9Nr1CGbFFIPd3P.
+Cuan: ~/proyek_cuan_digital/scifi_hud_vfx_pack/ (itch,Gumroad). Veo loop, auto-zip. Blueprint: ~/shorts_factory/obsidian/Strategi_Monetisasi_Google_AI_Blue_Ocean.md & Drv 1SQaBdLVan5SuLfyHgV9Nr1CGbFFIPd3P.
+§
+Voice Note/Audio: TG auto-text GARBAGE for Indo. IGNORE TEXT, feed raw .ogg direct to Gemini via Python script base64.
