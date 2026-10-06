@@ -151,6 +151,22 @@
     "use_count": 1,
     "view_count": 1
   },
+  "blocked-page-recovery": {
+    "archived_at": null,
+    "created_at": "2026-10-06T12:35:04.304465+00:00",
+    "created_by": null,
+    "first_seen_at": null,
+    "last_patched_at": null,
+    "last_reused_patch_generation": 0,
+    "last_used_at": "2026-10-06T12:35:04.313948+00:00",
+    "last_viewed_at": "2026-10-06T12:35:04.304498+00:00",
+    "patch_count": 0,
+    "patch_generation": 0,
+    "pinned": false,
+    "state": "active",
+    "use_count": 1,
+    "view_count": 1
+  },
   "blogwatcher": {
     "archived_at": null,
     "created_at": "2026-08-04T12:30:58.249371+00:00",
@@ -398,6 +414,38 @@
     "use_count": 0,
     "view_count": 0
   },
+  "flow-ugc-ads": {
+    "archived_at": null,
+    "created_at": "2026-10-06T12:36:02.025389+00:00",
+    "created_by": null,
+    "first_seen_at": null,
+    "last_patched_at": null,
+    "last_reused_patch_generation": 0,
+    "last_used_at": "2026-10-06T12:44:53.158333+00:00",
+    "last_viewed_at": "2026-10-06T12:44:53.151100+00:00",
+    "patch_count": 0,
+    "patch_generation": 0,
+    "pinned": false,
+    "state": "active",
+    "use_count": 5,
+    "view_count": 5
+  },
+  "flow-ugc-ads-pipeline": {
+    "archived_at": null,
+    "created_at": "2026-10-06T12:37:04.103092+00:00",
+    "created_by": "agent",
+    "first_seen_at": null,
+    "last_patched_at": null,
+    "last_reused_patch_generation": 0,
+    "last_used_at": null,
+    "last_viewed_at": null,
+    "patch_count": 0,
+    "patch_generation": 0,
+    "pinned": false,
+    "state": "active",
+    "use_count": 0,
+    "view_count": 0
+  },
   "gif-search": {
     "archived_at": null,
     "created_at": "2026-08-04T12:30:58.391153+00:00",
@@ -525,13 +573,15 @@
     "created_at": "2026-07-28T10:33:30.787331+00:00",
     "created_by": null,
     "last_patched_at": null,
-    "last_used_at": "2026-09-24T05:11:16.280120+00:00",
-    "last_viewed_at": "2026-09-24T05:11:16.272605+00:00",
+    "last_reused_patch_generation": 0,
+    "last_used_at": "2026-10-06T10:47:54.518178+00:00",
+    "last_viewed_at": "2026-10-06T10:47:54.509517+00:00",
     "patch_count": 0,
+    "patch_generation": 0,
     "pinned": false,
     "state": "active",
-    "use_count": 40,
-    "view_count": 40
+    "use_count": 41,
+    "view_count": 41
   },
   "gym-equipment-inventory": {
     "archived_at": null,
@@ -724,14 +774,14 @@
     "first_seen_at": null,
     "last_patched_at": null,
     "last_reused_patch_generation": 0,
-    "last_used_at": "2026-09-30T01:33:10.008525+00:00",
-    "last_viewed_at": "2026-09-30T01:33:10.001301+00:00",
+    "last_used_at": "2026-10-06T12:45:10.597563+00:00",
+    "last_viewed_at": "2026-10-06T12:45:10.590332+00:00",
     "patch_count": 0,
     "patch_generation": 0,
     "pinned": false,
     "state": "active",
-    "use_count": 7,
-    "view_count": 7
+    "use_count": 19,
+    "view_count": 19
   },
   "imessage": {
     "archived_at": null,
@@ -816,13 +866,15 @@
     "created_at": "2026-08-04T12:30:58.507376+00:00",
     "created_by": null,
     "last_patched_at": null,
-    "last_used_at": "2026-09-23T11:04:48.658718+00:00",
-    "last_viewed_at": "2026-09-23T11:04:48.650939+00:00",
+    "last_reused_patch_generation": 0,
+    "last_used_at": "2026-10-06T10:52:40.019404+00:00",
+    "last_viewed_at": "2026-10-06T10:52:40.012057+00:00",
     "patch_count": 0,
+    "patch_generation": 0,
     "pinned": false,
     "state": "active",
-    "use_count": 17,
-    "view_count": 17
+    "use_count": 18,
+    "view_count": 18
   },
   "mac-hardware-troubleshooting": {
     "archived_at": null,
@@ -1862,14 +1914,14 @@
     "created_by": null,
     "last_patched_at": "2026-06-01T04:19:23.753259+00:00",
     "last_reused_patch_generation": 0,
-    "last_used_at": "2026-10-01T05:11:48.530403+00:00",
-    "last_viewed_at": "2026-10-01T05:11:48.523242+00:00",
+    "last_used_at": "2026-10-06T10:47:49.803201+00:00",
+    "last_viewed_at": "2026-10-06T10:47:49.791740+00:00",
     "patch_count": 1,
     "patch_generation": 0,
     "pinned": false,
     "state": "active",
-    "use_count": 30,
-    "view_count": 30
+    "use_count": 31,
+    "view_count": 31
   },
   "youtube-shorts-clipper": {
     "archived_at": null,
