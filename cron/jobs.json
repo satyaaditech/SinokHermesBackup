@@ -75,15 +75,15 @@
       "schedule_display": "0 23 * * *",
       "repeat": {
         "times": null,
-        "completed": 37
+        "completed": 38
       },
       "enabled": true,
       "state": "scheduled",
       "paused_at": null,
       "paused_reason": null,
       "created_at": "2026-08-30T07:28:46.115435+07:00",
-      "next_run_at": "2026-10-07T23:00:00+07:00",
-      "last_run_at": "2026-10-05T23:00:59.714124+07:00",
+      "next_run_at": "2026-10-08T23:00:00+07:00",
+      "last_run_at": "2026-10-06T23:01:00.083168+07:00",
       "last_status": "ok",
       "last_error": null,
       "last_delivery_error": null,
@@ -98,13 +98,13 @@
       "enabled_toolsets": null,
       "workdir": null,
       "fire_claim": {
-        "at": "2026-10-06T23:00:53.487596+07:00",
-        "by": "n8nserver:1256997:731ead4760714f1c8f61fab8c6579ac6"
+        "at": "2026-10-07T23:00:05.368019+07:00",
+        "by": "n8nserver:1229:8fc0039d6ce24744a3cc5abaa6c9e2b0"
       },
       "last_dispatch": {
-        "scheduled_at": "2026-10-06T23:00:00+07:00",
-        "dispatched_at": "2026-10-06T23:00:51.527101+07:00",
-        "lateness_seconds": 51.5,
+        "scheduled_at": "2026-10-07T23:00:00+07:00",
+        "dispatched_at": "2026-10-07T23:00:02.743194+07:00",
+        "lateness_seconds": 2.7,
         "kind": "on_time"
       },
       "failure_streak": 0
@@ -131,15 +131,15 @@
       "schedule_display": "15 23 * * *",
       "repeat": {
         "times": null,
-        "completed": 37
+        "completed": 38
       },
       "enabled": true,
       "state": "scheduled",
       "paused_at": null,
       "paused_reason": null,
       "created_at": "2026-08-30T07:41:44.349637+07:00",
-      "next_run_at": "2026-10-06T23:15:00+07:00",
-      "last_run_at": "2026-10-05T23:15:55.922195+07:00",
+      "next_run_at": "2026-10-07T23:15:00+07:00",
+      "last_run_at": "2026-10-06T23:16:03.117269+07:00",
       "last_status": "ok",
       "last_error": null,
       "last_delivery_error": null,
@@ -155,8 +155,8 @@
       "workdir": null,
       "fire_claim": null,
       "last_dispatch": {
-        "scheduled_at": "2026-10-05T23:15:00+07:00",
-        "dispatched_at": "2026-10-05T23:15:51.521260+07:00",
+        "scheduled_at": "2026-10-06T23:15:00+07:00",
+        "dispatched_at": "2026-10-06T23:15:51.524609+07:00",
         "lateness_seconds": 51.5,
         "kind": "on_time"
       },
@@ -186,10 +186,10 @@
         "times": null,
         "completed": 14
       },
-      "enabled": true,
-      "state": "scheduled",
-      "paused_at": null,
-      "paused_reason": null,
+      "enabled": false,
+      "state": "paused",
+      "paused_at": "2026-10-07T14:43:08.220416+07:00",
+      "paused_reason": "Pause the gym reminder cron job as requested by Pak Satya",
       "created_at": "2026-09-04T13:18:33.431304+07:00",
       "next_run_at": "2026-10-08T05:00:00+07:00",
       "last_run_at": "2026-10-06T05:00:58.746522+07:00",
@@ -354,5 +354,5 @@
       "fire_claim": null
     }
   ],
-  "updated_at": "2026-10-06T23:00:53.490872+07:00"
+  "updated_at": "2026-10-07T23:00:05.369611+07:00"
 }
