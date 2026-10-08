@@ -30,6 +30,22 @@
     "use_count": 0,
     "view_count": 0
   },
+  "ai-shorts-video-factory": {
+    "archived_at": null,
+    "created_at": "2026-10-08T08:31:32.038330+00:00",
+    "created_by": "agent",
+    "first_seen_at": null,
+    "last_patched_at": null,
+    "last_reused_patch_generation": 0,
+    "last_used_at": null,
+    "last_viewed_at": null,
+    "patch_count": 0,
+    "patch_generation": 0,
+    "pinned": false,
+    "state": "active",
+    "use_count": 0,
+    "view_count": 0
+  },
   "ai-trading-bot": {
     "archived_at": null,
     "created_at": "2026-05-24T11:26:51.558481+00:00",
@@ -409,16 +425,16 @@
     "created_at": "2026-10-07T06:44:02.368575+00:00",
     "created_by": "agent",
     "first_seen_at": null,
-    "last_patched_at": null,
-    "last_reused_patch_generation": 0,
-    "last_used_at": "2026-10-07T09:25:24.706844+00:00",
-    "last_viewed_at": "2026-10-07T09:25:24.699515+00:00",
-    "patch_count": 0,
-    "patch_generation": 0,
+    "last_patched_at": "2026-10-08T05:25:10.110656+00:00",
+    "last_reused_patch_generation": 2,
+    "last_used_at": "2026-10-08T08:30:57.826113+00:00",
+    "last_viewed_at": "2026-10-08T08:30:57.818854+00:00",
+    "patch_count": 2,
+    "patch_generation": 2,
     "pinned": false,
     "state": "active",
-    "use_count": 9,
-    "view_count": 9
+    "use_count": 21,
+    "view_count": 21
   },
   "faceless-video-generator": {
     "archived_at": null,
@@ -427,14 +443,14 @@
     "first_seen_at": null,
     "last_patched_at": null,
     "last_reused_patch_generation": 0,
-    "last_used_at": "2026-10-07T09:25:49.133324+00:00",
-    "last_viewed_at": "2026-10-07T09:25:49.125081+00:00",
+    "last_used_at": "2026-10-08T05:24:15.307024+00:00",
+    "last_viewed_at": "2026-10-08T05:24:15.299805+00:00",
     "patch_count": 0,
     "patch_generation": 0,
     "pinned": false,
     "state": "active",
-    "use_count": 9,
-    "view_count": 9
+    "use_count": 12,
+    "view_count": 12
   },
   "finance-automation": {
     "archived_at": null,
@@ -469,14 +485,14 @@
     "first_seen_at": null,
     "last_patched_at": null,
     "last_reused_patch_generation": 0,
-    "last_used_at": "2026-10-06T12:44:53.158333+00:00",
-    "last_viewed_at": "2026-10-06T12:44:53.151100+00:00",
+    "last_used_at": "2026-10-08T03:08:12.932050+00:00",
+    "last_viewed_at": "2026-10-08T03:08:12.924324+00:00",
     "patch_count": 0,
     "patch_generation": 0,
     "pinned": false,
     "state": "active",
-    "use_count": 5,
-    "view_count": 5
+    "use_count": 7,
+    "view_count": 7
   },
   "flow-ugc-ads-pipeline": {
     "archived_at": null,
@@ -591,14 +607,14 @@
     "created_by": "agent",
     "last_patched_at": "2026-09-12T23:17:39.148633+00:00",
     "last_reused_patch_generation": 0,
-    "last_used_at": "2026-10-07T10:44:43.542669+00:00",
-    "last_viewed_at": "2026-10-07T10:44:43.534457+00:00",
+    "last_used_at": "2026-10-08T09:57:37.962111+00:00",
+    "last_viewed_at": "2026-10-08T09:57:37.954736+00:00",
     "patch_count": 19,
     "patch_generation": 0,
     "pinned": false,
     "state": "active",
-    "use_count": 58,
-    "view_count": 58
+    "use_count": 64,
+    "view_count": 64
   },
   "google-flow-ugc-commercial": {
     "archived_at": null,
@@ -822,14 +838,14 @@
     "first_seen_at": null,
     "last_patched_at": null,
     "last_reused_patch_generation": 0,
-    "last_used_at": "2026-10-06T12:45:10.597563+00:00",
-    "last_viewed_at": "2026-10-06T12:45:10.590332+00:00",
+    "last_used_at": "2026-10-08T03:08:16.912703+00:00",
+    "last_viewed_at": "2026-10-08T03:08:16.903918+00:00",
     "patch_count": 0,
     "patch_generation": 0,
     "pinned": false,
     "state": "active",
-    "use_count": 19,
-    "view_count": 19
+    "use_count": 20,
+    "view_count": 20
   },
   "imessage": {
     "archived_at": null,
@@ -1047,14 +1063,14 @@
     "created_by": "agent",
     "last_patched_at": "2026-09-11T15:45:51.572191+00:00",
     "last_reused_patch_generation": 0,
-    "last_used_at": "2026-10-07T07:11:10.891780+00:00",
-    "last_viewed_at": "2026-10-07T07:11:10.883512+00:00",
+    "last_used_at": "2026-10-08T08:25:35.961916+00:00",
+    "last_viewed_at": "2026-10-08T08:25:35.954655+00:00",
     "patch_count": 39,
     "patch_generation": 0,
     "pinned": false,
     "state": "active",
-    "use_count": 78,
-    "view_count": 78
+    "use_count": 80,
+    "view_count": 80
   },
   "opencode": {
     "archived_at": null,
@@ -1129,14 +1145,14 @@
     "created_by": "agent",
     "last_patched_at": "2026-09-13T00:45:55.086016+00:00",
     "last_reused_patch_generation": 0,
-    "last_used_at": "2026-10-07T10:44:38.747578+00:00",
-    "last_viewed_at": "2026-10-07T10:44:38.740262+00:00",
+    "last_used_at": "2026-10-08T09:57:16.764742+00:00",
+    "last_viewed_at": "2026-10-08T09:57:16.757082+00:00",
     "patch_count": 12,
     "patch_generation": 0,
     "pinned": false,
     "state": "active",
-    "use_count": 38,
-    "view_count": 38
+    "use_count": 39,
+    "view_count": 39
   },
   "pangestu-renungan-harian": {
     "archived_at": null,
@@ -1895,14 +1911,14 @@
     "created_by": "agent",
     "last_patched_at": "2026-09-06T13:29:29.116626+00:00",
     "last_reused_patch_generation": 0,
-    "last_used_at": "2026-09-30T15:18:28.284355+00:00",
-    "last_viewed_at": "2026-09-30T15:18:28.276257+00:00",
+    "last_used_at": "2026-10-08T03:10:10.462433+00:00",
+    "last_viewed_at": "2026-10-08T03:10:10.455050+00:00",
     "patch_count": 15,
     "patch_generation": 0,
     "pinned": false,
     "state": "active",
-    "use_count": 37,
-    "view_count": 37
+    "use_count": 39,
+    "view_count": 39
   },
   "weights-and-biases": {
     "archived_at": null,
@@ -1962,14 +1978,14 @@
     "created_by": null,
     "last_patched_at": "2026-06-01T04:19:23.753259+00:00",
     "last_reused_patch_generation": 0,
-    "last_used_at": "2026-10-07T07:31:32.957324+00:00",
-    "last_viewed_at": "2026-10-07T07:31:32.948301+00:00",
+    "last_used_at": "2026-10-08T05:28:44.442019+00:00",
+    "last_viewed_at": "2026-10-08T05:28:44.434327+00:00",
     "patch_count": 1,
     "patch_generation": 0,
     "pinned": false,
     "state": "active",
-    "use_count": 40,
-    "view_count": 40
+    "use_count": 42,
+    "view_count": 42
   },
   "youtube-shorts-clipper": {
     "archived_at": null,
