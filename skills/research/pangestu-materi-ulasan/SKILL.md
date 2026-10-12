@@ -19,11 +19,12 @@ User (Pak Satya) mendapat tugas mengulas materi Pangestu (mis. Sasangka Jati Ser
    - **SPRA**: *Sabda Pratama*
    - **SKH**: *Sabda Khusus* (atau *Sasangka Kinelar*)
    - **BRSR**: *Bawa Raos ing Salebeting Raos* (DILARANG: *Sabda-sabda Rasul*)
-   - **TKL**: *Taman Kamulyan Langgeng* (DILARANG: *Titihan Kang Linuwih*)
+   - **TKL**: *Taman Kamulyan Langgeng* (DILARANG KERAS: *Titihan Kang Linuwih*, *Tuntunan Kasampurnan Laras*, *Tuntunan Kasampurnan Laku*, atau *Tuntunan Kautaman Lair Batin*)
    - **UUJM**: *Ular-ular Juru Mengeti* (DILARANG: *Usul-usuling Jiwa Manungsa*)
    - **WSJ**: *Wahyu Sasangka Jati* (atau *Wadining Suksma Jati*)
    - **ASBS**: *Arsip Sarjana Budi Santosa*
-   - **Olah Rasa** & **Ulasan Kang Kelana**au *Sasangka Kinelar*)
+   - **Olah Rasa** & **Ulasan Kang Kelana**
+   - **CJI**: *Candrajiwa Indonesia sebagai Dasar Psikoterapi* (Disertasi Doktoral Leiden 1956 karya Prof. Dr. dr. R. Soemantri Hardjoprakoso; `buku_disertasi_candrajiwa_indonesia.txt`)au *Sasangka Kinelar*)
    - **BRSR**: *Bawa Raos ing Salebeting Raos* (DILARANG menyebut *Sabda-sabda Rasul*)
    - **TKL**: *Taman Kamulyan Langgeng* (DILARANG mengarang nama *Titihan Kang Linuwih*)
    - **UUJM**: *Ular-ular Juru Mengeti* (DILARANG mengarang nama *Usul-usuling Jiwa Manungsa*)
@@ -51,3 +52,17 @@ User (Pak Satya) mendapat tugas mengulas materi Pangestu (mis. Sasangka Jati Ser
 ## Referensi
 
 - `references/ssj-panembah-bab2.md` — kutipan terverifikasi Serat Panembah Bab 2 (Jawa + terjemahan), peta cross-ref (SKH/ASBS/UKK/BRSR/TKL/SPRA), inventaris insight wow, lokasi file hasil.
+
+## 🔒 DAFTAR BAKU & KUNCI SINGKATAN PUSTAKA KANONIKAL PANGESTU (LOCKED MASTER)
+Setiap kutipan, rujukan, atau sitasi buku yang menggunakan singkatan WAJIB mengacu pada daftar baku ini:
+- **[SSJ]**   : *Serat Sasangka Jati*
+- **[SKH]**   : *Sabda Khusus*
+- **[BRSR]**  : *Bawa Raos Ing Salebeting Raos*
+- **[UUJM]**  : *Ular-Ular Juru Mengeti*
+- **[TKL]**   : *Taman Kamulyan Langgeng*
+- **[SPRA]**  : *Sabda Pratama*
+- **[WSJ]**   : *Wahyu Sasangka Jati*
+- **[ASBS]**  : *Arsip Sarjana Budi Santosa*
+- **[UKK]**   : *Ulasan Kang Kelana*
+- **[OLHR]**  : *Olahrasa (Buku Olahrasa)*
+- **[CJI]**   : *Candrajiwa Indonesia sebagai Dasar Psikoterapi* (Disertasi Prof. Dr. dr. R. Soemantri Hardjoprakoso, Leiden 1956)

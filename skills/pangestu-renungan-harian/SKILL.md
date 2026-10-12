@@ -8,6 +8,47 @@ description: Produce Pangestu renungan harian for TG thread 1096. Agentic 3-role
 > **Supporting References**:
 > - Gemini Canvas TTS App Prompt Spec: `references/gemini_canvas_tts_app_spec.md`
 
+
+
+## 🎓 STANDAR PEDAGOGI & PROSEDUR RISET RENUNGAN (MASTER EDUCATOR)
+*Disepakati bersama Pak Satya Adi Dharma (Oktober 2026)*:
+
+1. **Riset Matriks Silang Pustaka (Deep Cross-Reference Matrix)**:
+   - Satu tema besar bulanan (misal: "Sabar") wajib diriset silang menyeluruh di 11 pustaka kanonikal terkunci (SSJ, SKH, BRSR, UUJM, TKL, SPRA, WSJ, ASBS, UKK, OLHR, CJI).
+   - Setiap renungan harian mengangkat sudut pandang (facet) berbeda dengan kutipan sabda/wejangan yang bervariasi dan non-redundant.
+
+2. **Pendekatan Master Educator (Sistematis A - Z)**:
+   - Menjabarkan topik secara pedagogis: dari fondasi awal, anatomi batin/nafsu, friksi relasi sosial, ujian hidup/karier, hingga puncak kasampurnan pamasrahan batin.
+
+3. **Jembatan Sains Modern & Konteks Kekinian**:
+   - Menghubungkan ajaran SGS dengan ilmu pengetahuan mutakhir (neurosains: lonjakan hormon kortisol, pembajakan amigdala, aktivasi parasimpatetis; psikologi modern: burnout, kecemasan digital, validasi semu medsos).
+   - Menjelaskan bagaimana laku heneng-hening & olahrasa SGS menyelesaikan akar masalah biologis dan psikologis tersebut.
+
+4. **Formula Judul Magnetik (Kekinian/Sains + Solusi Kasampurnan)**:
+   - Judul menggabungkan fenomena modern/sains dengan tujuan rohani (contoh: *Seni Mematikan Api Sebelum Menjadi Kebakaran: Waspadai Lonjakan Hormon Kortisol Anda 🌿*).
+   - Menarik dan menggugah rasa penasaran pembaca awam, humanis, namun ANTI-CLICKBAIT (relevan dan murni berakar pada isi naskah).
+   - Menjaga wibawa spiritual: hindari tanda seru ganda (!!), gunakan emoji sejuk dan kalimat reflektif.
+
+## 🌟 CITHAKAN STANDAR EMAS (GOLDEN TEMPLATE V8 - LEAN 4-PILAR)
+*Disepakati bersama Pak Satya Adi Dharma (Oktober 2026)*:
+- Format acuan: `references/GOLDEN_SAMPLE_v8_SABAR.md` dan `templates/format-baku.md`.
+- **Struktur 4 Pilar**:
+  1. `*📖 KUTIPAN TUNTUNAN :*` (Sabda Jawa Verbatim 100% + Terjemahan Indonesia tepat di bawahnya dalam tanda kurung miring).
+  2. `💭 *PANGILON RASA :*` (2 Paragraf padat: Paragraf 1 The Human Hook / kahanan nyata -> Paragraf 2 Bedhah kasunyatan Catur Nepsu & pepadhang Sabda).
+  3. `🧘 *LAKU PANYISWAN :*` (Latihan 30 Detik: Jeda Raga -> Mengheningkan Batin -> Bertindak Selaras Tuntunan; wajib ditautkan pada pemicu fisik / situasi nyata).
+  4. `🎯 *JANGKAR BATIN :*` (Mutiara Rasa 1 baris + Pertanyaan Refleksi 1 baris).
+- **Audio-First**: Link YouTube diletakkan persis di bawah judul tema di atas salam pembuka (`🎧 *Dengarkan di YouTube*: ...`).
+- **Aturan Tipografi & Whitespace**:
+  * Wajib 1 baris kosong (blank line) di bawah setiap subjudul seksi agar layout bernapas dan tidak tampak terlalu padat.
+  * Label `Pertanyaan Refleksi` WAJIB ditulis Sentence Case (DILARANG huruf kapital semua `PERTANYAAN REFLEKSI`).
+  * Gunakan istilah Bahasa Indonesia yang mudah dipahami (`Jeda Raga`, `Mengheningkan Batin`, `Bertindak Selaras Tuntunan`, `(Latihan 30 Detik)`).
+- **Keseimbangan Visual (Emoji Guardrails)**:
+  * Batasi 10–12 emotikon pilihan bernilai rasa (menjaga wibawa spiritual, hindari kesan spammy).
+- **Footer Baku**:
+  * Doa Penutup: `🙏 Semoga Kita Senantiasa Berlimpah dengan Sih, Tuntunan, Pepadang, Pangayoman dari Sang Guru Sejati. Satuhu 🙏`
+  * Link Web: `🌐 *Baca Selengkapnya di Web Pustaka*: https://kontemplasi.satyaaditech.web.id/#[slug]`
+  * Link GDoc: `📄 *Versi Dokumen Google Docs*: [Link GDoc]`
+
 ## ⚠️ Golden Rules & Pitfalls Format Baku (WAJIB DIPATUHI)
 1. **Aturan Teologis & Larangan Istilah (STRICT THEOLOGICAL GUARDRAILS)**:
    * ❌ **DILARANG KERAS** menggunakan istilah: `ajaran Pangestu`, `agama Pangestu`.
@@ -706,3 +747,17 @@ Label: `🧘 *PRAKTIK* :` — sub-judul latihan pakai bold `*Nama Latihan*`, lan
 |---|---|
 | `templates/renungan-kosong.txt` | Template kosong siap copy-paste |
 | `references/kisah-nyata.md` | Katalog kisah nyata terverifikasi untuk uraian |
+
+## 🔒 DAFTAR BAKU & KUNCI SINGKATAN PUSTAKA KANONIKAL PANGESTU (LOCKED MASTER)
+Setiap kutipan, rujukan, atau sitasi buku yang menggunakan singkatan WAJIB mengacu pada daftar baku ini:
+- **[SSJ]**   : *Serat Sasangka Jati*
+- **[SKH]**   : *Sabda Khusus*
+- **[BRSR]**  : *Bawa Raos Ing Salebeting Raos*
+- **[UUJM]**  : *Ular-Ular Juru Mengeti*
+- **[TKL]**   : *Taman Kamulyan Langgeng*
+- **[SPRA]**  : *Sabda Pratama*
+- **[WSJ]**   : *Wahyu Sasangka Jati*
+- **[ASBS]**  : *Arsip Sarjana Budi Santosa*
+- **[UKK]**   : *Ulasan Kang Kelana*
+- **[OLHR]**  : *Olahrasa (Buku Olahrasa)*
+- **[CJI]**   : *Candrajiwa Indonesia sebagai Dasar Psikoterapi* (Disertasi Prof. Dr. dr. R. Soemantri Hardjoprakoso, Leiden 1956)

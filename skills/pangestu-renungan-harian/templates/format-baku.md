@@ -1,57 +1,57 @@
-# Template Renungan Harian — FORMAT BAKU
+# Template Renungan Harian — CITHAKAN STANDAR EMAS (GOLDEN TEMPLATE 2026)
+*Disepakati & disetujui Pak Satya Adi Dharma (Oktober 2026). Struktur Lean 4-Pilar, Audio-First, Human Hook & Somatic Micro-Practice.*
 
-Template ini sudah disepakati user. JANGAN diubah struktur, urutan, judul section, atau closing.
-
-```
+```text
 *HARI, TANGGAL BULAN TAHUN*
 
 *RENUNGAN PENYISWAAN*
 
-*JUDUL RENUNGAN*
+*TEMA: Subjudul Tema yang Menggugah [2-3 EMOJI]*
 
-_Salam Karahayon!_
+🎧 *Dengarkan di YouTube*: [Link Video YT]
 
-*📖 SABDA HARI INI :*
+_Salam Karahayon! 🙏_
 
-Nama Kitab : _"KUTIPAN SABDA LENGKAP SATU PARAGRAF UTUH"_
+*📖 KUTIPAN TUNTUNAN :*
 
-💭 *URAIAN* :
+**[Nama Kitab], [Bab / Rujukan] :**
+> _"[Kutipan Sabda Verbatim Bahasa Jawa 100%]"_
+>
+> *([Terjemahan Bahasa Indonesia yang Selaras])*
 
-[Paragraf 1: Pembuka dari kehidupan sehari-hari — contoh nyata, sederhana, semua orang pernah alami]
-[Paragraf 2: Kaitkan dengan Sabda — apa maknanya untuk hidup kita. Bahasa obrolan, bukan ceramah]
-[Paragraf 3: Penutup — satu ajakan ringan yang mengena, tanpa jargon]
+💭 *PANGILON RASA :*
 
-🧘 *PRAKTIK* :
+[Paragraf 1: The Human Hook — Dilema/kejadian nyata sehari-hari di kantor/rumah/relasi yang langsung relate dengan pembaca, menguraikan friksi batin tanpa menggurui.]
 
-*Nama Latihan* — lakukan [frekuensi] kali hari ini:
+[Paragraf 2: Bedhah Kasunyatan — Penyingkapan ilusi ego/Catur Nepsu wadag, mengalirkan pepadhang dari Sabda Tuntunan sebagai penawar rasa sejati.] 💡
 
-1. Langkah pertama — jelas, spesifik, bisa langsung dikerjakan
-2. Langkah kedua
-3. Langkah ketiga
+🧘 *LAKU PANYISWAN :*
 
-✅ Bisa dilakukan [kapan saja / di mana saja].
+*[Nama Latihan Mikro] (Latihan 30 Detik)* — lakukan saat [pemicu situasi/benda fisik hari ini]:
 
-🎯 *RENUNGAN* :
+1. ⏸️ **Jeda Raga:** [Tindakan fisik konkret: jeda napas 3-5 detik, kendurkan otot/kunci bibir].
+2. 🕊️ **Mengheningkan Batin:** [Afirmasi hening di dalam rasa: eling Guru Sejati, menepis nepsu wadag].
+3. 🌊 **Bertindak Selaras Tuntunan:** [Respons sadar yang tenang, rendah, lembut, dan bijaksana].
 
-[Satu kalimat kuat — insight yang membekas. Bukan jargon, bukan quote. Bahasa sederhana.]
+🎯 *JANGKAR BATIN :*
 
-📝 *APLIKASI* :
+* 💎 **Mutiara Rasa:** _[Satu kalimat aforisme paradoks/kontras yang membekas di hati]._
+* ❓ **Pertanyaan Refleksi:** _[Satu pertanyaan perenungan mendalam untuk dibawa sepanjang hari]?_ 🤔
 
-1. [Pertanyaan reflektif 1 — mengajak melihat ke dalam diri. JANGAN pakai "kamu"]
-2. [Pertanyaan reflektif 2]
-3. [Pertanyaan reflektif 3]
+---
 
-🙏 Semoga kita semua senantiasa berlimpah dengan Tuntunan dan Perlindungan, Sih dari Sang Guru Sejati. Satuhu 🙏
+🙏 Semoga Kita Senantiasa Berlimpah dengan Sih, Tuntunan, Pepadang, Pangayoman dari Sang Guru Sejati. Satuhu 🙏
+
+🌐 *Baca Selengkapnya di Web Pustaka*: https://kontemplasi.satyaaditech.web.id/#[slug-id]
+📄 *Versi Dokumen Google Docs*: [Link GDoc]
 ```
 
-## Catatan Penting
-
-- **🔗 WAJIB baca**: `references/GOLDEN_SAMPLE_v7.md` — standar emas yang disetujui user. Semua bagian (contoh, emotikon, bahasa, kedalaman) harus menyamai sample ini. JANGAN mundur ke kualitas di bawahnya.
-- **Target pembaca**: universal (semua usia, hindari dikotomi pensiun/50+). Contoh harus nyata dari kehidupan sehari-hari (pekerjaan kantoran, barang kesayangan, kecemasan, gawai, masa depan).
-- **Salam**: "Salam Karahayon! 🙏" — bukan "Salam Bahagia Bp/Ibu/Sdr semuanya"
-- **Sabda source**: "Nama Kitab :" — bukan "— Sang Guru Sejati, Nama Kitab"
-- **Section order**: Uraian → Praktik → Renungan → Aplikasi. URUTAN INI TETAP.
-- **Section names**: "🧘 PRAKTIK" (bukan LAKU), "🎯 RENUNGAN", "📝 APLIKASI"
-- **Closing**: HARUS PERSIS seperti di atas — tidak boleh diparafrase
-- **Bahasa**: obrolan warung kopi. Sederhana, hangat, contoh nyata.
-- **JANGAN**: kata "kamu" di mana pun — gunakan "kita" atau bentuk pasif
+## ⚠️ Aturan Mutlak Produksi (Golden Guardrails)
+1. **Audio-First YouTube Link**: Link video diletakkan persis di bawah judul tema, di atas salam pambuka.
+2. **Kutipan Dwi-Basa**: Teks Sabda Jawa wajib 100% Verbatim dari naskah asli (SSJ, SKH, UUJM, BRSR, TKL), langsung diikuti terjemahan bahasa Indonesia di bawahnya dalam tanda kurung miring.
+3. **Pemberian 1 Baris Kosong (Blank Line)**: Setiap di bawah subjudul (`*📖 KUTIPAN TUNTUNAN :*`, `💭 *PANGILON RASA :*`, `🧘 *LAKU PANYISWAN :*`, `🎯 *JANGKAR BATIN :*`) WAJIB diberi 1 baris kosong agar layout bernapas dan tidak padat.
+4. **Sentence Case**: Penulisan label `Pertanyaan Refleksi` menggunakan Sentence Case (bukan huruf kapital semua).
+5. **Bahasa Indonesia Yang Luwes**: Bagian laku menggunakan istilah yang mudah dipahami: `Jeda Raga`, `Mengheningkan Batin`, `Bertindak Selaras Tuntunan`.
+6. **Batas Emotikon**: Maksimal 10-12 emotikon pilihan bernilai rasa, hindari kesan ramai/spammy.
+7. **Panutup Baku**: `Semoga Kita Senantiasa Berlimpah dengan Sih, Tuntunan, Pepadang, Pangayoman dari Sang Guru Sejati. Satuhu`
+8. **Link Web Footer**: Menggunakan label `Baca Selengkapnya di Web Pustaka`.

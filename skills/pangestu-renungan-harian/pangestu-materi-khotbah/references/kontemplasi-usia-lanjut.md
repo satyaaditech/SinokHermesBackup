@@ -29,7 +29,7 @@ Ketika menyusun materi untuk sesepuh/lansia, sentuh 5 dinamika batin utama berik
 
 - **Sasangka Jati Bab II (Sadar):** Anugerah sadar menuntun manusia pada *wiweka* (membedakan mana yang abadi dan mana yang berubah-ganti).
 - **Bawa Raos Ing Salebeting Raos (BRSR) Bab VIII:** *Asal Saka Allah, Bali Marang Allah*. Jiwa suci harus pulang dalam keadaan suci. Bahaya *kelet kanthil-kumanthil* yang membuat sukma terkatung-katung di alam antara (*awang-awang*).
-- **Tuntunan Kautaman Lair Batin (TKL):** Tafsir tembang *Lir-Ilir*—*dodotira kumitir bedhah pinggire, domana jlumatana kanggo seba mengko sore*. Menjelujur iman dan kesucian sebelum ajal menjemput.
+- **Taman Kamulyan Langgeng (TKL):** Tafsir tembang *Lir-Ilir*—*dodotira kumitir bedhah pinggire, domana jlumatana kanggo seba mengko sore*. Menjelujur iman dan kesucian sebelum ajal menjemput.
 - **Sabda Khusus:** Peringatan melebur kehendak pribadi menjadi Karsa Ilahi, serta menjaga kesucian jiwa hingga akhir hayat.
 
 ---

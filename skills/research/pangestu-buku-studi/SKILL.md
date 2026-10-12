@@ -91,3 +91,17 @@ Setelah file: kirim ringkasan LENGKAP ke Telegram (preferensi user: konten lengk
 - Halaman SPA resmi pangestu.or.id butuh r.jina.ai (render JS); GitHub Pages ini statis, curl langsung cukup
 - Web search tools kadang nonaktif → pakai skill web-research-fallback (Wikipedia API, Brave, DDG via r.jina.ai)
 - Naskah digitalisasi masih "Under Heavy Development" → typo mungkin ada; jangan koreksi isi ajaran, hanya catat
+
+## 🔒 DAFTAR BAKU & KUNCI SINGKATAN PUSTAKA KANONIKAL PANGESTU (LOCKED MASTER)
+Setiap kutipan, rujukan, atau sitasi buku yang menggunakan singkatan WAJIB mengacu pada daftar baku ini:
+- **[SSJ]**   : *Serat Sasangka Jati*
+- **[SKH]**   : *Sabda Khusus*
+- **[BRSR]**  : *Bawa Raos Ing Salebeting Raos*
+- **[UUJM]**  : *Ular-Ular Juru Mengeti*
+- **[TKL]**   : *Taman Kamulyan Langgeng*
+- **[SPRA]**  : *Sabda Pratama*
+- **[WSJ]**   : *Wahyu Sasangka Jati*
+- **[ASBS]**  : *Arsip Sarjana Budi Santosa*
+- **[UKK]**   : *Ulasan Kang Kelana*
+- **[OLHR]**  : *Olahrasa (Buku Olahrasa)*
+- **[CJI]**   : *Candrajiwa Indonesia sebagai Dasar Psikoterapi* (Disertasi Prof. Dr. dr. R. Soemantri Hardjoprakoso, Leiden 1956)

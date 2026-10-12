@@ -31,7 +31,7 @@ Sebuah traktat world-class tidak boleh hanya bersandar pada satu kutipan atau sa
 3. **Sabda Khusus (SKH)**:
    - *SKH No. 76*: Makarya kanthi temen, resik, lan adil minangka panembah nyata padintenan 24 jam (living worship).
 
-4. **Tuntunan Kasampurnan Laku (TKL)**:
+4. **Taman Kamulyan Langgeng (TKL)**:
    - Wejangan Sadherek Jatmika Bab I–V tentang laku panembah 5 bab dan integrasi kesehatan jasmani-rohani.
 
 5. **Ular-Ular Juru Mengeti (UUJM)**:
