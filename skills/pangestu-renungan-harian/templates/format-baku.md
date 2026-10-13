@@ -10,7 +10,7 @@
 
 🎧 *Dengarkan di YouTube*: [Link Video YT]
 
-_Salam Karahayon! 🙏_
+_Salam Karahayon 🙏_
 
 *📖 KUTIPAN TUNTUNAN :*
 

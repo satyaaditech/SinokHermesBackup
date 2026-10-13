@@ -10,7 +10,7 @@
 
 🎧 *Dengarkan di YouTube*: https://youtu.be/siswatalks-sabar-sample
 
-_Salam Karahayon! 🙏_
+_Salam Karahayon 🙏_
 
 *📖 KUTIPAN TUNTUNAN :*
 

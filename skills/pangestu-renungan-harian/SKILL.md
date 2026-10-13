@@ -449,7 +449,7 @@ Feedback user 12 Ags 2026: *"flow bacanya kurang enak, materi sedikit redundant 
 - **Kirim**: forward SEKALI SAJA ke thread 1096. Jangan kirim berkali-kali.
 - **Format final**: selalu code block dengan markup WA (`*bold*`, `_italic_`). Jangan kirim teks langsung — Telegram parse `*` tidak konsisten.
 - **Template baku**: lihat `templates/format-baku.md` — struktur SABDA→URAIAN→PRAKTIK→RENUNGAN→APLIKASI. Urutan dan nama section WAJIB persis.
-- **Salam**: "Salam Karahayon!" — JANGAN "Salam Bahagia Bp/Ibu/Sdr semuanya"
+- **Salam**: "Salam Karahayon" (tanpa tanda seru) — JANGAN "Salam Bahagia Bp/Ibu/Sdr semuanya"
 - **Closing**: "🙏 Semoga kita semua senantiasa berlimpah dengan Tuntunan dan Perlindungan, Sih dari Sang Guru Sejati. Satuhu 🙏" — PERSIS, jangan diparafrase
 - **Ulasan / Khotbah / Kesiswaan**: Ketika mengulas bab atau menyusun kerangka khotbah (terutama terkait tema *Panembah*), tonjolkan relasi **Siswa (Roh Suci)** dengan **Guru Sejati (Suksma Sejati)**, luruhkan kehendak ego (*karep*) menjadi Kehendak Suci (*Karsa*), dan lakukan cross-reference lintas buku (Sasangka Jati, Sabda Khusus Peringatan 2 & 8, ASBS, dan Ulasan Kang Kelana Bab XIV).
 - **Bahasa**: Indonesia sehari-hari, sederhana, hangat — seperti obrolan warung kopi. JANGAN puitis/tasawuf. Makna dalam disampaikan dengan kata-kata ringan.
