@@ -1,0 +1,81 @@
+{
+  "title": "BANGUN DARI MODE OTOPILOT",
+  "theme": "Tri Sila: Eling",
+  "date": "2026-10-14",
+  "output_path": "/home/satyaaditech/share/viral_sample/renungan_cinematic_v8.mp4",
+  "scenes": [
+    {
+      "image": "/home/satyaaditech/share/viral_sample/scene1.jpg",
+      "duration": 45.5,
+      "motion": "tilt_up",
+      "prompt_meta": "A majestic ancient Javanese joglo wooden pavilion interior at mystical dawn, soft morning golden god rays, 9:16 vertical, no text"
+    },
+    {
+      "image": "/home/satyaaditech/share/viral_sample/scene2.jpg",
+      "duration": 80.5,
+      "motion": "pan_left",
+      "prompt_meta": "A serene profile silhouette of human meditating with bioluminescent glowing brain neural networks, 9:16 vertical, no text"
+    },
+    {
+      "image": "/home/satyaaditech/share/viral_sample/scene3.jpg",
+      "duration": 45.5,
+      "motion": "tilt_down",
+      "prompt_meta": "A zen earthenware bowl of still water with gentle ripples, thin incense smoke, open hands in surrender, 9:16 vertical, no text"
+    },
+    {
+      "image": "/home/satyaaditech/share/viral_sample/scene4.jpg",
+      "duration": 35.5,
+      "motion": "pan_right",
+      "prompt_meta": "An epic golden sunrise over a mirror mountain lake, radiant sunbeams spreading peace, 9:16 vertical, no text"
+    }
+  ],
+  "audio_blocks": [
+    {
+      "text": "Renungan Penyiswaan. Bangun Dari Mode Otopilot.",
+      "voice": "id-ID-ArdiNeural",
+      "rate": "-12%",
+      "pitch": "-3Hz",
+      "pause_after": 1.5
+    },
+    {
+      "text": "Salam Karahayon. Kutipan Tuntunan Serat Sasangka Jati Tri Sila Eling.",
+      "voice": "id-ID-ArdiNeural",
+      "rate": "-12%",
+      "pitch": "-3Hz",
+      "pause_after": 1.5
+    },
+    {
+      "text": "Mungguh elinge marang Tripurusa mau, ing saben dinane padha diparsudia kang nganti kulina, pepindhane kaya dene wong luwe, elinge marang pangan kang ora susah mawa pangatage luamah.",
+      "voice": "jv-ID-DimasNeural",
+      "rate": "-8%",
+      "pitch": "-2Hz",
+      "pause_after": 2.5
+    }
+  ],
+  "subtitle_groups": [
+    {
+      "start_seg": 0,
+      "end_seg": 0,
+      "style": "Title",
+      "text": "RENUNGAN PENYISWAAN"
+    },
+    {
+      "start_seg": 1,
+      "end_seg": 1,
+      "style": "TitleHighlight",
+      "text": "BANGUN DARI MODE OTOPILOT"
+    },
+    {
+      "start_seg": 2,
+      "end_seg": 2,
+      "style": "Normal",
+      "text": "_Salam Karahayon_"
+    },
+    {
+      "start_seg": 3,
+      "end_seg": 4,
+      "style": "Sabda",
+      "text": "\"Mungguh elinge marang Tripurusa mau, ing saben dinane padha diparsudia kang nganti kulina...\""
+    }
+  ]
+}

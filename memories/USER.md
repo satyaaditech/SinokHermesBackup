@@ -8,7 +8,7 @@ Profil: Solo/Boyolali. Anak: Raditya. QRIS: Seabank/Mandiri.
 §
 OmniRoute: bayar (Antigravity multi-akun, no free/fallback).
 §
-Renungan: universal, no ilustrasi ekstrem. Header 'RENUNGAN PENYISWAAN'. Audio: Charon/Aoede. Video: YT @siswatalkstv.
+Renungan: universal, no ilustrasi ekstrem. Header 'RENUNGAN PENYISWAAN'. Audio: DimasNeural(Sabda)+ArdiNeural(Narasi). Video: YT @siswatalkstv.
 §
 Tensi: Sugeng [enjang/siang/sonten/dalu], Pak Satya. Sistolik X, Diastolik X, Nadi X, Tgl X, Wanci X WIB.
 §

@@ -338,7 +338,7 @@ moa:
           enabled: true
       aggregator:
         provider: custom
-        model: antigravity/gemini-3.1-pro-high
+        model: antigravity/gemini-3.8-flash-high
       degraded_reference_policy: loud
       fanout: user_turn
     Daily Agent:
@@ -351,11 +351,11 @@ moa:
           model: best-reasoning-v2
           enabled: true
         - provider: custom
-          model: antigravity/gemini-3.1-pro-high
+          model: antigravity/gemini-3.8-flash-high
           enabled: true
       aggregator:
         provider: custom
-        model: antigravity/gemini-3.1-pro-high
+        model: antigravity/gemini-3.8-flash-high
       degraded_reference_policy: loud
       max_tokens: 4096
       fanout: user_turn
@@ -370,7 +370,7 @@ moa:
           enabled: true
       aggregator:
         provider: custom
-        model: antigravity/gemini-3.1-pro-high
+        model: antigravity/gemini-3.8-flash-high
       degraded_reference_policy: loud
       max_tokens: 4096
       fanout: user_turn
@@ -382,11 +382,11 @@ moa:
       model: best-reasoning-v2
       enabled: true
     - provider: custom
-      model: antigravity/gemini-3.1-pro-high
+      model: antigravity/gemini-3.8-flash-high
       enabled: true
   aggregator:
     provider: custom
-    model: antigravity/gemini-3.1-pro-high
+    model: antigravity/gemini-3.8-flash-high
   degraded_reference_policy: loud
   max_tokens: 4096
   fanout: user_turn
