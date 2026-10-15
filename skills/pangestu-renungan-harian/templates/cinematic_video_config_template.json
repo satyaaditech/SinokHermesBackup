@@ -33,23 +33,23 @@
     {
       "text": "Renungan Penyiswaan. Bangun Dari Mode Otopilot.",
       "voice": "id-ID-ArdiNeural",
-      "rate": "-12%",
+      "rate": "-22%",
       "pitch": "-3Hz",
-      "pause_after": 1.5
+      "pause_after": 2.0
     },
     {
       "text": "Salam Karahayon. Kutipan Tuntunan Serat Sasangka Jati Tri Sila Eling.",
       "voice": "id-ID-ArdiNeural",
-      "rate": "-12%",
+      "rate": "-22%",
       "pitch": "-3Hz",
-      "pause_after": 1.5
+      "pause_after": 2.0
     },
     {
       "text": "Mungguh elinge marang Tripurusa mau, ing saben dinane padha diparsudia kang nganti kulina, pepindhane kaya dene wong luwe, elinge marang pangan kang ora susah mawa pangatage luamah.",
       "voice": "jv-ID-DimasNeural",
-      "rate": "-8%",
-      "pitch": "-2Hz",
-      "pause_after": 2.5
+      "rate": "-20%",
+      "pitch": "-3Hz",
+      "pause_after": 3.0
     }
   ],
   "subtitle_groups": [

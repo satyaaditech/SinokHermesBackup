@@ -6,21 +6,28 @@ Built for Hermes Agent (Skill: pangestu-renungan-harian)
 Features:
 - Dual-Voice Edge-TTS (jv-ID-DimasNeural for Sabda Jawa + id-ID-ArdiNeural for Indonesian)
 - Dynamic Sacred Pauses (silence padding for deep contemplation)
-- Whisper AI frame-accurate subtitle extraction (Zero-Desync)
-- .ASS subtitle generation (DejaVu Sans, gold/cyan/mint/white palette, zero emojis)
+- Native Millisecond-Accurate Subtitle Extraction via Edge-TTS WebVTT (Zero-Desync Guarantee)
+- Perfect Geometric Centered Subtitles (Alignment=5 / Middle-Center)
+- Soft 65% Translucent Dark Contrast Overlay Box (x=60, y=740, w=960, h=440)
 - FFmpeg True Sub-pixel Bicubic Spatial Interpolation (Zero-Jitter camera motion)
 - Smooth Cross-Dissolve Transitions (xfade synced with sacred pauses)
-- Automated Transfer & Safe Server Storage Hygiene
+- Automated OmniRoute 9:16 Photorealistic AI Image Generation (Gemini 3.1 Flash Image)
+- Multi-Platform Distribution Ready
 """
 
 import os
 import sys
+import re
 import json
 import time
 import shutil
+import base64
 import argparse
 import tempfile
+import textwrap
 import subprocess
+import urllib.request
+import urllib.error
 from pathlib import Path
 
 # Defaults
@@ -54,46 +61,213 @@ def run_command(cmd, desc="Running command", check=True):
     return res
 
 
-def generate_audio_blocks(blocks, output_audio_path, temp_dir):
+def get_omniroute_api_key():
     """
-    blocks: list of dict:
-      {
-        "text": "...",
-        "voice": "jv-ID-DimasNeural" or "id-ID-ArdiNeural",
-        "rate": "-8%",
-        "pitch": "-2Hz",
-        "pause_after": 2.5
-      }
+    Retrieve OmniRoute API key from environment variable or ~/.hermes/.env
     """
-    log("Synthesizing Dual-Voice audio blocks with edge-tts...", "STAGE")
-    audio_parts = []
+    key = os.environ.get("OMNIROUTER_API_KEY")
+    if key:
+        return key
+    env_file = "/home/satyaaditech/.hermes/.env"
+    if os.path.exists(env_file):
+        with open(env_file, "r", encoding="utf-8") as f:
+            for line in f:
+                line = line.strip()
+                if line and not line.startswith("#") and "=" in line:
+                    k, v = line.split("=", 1)
+                    if k.strip() == "OMNIROUTER_API_KEY":
+                        return v.strip().strip("'\"")
+    return ""
+
+
+def generate_image_omniroute(prompt, output_image_path, timeout=120):
+    """
+    Generates an ultra-photorealistic 9:16 vertical image using OmniRoute on localhost:20128
+    Model: antigravity/gemini-3.1-flash-image
+    """
+    api_key = get_omniroute_api_key()
+    url = "http://127.0.0.1:20128/v1/images/generations"
+    headers = {
+        "Authorization": f"Bearer {api_key}",
+        "Content-Type": "application/json"
+    }
+    payload = {
+        "model": "antigravity/gemini-3.1-flash-image",
+        "prompt": prompt,
+        "n": 1,
+        "size": "1024x1792"
+    }
     
+    log(f"Requesting OmniRoute image generation (9:16 vertical): {prompt[:75]}...", "STAGE")
+    req = urllib.request.Request(url, data=json.dumps(payload).encode("utf-8"), headers=headers)
+    
+    for attempt in range(1, 3):
+        try:
+            start_t = time.time()
+            with urllib.request.urlopen(req, timeout=timeout) as resp:
+                data = json.loads(resp.read().decode("utf-8"))
+                item = data["data"][0]
+                b64 = item.get("b64_json")
+                if not b64 and "url" in item:
+                    with urllib.request.urlopen(item["url"], timeout=60) as img_resp:
+                        img_bytes = img_resp.read()
+                elif b64:
+                    img_bytes = base64.b64decode(b64)
+                else:
+                    raise ValueError("No b64_json or url returned in OmniRoute image response")
+                    
+                os.makedirs(os.path.dirname(os.path.abspath(output_image_path)), exist_ok=True)
+                with open(output_image_path, "wb") as img_file:
+                    img_file.write(img_bytes)
+                elapsed = time.time() - start_t
+                log(f"Photorealistic image generated ({elapsed:.1f}s): {output_image_path} ({len(img_bytes):,} bytes)", "SUCCESS")
+                return output_image_path
+        except Exception as e:
+            log(f"Image generation attempt {attempt} failed: {e}", "WARN")
+            if attempt == 2:
+                raise
+            time.sleep(2)
+
+
+def get_audio_duration(audio_path):
+    """
+    Gets duration in seconds of an audio file using ffprobe
+    """
+    cmd = [
+        "ffprobe", "-v", "error", "-show_entries", "format=duration",
+        "-of", "default=noprint_wrappers=1:nokey=1", audio_path
+    ]
+    res = subprocess.run(cmd, stdout=subprocess.PIPE, stderr=subprocess.PIPE, text=True)
+    if res.returncode == 0:
+        try:
+            return float(res.stdout.strip())
+        except ValueError:
+            pass
+    return 180.0
+
+
+def vtt_time_to_sec(t_str):
+    parts = t_str.strip().replace(",", ".").split(":")
+    if len(parts) == 3:
+        return float(parts[0]) * 3600 + float(parts[1]) * 60 + float(parts[2])
+    elif len(parts) == 2:
+        return float(parts[0]) * 60 + float(parts[1])
+    return 0.0
+
+
+def sec_to_ass(seconds):
+    h = int(seconds // 3600)
+    m = int((seconds % 3600) // 60)
+    s = int(seconds % 60)
+    cs = int(round((seconds - int(seconds)) * 100))
+    if cs >= 100:
+        cs = 99
+    return f"{h}:{m:02d}:{s:02d}.{cs:02d}"
+
+
+def clean_text_for_ass(text):
+    """Clean emojis and special characters to prevent libass missing glyph boxes"""
+    return "".join(c for c in text if ord(c) < 128 or ord(c) in range(0x00A0, 0x024F))
+
+
+def generate_audio_and_timed_subtitles(blocks, output_audio_path, output_ass_path, temp_dir):
+    """
+    Synthesizes dual-voice audio blocks and extracts frame-accurate subtitles directly
+    from Edge-TTS WebVTT output to guarantee 100% zero-desync between voice and text.
+    """
+    log("Synthesizing Dual-Voice audio blocks with native Edge-TTS subtitle extraction...", "STAGE")
+    audio_parts = []
+    dialogue_events = []
+    current_time = 0.0
+    
+    edge_tts_bin = shutil.which("edge-tts") or "/home/satyaaditech/.local/bin/edge-tts"
+
     for idx, b in enumerate(blocks):
         text = b.get("text", "").strip()
         voice = b.get("voice", "id-ID-ArdiNeural")
-        rate = b.get("rate", "-12%")
+        # Kalibrasi Kontemplatif Baku (Oktober 2026): Dimas -20% / Ardi -22%
+        default_rate = "-20%" if "Dimas" in voice else "-22%"
+        rate = b.get("rate")
+        if not rate or rate in ["-8%", "-12%", "-13%"]:
+            rate = default_rate
         pitch = b.get("pitch", "-3Hz")
-        pause = float(b.get("pause_after", 0.0))
+        if pitch == "-2Hz":
+            pitch = "-3Hz"
+        default_pause = 2.5 if "Dimas" in voice else 2.0
+        pause = float(b.get("pause_after", default_pause))
         
         if not text:
             continue
             
         part_file = os.path.join(temp_dir, f"part_{idx:03d}.mp3")
+        part_vtt = os.path.join(temp_dir, f"part_{idx:03d}.vtt")
         log(f"Speaking block {idx+1}/{len(blocks)} [{voice}]: {text[:45]}...", "INFO")
         
-        edge_tts_bin = shutil.which("edge-tts") or "/home/satyaaditech/.local/bin/edge-tts"
         cmd = [
             edge_tts_bin,
             "--voice", voice,
             "--text", text,
-            "--rate", rate,
-            "--pitch", pitch,
-            "--write-media", part_file
+            f"--rate={rate}",
+            f"--pitch={pitch}",
+            "--write-media", part_file,
+            "--write-subtitles", part_vtt
         ]
-        run_command(cmd, desc=f"Synthesizing block {idx+1}")
-        audio_parts.append(part_file)
-        time.sleep(0.5)  # rate-limit safety
         
+        # Robust retry loop for Edge-TTS
+        for attempt in range(1, 4):
+            res_tts = subprocess.run(cmd, stdout=subprocess.PIPE, stderr=subprocess.PIPE, text=True)
+            if res_tts.returncode == 0:
+                break
+            log(f"Edge-TTS attempt {attempt} failed, retrying in {attempt * 2}s...", "WARN")
+            time.sleep(attempt * 2)
+        else:
+            raise RuntimeError(f"Edge-TTS failed after 3 attempts: {res_tts.stderr.strip()}")
+            
+        audio_parts.append(part_file)
+        time.sleep(1.0)  # Gentle delay between requests
+        
+        # Determine base style for this block
+        if "Dimas" in voice or "Sabda" in text or idx == 1:
+            base_style = "Sabda"
+        elif "Laku" in text or "LAKU" in text or "napas" in text.lower():
+            base_style = "Action"
+        elif idx == 0:
+            base_style = "TitleHighlight"
+        elif "ilusi" in text.lower() or "otopilot" in text.lower() or "80%" in text:
+            base_style = "Highlight"
+        else:
+            base_style = "Normal"
+            
+        # Parse WebVTT cues from Edge-TTS
+        if os.path.exists(part_vtt):
+            with open(part_vtt, "r", encoding="utf-8") as vf:
+                vtt_content = vf.read()
+                
+            cues = re.findall(
+                r"(\d{2}:\d{2}:\d{2}[\.,]\d{3})\s*-->\s*(\d{2}:\d{2}:\d{2}[\.,]\d{3})\s*\n(.*?)(?=\n\n|\n\d|\Z)",
+                vtt_content,
+                re.DOTALL
+            )
+            
+            for start_str, end_str, cue_txt in cues:
+                st_sec = vtt_time_to_sec(start_str) + current_time
+                en_sec = vtt_time_to_sec(end_str) + current_time
+                
+                clean = " ".join(cue_txt.split())
+                clean = clean_text_for_ass(clean)
+                if not clean:
+                    continue
+                    
+                # Wrap long text cleanly into max 38-42 chars per line
+                wrapped = "\\n".join(textwrap.wrap(clean, width=40))
+                dialogue_events.append(
+                    f"Dialogue: 0,{sec_to_ass(st_sec)},{sec_to_ass(en_sec)},{base_style},,0,0,0,,{wrapped}"
+                )
+                
+        block_dur = get_audio_duration(part_file)
+        current_time += block_dur
+        
+        # Sacred Pause padding
         if pause > 0:
             pause_file = os.path.join(temp_dir, f"pause_{idx:03d}.mp3")
             cmd_pause = [
@@ -105,7 +279,9 @@ def generate_audio_blocks(blocks, output_audio_path, temp_dir):
             ]
             run_command(cmd_pause, desc=f"Generating sacred pause {pause}s")
             audio_parts.append(pause_file)
-            
+            current_time += pause
+
+    # Concatenate audio parts into master audio
     concat_list = os.path.join(temp_dir, "concat_audio.txt")
     with open(concat_list, "w") as f:
         for p in audio_parts:
@@ -120,39 +296,11 @@ def generate_audio_blocks(blocks, output_audio_path, temp_dir):
         output_audio_path
     ]
     run_command(cmd_concat, desc="Concatenating into master audio")
-    log(f"Master audio generated: {output_audio_path}", "SUCCESS")
-    return output_audio_path
-
-
-def align_subtitles_whisper(master_audio_path, groups, output_ass_path):
-    """
-    groups: list of dict:
-      {
-        "start_seg": 0,
-        "end_seg": 2,
-        "style": "TitleHighlight",
-        "text": "..."
-      }
-    """
-    log("Transcribing audio with Whisper for frame-accurate zero-desync sync...", "STAGE")
-    import whisper
+    log(f"Master audio generated: {output_audio_path} ({current_time:.2f}s)", "SUCCESS")
     
-    model = whisper.load_model("tiny")
-    result = model.transcribe(master_audio_path, language="id")
-    segments = result.get("segments", [])
-    log(f"Whisper detected {len(segments)} spoken segments.", "INFO")
-    
-    def sec_to_ass(seconds):
-        h = int(seconds // 3600)
-        m = int((seconds % 3600) // 60)
-        s = int(seconds % 60)
-        cs = int(round((seconds - int(seconds)) * 100))
-        if cs >= 100:
-            cs = 99
-        return f"{h}:{m:02d}:{s:02d}.{cs:02d}"
-
+    # Build Perfect Centered ASS Subtitles (Alignment=5 / Middle-Center)
     ass_header = """[Script Info]
-Title: Renungan Sinematik Pangestu V8
+Title: Renungan Sinematik Pangestu V8 (Centered Subtitles)
 ScriptType: v4.00+
 PlayResX: 1080
 PlayResY: 1920
@@ -161,48 +309,32 @@ ScaledBorderAndShadow: yes
 
 [V4+ Styles]
 Format: Name, Fontname, Fontsize, PrimaryColour, SecondaryColour, OutlineColour, BackColour, Bold, Italic, Underline, StrikeOut, ScaleX, ScaleY, Spacing, Angle, BorderStyle, Outline, Shadow, Alignment, MarginL, MarginR, MarginV, Encoding
-Style: Title,DejaVu Sans,50,&H00FFFFFF,&H000000FF,&H00000000,&HB0000000,-1,0,0,0,100,100,0,0,1,4,2,2,80,80,950,1
-Style: TitleHighlight,DejaVu Sans,58,&H0000E6FF,&H000000FF,&H00000000,&HB0000000,-1,0,0,0,100,100,0,0,1,5,3,2,80,80,920,1
-Style: Sabda,DejaVu Sans,54,&H0000FFFF,&H000000FF,&H00000000,&HB0000000,-1,0,0,0,100,100,0,0,1,5,3,2,90,90,880,1
-Style: Action,DejaVu Sans,52,&H0080FF80,&H000000FF,&H00000000,&HB0000000,-1,0,0,0,100,100,0,0,1,5,3,2,90,90,880,1
-Style: Highlight,DejaVu Sans,54,&H0050E0FF,&H000000FF,&H00000000,&HB0000000,-1,0,0,0,100,100,0,0,1,5,3,2,90,90,880,1
-Style: Normal,DejaVu Sans,52,&H00FFFFFF,&H000000FF,&H00000000,&HB0000000,-1,0,0,0,100,100,0,0,1,5,3,2,90,90,880,1
-Style: Badge,DejaVu Sans,42,&H0000E6FF,&H000000FF,&H00000000,&HB0000000,-1,0,0,0,100,100,0,0,1,3,2,2,90,90,1350,1
+Style: Title,DejaVu Sans,48,&H00FFFFFF,&H000000FF,&H00000000,&HB0000000,-1,0,0,0,100,100,0,0,1,5,3,5,100,100,0,1
+Style: TitleHighlight,DejaVu Sans,54,&H0000E6FF,&H000000FF,&H00000000,&HB0000000,-1,0,0,0,100,100,0,0,1,5,3,5,100,100,0,1
+Style: Sabda,DejaVu Sans,52,&H0000FFFF,&H000000FF,&H00000000,&HB0000000,-1,0,0,0,100,100,0,0,1,5,3,5,100,100,0,1
+Style: Action,DejaVu Sans,50,&H0080FF80,&H000000FF,&H00000000,&HB0000000,-1,0,0,0,100,100,0,0,1,5,3,5,100,100,0,1
+Style: Highlight,DejaVu Sans,52,&H0050E0FF,&H000000FF,&H00000000,&HB0000000,-1,0,0,0,100,100,0,0,1,5,3,5,100,100,0,1
+Style: Normal,DejaVu Sans,50,&H00FFFFFF,&H000000FF,&H00000000,&HB0000000,-1,0,0,0,100,100,0,0,1,5,3,5,100,100,0,1
 
 [Events]
 Format: Layer, Start, End, Style, Name, MarginL, MarginR, MarginV, Effect, Text
 """
-    events = []
-    for g in groups:
-        s_idx = min(g.get("start_seg", 0), len(segments) - 1)
-        e_idx = min(g.get("end_seg", s_idx), len(segments) - 1)
-        style = g.get("style", "Normal")
-        text = g.get("text", "")
-        
-        st_sec = max(0.0, segments[s_idx]["start"] - 0.05)
-        en_sec = segments[e_idx]["end"] + 0.35
-        
-        # Clean emojis to prevent libass missing glyph box
-        clean_text = "".join(c for c in text if ord(c) < 128 or ord(c) in range(0x00A0, 0x024F))
-        events.append(f"Dialogue: 0,{sec_to_ass(st_sec)},{sec_to_ass(en_sec)},{style},,0,0,0,,{clean_text}")
-
     with open(output_ass_path, "w", encoding="utf-8") as f:
-        f.write(ass_header + "\n".join(events) + "\n")
+        f.write(ass_header + "\n".join(dialogue_events) + "\n")
         
-    log(f"Subtitles generated: {output_ass_path}", "SUCCESS")
-    return output_ass_path
+    log(f"Frame-accurate synchronized subtitles generated ({len(dialogue_events)} cues): {output_ass_path}", "SUCCESS")
+    return output_audio_path, output_ass_path
 
 
 def render_cinematic_mp4(scenes, master_audio, ass_subs, output_video_path):
     """
-    scenes: list of dict:
-      {
-        "image": "/path/to/scene.jpg",
-        "duration": 45.5,
-        "motion": "tilt_up" | "pan_left" | "tilt_down" | "pan_right"
-      }
+    Renders 1080x1920 video with:
+    - True subpixel bicubic camera perspective motion
+    - Cross-dissolve transitions
+    - Soft 65% opacity black overlay card centered at (y=740, w=960, h=440)
+    - Perfectly centered subtitles (Alignment=5) located strictly inside the box
     """
-    log("Building subpixel bicubic filtergraph for butter-smooth camera motion...", "STAGE")
+    log("Building subpixel bicubic filtergraph with centered soft dark overlay card...", "STAGE")
     total_duration = sum(s["duration"] for s in scenes) - (len(scenes) - 1) * 1.0  # minus crossfades
     
     filter_parts = []
@@ -259,8 +391,11 @@ def render_cinematic_mp4(scenes, master_audio, ass_subs, output_video_path):
         )
         prev_label = out_label
         
-    # 3. Color Grading & Subtitles
-    filter_parts.append(f"[bg]eq=brightness=-0.10:contrast=1.15,ass={ass_subs}[outv]")
+    # 3. Soft 65% opacity black overlay card centered at Y=960 (box: y=740 to y=1180, height 440px)
+    # With Alignment=5 in ASS, text is centered strictly inside this 440px box with balanced ~120px padding
+    filter_parts.append(
+        f"[bg]eq=brightness=-0.10:contrast=1.15,drawbox=x=60:y=740:w=960:h=440:color=black@0.65:t=fill,ass={ass_subs}[outv]"
+    )
     filter_complex = ";".join(filter_parts)
     
     # FFmpeg command
@@ -274,7 +409,8 @@ def render_cinematic_mp4(scenes, master_audio, ass_subs, output_video_path):
         "-map", f"{len(scenes)}:a",
         "-t", f"{total_duration:.2f}",
         "-c:v", "libx264",
-        "-preset", "fast",
+        "-preset", "veryfast",
+        "-threads", "0",
         "-crf", "20",
         "-c:a", "aac",
         "-b:a", "192k",
@@ -290,6 +426,7 @@ def render_cinematic_mp4(scenes, master_audio, ass_subs, output_video_path):
 def main():
     parser = argparse.ArgumentParser(description="Hermes Cinematic Devotional Video Production Engine V8")
     parser.add_argument("--config", help="Path to JSON configuration for the devotional")
+    parser.add_argument("--generate-scenes-only", action="store_true", help="Only generate scene images from prompts without rendering audio/video")
     parser.add_argument("--sample-eling", action="store_true", help="Run production using Eling sample assets")
     parser.add_argument("--dry-run", action="store_true", help="Validate configuration without full rendering")
     parser.add_argument("--output-name", default="renungan_cinematic_v8.mp4", help="Output file name")
@@ -305,58 +442,65 @@ def main():
             log(f"Required binary '{dep}' not found on PATH!", "ERROR")
             sys.exit(1)
             
-    if args.sample_eling:
-        log("Loading Eling sample production profile...", "INFO")
-        scene1 = f"{SAMPLE_DIR}/scene1.jpg"
-        scene2 = f"{SAMPLE_DIR}/scene2.jpg"
-        scene3 = f"{SAMPLE_DIR}/scene3.jpg"
-        scene4 = f"{SAMPLE_DIR}/scene4.jpg"
-        master_audio = f"{SAMPLE_DIR}/renungan_eling_master.mp3"
-        ass_subs = f"{SAMPLE_DIR}/subtitles_renungan_eling.ass"
-        output_mp4 = f"{SAMPLE_DIR}/{args.output_name}"
-        
-        scenes = [
-            {"image": scene1, "duration": 45.5, "motion": "tilt_up"},
-            {"image": scene2, "duration": 80.5, "motion": "pan_left"},
-            {"image": scene3, "duration": 45.5, "motion": "tilt_down"},
-            {"image": scene4, "duration": 35.5, "motion": "pan_right"}
-        ]
-        
-        if args.dry_run:
-            log("DRY RUN: Validated all 4 scene images, audio, and subtitle paths.", "SUCCESS")
-            log(f"Target duration: {sum(s['duration'] for s in scenes) - 3.0}s", "INFO")
-            log("Filtergraph compiles successfully. Ready for execution.", "SUCCESS")
-            return
-            
-        render_cinematic_mp4(scenes, master_audio, ass_subs, output_mp4)
-        
-        if args.transfer_mac:
-            log("Transferring final MP4 to Mac ~/Downloads...", "INFO")
-            scp_cmd = f"scp {output_mp4} satyaadidharma@127.0.0.1:{MAC_DOWNLOADS_DIR}/"
-            # In typical local network or SSH tunnel setup:
-            log("Video ready on server. Transfer can be executed via scp.", "SUCCESS")
-            
-        return
-
     if args.config:
         with open(args.config, "r", encoding="utf-8") as f:
             cfg = json.load(f)
             
         temp_dir = tempfile.mkdtemp(prefix="hermes_cinematic_")
         try:
-            # 1. Audio
-            master_audio = os.path.join(temp_dir, "master_audio.mp3")
-            generate_audio_blocks(cfg.get("audio_blocks", []), master_audio, temp_dir)
-            
-            # 2. Subtitles
-            ass_subs = os.path.join(temp_dir, "subtitles.ass")
-            align_subtitles_whisper(master_audio, cfg.get("subtitle_groups", []), ass_subs)
-            
-            # 3. Video
-            output_mp4 = cfg.get("output_path", os.path.join(DEFAULT_OUTPUT_DIR, args.output_name))
             scenes = cfg.get("scenes", [])
+            if not scenes:
+                raise ValueError("Config contains no scenes!")
+                
+            num_scenes = len(scenes)
+            default_motions = ["tilt_up", "pan_left", "tilt_down", "pan_right"]
+            
+            # Step A: Process/Generate Scene Images
+            for idx, sc in enumerate(scenes):
+                if not sc.get("motion"):
+                    sc["motion"] = default_motions[idx % len(default_motions)]
+                    
+                img_path = sc.get("image")
+                prompt = sc.get("prompt")
+                
+                # Check if generation needed
+                if (not img_path or not os.path.exists(img_path)) and prompt:
+                    scene_img_file = img_path if img_path else os.path.join(temp_dir, f"scene_{idx+1}.jpg")
+                    generate_image_omniroute(prompt, scene_img_file)
+                    sc["image"] = scene_img_file
+                elif not img_path or not os.path.exists(img_path):
+                    fallback = f"{SAMPLE_DIR}/scene{min(idx+1, 4)}.jpg"
+                    log(f"Scene {idx+1} has no valid prompt or image, falling back to {fallback}", "WARN")
+                    sc["image"] = fallback
+
+            if args.generate_scenes_only:
+                log("Scenes generated successfully (scenes-only mode).", "SUCCESS")
+                for idx, sc in enumerate(scenes):
+                    log(f"Scene {idx+1}: {sc.get('image')}", "INFO")
+                return
+
+            # Step B & C: Audio Generation + Native Frame-Accurate Subtitles
+            master_audio = os.path.join(temp_dir, "master_audio.mp3")
+            ass_subs = os.path.join(temp_dir, "subtitles.ass")
+            generate_audio_and_timed_subtitles(cfg.get("audio_blocks", []), master_audio, ass_subs, temp_dir)
+            
+            audio_duration = get_audio_duration(master_audio)
+            log(f"Master audio measured duration: {audio_duration:.2f}s", "INFO")
+            
+            # Dynamically balance scene durations to match audio length if not preset
+            auto_scene_duration = (audio_duration + (num_scenes - 1) * 1.0) / num_scenes
+            for sc in scenes:
+                if not sc.get("duration"):
+                    sc["duration"] = round(auto_scene_duration, 2)
+            
+            # Step D: Video Render
+            output_mp4 = cfg.get("output_path", os.path.join(DEFAULT_OUTPUT_DIR, args.output_name))
             render_cinematic_mp4(scenes, master_audio, ass_subs, output_mp4)
             log(f"All pipeline stages completed successfully: {output_mp4}", "SUCCESS")
+            
+            if args.transfer_mac:
+                log("Transferring final MP4 to Mac ~/Downloads...", "INFO")
+                log("Video ready on server.", "SUCCESS")
         finally:
             shutil.rmtree(temp_dir, ignore_errors=True)
         return

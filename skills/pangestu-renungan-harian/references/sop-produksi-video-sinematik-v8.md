@@ -27,8 +27,12 @@
            │                   + Cross-Dissolve Transitions (xfade at sacred pauses)
            │                   + Color Grading (-10% Brightness, +15% Contrast)
            ▼
-[ Tahap 6: Delivery & Clean ] ─► SCP Transfer ke Mac ~/Downloads/
-                               + HAPUS otomatis dari Linux Server (Hygiene Storage)
+[ Tahap 6: Distribusi & Logging ] ─► Upload YouTube (upload_youtube.py --privacy public)
+                                  + Buat Google Doc via Drive API → masukkan naskah lengkap + footer links
+                                  + Tulis .md ke /share/renungan/ + /kontemplasi/renungan/ + jalankan sync_to_github.sh
+                                  + Update Master Produksi V8 kolom S (Link YT), T (Link Web Pustaka), U (Link Google Docs) dengan URL mentah langsung (DILARANG =HYPERLINK)
+                                  + Set kolom P=Render, Q=Rendered, R=Uploaded
+                                  + Kolom V (Status Siar WA/TG) diisi Siap Siar (sebelum siar) atau Done (setelah penyiaran selesai)
 ```
 
 ---
@@ -56,13 +60,13 @@ Contoh struktur 4 babak narasi batin:
 * **Bahasa Indonesia (Pangilon Rasa, Laku, Refleksi)**: Menggunakan model **`id-ID-ArdiNeural`**.  
   *Mengapa?* Memiliki warna suara bariton hangat, teduh, dan sangat cocok untuk narasi *mindfulness* / kontemplasi batin.
 
-### B. Parameter Akustik & Tempo Bicara
-| Bagian Konten | Model Suara | Rate (Tempo) | Pitch | Volume |
+### B. Parameter Akustik & Tempo Bicara (Kalibrasi Kontemplatif Baku)
+| Bagian Konten | Model Suara | Rate (Tempo) | Pitch | Sacred Pause |
 | :--- | :--- | :--- | :--- | :--- |
-| **Kutipan Sabda Jawa** | `jv-ID-DimasNeural` | `-8%` s.d. `-10%` | `-2Hz` | `+0%` |
-| **Narasi Refleksi & Teori** | `id-ID-ArdiNeural` | `-12%` s.d. `-13%` | `-3Hz` | `+0%` |
-| **Laku Panyiswan (Latihan Fisik/Napas)** | `id-ID-ArdiNeural` | `-14%` | `-4Hz` | `+0%` |
-| **Doa Penutup & Mutiara Rasa** | `id-ID-ArdiNeural` | `-12%` | `-3Hz` | `+0%` |
+| **Kutipan Sabda Jawa** | `jv-ID-DimasNeural` | **`-20%`** | `-3Hz` | `2.5s - 3.0s` (setelah Sabda) |
+| **Narasi Refleksi & Teori** | `id-ID-ArdiNeural` | **`-22%`** | `-3Hz` | `2.0s` |
+| **Laku Panyiswan (Latihan Fisik/Napas)** | `id-ID-ArdiNeural` | **`-22%`** | `-3Hz` | `2.0s - 2.5s` |
+| **Doa Penutup & Mutiara Rasa** | `id-ID-ArdiNeural` | **`-22%`** | `-3Hz` | `2.5s` (sebelum Doa) |
 
 ### C. Dynamic Sacred Pauses (Jeda Hening Bernapas)
 Jangan biarkan narator membaca teks secara terus-menerus tanpa jeda hening audio (`anullsrc`):
@@ -364,3 +368,40 @@ Sebelum menyerahkan hasil video akhir ke pengguna:
 - [x] **Cross-Dissolve Terverifikasi**: Transisi antar babak terjadi tepat pada saat narator hening bernapas.
 - [x] **File Tersimpan di Mac**: Tersedia di `/Users/satyaadidharma/Downloads/`.
 - [x] **Server Bersih**: File MP4 hasil render di server Linux langsung dihapus.
+
+---
+
+---
+
+## 11. STANDAR METADATA YOUTUBE (JUDUL, DESKRIPSI VIRAL & TAGS)
+
+Setiap pengunggahan video renungan ke YouTube channel `@siswatalkstv`, format judul, deskripsi, dan tag WAJIB mengikuti formula berikut:
+
+### 1. Judul Video YouTube (Maksimal 100 Karakter)
+Formula: `[Judul Magnetik Ber-Hook Sains / Refleksi] 🧠 | Renungan Ajaran Sang Guru Sejati`
+Contoh:
+`Bangun dari Mode Otopilot: Mengapa Otak Lelah Terjebak Default Mode Network? 🧠 | Renungan SGS`
+
+### 2. Deskripsi YouTube (Struktur Menggigit, Relate & High-Converting)
+Deskripsi DILARANG ditulis datar/lempeng. Wajib memiliki struktur berikut:
+
+1. **Baris 1–2 (The Magnetic Hook)**:
+   - Kalimat pancingan / rasa sakit / pertanyaan psikologis-neurosains yang langsung mengena di 150 karakter pertama (sebelum penonton menekan tombol *Show More*).
+2. **Paragraf 2–3 (Pangilon Rasa / Bedhah Masalah)**:
+   - Mengupas fenomena modern (kelelahan mental, overthinking, ilusi waktu) dan menjembataninya dengan ajaran Sang Guru Sejati (Kusir Angen-angen vs Tripurusa).
+3. **Pethikan Sabda Kanonikal yang Sakral**:
+   - Teks Sabda Jawa verbatim 100% dan terjemahan resmi bahasa Indonesia.
+4. **Laku Praktis Hari Ini (Micro-Habit 30 Detik)**:
+   - 3 langkah aplikatif konkrit (Jeda Raga, Hening Batin, Laku Sadar).
+5. **Mutiara Rasa**:
+   - 1 kalimat aforisme paradoks yang menancap kuat di benak penonton.
+6. **Ekosistem Digital (Link Lengkap)**:
+   - `• 🌐 Baca Naskah Lengkap di Web Pustaka: https://kontemplasi.satyaaditech.web.id/#[slug]`
+   - `• 📄 Versi Dokumen Google Docs: https://docs.google.com/document/d/[DocID]/edit`
+7. **Doa Berkat Resmi**:
+   - `Semoga Kita Senantiasa Berlimpah dengan Sih, Tuntunan, Pepadang, dan Pangayoman dari Sang Guru Sejati. Satuhu. 🙏🌿`
+8. **Hashtags Viral (12–15 Tags)**:
+   - `#Eling #DefaultModeNetwork #Mindfulness #Overthinking #OlahRasa #Pangestu #SangGuruSejati #FilosofiJawa #StoikismeJawa #KetenanganBatin #KesadaranDiri #SadarJiwa #KesehatanMental #Shorts #RenunganHarian`
+
+🚫 **PANTANG MUTLAK**:
+- DILARANG KERAS mencantumkan rincian teknis backend atau nama model AI/TTS (`jv-ID-DimasNeural`, `id-ID-ArdiNeural`, Edge-TTS, prompt teknis) di deskripsi publik YouTube.

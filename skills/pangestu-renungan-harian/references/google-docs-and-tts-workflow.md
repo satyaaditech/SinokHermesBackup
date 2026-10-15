@@ -1,3 +1,8 @@
+> ⚠️ **CATATAN HISTORIS (SUPERSEDED / OUTDATED)**:
+> Berkas ini adalah dokumentasi alur lama (V1–V7). Standar operasional resmi saat ini mengacu pada **SOP Produksi Video Sinematik V8** (`references/sop-produksi-video-sinematik-v8.md`) dan tab Google Sheet **`Master Produksi V8`** (22 kolom). Jangan menggunakan instruksi tab 'Rekap Renungan' atau formula '=HYPERLINK' dari berkas ini.
+
+---
+
 # Alur Google Docs, Web Deep-Linking, Gemini Dual-Voice Audio & Video YouTube Renungan Harian
 
 Referensi ini mendokumentasikan tata cara otomatisasi penyimpanan renungan harian Pangestu ke Google Drive (Google Doc), integrasi Web Portal Deep-Linking, pembuatan versi audio narasi alami ekspresif menggunakan Google Gemini 2.5 Audio Modality (Dual-Voice Character), serta pipa render video hard-subtitles dan upload otomatis ke YouTube channel `@siswatalkstv`.

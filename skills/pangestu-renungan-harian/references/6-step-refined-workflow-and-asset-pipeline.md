@@ -1,3 +1,8 @@
+> ⚠️ **CATATAN HISTORIS (SUPERSEDED / OUTDATED)**:
+> Berkas ini adalah dokumentasi alur lama (V1–V7). Standar operasional resmi saat ini mengacu pada **SOP Produksi Video Sinematik V8** (`references/sop-produksi-video-sinematik-v8.md`) dan tab Google Sheet **`Master Produksi V8`** (22 kolom). Jangan menggunakan instruksi tab 'Rekap Renungan' atau formula '=HYPERLINK' dari berkas ini.
+
+---
+
 # SOP Produksi Renungan Harian (6 Langkah Baku & Asset Pipeline)
 
 ## 📌 6 Langkah Baku (Wajib Dipatuhi Runtut & Tanpa Lompat)

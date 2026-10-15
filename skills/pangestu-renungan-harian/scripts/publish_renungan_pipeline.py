@@ -177,24 +177,34 @@ def sync_web_library():
         raise RuntimeError(f"Web sync failed: {res.stderr.decode('utf-8', errors='ignore')}")
     print(f"✅ Web Library synced & pushed to GitHub Pages.")
 
-def append_to_master_sheet(sheets_service, row_data):
-    print(f"📊 [5/6] Logging to Master Google Sheet...")
-    res = sheets_service.spreadsheets().values().get(
+def update_master_sheet_v8(sheets_service, row_idx, yt_url, web_url, gdoc_url, status_naskah="ACC", status_siar="Siap Siar"):
+    print(f"📊 [5/6] Updating Master Produksi V8 at Row {row_idx}...")
+    values = [[
+        status_naskah,
+        "Render",
+        "Rendered",
+        "Uploaded",
+        yt_url,
+        web_url,
+        gdoc_url,
+        status_siar
+    ]]
+    sheets_service.spreadsheets().values().update(
         spreadsheetId=MASTER_SHEET_ID,
-        range="Rekap Renungan!A:A"
-    ).execute()
-    rows = res.get("values", [])
-    next_num = len(rows)  # includes header
-    next_row_idx = len(rows) + 1
-
-    full_row = [next_num] + row_data
-    sheets_service.spreadsheets().values().append(
-        spreadsheetId=MASTER_SHEET_ID,
-        range="Rekap Renungan!A:M",
+        range=f"'Master Produksi V8'!O{row_idx}:V{row_idx}",
         valueInputOption="USER_ENTERED",
-        body={"values": [full_row]}
+        body={"values": values}
     ).execute()
-    print(f"✅ Logged row #{next_num} to Master Sheet.")
+    print(f"✅ Row {row_idx} in Master Produksi V8 successfully updated (Cols O-V with raw URLs).")
+
+def append_to_master_sheet(sheets_service, row_data, row_idx=None):
+    if row_idx is not None:
+        yt_url = row_data[7] if len(row_data) > 7 else ""
+        web_url = row_data[8] if len(row_data) > 8 else ""
+        gdoc_url = row_data[6] if len(row_data) > 6 else ""
+        update_master_sheet_v8(sheets_service, row_idx, yt_url, web_url, gdoc_url)
+    else:
+        print("⚠️ Warning: append_to_master_sheet called without row_idx; Master Produksi V8 requires row_idx.")
 
 def verify_live_url(web_url):
     print(f"🔍 [6/6] Verifying live web availability for {web_url}...")
