@@ -22,13 +22,31 @@ Hermes/Sinox **WAJIB MENJALANKAN ALUR KERJA 2-TAHAP SECARA BERURUTAN**:
 
 ### 🛡️ TAHAP 1: PENYUSUNAN DRAF NASKAH & CHECKPOINT ACC (STOP & TUNGGU)
 1. **Periksa Jadwal**: Cek baris tanggal hari ini pada tab `Master Produksi V8` (Google Sheet ID: `1QuTSjBV-iOckaIoSu07wQa0LcnbgdR97mxAqOloIEb0`).
-2. **Riset & Tulis Naskah 4-Pilar Lean**:
-   - Jalankan Algoritma 4-Tahap Kurasi Kanonikal dari pustaka resmi (`/home/satyaaditech/share/pangestu_studi/`), 100% verbatim kanonikal.
-   - Susun naskah lengkap: Sabda Jawa, Terjemahan, Pangilon Rasa (sains vs rasa 2 paragraf padat & pergeseran kesadaran sengaja), Laku Panyiswan 30 detik aplikatif, Jangkar Batin / Mutiara Rasa, Pertanyaan Refleksi, dan Doa Penutup Satuhu.
-   - Catat naskah draf ke Google Sheet `Master Produksi V8` (Kolom H sampai N).
-   - **Tandai Kolom 15 [Status Naskah]**: WAJIB diisi teks **`Menunggu ACC Manual Pak Satya`**.
+2. **Jalankan True Multi-Agent Editorial Council Engine (`hermes_editorial_council.py`)**:
+   - DILARANG KERAS bermain peran sandiwara palsu (theatrical single-agent roleplaying) di mana 1 model pura-pura menjadi 4 agen dalam satu obrolan chat.
+   - Sinox WAJIB mengeksekusi engine multi-agent independen via terminal:
+     `python3 ~/.hermes/skills/pangestu-renungan-harian/scripts/hermes_editorial_council.py [--row N | --date YYYY-MM-DD]`
+   - Engine ini secara otonom mengorkestrasi agen-agen terpisah melalui OmniRoute (`localhost:20128`):
+     * **Step 1: Deterministic Redundancy & Historical Scanner**:
+       - Memindai riwayat 7 hari terakhir dari Master Sheet untuk mengidentifikasi props/analogi lama (misal: layar HP, laptop, desah napas Huuuh, arisan keluarga, dsb) dan memasukkannya ke dalam blacklist aktif.
+       - Mengunci fakta sejarah kanonikal: Ajaran Sang Guru Sejati diwahyukan pertama kali pada 14 Februari 1932 di Surakarta kepada Bp. R. Soenarto Mertowardojo (belum genap 1 abad; dilarang keras menyebut "berabad-abad lampau").
+       - Memastikan judul baku: `Renungan Penyiswaan`.
+       - Memastikan berkah penutup kanonikal resmi: `Semoga kita semua senantiasa berlimpah dengan sih, tuntunan, pepadang, dan pangayoman dari Sang Guru Sejati. Satuhu. 🙏`.
+     * **Step 2: Agent 1 (Writer: Master Educator & Sastrawan Rohani)**:
+       - Proses mandiri (4096 token, model `auto/best-chat`).
+       - Menulis draf 4-Pilar Lean Murni dengan kedalaman 5 Pilar Bobot Mutu (insight non-klise "aha-moment", relate modern & pemahaman kasunyatan Ajaran SGS secara luas selaras Pustaka Pangestu, sudut pandang segar/unik, bernyawa *kanca lumaku* tanpa kata menggurui "kamu", serta jero nanging wening kanggé awam).
+     * **Step 3: Agent 2 (Critic: Ruthless Gatekeeper)**:
+       - Proses terpisah secara adversarial (`temperature=0.1`).
+       - Membongkar cacat tanpa ampun menggunakan checklist ketat, dan mengeluarkan output JSON murni berisi status (`PASS` atau `REVISE`), skor mutu (0-100), daftar cacat (*defects found*), dan instruksi perbaikan konkret.
+     * **Step 4: Adversarial Revision Loop (Maksimal 3 Ronde)**:
+       - Jika status `REVISE` atau skor < 95, kritik dikembalikan ke Agent Writer untuk ditulis ulang secara paripurna hingga tuntas dan lulus standar dewan redaksi.
+     * **Step 5: Komit & Sinkronisasi Ekosistem**:
+       - Memperbarui Google Sheet `Master Produksi V8` Kolom G s.d. N.
+       - Kolom 15 [Status Naskah] diset ke `Menunggu ACC Manual Pak Satya` (atau mempertahankan status `ACC` bila sebelumnya telah disetujui Pak Satya).
+       - Menyimpan arsip lokal naskah ke `/home/satyaaditech/share/renungan/[date]_[slug].md`.
+       - Menyimpan riwayat audit lengkap ke `/home/satyaaditech/share/renungan/[date]_audit_dossier.json`.
 3. **Lapor ke Telegram Pak Satya**:
-   - Kirimkan draf naskah lengkap ke Telegram pribadi Pak Satya (`777961507`) dan Group Thread 1096.
+   - Kirimkan draf naskah lengkap hasil dewan redaksi beserta ringkasan audit skor ke Telegram pribadi Pak Satya (`777961507`) dan Group Thread 1096.
    - 🛑 **STOP & DILARANG MELANJUTKAN KE RENDER AUDIO/VIDEO SEBELUM DI-ACC OLEH PAK SATYA!** Tahap 1 selesai dan Sinox wajib menunggu persetujuan (ACC manual) dari Pak Satya.
 
 ---
@@ -54,12 +72,19 @@ Hermes/Sinox **WAJIB MENJALANKAN ALUR KERJA 2-TAHAP SECARA BERURUTAN**:
    - Col 22 (V) `Status Siar WA/TG` -> Tulis teks: `"Siap Siar"` (sebelum siar) atau `"Done"` (setelah penyiaran selesai).
 7. Kirimkan laporan final beserta seluruh tautan aktif ke Telegram Pak Satya (thread 1096).
 
-## 📌 MANDAT 2: BATASAN BAHASA NASKAH MUTLAK (STRICT LANGUAGE BOUNDARY)
+## 📌 MANDAT 2: BATASAN BAHASA & PAUGERAN DOA MUTLAK (STRICT BOUNDARY)
 1. **SATU-SATUNYA** bagian yang menggunakan Bahasa Jawa adalah kolom/bagian `[Kutipan Sabda Jawa]` (100% teks kanonikal verbatim).
-2. **SELURUH** uraian naskah lainnya (Terjemahan Sabda, Pangilon Rasa Paragraf 1 & 2, Laku Panyiswan, Jangkar Batin / Mutiara Rasa, Doa Penutup Satuhu, Deskripsi YouTube, Google Docs, dan Web Kontemplasi) **WAJIB 100% MENGGUNAKAN BAHASA INDONESIA** yang komunikatif, hangat, jernih, dan mengalir.
-3. **PANTANGAN KERAS**: DILARANG KERAS menulis satu paragraf pembahasan utuh dalam Bahasa Jawa!
-4. **Penggunaan Istilah**: Istilah spiritual/filosofi Jawa (seperti *eling*, *angen-angen*, *heneng-hening*, *catur nepsu*, *pamasrahan*, dll.) sangat dianjurkan diselipkan sebagai konsep batin, tetapi struktur dan susunan kalimatnya tetap kalimat Bahasa Indonesia utuh.
-5. **Persona Chat vs Naskah**: Persona santun Basa Jawi Krama Alus HANYA digunakan saat membalas obrolan sehari-hari dengan Pak Satya di Telegram. JANGAN PERNAH dibiarkan merembes masuk ke dalam teks naskah renungan publik!
+2. **SELURUH** uraian naskah lainnya (Terjemahan Sabda, Pangilon Rasa Paragraf 1 & 2, Laku Penyiswaan, Jangkar Batin / Mutiara Rasa, Deskripsi YouTube, Google Docs, dan Web Kontemplasi) **WAJIB 100% MENGGUNAKAN BAHASA INDONESIA** yang komunikatif, hangat, jernih, dan mengalir.
+3. **PAUGERAN DOA & BERKAH KANONIKAL**:
+   - DILARANG KERAS membuat pilar atau section tersendiri berisi "Doa Ritual / Doa Permohonan".
+   - TETAPI di akhir Jangkar Batin, **WAJIB MENYERTAKAN KALIMAT BERKAH KANONIKAL RESMI**:
+     `Semoga kita semua senantiasa berlimpah dengan sih, tuntunan, pepadang, dan pangayoman dari Sang Guru Sejati. Satuhu. 🙏`
+     (DILARANG KERAS menghapus atau membuang kalimat berkah resmi ini!).
+4. **Istilah Resmi**: Wajib menggunakan **`Renungan Penyiswaan`** (dengan 'e', bukan Panyiswaan atau Panyiswaan Pangestu).
+5. **Akurasi Fakta Sejarah**: Ajaran Sang Guru Sejati diturunkan pertama kali pada **14 Februari 1932** di Surakarta kepada Bapak R. Soenarto Mertowardojo (belum genap 1 abad). DILARANG KERAS menulis klaim halusinasi seperti "berabad-abad lampau / lalu".
+6. **PANTANGAN KERAS**: DILARANG KERAS menulis satu paragraf pembahasan utuh dalam Bahasa Jawa!
+7. **Penggunaan Istilah**: Istilah spiritual/filosofi Jawa (seperti *eling*, *angen-angen*, *heneng-hening*, *catur nepsu*, *pamasrahan*, dll.) sangat dianjurkan diselipkan sebagai konsep batin, tetapi struktur dan susunan kalimatnya tetap kalimat Bahasa Indonesia utuh.
+8. **Persona Chat vs Naskah**: Persona santun Basa Jawi Krama Alus HANYA digunakan saat membalas obrolan sehari-hari dengan Pak Satya di Telegram. JANGAN PERNAH dibiarkan merembes masuk ke dalam teks naskah renungan publik!
 
 
 
@@ -130,18 +155,42 @@ Produksi vokal resmi menggunakan **Edge-TTS server-side otomatis** (bukan Gemini
 | Suara | Peran | Kalibrasi Kontemplatif (LOCKED) |
 |---|---|---|
 | `jv-ID-DimasNeural` | **Khusus petikan Sabda Jawa verbatim** — medhok, wibawa, khidmat, hening | Tempo **`-20%`**, Pitch **`-3Hz`** |
-| `id-ID-ArdiNeural` | **Seluruh narasi Indonesia** — Salam, Jarwa, Pangilon Rasa, Laku Panyiswan, Jangkar Batin, Doa Penutup | Tempo **`-22%`**, Pitch **`-3Hz`** |
+| `id-ID-ArdiNeural` | **Seluruh narasi Indonesia** — Salam, Jarwa, Pangilon Rasa, Laku Penyiswaan, Jangkar Batin | Tempo **`-22%`**, Pitch **`-3Hz`** |
 
 - **Dynamic Sacred Pauses (Jeda Hening Bernapas)**:
   * Jeda setelah Judul/Salam: `2.0 detik`
   * Jeda setelah Sabda Jawa selesai: **`2.5 s.d. 3.0 detik`** (wajib lapang agar getaran sabda mengendap di rongga dada sebelum narasi refleksi dimulai).
-  * Jeda antara Pangilon Rasa dan Laku Panyiswan: `2.0 s.d. 2.5 detik`
-  * Jeda sebelum Doa Penutup Satuhu: `2.5 detik`
-- **Engine script resmi**: `scripts/make_cinematic_video.py` — Sub-Pixel Bicubic Motion + cross-dissolve xfade.
+  * Jeda antara Pangilon Rasa dan Laku Penyiswaan: `2.0 s.d. 2.5 detik`
+  * Jeda sebelum Mutiara Rasa / Salam Penutup: `2.0 detik` (TIDAK ADA materi doa ritual)
+- **Engine script resmi**: `scripts/make_cinematic_video.py` — Ken Burns Sub-Pixel Bicubic Zoom Motion + cross-dissolve xfade.
 - **Pitfall CLI edge-tts**: Nilai negatif pada argumen CLI (misal tempo `-13%` atau pitch `-3Hz`) memicu error parser jika dipisah spasi (`unrecognized arguments: -13%`). Wajib gunakan format tanda sama dengan: `f"--rate={rate}"`, `f"--pitch={pitch}"`, `f"--voice={voice}"`.
 - **Python Runtime Environment**: Eksekusi pipeline script yang memerlukan `googleapiclient`, `faster-whisper`, atau `edge-tts` wajib menggunakan venv hermes `/home/satyaaditech/.hermes/installs/a362db0e5ab40a5f/environments/b81016b623d94985b9b22f73d36f59e0/venv/bin/python3`, bukan Python sistem `/usr/bin/python3`.
 - **Status Transisi YouTube (Unlisted ke Public)**: Token OAuth `token.json` hanya memiliki scope `upload` & `readonly`. Mengubah status video via API `videos().update` akan gagal (403 PERMISSION_DENIED). Rekomendasikan Pak Satya toggle visibility di YouTube Studio (link tetap utuh), atau re-upload otomatis dengan parameter `public` lalu perbarui link di Sheet, Docs, Web, dan teks siar WA.
 - **Preset FFmpeg**: Gunakan `veryfast` + `-threads 0` pada server 4-core. Preset `fast` terlalu lambat (0.4x realtime).
+
+---
+
+## 🎬 STANDAR VIDEO VERTICAL & TIPOGRAFI SUBTITLE (LOCKED — Oktober 2026)
+*Berdasarkan persetujuan resmi Pak Satya Adi Dharma*:
+
+* **Font Subtitle Baku**: `Montserrat` (SemiBold / Bold) — dipasang di server Hermes (`/usr/share/fonts/truetype/montserrat/`).
+* **Ukuran Font**: **Size 62** (proporsi ideal dan sangat nyaman dibaca di smartphone).
+* **Posisi Subtitle**: `Alignment: 5` (Middle-Center, tepat di tengah layar Y=960).
+* **Translucent Contrast Box**: `w=940, h=340, x=70, y=790, color=black@0.65` (melindungi keterbacaan teks di atas gambar AI dinamis).
+* **Palet Warna Baku (Dual-Tone Editorial Styling)**:
+  - **Baris 1 (Atas)**: `Champagne Gold (#F2D091)` / ASS: `{\c&H0091D0F2&}`
+  - **Baris 2 (Bawah)**: `Warm Ivory White (#F8F9FA)` / ASS: `{\c&H00F8F9FA&}`
+  - Outline: Hitam murni tebal 2px, Shadow 2px.
+* **Aturan Pemenggalan Kata (Semantic Chunking)**:
+  - Maksimal **7–10 kata per slide** (batas mutlak 11 kata). DILARANG menampilkan 1-2 kalimat panjang sekaligus.
+  - Dibagi seimbang menjadi 2 baris pendek (3–5 kata baris 1 Gold, 3–5 kata baris 2 White).
+* **Gerakan Kamera (Ken Burns Sumbu Z - Tanpa Pan Left/Right)**:
+  - Layar vertikal 9:16 sangat sempit horizontal sehingga Pan Left/Right terasa memusingkan (*jarring*) dan menarik mata menjauhi teks di tengah.
+  - Standar baku mengadopsi **Ken Burns Slow Zoom In / Zoom Out (Sumbu Z)** bergantian antar scene:
+    - **Scene 1 (Sabda Jawa)**: `Slow Zoom In` (fokus ditarik masuk ke kedalaman sabda suci)
+    - **Scene 2 (Pangilon Rasa)**: `Slow Zoom Out` (membuka kelapangan pandangan hidup)
+    - **Scene 3 (Laku Panyiswan)**: `Slow Zoom In` (menarik perhatian ke rongga dada & napas hening)
+    - **Scene 4 (Jangkar Batin & Berkah)**: `Slow Zoom Out` (pasrah sumarah & memancarkan berkah keselamatan)
 
 ---
 
@@ -202,7 +251,7 @@ Urutan Kolom (22 Kolom Baku):
 
 *Mandat Teks Siar WhatsApp & Telegram (Struktur Link Baku)*:
 - Bagian Atas / Header (di bawah Judul Tema sebelum Salam Karahayon): WAJIB menyematkan link YouTube (`🎧 *Dengarkan di YouTube*: [URL]`).
-- Bagian Bawah / Footer (di bawah Doa Penutup Satuhu): WAJIB menyematkan 2 tautan ekosistem digital:
+- Bagian Bawah / Footer (di bawah Jangkar Batin & Salam Karahayon): WAJIB menyematkan 2 tautan ekosistem digital:
   1. `🌐 *Baca Selengkapnya di Web Pustaka*: [URL Web Kontemplasi]`
   2. `📄 *Versi Dokumen Google Docs*: [URL Google Doc]`
 
@@ -213,7 +262,7 @@ Urutan Kolom (22 Kolom Baku):
 - Laku Praktis (Micro-Habit 30 Detik): Panduan aplikatif konkrit yang bisa langsung dicoba penonton hari ini.
 - Mutiara Rasa: 1 kalimat aforisme paradoks mendalam.
 - Ekosistem Digital: Tautan lengkap ke Web Kontemplasi (`https://kontemplasi.satyaaditech.web.id/#[slug]`) dan Google Docs.
-- Doa Penutup Satuhu: Doa berkat resmi.
+- Salam Penutup Karahayon: 1 kalimat berkah sejuk (DILARANG narasi/paragraf doa ritual panjang).
 - Hashtags Viral & High-Traffic (10–15 tags): Kombinasi spiritualitas, mindfulness, sains, filosofi Jawa, dan Shorts (contoh: `#Eling #DefaultModeNetwork #Mindfulness #Overthinking #OlahRasa #Pangestu #SangGuruSejati #FilosofiJawa #StoikismeJawa #KetenanganBatin #KesadaranDiri #SadarJiwa #KesehatanMental #Shorts #RenunganHarian`).
 - 🚫 **PANTANG MUTLAK**: DILARANG KERAS mencantumkan nama model TTS / AI teknis (seperti `jv-ID-DimasNeural`, `id-ID-ArdiNeural`, teks prompt, atau backend engine) pada deskripsi YouTube publik. Deskripsi adalah sarana edukasi dan siar rohani, bukan catatan teknis sistem.
 
@@ -277,6 +326,14 @@ Skrip ini secara otomatis memproses:
    - Judul menggabungkan fenomena modern/sains dengan tujuan rohani (contoh: *Seni Mematikan Api Sebelum Menjadi Kebakaran: Waspadai Lonjakan Hormon Kortisol Anda 🌿*).
    - Menarik dan menggugah rasa penasaran pembaca awam, humanis, namun ANTI-CLICKBAIT (relevan dan murni berakar pada isi naskah).
    - Menjaga wibawa spiritual: hindari tanda seru ganda (!!), gunakan emoji sejuk dan kalimat reflektif.
+
+5. **5 Pilar Bobot Mutu Baku (Mandat Pak Satya — Continuous Elevation)**:
+   Setiap pembuatan renungan harian WAJIB lolos kurasi 5 pilar sebelum diajukan ke Pak Satya:
+   - **Pilar 1: Sugih Insight ("Aha-Moment", Bukan Nasihat Klise)**: Mengupas akar psikologis dan spiritual terdalam, menyingkap ilusi nalar/ego, bukan sekadar wejangan moral normatif.
+   - **Pilar 2: Relate Kehidupan Modern & Sains Modern**: Masuk lewat situasi nyata abad ke-21 (overthinking, screen fatigue, media sosial, beban kerja) dan dianyam dengan sains modern sebagai cermin logis.
+   - **Pilar 3: Sudut Pandang Selalu Segar (Fresh Perspective)**: Mengangkat sudut pandang unik dan paradoks dari setiap sabda (pantang formula monoton atau sudut pandang yang sama berturut-turut).
+   - **Pilar 4: Bernyawa, Luwes, & Nge-Flow (Organic Cadence)**: Irama bernapas, kanca lumaku di warung kopi, runtun, hangat, menyentuh rasa, bebas dari gaya robot AI atau penceramah mimbar.
+   - **Pilar 5: Jero Nanging Wening kanggé Awam (Deep yet Crystal Clear)**: Bagaikan telaga yang sangat dalam namun berair bening kristal sehingga dasarnya mudah dipahami oleh siapa saja tanpa kebingungan kognitif.
 
 ## 🌟 CITHAKAN STANDAR EMAS (GOLDEN TEMPLATE V8 - LEAN 4-PILAR)
 *Disepakati bersama Pak Satya Adi Dharma (Oktober 2026)*:

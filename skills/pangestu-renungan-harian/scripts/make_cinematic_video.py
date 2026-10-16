@@ -170,6 +170,56 @@ def clean_text_for_ass(text):
     return "".join(c for c in text if ord(c) < 128 or ord(c) in range(0x00A0, 0x024F))
 
 
+def chunk_and_format_cue(cue_text, start_sec, end_sec):
+    """
+    Chunks a speech cue into comfortable reading units of 7-10 words (max 11),
+    balanced into two short lines:
+    - Line 1 (Top): Champagne Gold (\\c&H0091D0F2&)
+    - Line 2 (Bottom): Warm Ivory White (\\c&H00F8F9FA&)
+    Interpolates sub-timings based on character counts for perfect cadence.
+    """
+    words = cue_text.split()
+    total_words = len(words)
+    if total_words == 0:
+        return []
+    if total_words <= 10:
+        chunks = [words]
+    else:
+        num_chunks = max(2, round(total_words / 8.0))
+        chunk_size = total_words / num_chunks
+        chunks = []
+        for i in range(num_chunks):
+            s_idx = int(round(i * chunk_size))
+            e_idx = int(round((i + 1) * chunk_size))
+            chunk_slice = words[s_idx:e_idx]
+            if chunk_slice:
+                chunks.append(chunk_slice)
+                
+    total_chars = sum(len(w) + 1 for w in words)
+    dur = end_sec - start_sec
+    curr_char = 0
+    results = []
+    for ch in chunks:
+        ch_chars = sum(len(w) + 1 for w in ch)
+        c_start = start_sec + (curr_char / total_chars) * dur
+        curr_char += ch_chars
+        c_end = start_sec + (curr_char / total_chars) * dur
+        
+        # Split chunk into 2 balanced lines
+        mid = len(ch) // 2
+        l1 = " ".join(ch[:mid])
+        l2 = " ".join(ch[mid:])
+        
+        # Dual-tone formatting: Gold line 1, White line 2
+        if l2:
+            formatted = r"{\c&H0091D0F2&}" + l1 + r"\N{\c&H00F8F9FA&}" + l2
+        else:
+            formatted = r"{\c&H0091D0F2&}" + l1
+            
+        results.append((c_start, c_end, formatted))
+    return results
+
+
 def generate_audio_and_timed_subtitles(blocks, output_audio_path, output_ass_path, temp_dir):
     """
     Synthesizes dual-voice audio blocks and extracts frame-accurate subtitles directly
@@ -226,18 +276,6 @@ def generate_audio_and_timed_subtitles(blocks, output_audio_path, output_ass_pat
         audio_parts.append(part_file)
         time.sleep(1.0)  # Gentle delay between requests
         
-        # Determine base style for this block
-        if "Dimas" in voice or "Sabda" in text or idx == 1:
-            base_style = "Sabda"
-        elif "Laku" in text or "LAKU" in text or "napas" in text.lower():
-            base_style = "Action"
-        elif idx == 0:
-            base_style = "TitleHighlight"
-        elif "ilusi" in text.lower() or "otopilot" in text.lower() or "80%" in text:
-            base_style = "Highlight"
-        else:
-            base_style = "Normal"
-            
         # Parse WebVTT cues from Edge-TTS
         if os.path.exists(part_vtt):
             with open(part_vtt, "r", encoding="utf-8") as vf:
@@ -258,11 +296,11 @@ def generate_audio_and_timed_subtitles(blocks, output_audio_path, output_ass_pat
                 if not clean:
                     continue
                     
-                # Wrap long text cleanly into max 38-42 chars per line
-                wrapped = "\\n".join(textwrap.wrap(clean, width=40))
-                dialogue_events.append(
-                    f"Dialogue: 0,{sec_to_ass(st_sec)},{sec_to_ass(en_sec)},{base_style},,0,0,0,,{wrapped}"
-                )
+                chunks = chunk_and_format_cue(clean, st_sec, en_sec)
+                for c_start, c_end, formatted_text in chunks:
+                    dialogue_events.append(
+                        f"Dialogue: 0,{sec_to_ass(c_start)},{sec_to_ass(c_end)},RenunganBaku,,0,0,0,,{formatted_text}"
+                    )
                 
         block_dur = get_audio_duration(part_file)
         current_time += block_dur
@@ -298,7 +336,7 @@ def generate_audio_and_timed_subtitles(blocks, output_audio_path, output_ass_pat
     run_command(cmd_concat, desc="Concatenating into master audio")
     log(f"Master audio generated: {output_audio_path} ({current_time:.2f}s)", "SUCCESS")
     
-    # Build Perfect Centered ASS Subtitles (Alignment=5 / Middle-Center)
+    # Build Perfect Centered ASS Subtitles (Alignment=5 / Middle-Center / Montserrat 62)
     ass_header = """[Script Info]
 Title: Renungan Sinematik Pangestu V8 (Centered Subtitles)
 ScriptType: v4.00+
@@ -309,12 +347,13 @@ ScaledBorderAndShadow: yes
 
 [V4+ Styles]
 Format: Name, Fontname, Fontsize, PrimaryColour, SecondaryColour, OutlineColour, BackColour, Bold, Italic, Underline, StrikeOut, ScaleX, ScaleY, Spacing, Angle, BorderStyle, Outline, Shadow, Alignment, MarginL, MarginR, MarginV, Encoding
-Style: Title,DejaVu Sans,48,&H00FFFFFF,&H000000FF,&H00000000,&HB0000000,-1,0,0,0,100,100,0,0,1,5,3,5,100,100,0,1
-Style: TitleHighlight,DejaVu Sans,54,&H0000E6FF,&H000000FF,&H00000000,&HB0000000,-1,0,0,0,100,100,0,0,1,5,3,5,100,100,0,1
-Style: Sabda,DejaVu Sans,52,&H0000FFFF,&H000000FF,&H00000000,&HB0000000,-1,0,0,0,100,100,0,0,1,5,3,5,100,100,0,1
-Style: Action,DejaVu Sans,50,&H0080FF80,&H000000FF,&H00000000,&HB0000000,-1,0,0,0,100,100,0,0,1,5,3,5,100,100,0,1
-Style: Highlight,DejaVu Sans,52,&H0050E0FF,&H000000FF,&H00000000,&HB0000000,-1,0,0,0,100,100,0,0,1,5,3,5,100,100,0,1
-Style: Normal,DejaVu Sans,50,&H00FFFFFF,&H000000FF,&H00000000,&HB0000000,-1,0,0,0,100,100,0,0,1,5,3,5,100,100,0,1
+Style: RenunganBaku,Montserrat,62,&H00F8F9FA,&H000000FF,&H00000000,&H80000000,-1,0,0,0,100,100,0,0,1,2,2,5,70,70,0,1
+Style: Title,Montserrat,62,&H00F8F9FA,&H000000FF,&H00000000,&H80000000,-1,0,0,0,100,100,0,0,1,2,2,5,70,70,0,1
+Style: TitleHighlight,Montserrat,62,&H00F8F9FA,&H000000FF,&H00000000,&H80000000,-1,0,0,0,100,100,0,0,1,2,2,5,70,70,0,1
+Style: Sabda,Montserrat,62,&H00F8F9FA,&H000000FF,&H00000000,&H80000000,-1,0,0,0,100,100,0,0,1,2,2,5,70,70,0,1
+Style: Action,Montserrat,62,&H00F8F9FA,&H000000FF,&H00000000,&H80000000,-1,0,0,0,100,100,0,0,1,2,2,5,70,70,0,1
+Style: Highlight,Montserrat,62,&H00F8F9FA,&H000000FF,&H00000000,&H80000000,-1,0,0,0,100,100,0,0,1,2,2,5,70,70,0,1
+Style: Normal,Montserrat,62,&H00F8F9FA,&H000000FF,&H00000000,&H80000000,-1,0,0,0,100,100,0,0,1,2,2,5,70,70,0,1
 
 [Events]
 Format: Layer, Start, End, Style, Name, MarginL, MarginR, MarginV, Effect, Text
@@ -329,23 +368,37 @@ Format: Layer, Start, End, Style, Name, MarginL, MarginR, MarginV, Effect, Text
 def render_cinematic_mp4(scenes, master_audio, ass_subs, output_video_path):
     """
     Renders 1080x1920 video with:
-    - True subpixel bicubic camera perspective motion
+    - True subpixel bicubic camera perspective motion (Meditative Ken Burns: Zoom In / Zoom Out)
     - Cross-dissolve transitions
-    - Soft 65% opacity black overlay card centered at (y=740, w=960, h=440)
-    - Perfectly centered subtitles (Alignment=5) located strictly inside the box
+    - Soft 65% opacity black overlay card centered at Y=960 (x=70, y=790, w=940, h=340)
+    - Perfectly centered subtitles (Alignment=5 / Montserrat 62 Gold+White) strictly inside the box
     """
     log("Building subpixel bicubic filtergraph with centered soft dark overlay card...", "STAGE")
     total_duration = sum(s["duration"] for s in scenes) - (len(scenes) - 1) * 1.0  # minus crossfades
     
     filter_parts = []
     
-    # 1. Inputs motion filters
+    # 1. Inputs motion filters (Ken Burns Smooth Zoom In / Zoom Out)
     for idx, s in enumerate(scenes):
         D = s["duration"]
         F = int(D * 24)
-        motion = s.get("motion", "pan_left")
+        motion = s.get("motion", "zoom_in")
         
-        if motion == "tilt_up":
+        if motion == "zoom_out":
+            coord = (
+                f"x0='135*(1-in/{F})':y0='240*(1-in/{F})':"
+                f"x1='1350-135*(1-in/{F})':y1='240*(1-in/{F})':"
+                f"x2='135*(1-in/{F})':y2='2400-240*(1-in/{F})':"
+                f"x3='1350-135*(1-in/{F})':y3='2400-240*(1-in/{F})'"
+            )
+        elif motion == "zoom_in":
+            coord = (
+                f"x0='135*in/{F}':y0='240*in/{F}':"
+                f"x1='1350-135*in/{F}':y1='240*in/{F}':"
+                f"x2='135*in/{F}':y2='2400-240*in/{F}':"
+                f"x3='1350-135*in/{F}':y3='2400-240*in/{F}'"
+            )
+        elif motion == "tilt_up":
             coord = (
                 f"x0='135':y0='480*(1-in/{F})':"
                 f"x1='135+1080':y1='480*(1-in/{F})':"
@@ -366,12 +419,19 @@ def render_cinematic_mp4(scenes, master_audio, ass_subs, output_video_path):
                 f"x2='270*(1-in/{F})':y2='240+1920':"
                 f"x3='270*(1-in/{F})+1080':y3='240+1920'"
             )
-        else:  # default pan_left
+        elif motion == "pan_left":
             coord = (
                 f"x0='270*in/{F}':y0='240':"
                 f"x1='270*in/{F}+1080':y1='240':"
                 f"x2='270*in/{F}':y2='240+1920':"
                 f"x3='270*in/{F}+1080':y3='240+1920'"
+            )
+        else:  # default zoom_in
+            coord = (
+                f"x0='135*in/{F}':y0='240*in/{F}':"
+                f"x1='1350-135*in/{F}':y1='240*in/{F}':"
+                f"x2='135*in/{F}':y2='2400-240*in/{F}':"
+                f"x3='1350-135*in/{F}':y3='2400-240*in/{F}'"
             )
             
         f_str = (
@@ -391,10 +451,10 @@ def render_cinematic_mp4(scenes, master_audio, ass_subs, output_video_path):
         )
         prev_label = out_label
         
-    # 3. Soft 65% opacity black overlay card centered at Y=960 (box: y=740 to y=1180, height 440px)
-    # With Alignment=5 in ASS, text is centered strictly inside this 440px box with balanced ~120px padding
+    # 3. Soft 65% opacity black overlay card centered at Y=960 (box: x=70, y=790, w=940, h=340)
+    # Perfectly fits 2 lines of Size 62 Montserrat font with ~95px vertical padding
     filter_parts.append(
-        f"[bg]eq=brightness=-0.10:contrast=1.15,drawbox=x=60:y=740:w=960:h=440:color=black@0.65:t=fill,ass={ass_subs}[outv]"
+        f"[bg]eq=brightness=-0.10:contrast=1.15,drawbox=x=70:y=790:w=940:h=340:color=black@0.65:t=fill,ass={ass_subs}[outv]"
     )
     filter_complex = ";".join(filter_parts)
     
@@ -453,7 +513,7 @@ def main():
                 raise ValueError("Config contains no scenes!")
                 
             num_scenes = len(scenes)
-            default_motions = ["tilt_up", "pan_left", "tilt_down", "pan_right"]
+            default_motions = ["zoom_in", "zoom_out", "zoom_in", "zoom_out"]
             
             # Step A: Process/Generate Scene Images
             for idx, sc in enumerate(scenes):

@@ -132,17 +132,23 @@ for s_idx, e_idx, style, text in groups:
 
 * **Resolusi Proyeksi**: `PlayResX: 1080`, `PlayResY: 1920`
 * **WrapStyle**: `0` (Smart wrapping)
-* **Font Teruji**: `DejaVu Sans` (Tersedia default di Ubuntu Linux server, bebas masalah fontconfig).
+* **Font Baku**: `Montserrat` (SemiBold / Bold) — Elegan, modern, dan sangat nyaman dibaca di layar smartphone.
+* **Ukuran Font**: **Size 62** (Disetujui Pak Satya, proporsi ideal layar 9:16).
+* **Posisi Geometri**: `Alignment: 5` (Middle-Center, tepat di tengah layar Y=960).
+* **Translucent Overlay Box**: `drawbox=x=70:y=790:w=940:h=340:color=black@0.65:t=fill` (Melindungi keterbacaan teks di atas latar dinamis).
 
-### Palet Warna & Styling ASS
-| Style | Warna Utama (&HBBGGRR) | Visual Warna | Fungsi | Font Size | Shadow / Outline |
-| :--- | :--- | :--- | :--- | :--- | :--- |
-| **Badge** | `&H0000E6FF` | Kuning Emas Cerah | Label Kategori Atas | 42 | Outline 3, Shadow 2 |
-| **TitleHighlight** | `&H0000E6FF` | Kuning Emas | Judul / Babak Baru | 58 | Outline 5, Shadow 3 |
-| **Sabda** | `&H0000FFFF` | Kuning Sakral | Petikan Sabda Basa Jawa | 54 | Outline 5, Shadow 3 |
-| **Action** | `&H0080FF80` | Hijau Mint Tenang | Langkah Latihan Laku | 52 | Outline 5, Shadow 3 |
-| **Highlight** | `&H0050E0FF` | Cyan Biru Terang | Poin Penawar & Refleksi | 54 | Outline 5, Shadow 3 |
-| **Normal** | `&H00FFFFFF` | Putih Bersih | Narasi Penjelasan | 52 | Outline 5, Shadow 3 |
+### Palet Warna Baku (Dual-Tone Editorial Styling)
+Dua nada warna yang konsisten di seluruh video (tanpa campur aduk warna-warni pelangi):
+* **Baris 1 (Atas)**: `Champagne Gold` (`#F2D091` / ASS: `{\c&H0091D0F2&}`) — Menghadirkan kesan agung, hangat, dan bernilai tinggi.
+* **Baris 2 (Bawah)**: `Warm Ivory White` (`#F8F9FA` / ASS: `{\c&H00F8F9FA&}`) — Bersih, kontras tinggi, dan mudah dicerna mata.
+* **Outline & Shadow**: Hitam pekat murni 2px (`&H00000000`) untuk ketajaman teks maksimal.
+
+### Aturan Pemenggalan Kata (Semantic Chunking)
+* **7–10 kata per tampilan layar** (batas mutlak maksimal 11 kata).
+* **DILARANG** menampilkan 1-2 kalimat panjang atau satu paragraf sekaligus.
+* Teks dibagi rata menjadi 2 baris pendek seimbang:
+  - Baris 1: 3–5 kata (Champagne Gold)
+  - Baris 2: 3–5 kata (Warm Ivory White)
 
 > [!IMPORTANT]
 > **Larangan Penggunaan Emoji di File ASS**: Emoji (misal: 📖, 💭, 🧘) memicu peringatan `fontselect: failed to find any fallback with glyph ...` pada `libass` di setiap frame, memperlambat rendering hingga 3x lipat. Gunakan tag teks rapi seperti `[ KUTIPAN TUNTUNAN ]` atau `[ LAKU PANYISWAN ]`.
@@ -176,7 +182,7 @@ Gunakan pola prompt berikut untuk Nano Banana / Imagen 3:
 [Format: 9:16 vertical orientation, no people, no text, no watermark]
 ```
 
-## 7. Solusi Anti-Jitter: Animasi Sub-Pixel Bicubic Interpolation
+## 7. Solusi Anti-Jitter: Animasi Sub-Pixel Bicubic Interpolation (Ken Burns Sumbu Z)
 
 ### A. Mengapa Filter `crop=x:y` Menghasilkan Gerakan Patah-Patah?
 Pada gerakan kamera lambat (misalnya Scene 2 berdurasi 80,5 detik dengan 1.932 frame pada 24 fps):
@@ -197,29 +203,24 @@ Filter: perspective=x0='...':y0='...':x1='...':y1='...':
 Output: scale=1080:1920
 ```
 
-### C. Rumus Koordinat 4 Gerakan Kamera Utama:
+### C. Rumus Koordinat Gerakan Kamera Meditatif Ken Burns (Sumbu Z Baku):
 Biarkan $W_{in} = 1350$, $H_{in} = 2400$, lebar target $W = 1080$, tinggi target $H = 1920$, dan total frame $F = \text{Durasi} \times 24$.
 
-1. **Slow Pan Left** (Kamera bergeser ke kiri, jendela sumber bergerak ke kanan):
-   * $x(in) = 270 \cdot \frac{in}{F}$
-   * $y(in) = 240$ (Tengah vertikal: $(2400-1920)/2$)
+1. **Slow Zoom In (Push In - Fokus Batin / Nyawiji)**:
+   * Menarik perhatian penonton masuk ke relung keheningan batin. Digunakan pada **Scene 1 (Sabda Jawa)** dan **Scene 3 (Laku Hening Napas)**.
    * Koordinat:
-     `x0='270*in/F': y0='240'`  
-     `x1='270*in/F+1080': y1='240'`  
-     `x2='270*in/F': y2='240+1920'`  
-     `x3='270*in/F+1080': y3='240+1920'`
+     `x0='135*in/F': y0='240*in/F'`  
+     `x1='1350-135*in/F': y1='240*in/F'`  
+     `x2='135*in/F': y2='2400-240*in/F'`  
+     `x3='1350-135*in/F': y3='2400-240*in/F'`
 
-2. **Slow Pan Right** (Kamera bergeser ke kanan, jendela sumber bergerak ke kiri):
-   * $x(in) = 270 \cdot \left(1 - \frac{in}{F}\right)$
-   * $y(in) = 240$
-
-3. **Slow Tilt Down** (Kamera turun, jendela sumber bergerak turun):
-   * $x(in) = 135$ (Tengah horizontal: $(1350-1080)/2$)
-   * $y(in) = 480 \cdot \frac{in}{F}$
-
-4. **Slow Tilt Up** (Kamera naik, jendela sumber bergerak naik):
-   * $x(in) = 135$
-   * $y(in) = 480 \cdot \left(1 - \frac{in}{F}\right)$
+2. **Slow Zoom Out (Pull Out - Kelapangan & Pasrah Sumarah)**:
+   * Membuka pandangan penonton ke cakrawala luas, memberi rasa lega dan kepasrahan. Digunakan pada **Scene 2 (Pangilon Rasa)** dan **Scene 4 (Jangkar Batin & Berkah)**.
+   * Koordinat:
+     `x0='135*(1-in/F)': y0='240*(1-in/F)'`  
+     `x1='1350-135*(1-in/F)': y1='240*(1-in/F)'`  
+     `x2='135*(1-in/F)': y2='2400-240*(1-in/F)'`  
+     `x3='1350-135*(1-in/F)': y3='2400-240*(1-in/F)'`
 
 ---
 

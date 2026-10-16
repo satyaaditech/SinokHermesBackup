@@ -1,6 +1,6 @@
 # Master Google Sheet & Video Production Standards (V8 Standar Baku)
 
-Dokumen ini mendokumentasikan spesifikasi teknis dan standar operasional untuk integrasi Google Sheet `Master Produksi V8`, standarisasi rendering video vertikal 9:16 sinematik YouTube Shorts, serta standarisasi subtitle dan vokal dual-voice kontemplatif.
+Dokumen ini mendokumentasikan spesifikasi teknis dan standar operasional untuk integrasi Google Sheet `Master Produksi V8`, standarisasi rendering video vertikal 9:16 sinematik YouTube Shorts, serta standarisasi subtitle, tipografi Montserrat 62, Ken Burns motion, dan vokal dual-voice kontemplatif.
 
 ---
 
@@ -9,7 +9,7 @@ Dokumen ini mendokumentasikan spesifikasi teknis dan standar operasional untuk i
 Seluruh aset produksi renungan harian dicatat secara terpusat pada Google Sheet master:
 * **Spreadsheet ID**: `1QuTSjBV-iOckaIoSu07wQa0LcnbgdR97mxAqOloIEb0`
 * **URL**: `https://docs.google.com/spreadsheets/d/1QuTSjBV-iOckaIoSu07wQa0LcnbgdR97mxAqOloIEb0/edit`
-* **Tab Resmi**: `Master Produksi V8` *(Catatan: Tab lami 'Rekap Renungan' 12-kolom sampun superseded/ditutup)*
+* **Tab Resmi**: `Master Produksi V8` *(Catatan: Tab lama 'Rekap Renungan' 12-kolom sampun superseded/ditutup)*
 
 ### Skema 22 Kolom Baku (A - V):
 1. **No** (A)
@@ -37,11 +37,30 @@ Seluruh aset produksi renungan harian dicatat secara terpusat pada Google Sheet 
 
 ---
 
-## 2. Standar Rendering Video & Subtitle (.ass)
+## 2. Standar Rendering Video & Tipografi Subtitle Baku (Montserrat 62 & Ken Burns)
 
-* **Format**: Vertikal 9:16 (1080 x 1920 Full HD) Shorts / Reels.
-* **Vokal Dual-Voice**: `jv-ID-DimasNeural` (Sabda Jawa) + `id-ID-ArdiNeural` (Narasi refleksi Indonesia) via Edge-TTS lokal.
-* **Alignment Subtitle**: `Alignment: 2` (bottom-center) dengan margin vertikal (`MarginV: 90 - 110`).
+* **Format Resolusi**: Vertikal **9:16 (1080 x 1920 Full HD)** untuk YouTube Shorts & Reels.
+* **Geometri Posisi**: **Alignment: 5** (Middle-Center, tepat di tengah layar Y=960).
+* **Overlay Box Kontras**: Kotak hitam transparan 65% (`color=black@0.65`) berukuran `w=940, h=340, x=70, y=790`. Menjaga keterbacaan teks tetap nyaman di atas latar dinamis apapun.
+* **Font Terpilih**: **Montserrat** (Bold / SemiBold).
+* **Ukuran Font**: **Size 62** (disetujui Pak Satya, proporsi ideal layar HP).
+* **Skema Warna Dual-Tone Editorial**:
+  - **Baris 1 (Atas)**: Champagne Gold (`#F2D091` / ASS: `{\c&H0091D0F2&}`)
+  - **Baris 2 (Bawah)**: Warm Ivory White (`#F8F9FA` / ASS: `{\c&H00F8F9FA&}`)
+  - Outline: Hitam murni tebal 2px, Shadow 2px.
+* **Aturan Pemenggalan Kata (Semantic Chunking)**:
+  - Maksimal **7–10 kata per tampilan layar** (batas maksimal 11 kata). DILARANG menampilkan 1-2 kalimat panjang sekaligus.
+  - Terbagi menjadi 2 baris pendek seimbang (3–5 kata baris 1, 3–5 kata baris 2).
+* **Gerakan Kamera Ken Burns (Sumbu Z - Tanpa Pan Horizontal)**:
+  - Menggantikan geser samping (Pan Left/Right) yang sempit pada layar vertikal 9:16.
+  - Pola bergantian antar babak:
+    - **Scene 1 (Sabda Jawa)**: `Slow Zoom In` (fokus melangkah ke kedalaman batin)
+    - **Scene 2 (Pangilon Rasa)**: `Slow Zoom Out` (membuka kelapangan pandangan hidup)
+    - **Scene 3 (Laku Panyiswan)**: `Slow Zoom In` (menarik fokus ke rongga dada & napas hening)
+    - **Scene 4 (Jangkar Batin & Berkah)**: `Slow Zoom Out` (pasrah sumarah & memancarkan berkah keselamatan)
+* **Kalibrasi Audio Kontemplatif (Edge-TTS)**:
+  - **Sabda Jawa**: `jv-ID-DimasNeural`, rate **`-20%`**, pitch **`-3Hz`**, jeda hening **2.5s – 3.0s**.
+  - **Narasi Indonesia**: `id-ID-ArdiNeural`, rate **`-22%`**, pitch **`-3Hz`**, jeda hening **2.0s**.
 * **Anti-Emoji di Subtitle**: Hapus seluruh emoji mentah dari naskah `.ass` agar tidak merender kotak rusak (`⧠`).
 * **Durasi Rendering**: Selalu verifikasi durasi video cocok dengan durasi master audio via `ffprobe`.
 
