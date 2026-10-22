@@ -20,8 +20,14 @@ Untuk memastikan naskah selalu berada pada taraf **"Mahakarya Jiwa Kelas Dunia"*
 
 Sistem dijalankan melalui script terminal resmi di Hermes:
 ```bash
-python3 ~/.hermes/skills/pangestu-renungan-harian/scripts/hermes_editorial_council.py [--row N | --date YYYY-MM-DD]
+/usr/bin/python3.10 ~/.hermes/skills/pangestu-renungan-harian/scripts/hermes_editorial_council.py [--row N | --date YYYY-MM-DD]
 ```
+*(Catatan Teknis: Wajib memanggil `/usr/bin/python3.10` karena dependensi Google Client API `google.oauth2` terpasang pada Python 3.10 sistem, bukan Python 3.14 default sandboxing).*
+
+### 2.1 Anti-Shortcut & Matriks Kontemplasi Universal
+Untuk mencegah degradasi model (*satisficing/rule fatigue*), Agent Writer WAJIB menyelesaikan blok `<inner_deliberation>` 5-lapisan ontologis sebelum menyusun naskah draf (lihat panduan lengkap di `references/matriks-kontemplasi-universal.md`).
+
+Jika naskah dikritik oleh Pak Satya karena kurang humanis atau dangkal, **DILARANG KERAS** asisten mengambil jalan pintas menulis ulang secara manual (single-agent bypass). Revisi wajib diproses kembali melalui engine dewan redaksi multi-agen.
 
 Engine ini bekerja secara modular dalam 5 langkah:
 

@@ -6,6 +6,7 @@ description: Produce Pangestu renungan harian for TG thread 1096. Agentic 3-role
 # Renungan Harian Pangestu (Daily Bread)
 
 > **Supporting References**:
+> - Matriks Kontemplasi Universal & Anti-Shortcut: `references/matriks-kontemplasi-universal.md`
 > - Standar Kualitas Prosa Humanis & Siar TG: `references/standar-kualitas-prosa-humanis.md`
 > - SOP Produksi Video Sinematik V8 (End-to-End Pipeline): `references/sop-produksi-video-sinematik-v8.md`
 > - Dual-Voice TTS Spec (DimasNeural + ArdiNeural): `references/dual-voice-tts-spec.md`
@@ -24,8 +25,10 @@ Hermes/Sinox **WAJIB MENJALANKAN ALUR KERJA 2-TAHAP SECARA BERURUTAN**:
 1. **Periksa Jadwal**: Cek baris tanggal hari ini pada tab `Master Produksi V8` (Google Sheet ID: `1QuTSjBV-iOckaIoSu07wQa0LcnbgdR97mxAqOloIEb0`).
 2. **Jalankan True Multi-Agent Editorial Council Engine (`hermes_editorial_council.py`)**:
    - DILARANG KERAS bermain peran sandiwara palsu (theatrical single-agent roleplaying) di mana 1 model pura-pura menjadi 4 agen dalam satu obrolan chat.
-   - Sinox WAJIB mengeksekusi engine multi-agent independen via terminal:
-     `python3 ~/.hermes/skills/pangestu-renungan-harian/scripts/hermes_editorial_council.py [--row N | --date YYYY-MM-DD]`
+   - Sinox WAJIB mengeksekusi engine multi-agent independen via terminal menggunakan runtime Python 3.10:
+     `/usr/bin/python3.10 ~/.hermes/skills/pangestu-renungan-harian/scripts/hermes_editorial_council.py [--row N | --date YYYY-MM-DD]`
+     *(Wajib gunakan `/usr/bin/python3.10` karena modul `google.oauth2` terpasang di sana, bukan di Python 3.14 default).*
+   - **DILARANG KERAS SINGLE-AGENT SHORTCUT / BYPASS**: Jika Pak Satya mengkritik naskah kurang humanis, dangkal, atau belum world-class, DILARANG menulis ulang secara manual sebagai agen tunggal. Wajib tetap menjalankan True Multi-Agent Council dengan menyuntikkan Matriks Kontemplasi Universal (`references/matriks-kontemplasi-universal.md`).
    - Engine ini secara otonom mengorkestrasi agen-agen terpisah melalui OmniRoute (`localhost:20128`):
      * **Step 1: Deterministic Redundancy & Historical Scanner**:
        - Memindai riwayat 7 hari terakhir dari Master Sheet untuk mengidentifikasi props/analogi lama (misal: layar HP, laptop, desah napas Huuuh, arisan keluarga, dsb) dan memasukkannya ke dalam blacklist aktif.

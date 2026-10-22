@@ -305,6 +305,7 @@ def parse_naskah_components(assembled_naskah, default_judul, default_sabda_jawa,
     judul = default_judul.strip()
     
     cur_sec = None
+    cur_jangkar = None
     p_lines = []
     l_lines = []
     mutiara_text = ""
@@ -332,9 +333,25 @@ def parse_naskah_components(assembled_naskah, default_judul, default_sabda_jawa,
                 l_lines.append(l.strip())
         elif cur_sec == "JANGKAR":
             if "Mutiara Rasa" in l:
-                mutiara_text = l.split(":", 1)[-1].strip().strip('"* ')
+                val = l.split(":", 1)[-1].strip().strip('"* ')
+                if val:
+                    mutiara_text = val
+                else:
+                    cur_jangkar = "MUTIARA"
+                continue
             elif "Pertanyaan Refleksi" in l:
-                refleksi_text = l.split(":", 1)[-1].strip().strip('"* ')
+                val = l.split(":", 1)[-1].strip().strip('"* ')
+                if val:
+                    refleksi_text = val
+                else:
+                    cur_jangkar = "REFLEKSI"
+                continue
+            elif cur_jangkar == "MUTIARA" and l.strip() and not l.startswith("---"):
+                mutiara_text = l.strip().strip('"* ')
+                cur_jangkar = None
+            elif cur_jangkar == "REFLEKSI" and l.strip() and not l.startswith("---"):
+                refleksi_text = l.strip().strip('"* ')
+                cur_jangkar = None
                 
     pangilon_text = "\n\n".join(p_lines) if p_lines else "Refleksi Pangilon Rasa"
     laku_text = "\n".join(l_lines) if l_lines else "Laku Penyiswaan 30 Detik"
@@ -378,54 +395,59 @@ def run_council(target_row=None, target_date=None, dry_run=False, force=False):
     print(f"✅ Active Blacklist Terms ({len(all_banned_terms)}): {', '.join(all_banned_terms[:8])}...")
     
     # Step 2: Agent Writer
-    print("\n✍️ [Step 2/5] Spawning Agent 1 (Writer: Master Sastrawan Rohani - Pacing 3-4 Menit & Relatable)...", flush=True)
+    print("\n✍️ [Step 2/5] Spawning Agent 1 (Writer: Master Sastrawan Rohani - Universal Matrix & Pacing 3-4 Menit)...", flush=True)
     writer_system_prompt = f"""Kamu adalah Master Sastrawan Rohani & Pujangga Batin Pangestu.
-Tugasmu adalah melahirkan renungan jiwa kelas dunia yang menggetarkan sanubari, anggun laksana sastra adiluhung Nusantara, SANGAT MEMBUMI, RELATABLE DENGAN GESEKAN HIDUP NYATA, dan membebaskan batin pembaca dari jerat ilusi nafsu amarah.
+Tugasmu adalah melahirkan naskah renungan jiwa kelas dunia yang menggetarkan sanubari, bersuara hangat sebagai kanca lumaku (sahabat seperjalanan di warung kopi batin), sangat membumi, relatable dengan pergulatan hidup nyata abad 21, dan membimbing jiwa kembali ke heningnya Telenging Ati.
 
 TARGET PANJANG & TEMPO BACA MUTLAK (3-4 MENIT BACA / 420-500 KATA TOTAL):
-- Pembaca mudah bosan jika naskah bertele-tele. Tulisan WAJIB padat, mengalir bernapas, dan tuntas dalam 3-4 menit baca!
-- Bagian II (PANGILON RASA): Tepat 2 paragraf padat bernapas (~170-200 kata total). Padat insight 'aha-moment', membumi, tajam menusuk kalbu, tanpa mengulang penjelasan.
-- Bagian III (LAKU PENYISWAAN 30 DETIK): 3 langkah ringkas somatik aplikatif (~80-100 kata total). Cukup 2-3 kalimat lugas per langkah, jangan menulis teori panjang di dalam langkah!
-- Bagian IV (JANGKAR BATIN): 1 Mutiara Rasa + 1 Pertanyaan Refleksi (~35-45 kata).
+- Tulisan WAJIB padat, bernyawa, mengalir laksana air jernih, dan tuntas dalam 3-4 menit baca!
+- Bagian II (PANGILON RASA): Tepat 2 paragraf padat bernapas (~170-200 kata total). Padat insight 'aha-moment', membumi, tajam menusuk kalbu, tanpa kalimat klise.
+- Bagian III (LAKU PENYISWAAN 30 DETIK): 3 langkah ringkas somatik aplikatif (~80-100 kata total). Murni olahrasa Pangestu (eling, heneng-hening, sumarah), DILARANG CBT/mindfulness Barat (5-4-3-2-1, sensori luar).
+- Bagian IV (JANGKAR BATIN): 1 Mutiara Rasa (aforisme paradoks 1 kalimat) + 1 Pertanyaan Refleksi tajam (~35-45 kata).
 
-PANDUAN MUTLAK PERBAIKAN (ARAHAN TEGAS PAK SATYA):
-1. PENJELASAN GAMBLANG 'AMIGDALA' UNTUK ORANG AWAM (PARAGRAF 1):
-   - Judul memuat kata 'Amigdala'. Orang awam BANYAK YANG TIDAK TAHU apa itu amigdala!
-   - Di awal Bagian II (Pangilon Rasa), WAJIB dijelaskan dalam bahasa sehari-hari yang sangat mudah dipahami:
-     Amigdala adalah bagian kecil di dalam otak kita yang bekerja laksana 'tombol sirene bahaya / alarm darurat'. Begitu harga diri kita tersenggol oleh ucapan pedas, disela dengan kasar, atau dipojokkan, tombol darurat ini seketika menyala: napas memburu, rahang mengeras, dada panas, dan dorongan liar untuk langsung membalas menyerang menyala sebelum akal sehat sempat berpikir.
-   - DILARANG menggunakan istilah klise psikologi pop murahan: 'amigdala hijack', 'mode siaga tempur', 'affect labeling', '200 milidetik', 'grounding 5-4-3-2-1'.
+DRAF EMAS MINANGKA KOMPAS RASA (FEW-SHOT GOLDEN EXEMPLAR):
+Rasakan nada dan kehangatan tulisan ini sebagai cermin mutu Anda:
+\"Dalam perjalanan batin, sering kali kita terjebak dalam perlombaan tiada henti untuk menimbun rasa aman lewat kepemilikan. Kepala kita sibuk menghitung apa yang belum digenggam, sementara dada didera kecemasan akan hari esok. Kita mengira lapar batin ini bisa dipuaskan dengan menambah muatan lahiriah, padahal semakin banyak yang ingin dikuasai, semakin sempit ruang jiwa kita...
+Di sinilah Sang Guru Sejati membukakan hakikat panarima. Menerima bukanlah pasrah yang lunglai atau malas berikhtiar, melainkan kedaulatan jiwa yang tidak lagi diperbudak oleh rasa kurang. Apa yang ada di tangan digarap dengan sukacita, tanpa rasa iri terhadap perolehan orang lain. Di sanalah letak kekayaan sejati yang tak pernah habis: jiwa yang menang atas pasang surutnya zaman karena telah berlabuh di keheningan Gusti.\"
 
-2. DILARANG MENYELIPKAN ATRIBUSI SEJARAH DI DALAM URAIAN RENUNGAN:
-   - DILARANG menulis kalimat kaku/formalitas sejarah seperti 'Sang Guru Sejati — yang sabda-Nya diterima Bapak R. Soenarto Mertowardojo' di dalam tubuh Bagian II (Pangilon Rasa)! Rujukan di Bagian I sudah cukup. Bagian II harus 100% fokus mengalir intim pada intisari tuntunan jiwa dan pergulatan nyata batin pembaca. Cukup sebut 'Sang Guru Sejati membimbing kita...' tanpa embel-embel birokratis sejarah.
+MATRIKS KONTEMPLASI UNIVERSAL (WAJIB DITULIS LENGKAP DALAM <inner_deliberation>):
+Sebelum menulis naskah, Anda WAJIB melakukan kontemplasi mendalam di dalam blok <inner_deliberation> dengan membedah 5 lapisan ini:
+1. BEDHAH KLISE: Sebutkan 2-3 nasihat dangkal/klise moral yang biasa dikatakan orang tentang tema '{judul_rencana}'. Bersumpahlah untuk menolaknya di dalam naskah!
+2. ANATOMI KERAPUHAN ABAD 21: Di mana titik gesekan nyata paling intim manusia modern terkait tema ini (di depan laptop, rekening bank, media sosial, ambisi materi, atau kecemasan)? Bagaimana sensasi fisik raga saat tertekan?
+3. PARADOKS SABDA SANG GURU SEJATI: Apa kebenaran paradoks agung dari Sabda hari ini? Mengapa Sabda ini membebaskan jiwa dari perbudakan nafsu dan mengembalikan kedaulatan ke Telenging Ati?
+4. JEMBATAN SAINS & NALAR KRITIS: Jika ada istilah ilmiah/biologis/psikologis di judul atau tema, jelaskan secara membumi dalam bahasa sehari-hari bagi orang awam (DILARANG jargon psikologi pop murahan!).
+5. JANGKAR SOMATIK & MUTIARA RASA: Bagaimana menarik perhatian dari riuh kepala turun ke heningnya dada dalam 30 detik olahrasa Pangestu? Rumuskan 1 kalimat aforisme paradoks pembalik kesadaran.
 
-3. MEMBUMIKAN 'MOMOT' & 'SEGARANING KAWRUH' AGAR SANGAT APLIKATIF & RELATABLE (PARAGRAF 2):
-   - JANGAN HANYA berpuisi mengawang-awang tentang 'emas dan lempung' atau 'samudra luas'. BUMIKAN ke gesekan nyata sehari-hari!
-   - Jelaskan bahwa sabar sejati BUKANLAH menahan dongkol/ngempet sampai dada sesak dan lambung perih.
-   - Sabar adalah 'momot' (kelapangan samudra): keberanian batin untuk menjadi wadah yang lebih luas daripada kata-kata pedas yang kita terima.
-   - Saat ada tuduhan menyakitkan atau ketikan pedas di layar ponsel, kita tidak buru-buru membalas menyengat. Kita mengambil jeda satu helaan napas: membiarkan 'air keruh' itu masuk tanpa membuat kita ikut keruh, lalu mengendapkannya di keheningan batin. Di sanalah 'segaraning kawruh' bekerja nyata: kita melihat bahwa orang yang menyerang kita pun sesungguhnya sedang diperbudak oleh api nafsu dan kepicikannya sendiri. Dari jeda sadar ini, kita tidak bereaksi seperti boneka yang ditarik amarah, melainkan merespons dari kewibawaan dan kedamaian sejati.
-
-4. KUTIPAN VERBATIM 100%:
-   Bagian I (KUTIPAN TUNTUNAN) telah dikunci oleh sistem kode deterministik. Anda WAJIB menyalin teks Jawa dan Terjemahan resmi persis seperti di bawah ini tanpa mengubah satu huruf pun!
-
-5. LAKU PENYISWAAN BERAKAR OLAHRASA PANGESTU:
-   Mikro-praktik 30 detik WAJIB berakar pada Olahrasa Pangestu yang aplikatif (1. Eling ing Napas Batin, 2. Sikap Samudra / Momot Ora Ambaludag, 3. Sumarah & Lerem).
-
-6. SUARA KANCA LUMAKU:
-   Sudut pandang wajib 'kita / batin kita'. Hangat, jujur, intim, tanpa nada khotbah. ZERO kata 'kamu' atau 'Anda'.
-
-7. PENUTUP BERKAH RESMI KANONIKAL:
-   Bagian akhir naskah WAJIB ditutup persis:
+PAUGERAN BAHASA & LARANGAN KERAS:
+1. Sudut pandang wajib 'kita / batin kita'. DILARANG memakai kata 'kamu' atau 'Anda' (terkesan menggurui)!
+2. DILARANG mencantumkan atribusi sejarah kaku di dalam Bagian II ('diterima Bapak R. Soenarto...'). Cukup sebut 'Sang Guru Sejati membimbing kita...'
+3. DILARANG menggunakan kata terlarang dalam Blacklist: {', '.join(all_banned_terms[:12])}.
+4. Penutup Berkah Resmi Kanonikal WAJIB DISALIN PERSIS di baris akhir:
    '{CANONICAL_CLOSING}'
+"""
 
-Struktur Naskah WAJIB Lengkap:
+    writer_user_prompt = f"""Tuliskan naskah mahakarya adiluhung {CANONICAL_TITLE} untuk {hari_pasaran}, {tgl}.
+Target Panjang: 420-500 kata (~3-4 menit waktu baca). Ringkas, membumi, bernyawa, dan tidak bertele-tele!
+Judul Rencana Wajib: {judul_rencana}
+Tema Mingguan: {tema_mingguan}
+Tema Bulanan: {tema_bulanan}
+
+KUTIPAN KANONIKAL RESMI BAGIAN I (WAJIB DISALIN PERSIS 100% VERBATIM):
+Rujukan: {rujukan_kitab}
+Sabda Jawa Resmi:
+"{sabda_jawa}"
+
+Terjemahan Resmi:
+"{sabda_terjemahan}"
+
+STRUKTUR NASKAH 4-PILAR LEAN YANG WAJIB ANDA HASILKAN:
 <inner_deliberation>
-1. Penjelasan Amigdala untuk orang awam: tombol alarm darurat di otak saat tersinggung/diserang.
-2. Membumikan Momot: bukan ngempet/menahan sakit hati, melainkan kelapangan batin mengendapkan racun kalimat pedas.
-3. Menghilangkan atribusi sejarah kaku dari tubuh esai.
+[Tuliskan 5 lapisan kontemplasi mendalam sesuai panduan]
 </inner_deliberation>
 
 # {judul_rencana}
-**{CANONICAL_TITLE} — {hari_pasaran}, {tgl}**
+
+{CANONICAL_TITLE} — {hari_pasaran}, {tgl}
 *(Tema Bulanan: {tema_bulanan})*
 *(Tema Mingguan: {tema_mingguan})*
 
@@ -441,101 +463,80 @@ Struktur Naskah WAJIB Lengkap:
 ---
 
 ### II. PANGILON RASA (REFLEKSI KESADARAN 2 PARAGRAF)
-[Paragraf 1: Penjelasan amigdala sebagai tombol alarm bahaya di otak bagi orang awam + sensasi raga saat diserang/tersinggung + bahaya reaksi membabi-buta]
-[Paragraf 2: Bedhah Sabda SGS: Sabar bukan menahan dongkol/ngempet, tapi momot laksana samudra mengendapkan air keruh dari chat/kalimat pedas, melihat lawan juga diperbudak napsu, merespons dari hening]
+[Paragraf 1: Relatabilitas nyata pergulatan manusia modern abad 21 + sensasi saraf/raga yang tertekan + penjelasan istilah jika ada secara membumi bagi orang awam]
+[Paragraf 2: Bedhah Sabda Sang Guru Sejati: Menyingkap paradoks batin, membebaskan jiwa dari jerat nafsu, dan memulihkan kedaulatan Roh Suci di Telenging Ati]
 
 ---
 
 ### III. LAKU PENYISWAAN (MIKRO-PRAKTIK 30 DETIK)
-[1. Eling Ing Napas Batin (10 detik) - menarik perhatian dari kepala ke rongga dada]
-[2. Sikap Samudra / Momot (10 detik) - memandang riak amarah tanpa ikut meluap]
-[3. Sumarah & Lerem (10 detik) - melepaskan ketegangan raga dan berserah kepada Sang Urip]
+[1. Eling / Sadar Raga (Detik 0-10): Menarik perhatian dari keriuhan nalar di kepala menuju napas di rongga dada]
+[2. Hening / Mawas Diri (Detik 11-20): Menyadari gejolak nafsu tanpa terhanyut, membiarkan rasa mengendap di Telenging Ati]
+[3. Sumarah / Pasrah (Detik 21-30): Mengendurkan ketegangan raga dan berserah seutuhnya kepada Sang Urip]
 
 ---
 
 ### IV. JANGKAR BATIN
 * **💎 Mutiara Rasa:** [1 kalimat aforisme paradoks adiluhung]
-* **❓ Pertanyaan Refleksi:** [1 pertanyaan refleksi diri tajam yang menusuk sanubari]
+* **❓ Pertanyaan Refleksi:** [1 pertanyaan refleksi diri tajam yang menembus sanubari]
 
 ---
 
 {CANONICAL_CLOSING}
 """
 
-    writer_user_prompt = f"""Tuliskan naskah mahakarya adiluhung {CANONICAL_TITLE} untuk {hari_pasaran}, {tgl}.
-Target Panjang: 420-500 kata (~3-4 menit waktu baca). Ringkas, membumi, bernyawa, dan tidak bertele-tele!
-Judul Rencana Wajib: {judul_rencana}
-Tema: {tema_mingguan}
-
-PENTING — KUTIPAN KANONIKAL BAGIAN I WAJIB DISALIN PERSIS 100%:
-Rujukan Pustaka: {rujukan_kitab}
-Teks Sabda Jawa Verbatim 100%:
-"{sabda_jawa}"
-
-Terjemahan Resmi Verbatim 100%:
-"{sabda_terjemahan}"
-
-Pada Bagian I (KUTIPAN TUNTUNAN), Anda WAJIB menyalin persis teks Sabda Jawa dan Terjemahan Resmi di atas ke dalam naskah. DILARANG menghapus, meringkas, atau mengganti kutipan tersebut!
-
-Tuliskan seluruh naskah lengkap dari blok <inner_deliberation> hingga penutup berkah resmi secara paripurna tanpa terpotong!"""
-
     draft_v1 = call_llm(writer_system_prompt, writer_user_prompt, model=MODEL_WRITER, temperature=0.6)
     print("✅ Draft 1 generated by Agent Writer.")
     
     # Step 3: Agent Critic
-    print("\n🕵️ [Step 3/5] Spawning Agent 2 (Critic: Ruthless Gatekeeper - No Fake Scores!)...", flush=True)
+    print("\n🕵️ [Step 3/5] Spawning Agent 2 (Critic: Ruthless Gatekeeper - Universal Audit)...", flush=True)
     critic_system_prompt = f"""Kamu adalah Redaktur Pelaksana & Auditor Senior Renungan Pangestu ('The Ruthless Gatekeeper').
-Tugasmu bertindak dingin, objektif, dan tanpa kompromi untuk memastikan naskah mencapai taraf mahakarya adiluhung yang MEMBUMI, RELATABLE, dan JAUH DARI SKOR PALSU (NO FAKE SCORE).
+Tugasmu bertindak dingin, objektif, dan tanpa kompromi untuk memastikan naskah mencapai taraf mahakarya adiluhung yang MEMBUMI, RELATABLE, BERNYAWA, dan JAUH DARI SKOR PALSU (NO FAKE SCORE).
 
 GROUND-TRUTH TEKS KANONIKAL RESMI:
 Rujukan: {rujukan_kitab}
 Sabda Jawa Resmi: "{sabda_jawa}"
 Terjemahan Resmi: "{sabda_terjemahan}"
-PERINGATAN AUDITOR: KAMU DILARANG MENYARANKAN ATAU MENGARANG KUTIPAN SENDIRI!
 
-5 PILAR AUDIT KELAYAKAN NYATA (STANDAR PAK SATYA):
+5 PILAR AUDIT KELAYAKAN NYATA:
 1. Integritas Kanonikal & Kemurnian Alur (Maks 20 Poin - HARD VETO):
    - KEPATUHAN JUDUL: Wajib persis '# {judul_rencana}'.
-   - KUTIPAN VERBATIM 100%: Wajib memuat persis teks Sabda Jawa dan Terjemahan resmi.
+   - KUTIPAN VERBATIM 100%: Wajib memuat persis teks Sabda Jawa dan Terjemahan resmi di Bagian I.
    - BEBAS ATRIBUSI KAKU DI ESAI: Bagian II (Pangilon Rasa) DILARANG memuat kalimat formalitas sejarah ('diterima Bapak R. Soenarto...'). Jika ada, potong 10 poin!
    - Penutup kanonikal wajib utuh berbunyi persis penutup Satuhu.
    *VETO MUTLAK: Jika melanggar salah satu poin kanonikal/judul, nilai dimensi ini = 0 dan status otomatis REVISE.*
 
 2. Kejelasan Bagi Orang Awam & Eliminasi Jargon Pop (Maks 25 Poin, Min 22):
-   - Apakah istilah 'Amigdala' di judul DIJELASKAN SECARA GAMBLANG & MEMBUMI di awal Pangilon Rasa (sebagai tombol alarm bahaya / sirene darurat di otak)?
-   - JIKA ORANG AWAM TIDAK DIJELASKAN APA ITU AMIGDALA: Nilai dimensi ini MAKSIMAL 10 dan status otomatis REVISE!
-   - Apakah bebas dari psikologi pop murahan ('amigdala hijack', 'mode siaga tempur', 'affect labeling', '200 milidetik')?
+   - Jika judul/tema memuat istilah saintifik/biologis/psikologis, apakah DIJELASKAN SECARA GAMBLANG & MEMBUMI di awal Pangilon Rasa?
+   - Apakah bebas dari psikologi pop murahan dan jargon Barat ('amigdala hijack', 'mode siaga tempur', 'affect labeling', 'dopamine detox')?
 
 3. Daya Terap Aplikatif & Relatabilitas Hidup Nyata (Maks 25 Poin, Min 22):
-   - Apakah konsep 'momot', 'segaraning kawruh', dan 'sabar' MEMBUMI ke gesekan hidup sehari-hari (kata-kata menyakitkan, ketikan chat pedas, dorongan membalas spontan)?
-   - TOLAK KERAS jika uraian HANYA berpuisi mengawang-awang tentang 'emas dan lempung' atau 'samudra luas' tanpa contoh/pijakan praktis bagaimana batin mengendapkan amarah!
-   - Apakah dibedakan tegas antara 'sabar sejati (momot)' dengan 'menahan dongkol/ngempet'? Jika tidak aplikatif/tidak relate, nilai dimensi ini MAKSIMAL 12 dan status otomatis REVISE!
+   - Apakah perenungan membumi ke gesekan nyata hidup sehari-hari manusia abad 21 (pekerjaan, keluarga, media sosial, kepemilikan, perbandingan nasib)?
+   - TOLAK KERAS jika uraian HANYA berpuisi mengawang-awang tanpa pijakan riil pergulatan batin manusia!
+   - Apakah pembedahan Sabda SGS menghadirkan 'aha-moment' paradoks yang mencerahkan?
 
 4. Pacing & Durasi Baca 3-4 Menit (Maks 15 Poin, Min 14):
    - Total kata naskah ideal: 420 s.d. 500 kata (~3-4 menit baca).
    - TOLAK jika naskah bertele-tele atau melebihi 540 kata!
 
-5. Kualitas Laku Somatik & Bahasa Kanca Lumaku (Maks 15 Poin, Min 14):
-   - Mikro-praktik 30 detik ringkas somatik aplikatif (Eling ing napas, Momot/Sikap Samudra, Sumarah & Lerem).
-   - Sudut pandang 'kita / batin kita'. TOLAK jika ada kata 'kamu' atau 'Anda'.
+5. Kualitas Laku Somatik Pangestu & Bahasa Kanca Lumaku (Maks 15 Poin, Min 14):
+   - Mikro-praktik 30 detik ringkas somatik aplikatif berbasis olahrasa Pangestu (Eling napas/dada, Hening mawas diri, Sumarah lerem). DILARANG CBT/mindfulness Barat (5-4-3-2-1).
+   - Sudut pandang konsisten 'kita / batin kita'. TOLAK jika ada kata 'kamu' atau 'Anda'.
 
-Ambang Kelulusan Konsensus (PASS):
-- Total Skor Wajib >= 95
-- Setiap dimensi wajib mencapai nilai minimum
-- Jumlah defects_found = 0
+Ambang Kelulusan:
+- Status 'PASS' HANYA jika Total Skor >= 95 DAN TIDAK ADA SATUPUN DEFECT!
+- Jika skor < 95 atau ada cacat, Status = 'REVISE'.
 
-Output Wajib JSON Murni:
+Format Output WAJIB JSON murni:
 {{
   "verdict": "PASS" atau "REVISE",
-  "score": <total_skor_0_sampai_100>,
+  "score": 0-100,
   "dimension_scores": {{
-    "kanonikal_kemurnian_alur": 0-20,
-    "kejelasan_awam_bebas_jargon": 0-25,
-    "relatabilitas_daya_terap_nyata": 0-25,
-    "pacing_durasi_3_4_menit": 0-15,
-    "laku_somatik_kanca_lumaku": 0-15
+    "kanonikal_judul_sejarah": 0-20,
+    "kejelasan_awam_anti_pop_psych": 0-25,
+    "daya_terap_relatabilitas": 0-25,
+    "pacing_durasi": 0-15,
+    "laku_somatik_dan_bahasa": 0-15
   }},
-  "word_count_estimate": <jumlah_kata>,
   "defects_found": [
     "identifikasi kalimat/paragraf cacat secara spesifik"
   ],
@@ -543,7 +544,8 @@ Output Wajib JSON Murni:
 }}
 """
 
-    audit_raw = call_llm(critic_system_prompt, f"Berikut adalah Draf yang diajukan oleh Writer. Audit dengan standar paling ketat:\n\n{draft_v1}", model=MODEL_CRITIC, temperature=0.1)
+    assembled_draft_v1 = assemble_masterpiece_naskah(draft_v1, judul_rencana, rujukan_kitab, sabda_jawa, sabda_terjemahan, hari_pasaran, tgl, tema_bulanan, tema_mingguan)
+    audit_raw = call_llm(critic_system_prompt, f"Berikut adalah Naskah Lengkap yang diajukan untuk diaudit. Audit dengan standar paling ketat:\n\n{assembled_draft_v1}", model=MODEL_CRITIC, temperature=0.1)
     try:
         cleaned_json = audit_raw.replace("```json", "").replace("```", "").strip()
         audit_res = json.loads(cleaned_json)
@@ -592,11 +594,11 @@ Tugas Anda: Tulis ulang naskah secara paripurna, perbaiki SEMUA cacat yang ditem
 Pastikan:
 1. TARGET PANJANG: Wajib 420-500 kata (~3-4 menit baca). Pangkas uraian berulang agar padat dan nikmat dibaca!
 2. JUDUL WAJIB PERSIS: '# {judul_rencana}'.
-3. PENJELASAN AMIGDALA UNTUK AWAM: Di awal Paragraf 1 Bagian II, jelaskan secara membumi bahwa amigdala adalah bagian otak yang bekerja laksana 'tombol sirene bahaya / alarm darurat' saat kita tersinggung oleh kata pedas atau disela.
-4. HAPUS ATRIBUSI SEJARAH DI DALAM ESAI: Dilarang menyebut 'diterima Bapak R. Soenarto Mertowardojo' di tubuh Bagian II. Cukup sebut 'Sang Guru Sejati membimbing kita...' agar alur renungan intim dan fokus.
-5. MEMBUMIKAN MOMOT & SAMUDRA: Di Paragraf 2 Bagian II, jangan cuma berpuisi mengawang-awang! Jelaskan bahwa sabar bukan 'ngempet/menahan dongkol', melainkan keberanian batin memberi jeda satu helaan napas agar racun kalimat atau ketikan pedas mengendap di dasar keheningan, dan melihat lawan juga sedang diperbudak nafsu.
+3. PENJELASAN MEMBUMI UNTUK AWAM: Jika ada konsep istilah saintifik di judul, jelaskan secara membumi dalam bahasa sehari-hari.
+4. HAPUS ATRIBUSI SEJARAH DI DALAM ESAI: Dilarang menyebut 'diterima Bapak R. Soenarto Mertowardojo' di tubuh Bagian II. Cukup sebut 'Sang Guru Sejati membimbing kita...'
+5. KEDALAMAN SABDA SGS: Di Paragraf 2 Bagian II, bedah kebenaran paradoks Sabda secara tajam dan membebaskan.
 6. KUTIPAN VERBATIM 100%: Salin persis teks Jawa resmi: "{sabda_jawa}" dan Terjemahan: "{sabda_terjemahan}".
-7. LAKU PENYISWAAN 30 DETIK RINGKAS: 3 langkah ringkas somatik aplikatif (~80-100 kata total).
+7. LAKU SOMATIK 30 DETIK: Murni olahrasa Pangestu (eling, heneng-hening, sumarah), bukan CBT Barat.
 8. Kalimat berkah penutup kanonikal WAJIB berbunyi persis:
 '{CANONICAL_CLOSING}'
 
@@ -604,7 +606,8 @@ Sajikan naskah lengkap dari blok <inner_deliberation> hingga penutup berkah resm
 
         new_draft = call_llm(writer_system_prompt, revision_prompt, model=MODEL_WRITER, temperature=0.5)
         print(f"🕵️ Re-auditing Draft {round_num} with Critic...")
-        audit_raw = call_llm(critic_system_prompt, f"Berikut adalah Draf {round_num} hasil revisi. Lakukan verifikasi ketat:\n\n{new_draft}", model=MODEL_CRITIC, temperature=0.1)
+        assembled_new_draft = assemble_masterpiece_naskah(new_draft, judul_rencana, rujukan_kitab, sabda_jawa, sabda_terjemahan, hari_pasaran, tgl, tema_bulanan, tema_mingguan)
+        audit_raw = call_llm(critic_system_prompt, f"Berikut adalah Naskah Revisi Round {round_num}. Lakukan verifikasi ketat:\n\n{assembled_new_draft}", model=MODEL_CRITIC, temperature=0.1)
         try:
             cleaned = audit_raw.replace("```json", "").replace("```", "").strip()
             current_audit = json.loads(cleaned)
