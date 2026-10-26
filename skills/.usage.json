@@ -623,14 +623,14 @@
     "created_by": "agent",
     "last_patched_at": "2026-09-12T23:17:39.148633+00:00",
     "last_reused_patch_generation": 0,
-    "last_used_at": "2026-10-15T00:28:56.065366+00:00",
-    "last_viewed_at": "2026-10-15T00:28:56.056813+00:00",
+    "last_used_at": "2026-10-26T06:40:24.949010+00:00",
+    "last_viewed_at": "2026-10-26T06:40:24.942198+00:00",
     "patch_count": 19,
     "patch_generation": 0,
     "pinned": false,
     "state": "active",
-    "use_count": 122,
-    "view_count": 122
+    "use_count": 144,
+    "view_count": 144
   },
   "google-flow-ugc-commercial": {
     "archived_at": null,
@@ -639,14 +639,14 @@
     "first_seen_at": null,
     "last_patched_at": null,
     "last_reused_patch_generation": 0,
-    "last_used_at": "2026-09-30T01:34:38.732457+00:00",
-    "last_viewed_at": "2026-09-30T01:34:38.723773+00:00",
+    "last_used_at": "2026-10-26T07:38:14.530397+00:00",
+    "last_viewed_at": "2026-10-26T07:38:14.522067+00:00",
     "patch_count": 0,
     "patch_generation": 0,
     "pinned": false,
     "state": "active",
-    "use_count": 8,
-    "view_count": 8
+    "use_count": 10,
+    "view_count": 10
   },
   "google-workspace": {
     "archived_at": null,
@@ -1998,14 +1998,14 @@
     "first_seen_at": null,
     "last_patched_at": null,
     "last_reused_patch_generation": 0,
-    "last_used_at": null,
-    "last_viewed_at": null,
+    "last_used_at": "2026-10-26T07:38:10.203634+00:00",
+    "last_viewed_at": "2026-10-26T07:38:10.195641+00:00",
     "patch_count": 0,
     "patch_generation": 0,
     "pinned": false,
     "state": "stale",
-    "use_count": 0,
-    "view_count": 0
+    "use_count": 2,
+    "view_count": 2
   },
   "video-to-video-vfx": {
     "archived_at": "2026-10-22T00:25:09.821214+00:00",
