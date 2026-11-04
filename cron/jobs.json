@@ -75,18 +75,18 @@
       "schedule_display": "0 23 * * *",
       "repeat": {
         "times": null,
-        "completed": 61
+        "completed": 62
       },
       "enabled": true,
       "state": "scheduled",
       "paused_at": null,
       "paused_reason": null,
       "created_at": "2026-08-30T07:28:46.115435+07:00",
-      "next_run_at": "2026-11-04T23:00:00+07:00",
-      "last_run_at": "2026-11-02T15:45:13.733170+07:00",
-      "last_status": "ok",
-      "last_error": null,
-      "last_delivery_error": null,
+      "next_run_at": "2026-11-05T23:00:00+07:00",
+      "last_run_at": "2026-11-04T08:58:36.118837+07:00",
+      "last_status": "error",
+      "last_error": "Script exited with code 128\nstdout:\n[main b4f968f] Auto backup: 2026-11-04 08:58:34\n 6 files changed, 23 insertions(+), 23 deletions(-)\n rename cron/external-workers/{6847e3d2eed74403a1a5f253b5f4905b.stderr => 00f015375d53484fa5f7570e6ee1c3b3.stderr} (100%)\n rename cron/external-workers/{fe8543e5903b4f64b11aeb7963877289.stderr => 3e5ca871885744f79b7ce57968a5daba.stderr} (100%)",
+      "last_delivery_error": "delivery error: Telegram send failed: httpx.ConnectError: [Errno -3] Temporary failure in name resolution (target telegram:-1003256146835:1)",
       "deliver": "origin",
       "origin": {
         "platform": "telegram",
@@ -98,16 +98,16 @@
       "enabled_toolsets": null,
       "workdir": null,
       "fire_claim": {
-        "at": "2026-11-04T08:58:33.589800+07:00",
-        "by": "n8nserver:1191:436c896eb6624c3d9b168dce17b0b6cb"
+        "at": "2026-11-04T23:00:26.054047+07:00",
+        "by": "n8nserver:1187:b0f2627139e1476897e857e27105094f"
       },
       "last_dispatch": {
-        "scheduled_at": "2026-11-02T23:00:00+07:00",
-        "dispatched_at": "2026-11-04T08:58:31.264524+07:00",
-        "lateness_seconds": 122311.3,
-        "kind": "catch_up"
+        "scheduled_at": "2026-11-04T23:00:00+07:00",
+        "dispatched_at": "2026-11-04T23:00:23.780457+07:00",
+        "lateness_seconds": 23.8,
+        "kind": "on_time"
       },
-      "failure_streak": 0
+      "failure_streak": 1
     },
     {
       "id": "8a00d67c9fbd",
@@ -131,7 +131,7 @@
       "schedule_display": "15 23 * * *",
       "repeat": {
         "times": null,
-        "completed": 61
+        "completed": 62
       },
       "enabled": true,
       "state": "scheduled",
@@ -139,10 +139,10 @@
       "paused_reason": null,
       "created_at": "2026-08-30T07:41:44.349637+07:00",
       "next_run_at": "2026-11-04T23:15:00+07:00",
-      "last_run_at": "2026-11-02T15:45:07.203398+07:00",
-      "last_status": "ok",
-      "last_error": null,
-      "last_delivery_error": null,
+      "last_run_at": "2026-11-04T08:58:41.264546+07:00",
+      "last_status": "error",
+      "last_error": "Script exited with code 128\nstderr:\nfatal: Invalid path '/mnt/usb-nvme/obsidian': No such device",
+      "last_delivery_error": "delivery error: Telegram send failed: httpx.ConnectError: [Errno -3] Temporary failure in name resolution (target telegram:-1003256146835:1)",
       "deliver": "origin",
       "origin": {
         "platform": "telegram",
@@ -153,17 +153,14 @@
       },
       "enabled_toolsets": null,
       "workdir": null,
-      "fire_claim": {
-        "at": "2026-11-04T08:58:33.699840+07:00",
-        "by": "n8nserver:1191:b9e4806dbca1490ca6f5325bb6771833"
-      },
+      "fire_claim": null,
       "last_dispatch": {
         "scheduled_at": "2026-11-02T23:15:00+07:00",
         "dispatched_at": "2026-11-04T08:58:31.264524+07:00",
         "lateness_seconds": 121411.3,
         "kind": "catch_up"
       },
-      "failure_streak": 0
+      "failure_streak": 1
     },
     {
       "id": "0ac6e55bbd33",
@@ -357,5 +354,5 @@
       "fire_claim": null
     }
   ],
-  "updated_at": "2026-11-04T08:58:33.701990+07:00"
+  "updated_at": "2026-11-04T23:00:26.056856+07:00"
 }

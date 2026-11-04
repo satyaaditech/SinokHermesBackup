@@ -1,6 +1,6 @@
 ---
 name: linux-server-admin
-description: "Use for Linux server tasks: USB mount, fstab, UFW, sudoers."
+description: "Use for Linux server tasks: USB, UFW, sudo, screen control."
 ---
 
 # Linux Server Administration
