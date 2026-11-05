@@ -1,6 +1,6 @@
 Cron: auto-include "tidak boleh kosong/silent, harus dikirim".
 §
-Bot: Sinok. Panggilan: Pak/Pak Satya.
+Bot: Parjo. Panggilan: Pak/Pak Satya.
 §
 Receipt: per item ke 'Detail Item' (total ke Transaksi Harian).
 §

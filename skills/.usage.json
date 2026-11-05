@@ -42,7 +42,7 @@
     "patch_count": 0,
     "patch_generation": 0,
     "pinned": false,
-    "state": "stale",
+    "state": "active",
     "use_count": 1,
     "view_count": 1
   },
@@ -247,14 +247,14 @@
     "first_seen_at": null,
     "last_patched_at": "2026-11-04T13:09:48.082529+00:00",
     "last_reused_patch_generation": 2,
-    "last_used_at": "2026-11-04T14:20:14.937164+00:00",
-    "last_viewed_at": "2026-11-04T14:20:14.929590+00:00",
+    "last_used_at": "2026-11-04T19:12:34.141116+00:00",
+    "last_viewed_at": "2026-11-04T19:12:34.135079+00:00",
     "patch_count": 2,
     "patch_generation": 2,
     "pinned": false,
     "state": "active",
-    "use_count": 9,
-    "view_count": 9
+    "use_count": 10,
+    "view_count": 10
   },
   "codebase-inspection": {
     "archived_at": null,
@@ -519,14 +519,14 @@
     "first_seen_at": null,
     "last_patched_at": null,
     "last_reused_patch_generation": 0,
-    "last_used_at": "2026-10-08T03:08:12.932050+00:00",
-    "last_viewed_at": "2026-10-08T03:08:12.924324+00:00",
+    "last_used_at": "2026-11-05T06:58:59.843898+00:00",
+    "last_viewed_at": "2026-11-05T06:58:59.835382+00:00",
     "patch_count": 0,
     "patch_generation": 0,
     "pinned": false,
     "state": "active",
-    "use_count": 7,
-    "view_count": 7
+    "use_count": 10,
+    "view_count": 10
   },
   "flow-ugc-ads-pipeline": {
     "archived_at": null,
@@ -874,14 +874,14 @@
     "first_seen_at": null,
     "last_patched_at": null,
     "last_reused_patch_generation": 0,
-    "last_used_at": "2026-10-08T03:08:16.912703+00:00",
-    "last_viewed_at": "2026-10-08T03:08:16.903918+00:00",
+    "last_used_at": "2026-11-05T06:59:27.794819+00:00",
+    "last_viewed_at": "2026-11-05T06:59:27.786415+00:00",
     "patch_count": 0,
     "patch_generation": 0,
     "pinned": false,
     "state": "active",
-    "use_count": 20,
-    "view_count": 20
+    "use_count": 23,
+    "view_count": 23
   },
   "imessage": {
     "archived_at": null,
@@ -1031,7 +1031,7 @@
     "patch_count": 2,
     "patch_generation": 2,
     "pinned": false,
-    "state": "active",
+    "state": "stale",
     "use_count": 6,
     "view_count": 6
   },
@@ -1123,14 +1123,14 @@
     "created_by": "agent",
     "last_patched_at": "2026-09-11T15:45:51.572191+00:00",
     "last_reused_patch_generation": 0,
-    "last_used_at": "2026-10-14T23:28:20.746770+00:00",
-    "last_viewed_at": "2026-10-14T23:28:20.739312+00:00",
+    "last_used_at": "2026-11-05T06:45:05.276030+00:00",
+    "last_viewed_at": "2026-11-05T06:45:05.267175+00:00",
     "patch_count": 39,
     "patch_generation": 0,
     "pinned": false,
     "state": "stale",
-    "use_count": 86,
-    "view_count": 86
+    "use_count": 89,
+    "view_count": 89
   },
   "opencode": {
     "archived_at": null,
@@ -1301,14 +1301,14 @@
     "first_seen_at": null,
     "last_patched_at": null,
     "last_reused_patch_generation": 0,
-    "last_used_at": "2026-11-04T09:34:21.022474+00:00",
-    "last_viewed_at": "2026-11-04T09:34:21.014332+00:00",
+    "last_used_at": "2026-11-05T06:44:16.557016+00:00",
+    "last_viewed_at": "2026-11-05T06:44:16.544120+00:00",
     "patch_count": 0,
     "patch_generation": 0,
     "pinned": false,
     "state": "active",
-    "use_count": 6,
-    "view_count": 6
+    "use_count": 9,
+    "view_count": 9
   },
   "pillow-infographics": {
     "archived_at": "2026-10-13T16:50:22.495085+00:00",
@@ -1866,7 +1866,7 @@
     "patch_count": 3,
     "patch_generation": 0,
     "pinned": false,
-    "state": "active",
+    "state": "stale",
     "use_count": 18,
     "view_count": 18
   },
@@ -1955,7 +1955,7 @@
     "patch_count": 0,
     "patch_generation": 0,
     "pinned": false,
-    "state": "active",
+    "state": "stale",
     "use_count": 0,
     "view_count": 0
   },
@@ -1971,7 +1971,7 @@
     "patch_count": 1,
     "patch_generation": 1,
     "pinned": false,
-    "state": "active",
+    "state": "stale",
     "use_count": 1,
     "view_count": 1
   },
@@ -2148,7 +2148,7 @@
     "patch_count": 0,
     "patch_generation": 0,
     "pinned": false,
-    "state": "active",
+    "state": "stale",
     "use_count": 3,
     "view_count": 3
   },
