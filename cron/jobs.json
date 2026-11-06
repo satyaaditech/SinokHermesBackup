@@ -75,18 +75,18 @@
       "schedule_display": "0 23 * * *",
       "repeat": {
         "times": null,
-        "completed": 63
+        "completed": 64
       },
       "enabled": true,
       "state": "scheduled",
       "paused_at": null,
       "paused_reason": null,
       "created_at": "2026-08-30T07:28:46.115435+07:00",
-      "next_run_at": "2026-11-06T23:00:00+07:00",
-      "last_run_at": "2026-11-04T23:00:32.880132+07:00",
-      "last_status": "ok",
-      "last_error": null,
-      "last_delivery_error": null,
+      "next_run_at": "2026-11-07T23:00:00+07:00",
+      "last_run_at": "2026-11-05T23:00:38.878503+07:00",
+      "last_status": "error",
+      "last_error": "Script exited with code 128\nstdout:\n[main 29737d5] Auto backup: 2026-11-05 23:00:28\n 9 files changed, 109 insertions(+), 105 deletions(-)\n rewrite SOUL.md (99%)\n rename cron/external-workers/{ca4abae4160145f2a7e99e4bb38ab956.stderr => 4fa4e1c39d574c0ab6d95425cbbb4b81.stderr} (100%)",
+      "last_delivery_error": "live adapter send failed: Chat not found; live adapter delivery to telegram:-1003256146835:1 failed: Chat not found; delivery error: Telegram send failed: Chat not found (target telegram:-1003256146835:1)",
       "deliver": "origin",
       "origin": {
         "platform": "telegram",
@@ -98,16 +98,16 @@
       "enabled_toolsets": null,
       "workdir": null,
       "fire_claim": {
-        "at": "2026-11-05T23:00:27.066936+07:00",
-        "by": "n8nserver:1280325:4afa6e9087d946a8873a8879c8e4bd2b"
+        "at": "2026-11-06T23:00:26.584257+07:00",
+        "by": "n8nserver:1280325:7d8a90c86d574366afe36da1f6df57bf"
       },
       "last_dispatch": {
-        "scheduled_at": "2026-11-05T23:00:00+07:00",
-        "dispatched_at": "2026-11-05T23:00:24.583416+07:00",
+        "scheduled_at": "2026-11-06T23:00:00+07:00",
+        "dispatched_at": "2026-11-06T23:00:24.584169+07:00",
         "lateness_seconds": 24.6,
         "kind": "on_time"
       },
-      "failure_streak": 0
+      "failure_streak": 1
     },
     {
       "id": "8a00d67c9fbd",
@@ -131,18 +131,18 @@
       "schedule_display": "15 23 * * *",
       "repeat": {
         "times": null,
-        "completed": 63
+        "completed": 64
       },
       "enabled": true,
       "state": "scheduled",
       "paused_at": null,
       "paused_reason": null,
       "created_at": "2026-08-30T07:41:44.349637+07:00",
-      "next_run_at": "2026-11-05T23:15:00+07:00",
-      "last_run_at": "2026-11-04T23:15:28.879474+07:00",
-      "last_status": "ok",
-      "last_error": null,
-      "last_delivery_error": null,
+      "next_run_at": "2026-11-06T23:15:00+07:00",
+      "last_run_at": "2026-11-05T23:15:28.745225+07:00",
+      "last_status": "error",
+      "last_error": "Script exited with code 128\nstderr:\nfatal: Invalid path '/mnt/usb-nvme': No such file or directory",
+      "last_delivery_error": "live adapter send failed: Chat not found; live adapter delivery to telegram:-1003256146835:1 failed: Chat not found; delivery error: Telegram send failed: Chat not found (target telegram:-1003256146835:1)",
       "deliver": "origin",
       "origin": {
         "platform": "telegram",
@@ -155,12 +155,12 @@
       "workdir": null,
       "fire_claim": null,
       "last_dispatch": {
-        "scheduled_at": "2026-11-04T23:15:00+07:00",
-        "dispatched_at": "2026-11-04T23:15:23.783832+07:00",
-        "lateness_seconds": 23.8,
+        "scheduled_at": "2026-11-05T23:15:00+07:00",
+        "dispatched_at": "2026-11-05T23:15:24.584712+07:00",
+        "lateness_seconds": 24.6,
         "kind": "on_time"
       },
-      "failure_streak": 0
+      "failure_streak": 1
     },
     {
       "id": "0ac6e55bbd33",
@@ -354,5 +354,5 @@
       "fire_claim": null
     }
   ],
-  "updated_at": "2026-11-05T23:00:27.069441+07:00"
+  "updated_at": "2026-11-06T23:00:26.587663+07:00"
 }
