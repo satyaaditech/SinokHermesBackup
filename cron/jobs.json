@@ -75,15 +75,15 @@
       "schedule_display": "0 23 * * *",
       "repeat": {
         "times": null,
-        "completed": 65
+        "completed": 66
       },
       "enabled": true,
       "state": "scheduled",
       "paused_at": null,
       "paused_reason": null,
       "created_at": "2026-08-30T07:28:46.115435+07:00",
-      "next_run_at": "2026-11-08T23:00:00+07:00",
-      "last_run_at": "2026-11-06T23:00:34.388220+07:00",
+      "next_run_at": "2026-11-09T23:00:00+07:00",
+      "last_run_at": "2026-11-07T23:00:41.063656+07:00",
       "last_status": "delivery_failed",
       "last_error": null,
       "last_delivery_error": "live adapter send failed: Chat not found; live adapter delivery to telegram:-1003256146835:1 failed: Chat not found; delivery error: Telegram send failed: Chat not found (target telegram:-1003256146835:1)",
@@ -98,14 +98,14 @@
       "enabled_toolsets": null,
       "workdir": null,
       "fire_claim": {
-        "at": "2026-11-07T23:00:26.607993+07:00",
-        "by": "n8nserver:1280325:eacedff2f3b5468489ea2afb83233f23"
+        "at": "2026-11-09T08:08:21.365200+07:00",
+        "by": "n8nserver:1186:1318de3a36124d5cb421c947c8076a33"
       },
       "last_dispatch": {
-        "scheduled_at": "2026-11-07T23:00:00+07:00",
-        "dispatched_at": "2026-11-07T23:00:24.584184+07:00",
-        "lateness_seconds": 24.6,
-        "kind": "on_time"
+        "scheduled_at": "2026-11-08T23:00:00+07:00",
+        "dispatched_at": "2026-11-09T08:08:18.241367+07:00",
+        "lateness_seconds": 32898.2,
+        "kind": "catch_up"
       },
       "failure_streak": 0
     },
@@ -131,15 +131,15 @@
       "schedule_display": "15 23 * * *",
       "repeat": {
         "times": null,
-        "completed": 65
+        "completed": 66
       },
       "enabled": true,
       "state": "scheduled",
       "paused_at": null,
       "paused_reason": null,
       "created_at": "2026-08-30T07:41:44.349637+07:00",
-      "next_run_at": "2026-11-07T23:15:00+07:00",
-      "last_run_at": "2026-11-06T23:15:29.969570+07:00",
+      "next_run_at": "2026-11-09T23:15:00+07:00",
+      "last_run_at": "2026-11-07T23:15:29.962036+07:00",
       "last_status": "error",
       "last_error": "Script exited with code 128\nstderr:\nfatal: Invalid path '/mnt/usb-nvme': No such file or directory",
       "last_delivery_error": "live adapter send failed: Chat not found; live adapter delivery to telegram:-1003256146835:1 failed: Chat not found; delivery error: Telegram send failed: Chat not found (target telegram:-1003256146835:1)",
@@ -153,14 +153,17 @@
       },
       "enabled_toolsets": null,
       "workdir": null,
-      "fire_claim": null,
-      "last_dispatch": {
-        "scheduled_at": "2026-11-06T23:15:00+07:00",
-        "dispatched_at": "2026-11-06T23:15:24.584398+07:00",
-        "lateness_seconds": 24.6,
-        "kind": "on_time"
+      "fire_claim": {
+        "at": "2026-11-09T08:08:21.255033+07:00",
+        "by": "n8nserver:1186:4743c37b1f6d4c39b3e5a1f0690a5284"
       },
-      "failure_streak": 2
+      "last_dispatch": {
+        "scheduled_at": "2026-11-08T23:15:00+07:00",
+        "dispatched_at": "2026-11-09T08:08:18.241367+07:00",
+        "lateness_seconds": 31998.2,
+        "kind": "catch_up"
+      },
+      "failure_streak": 3
     },
     {
       "id": "0ac6e55bbd33",
@@ -354,5 +357,5 @@
       "fire_claim": null
     }
   ],
-  "updated_at": "2026-11-07T23:00:26.611427+07:00"
+  "updated_at": "2026-11-09T08:08:21.367597+07:00"
 }
