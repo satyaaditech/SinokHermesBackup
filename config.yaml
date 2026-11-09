@@ -57,8 +57,8 @@ terminal:
   persistent_shell: true
   lifetime_seconds: 300
 web:
-  backend: firecrawl
-  search_backend: ''
+  backend: ddgs
+  search_backend: ddgs
   extract_backend: ''
   use_gateway: false
 browser:
