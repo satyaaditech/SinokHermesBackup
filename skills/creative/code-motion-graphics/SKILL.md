@@ -111,3 +111,41 @@ proc.wait()
 ## Delivery Standard
 1. Deliver the video file natively to Telegram via `MEDIA:/path/to/final_video.mp4`.
 2. Copy to `/home/satyaaditech/<filename>.mp4` so it is instantly streamable via local HTTP server `http://192.168.0.112:8000/<filename>.mp4`.
+
+---
+
+## Remotion & Hyperframe Architecture
+
+For rich React-based web motion graphics, interactive components, dynamic kinetic typography, and multi-track audio, use the local Remotion engine:
+* **Workspace Location**: `/home/satyaaditech/remotion-workspace/`
+* **Root Compositions**: `src/Root.tsx` registers all compositions with dimensions, FPS, and frame durations.
+* **Inspect Compositions**: `npx remotion compositions src/index.ts` lists all registered compositions, durations, and resolutions.
+* **Render Command**:
+  ```bash
+  npx remotion render src/index.ts <CompositionId> out/<output_name>.mp4 --concurrency=4 --gl=angle
+  ```
+
+### 1. Mandatory Dual-Track Audio (Voiceover + Thematic BGM)
+* **Never Ship Voice-Only**: Explainer videos without background music sound dry, hollow, and unfinished.
+* **Ducking Standard**: Layer background music (BGM) at volume `0.15`–`0.22` beneath the narration track (`volume=1.0`).
+* **In Remotion Component**:
+  ```tsx
+  <Audio src={staticFile('narasi.mp3')} />
+  <Audio src={staticFile('bgm_ceria.mp3')} volume={0.16} />
+  ```
+* **In FFmpeg Post-Mix**:
+  ```bash
+  ffmpeg -y -i video.mp4 -i bgm.mp3 \
+    -filter_complex "[0:a]volume=1.0[a1];[1:a]volume=0.20[a2];[a1][a2]amix=inputs=2:duration=first:dropout_transition=2[aout]" \
+    -map 0:v -map "[aout]" -c:v copy -c:a aac -b:a 192k output.mp4
+  ```
+
+### 2. Hyperframe Multi-Layer Visual Depth
+For educational, explainer, or kid-friendly content, avoid flat static backgrounds:
+* **Dynamic Skies**: Time-interpolated gradients (`linear-gradient(180deg, #38bdf8 0%, #bae6fd 55%, #fef08a 100%)`).
+* **Living Scenery**: Drifting fluffy clouds, smiling rotating sun with pulsing rays, rolling cartoon hills at the bottom (`radial-gradient` circles), and floating rainbow sparkles/bubbles.
+* **Spring Physics**: Use Remotion `spring()` with `damping: 12, mass: 0.5` for cartoon badge bounce and kinetic text punch-in.
+
+### 3. Rapid Muxing vs Full Background Re-Render
+* **Performance Budget**: Remotion renders at ~8.5 FPS on 4-core CPUs (~8–10 minutes for 4,500 frames).
+* **Instant Turnaround**: When visual frames are already rendered and only BGM, audio mix, or track volume needs updating, use FFmpeg audio stream muxing (`-c:v copy`) to produce the deliverable in seconds, while launching the full visual re-render in the background (`terminal(background=true, notify=true)`).
