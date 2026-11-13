@@ -262,15 +262,15 @@
     "created_by": "agent",
     "first_seen_at": null,
     "last_patched_at": "2026-11-11T06:59:16.529890+00:00",
-    "last_reused_patch_generation": 2,
-    "last_used_at": "2026-11-11T06:58:55.752001+00:00",
-    "last_viewed_at": "2026-11-11T06:58:55.739608+00:00",
+    "last_reused_patch_generation": 3,
+    "last_used_at": "2026-11-13T05:18:44.948403+00:00",
+    "last_viewed_at": "2026-11-13T05:18:44.940184+00:00",
     "patch_count": 3,
     "patch_generation": 3,
     "pinned": false,
     "state": "active",
-    "use_count": 13,
-    "view_count": 13
+    "use_count": 14,
+    "view_count": 14
   },
   "codebase-inspection": {
     "archived_at": null,
@@ -1077,14 +1077,14 @@
     "first_seen_at": null,
     "last_patched_at": null,
     "last_reused_patch_generation": 0,
-    "last_used_at": "2026-11-10T05:04:08.932164+00:00",
-    "last_viewed_at": "2026-11-10T05:04:08.923404+00:00",
+    "last_used_at": "2026-11-13T05:18:18.790460+00:00",
+    "last_viewed_at": "2026-11-13T05:18:18.781813+00:00",
     "patch_count": 0,
     "patch_generation": 0,
     "pinned": false,
     "state": "active",
-    "use_count": 12,
-    "view_count": 12
+    "use_count": 15,
+    "view_count": 15
   },
   "nano-pdf": {
     "archived_at": null,
@@ -1572,6 +1572,22 @@
     "use_count": 25,
     "view_count": 25
   },
+  "remotion-video-production": {
+    "archived_at": null,
+    "created_at": "2026-11-13T05:19:33.541125+00:00",
+    "created_by": "agent",
+    "first_seen_at": null,
+    "last_patched_at": null,
+    "last_reused_patch_generation": 0,
+    "last_used_at": "2026-11-13T05:19:38.418177+00:00",
+    "last_viewed_at": "2026-11-13T05:19:38.410765+00:00",
+    "patch_count": 0,
+    "patch_generation": 0,
+    "pinned": false,
+    "state": "active",
+    "use_count": 1,
+    "view_count": 1
+  },
   "requesting-code-review": {
     "archived_at": null,
     "created_at": "2026-08-04T12:30:58.659280+00:00",
@@ -1712,14 +1728,14 @@
     "first_seen_at": null,
     "last_patched_at": null,
     "last_reused_patch_generation": 0,
-    "last_used_at": "2026-11-11T06:58:14.415160+00:00",
-    "last_viewed_at": "2026-11-11T06:58:14.405289+00:00",
+    "last_used_at": "2026-11-13T05:18:33.672554+00:00",
+    "last_viewed_at": "2026-11-13T05:18:33.663588+00:00",
     "patch_count": 0,
     "patch_generation": 0,
     "pinned": false,
     "state": "active",
-    "use_count": 3,
-    "view_count": 3
+    "use_count": 7,
+    "view_count": 7
   },
   "serving-llms-vllm": {
     "archived_at": null,
