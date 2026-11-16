@@ -75,18 +75,18 @@
       "schedule_display": "0 23 * * *",
       "repeat": {
         "times": null,
-        "completed": 73
+        "completed": 74
       },
       "enabled": true,
       "state": "scheduled",
       "paused_at": null,
       "paused_reason": null,
       "created_at": "2026-08-30T07:28:46.115435+07:00",
-      "next_run_at": "2026-11-16T23:00:00+07:00",
-      "last_run_at": "2026-11-14T23:00:14.245404+07:00",
+      "next_run_at": "2026-11-17T23:00:00+07:00",
+      "last_run_at": "2026-11-15T23:01:15.633339+07:00",
       "last_status": "delivery_failed",
       "last_error": null,
-      "last_delivery_error": "live adapter send failed: Chat not found; live adapter delivery to telegram:-1003256146835:1 failed: Chat not found; delivery error: Telegram send failed: httpx.ConnectError: [SSL: WRONG_VERSION_NUMBER] wrong version number (_ssl.c:1082) (target telegram:-1003256146835:1)",
+      "last_delivery_error": "live adapter send failed: Chat not found; live adapter delivery to telegram:-1003256146835:1 failed: Chat not found; delivery error: Telegram send failed: Chat not found (target telegram:-1003256146835:1)",
       "deliver": "origin",
       "origin": {
         "platform": "telegram",
@@ -98,13 +98,13 @@
       "enabled_toolsets": null,
       "workdir": null,
       "fire_claim": {
-        "at": "2026-11-15T23:00:58.330399+07:00",
-        "by": "n8nserver:89838:9674f682534d40d392254aa157485250"
+        "at": "2026-11-16T23:00:46.790603+07:00",
+        "by": "n8nserver:1822999:ac60f753244241e5aa4177123b7ec31c"
       },
       "last_dispatch": {
-        "scheduled_at": "2026-11-15T23:00:00+07:00",
-        "dispatched_at": "2026-11-15T23:00:56.320274+07:00",
-        "lateness_seconds": 56.3,
+        "scheduled_at": "2026-11-16T23:00:00+07:00",
+        "dispatched_at": "2026-11-16T23:00:44.830354+07:00",
+        "lateness_seconds": 44.8,
         "kind": "on_time"
       },
       "failure_streak": 0
@@ -131,15 +131,15 @@
       "schedule_display": "15 23 * * *",
       "repeat": {
         "times": null,
-        "completed": 73
+        "completed": 74
       },
       "enabled": true,
       "state": "scheduled",
       "paused_at": null,
       "paused_reason": null,
       "created_at": "2026-08-30T07:41:44.349637+07:00",
-      "next_run_at": "2026-11-15T23:15:00+07:00",
-      "last_run_at": "2026-11-14T23:15:05.387004+07:00",
+      "next_run_at": "2026-11-16T23:15:00+07:00",
+      "last_run_at": "2026-11-15T23:16:00.741958+07:00",
       "last_status": "ok",
       "last_error": null,
       "last_delivery_error": null,
@@ -155,9 +155,9 @@
       "workdir": null,
       "fire_claim": null,
       "last_dispatch": {
-        "scheduled_at": "2026-11-14T23:15:00+07:00",
-        "dispatched_at": "2026-11-14T23:15:01.078442+07:00",
-        "lateness_seconds": 1.1,
+        "scheduled_at": "2026-11-15T23:15:00+07:00",
+        "dispatched_at": "2026-11-15T23:15:56.330086+07:00",
+        "lateness_seconds": 56.3,
         "kind": "on_time"
       },
       "failure_streak": 0
@@ -354,5 +354,5 @@
       "fire_claim": null
     }
   ],
-  "updated_at": "2026-11-15T23:00:58.333980+07:00"
+  "updated_at": "2026-11-16T23:00:46.793950+07:00"
 }
