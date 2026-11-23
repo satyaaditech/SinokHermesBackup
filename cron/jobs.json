@@ -75,15 +75,15 @@
       "schedule_display": "0 23 * * *",
       "repeat": {
         "times": null,
-        "completed": 80
+        "completed": 81
       },
       "enabled": true,
       "state": "scheduled",
       "paused_at": null,
       "paused_reason": null,
       "created_at": "2026-08-30T07:28:46.115435+07:00",
-      "next_run_at": "2026-11-23T23:00:00+07:00",
-      "last_run_at": "2026-11-21T23:00:39.934232+07:00",
+      "next_run_at": "2026-11-24T23:00:00+07:00",
+      "last_run_at": "2026-11-22T23:00:29.643824+07:00",
       "last_status": "delivery_failed",
       "last_error": null,
       "last_delivery_error": "live adapter send failed: Chat not found; live adapter delivery to telegram:-1003256146835:1 failed: Chat not found; delivery error: Telegram send failed: Chat not found (target telegram:-1003256146835:1)",
@@ -98,12 +98,12 @@
       "enabled_toolsets": null,
       "workdir": null,
       "fire_claim": {
-        "at": "2026-11-22T23:00:22.104300+07:00",
-        "by": "n8nserver:1211738:4daaf105017c4faa9d4d15a6ffcd06e4"
+        "at": "2026-11-23T23:00:22.136440+07:00",
+        "by": "n8nserver:1211738:4e7ee26f30644127bd68f6f74539ef7e"
       },
       "last_dispatch": {
-        "scheduled_at": "2026-11-22T23:00:00+07:00",
-        "dispatched_at": "2026-11-22T23:00:20.035438+07:00",
+        "scheduled_at": "2026-11-23T23:00:00+07:00",
+        "dispatched_at": "2026-11-23T23:00:20.036586+07:00",
         "lateness_seconds": 20.0,
         "kind": "on_time"
       },
@@ -131,15 +131,15 @@
       "schedule_display": "15 23 * * *",
       "repeat": {
         "times": null,
-        "completed": 80
+        "completed": 81
       },
       "enabled": true,
       "state": "scheduled",
       "paused_at": null,
       "paused_reason": null,
       "created_at": "2026-08-30T07:41:44.349637+07:00",
-      "next_run_at": "2026-11-22T23:15:00+07:00",
-      "last_run_at": "2026-11-21T23:15:24.176182+07:00",
+      "next_run_at": "2026-11-23T23:15:00+07:00",
+      "last_run_at": "2026-11-22T23:15:24.240408+07:00",
       "last_status": "ok",
       "last_error": null,
       "last_delivery_error": null,
@@ -155,8 +155,8 @@
       "workdir": null,
       "fire_claim": null,
       "last_dispatch": {
-        "scheduled_at": "2026-11-21T23:15:00+07:00",
-        "dispatched_at": "2026-11-21T23:15:20.038055+07:00",
+        "scheduled_at": "2026-11-22T23:15:00+07:00",
+        "dispatched_at": "2026-11-22T23:15:20.036849+07:00",
         "lateness_seconds": 20.0,
         "kind": "on_time"
       },
@@ -354,5 +354,5 @@
       "fire_claim": null
     }
   ],
-  "updated_at": "2026-11-22T23:00:22.107683+07:00"
+  "updated_at": "2026-11-23T23:00:22.138218+07:00"
 }
